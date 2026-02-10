@@ -15,7 +15,7 @@ title: "Data and Generative AI"
 |                         |                            |
 |-------------------------|----------------------------|
 | **9:00 a.m.–9:10 a.m.** | Introduction, Bias, FASTER |
-| **9:10 a.m.–9:20 a.m.** | Hands-On Exercise 1        |
-| **9:20 a.m.–9:30 a.m.** |                            |
-| **9:30 a.m.–9:40 a.m.** |                            |
+| **9:10 a.m.–9:20 a.m.** | [Hands-On Exercise 1](exercises.qmd#exercise-1)        |
+| **9:20 a.m.–9:30 a.m.** | [Hands-On Exercise 2](exercises.qmd#exercise-2)        |
+| **9:30 a.m.–9:40 a.m.** | [Hands-On Exercise 3](exercises.qmd#exercise-3)        |
 | **9:40 a.m.–9:45 a.m.** | Wrap-Up                    |
