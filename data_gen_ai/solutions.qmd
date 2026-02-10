@@ -1,0 +1,8 @@
+---
+title: "Solutions"
+format: html
+---
+
+## Potential Solutions to Exercises
+
+- Note that LLMs are stochastic/non-deteriministic, so no definitive solutions

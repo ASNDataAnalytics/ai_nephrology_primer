@@ -1,0 +1,30 @@
+project:
+  type: website
+
+website:
+  page-navigation: true
+  title: "Data and Generative AI"
+  description: Responsible Use in Coding, Analyses, and Statistical Reporting
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: resources.qmd
+        text: Resources
+      - href: literature.qmd
+        text: Literature  
+      - href: exercises.qmd
+        text: Exercises
+      - href: solutions.qmd
+        text: Solutions
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+
