@@ -51,8 +51,4 @@ rsconnect/
 /.quarto/
 **/*.quarto_ipynb
 
-images/
-
 fonts/
-
-logos/
