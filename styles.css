@@ -48,3 +48,21 @@
 .logo-row img {
   height: 40px;       /* adjust as needed */
 }
+
+/* fixed footer row */
+.quarto-body-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  background: white;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+  z-index: 999;
+}
+
+/* .logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+} */
