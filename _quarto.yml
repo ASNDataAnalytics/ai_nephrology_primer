@@ -24,6 +24,7 @@ format:
     theme:
       - cosmo
       - brand
+    include-after-body: footer.html
     css: styles.css
     toc: true
 

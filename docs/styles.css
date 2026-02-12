@@ -1,1 +1,50 @@
 /* css styles */
+.speaker {
+  display: flex;
+  align-items: center;
+  gap: 16px;            /* space between image and text */
+  margin-bottom: 20px;
+}
+
+.speaker img {
+  border-radius: 12px;  /* rounded corners */
+  width: 90px;          /* control size */
+  height: auto;
+}
+
+
+.speaker-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.speaker-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.speaker-affiliation {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+
+.custom-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+.logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;          /* spacing between logos */
+}
+
+.logo-row img {
+  height: 40px;       /* adjust as needed */
+}

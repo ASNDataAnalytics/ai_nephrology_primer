@@ -3,6 +3,74 @@ title: "Solutions"
 format: html
 ---
 
-## Potential Solutions to Exercises
+::: {.callout-important}
+Note that LLMs are stochastic/non-deteriministic, so there are no definitive solutions. 
+:::
 
-- Note that LLMs are stochastic/non-deteriministic, so no definitive solutions
+## Possible Solutions to Exercises
+
+### Exercise 1
+
+Prompt: 
+
+Possible Solution:
+
+::: {.panel-tabset group="llm1"}
+
+## ChatGPT
+
+`You are an expert biostatistician and epidemilogist.`
+
+## Claude
+
+`You are an expert biostatistician and epidemilogist.`
+
+## Gemini 
+
+`You are an expert biostatistician and epidemilogist.`
+
+:::
+
+### Exercise 2
+
+Prompt: 
+
+Possible Solution: 
+
+::: {.panel-tabset group="llm2"}
+
+## ChatGPT
+
+`You are an expert biostatistician and epidemilogist.`
+
+## Claude
+
+`You are an expert biostatistician and epidemilogist.`
+
+## Gemini 
+
+`You are an expert biostatistician and epidemilogist.`
+
+:::
+
+### Exercise 3
+
+Prompt: 
+
+Possible Solution:
+
+::: {.panel-tabset group="llm3"}
+
+## ChatGPT
+
+`You are an expert biostatistician and epidemilogist.`
+
+## Claude
+
+`You are an expert biostatistician and epidemilogist.`
+
+## Gemini 
+
+`You are an expert biostatistician and epidemilogist.`
+
+:::

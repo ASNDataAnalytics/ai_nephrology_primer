@@ -6,16 +6,43 @@ title: "Data and Generative AI"
 
 ### March 17, 2026
 
-![](images/Luca.jpg){width="75"}[**Luca Neri, MD, PhD**](https://renalresearch.com/about/our-team/luca-neri/) Renal Research Institute, New York, NY
+::: {.speaker}
 
-![](images/Kurtis%20Pivert%20Head%20Shot.jpg){fig-align="left" width="75"}[**Kurtis A. Pivert, MS, CAPX**](https://data.asn-online.org/) American Society of Nephrology, Washington, DC
+![](images/luca-neri.jpg)
+
+::: {.speaker-text}
+
+<span class="speaker-name">[Luca Neri, MD, PhD](https://renalresearch.com/about/our-team/luca-neri/)</span>
+<br>
+<span class="speaker-affiliation">Renal Research Institute, New York, NY</span>
+
+:::
+
+:::
+
+::: {.speaker}
+
+![](images/kurtis-pivert.jpg)
+
+::: {.speaker-text}
+
+<span class="speaker-name">[Kurtis A. Pivert, MS, CAPX](https://data.asn-online.org/)</span>
+<br>
+<span class="speaker-affiliation">American Society of Nephrology, Washington, DC</span>
+
+:::
+
+:::
+
+
 
 ### Agenda
 
 |                         |                            |
 |-------------------------|----------------------------|
-| **9:00 a.m.–9:10 a.m.** | Introduction, Bias, FASTER |
-| **9:10 a.m.–9:20 a.m.** | [Hands-On Exercise 1](exercises.qmd#exercise-1)        |
-| **9:20 a.m.–9:30 a.m.** | [Hands-On Exercise 2](exercises.qmd#exercise-2)        |
-| **9:30 a.m.–9:40 a.m.** | [Hands-On Exercise 3](exercises.qmd#exercise-3)        |
-| **9:40 a.m.–9:45 a.m.** | Wrap-Up                    |
+| **9:00 a.m.** | Introduction, Bias, FASTER |
+| **9:10 a.m.** | [Hands-On Exercise 1](exercises.qmd#exercise-1)        |
+| **9:20 a.m.** | [Hands-On Exercise 2](exercises.qmd#exercise-2)        |
+| **9:30 a.m.** | [Hands-On Exercise 3](exercises.qmd#exercise-3)        |
+| **9:40 a.m.** | Wrap-Up                    |
+

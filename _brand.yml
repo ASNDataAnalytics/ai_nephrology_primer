@@ -1,0 +1,61 @@
+meta: 
+  name: ASN Data
+  link: 
+    home: https://data.asn-online.org
+    github: https://github.com/ASNDataAnalytics
+
+logo: 
+  images: 
+    icon: 
+      path: logos/asn_blue_button.png
+      alt: "American Society of Nephrology"
+    full: 
+      path: logos/asn_data.png
+      alt: "ASN Data Analytics"
+  small: icon
+  large: full
+
+color: 
+  palette:
+    white: "#ffffff"
+    black: "#101010"
+    blue: "#00468b"
+    light-blue: "#0077c8"
+    orange: "#ff8200"
+    green: "#319b42"
+    yellow: "#ffb500"
+
+  foreground: black
+  background: white
+  primary: blue
+  secondary: light-blue
+  tertiary: orange
+  success: green
+  warning: yellow
+  light: white
+  dark: "#404041"
+
+typography: 
+  fonts: 
+    - family: Open Sans
+      source: google
+    - family: Montserrat
+      source: google
+      weight: [400, 600, 700]
+    - family: Fira Code
+      source: bunny
+  base:
+    family: Open Sans
+    size: 1rem
+  headings: 
+    family: Montserrat
+    color: primary
+    weight: 600
+  monospace:
+    family: Fira Code
+
+# defaults:
+#   bootstrap: 
+#     defaults: 
+#       navbar-bg: $brand-blue
+
