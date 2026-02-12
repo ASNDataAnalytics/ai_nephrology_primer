@@ -3,3 +3,9 @@ title: "Resources"
 format: html
 ---
 
+## Prompt Resources 
+
+### 1. [**Anthropic Prompt Engineering Overview**](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview){target="_blank"}
+
+[https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview){target="_blank"}
+

@@ -1,5 +1,81 @@
 ---
 title: "Literature"
 format: html
+page-navigation: false
 ---
 
+## *CJASN* Artificial Intelligence and Machine Learning in Nephrology
+
+::: reference-highlight
+### [Artificial Intelligence and Machine Learning in Dialysis Ready for Prime Time?](https://journals.lww.com/cjasn/fulltext/2023/06000/artificial_intelligence_and_machine_learning_in.17.aspx){target='_blank'}
+
+**Kotanko P, Zhang H, Wang Y**
+<br>
+*Clinical Journal of the American Society of Nephrology,* 2023.
+<br>
+[DOI:]{.doi-label} [10.2215/CJN.0000000000000089](https://doi.org/10.2215/CJN.0000000000000089){target='_blank'}
+:::
+
+
+::: reference-highlight
+### [Application of Natural Language Processing in Nephrology Research](https://journals.lww.com/cjasn/fulltext/2023/06000/application_of_natural_language_processing_in.18.aspx){target="_blank"}
+
+**Douglas F, Chan L.** 
+<br> 
+*Clinical Journal of the American Society of Nephrology,* 2023. 
+<br> 
+[DOI:]{.doi-label} [10.2215/CJN.0000000000000118](https://doi.org/10.2215/CJN.0000000000000118){target="_blank"}
+:::
+
+::: reference-highlight
+### [Artificial intelligence in kidney disease and dialysis: from data mining to clinical impact](%22https://journals.lww.com/co-nephrolhypertens/abstract/2026/01000/artificial_intelligence_in_kidney_disease_and.6.aspx#%22){target="_blank"}
+
+**Neri L, Zhang H, Usvyat LA.** 
+<br> 
+*Current Opinion in Nephrology and Hypertension,* 2026. 
+<br> 
+[DOI:]{.doi-label} [10.1097/MNH.0000000000001132](https://doi.org/10.1097/MNH.0000000000001132){target="_blank"}
+:::
+
+
+
+
+::: reference-highlight
+### [Application of ChatGPT to Support Nutritional Recommendations for Dialysis Patients – A Qualitative and Quantitative Evaluation](https://www.jrnjournal.org/article/S1051-2276(24)00204-8/fulltext){target="_blank"}
+
+**Wang L, Zhang H, Ginsberg N, Ban AN, Kooman JP, Kotanko P** 
+<br> 
+*Journal of Renal Nutrition,* 2024. 
+<br> 
+[DOI:]{.doi-label} [10.1053/j.jrn.2024.09.001](https://doi.org/10.1053/j.jrn.2024.09.001){target="_blank"}
+:::
+
+::: reference-highlight
+### [Performance of GPT-4 Vision on kidney pathology exam questions](https://academic.oup.com/ajcp/article-lookup/doi/10.1093/ajcp/aqae030){target='_blank'}
+
+**Miao J, Thongprayoon C, Cheungpasitporn W, Cornell LD**
+<br>
+*Am J Clin Pathol,* 2024.
+<br>
+[DOI:]{.doi-label} [10.1093/ajcp/aqae030](https://doi.org/10.1093/ajcp/aqae030){target='_blank'}
+:::
+
+::: reference-highlight
+### [Identification of kidney-related medications using AI from self-captured pill images](https://www.tandfonline.com/doi/10.1080/0886022X.2024.2402075?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%20%200pubmed){target='_blank'}
+
+**Sheikh MS, Dreesman B, Barreto EF, Thongprayoon C, Miao J, Suppadungsuk S, Mao MA, Qureshi F, Pham JH, Craici IM, Kashani KB, Cheungpasitporn W**
+<br>
+*Ren Fail,* 2024.
+<br>
+[DOI:]{.doi-label} [10.1080/0886022X.2024.2402075](https://doi.org/10.1080/0886022X.2024.2402075){target='_blank'}
+:::
+
+::: reference-highlight
+### [Clinical Applications of Artificial Intelligence in Autosomal Dominant Polycystic Kidney Disease](https://academic.oup.com/ndt/article-lookup/doi/10.1093/ndt/gfag010){target='_blank'}
+
+**Ebrahimi N, Cheungpasitporn W, Chebib FT, Borghol AHamid, Ghozloujeh ZGholizadeh, Norouzi S, Abdipour A**
+<br>
+*Nephrol Dial Transplant,* 2026.
+<br>
+[DOI:]{.doi-label} [10.1093/ndt/gfag010](https://doi.org/10.1093/ndt/gfag010){target='_blank'}
+:::

@@ -14,6 +14,20 @@
     "text": "Possible Solutions to Exercises\n\nExercise 1\nPrompt:\nPossible Solution:\n\nChatGPTClaudeGemini\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\n\n\n\nExercise 2\nPrompt:\nPossible Solution:\n\nChatGPTClaudeGemini\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\n\n\n\nExercise 3\nPrompt:\nPossible Solution:\n\nChatGPTClaudeGemini\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\nYou are an expert biostatistician and epidemilogist.\n\n\nYou are an expert biostatistician and epidemilogist."
   },
   {
+    "objectID": "literature.html",
+    "href": "literature.html",
+    "title": "Literature",
+    "section": "",
+    "text": "Kotanko P, Zhang H, Wang Y  Clinical Journal of the American Society of Nephrology, 2023.  DOI: 10.2215/CJN.0000000000000089\n\n\n\nDouglas F, Chan L.  Clinical Journal of the American Society of Nephrology, 2023.  DOI: 10.2215/CJN.0000000000000118\n\n\n\nNeri L, Zhang H, Usvyat LA.  Current Opinion in Nephrology and Hypertension, 2026.  DOI: 10.1097/MNH.0000000000001132\n\n\n\nWang L, Zhang H, Ginsberg N, Ban AN, Kooman JP, Kotanko P  Journal of Renal Nutrition, 2024.  DOI: 10.1053/j.jrn.2024.09.001\n\n\n\nMiao J, Thongprayoon C, Cheungpasitporn W, Cornell LD  Am J Clin Pathol, 2024.  DOI: 10.1093/ajcp/aqae030\n\n\n\nSheikh MS, Dreesman B, Barreto EF, Thongprayoon C, Miao J, Suppadungsuk S, Mao MA, Qureshi F, Pham JH, Craici IM, Kashani KB, Cheungpasitporn W  Ren Fail, 2024.  DOI: 10.1080/0886022X.2024.2402075\n\n\n\nEbrahimi N, Cheungpasitporn W, Chebib FT, Borghol AHamid, Ghozloujeh ZGholizadeh, Norouzi S, Abdipour A  Nephrol Dial Transplant, 2026.  DOI: 10.1093/ndt/gfag010"
+  },
+  {
+    "objectID": "literature.html#cjasn-artificial-intelligence-and-machine-learning-in-nephrology",
+    "href": "literature.html#cjasn-artificial-intelligence-and-machine-learning-in-nephrology",
+    "title": "Literature",
+    "section": "",
+    "text": "Kotanko P, Zhang H, Wang Y  Clinical Journal of the American Society of Nephrology, 2023.  DOI: 10.2215/CJN.0000000000000089\n\n\n\nDouglas F, Chan L.  Clinical Journal of the American Society of Nephrology, 2023.  DOI: 10.2215/CJN.0000000000000118\n\n\n\nNeri L, Zhang H, Usvyat LA.  Current Opinion in Nephrology and Hypertension, 2026.  DOI: 10.1097/MNH.0000000000001132\n\n\n\nWang L, Zhang H, Ginsberg N, Ban AN, Kooman JP, Kotanko P  Journal of Renal Nutrition, 2024.  DOI: 10.1053/j.jrn.2024.09.001\n\n\n\nMiao J, Thongprayoon C, Cheungpasitporn W, Cornell LD  Am J Clin Pathol, 2024.  DOI: 10.1093/ajcp/aqae030\n\n\n\nSheikh MS, Dreesman B, Barreto EF, Thongprayoon C, Miao J, Suppadungsuk S, Mao MA, Qureshi F, Pham JH, Craici IM, Kashani KB, Cheungpasitporn W  Ren Fail, 2024.  DOI: 10.1080/0886022X.2024.2402075\n\n\n\nEbrahimi N, Cheungpasitporn W, Chebib FT, Borghol AHamid, Ghozloujeh ZGholizadeh, Norouzi S, Abdipour A  Nephrol Dial Transplant, 2026.  DOI: 10.1093/ndt/gfag010"
+  },
+  {
     "objectID": "exercises.html",
     "href": "exercises.html",
     "title": "Exercises",
@@ -61,5 +75,26 @@
     "title": "Data and Generative AI",
     "section": "",
     "text": "Luca Neri, MD, PhD  Renal Research Institute, New York, NY\n\n\n\n\n\nKurtis A. Pivert, MS, CAPX  American Society of Nephrology, Washington, DC\n\n\n\n\n\n\n\n\n9:00 a.m.\nIntroduction, Bias, FASTER\n\n\n9:10 a.m.\nHands-On Exercise 1\n\n\n9:20 a.m.\nHands-On Exercise 2\n\n\n9:30 a.m.\nHands-On Exercise 3\n\n\n9:40 a.m.\nWrap-Up"
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview"
+  },
+  {
+    "objectID": "resources.html#cjasn-artificial-intelligence-and-machine-learning-in-nephrology",
+    "href": "resources.html#cjasn-artificial-intelligence-and-machine-learning-in-nephrology",
+    "title": "Resources",
+    "section": "",
+    "text": "Kotanko P, Zhang H, Wang Y  Clinical Journal of the American Society of Nephrology, 2023.  DOI: 10.2215/CJN.0000000000000089\n\n\n\nDouglas F, Chan L.  Clinical Journal of the American Society of Nephrology, 2023.  DOI: 10.2215/CJN.0000000000000118\n\n\n\nNeri L, Zhang H, Usvyat LA.  Current Opinion in Nephrology and Hypertension, 2026.  DOI: 10.1097/MNH.0000000000001132\n\n\n\nFirst A, Second B, Third C.  Journal, 202X.  DOI: DOI\n\n\n\nWang L, Zhang H, Ginsberg N, Ban AN, Kooman JP, Kotanko P  Journal of Renal Nutrition, 2024.  DOI: 10.1053/j.jrn.2024.09.001"
+  },
+  {
+    "objectID": "resources.html#prompt-resources",
+    "href": "resources.html#prompt-resources",
+    "title": "Resources",
+    "section": "",
+    "text": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview"
   }
 ]

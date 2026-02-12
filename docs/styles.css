@@ -66,3 +66,56 @@
   align-items: center;
   gap: 40px;
 } */
+
+.reference-card {
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid #00468b;   /* ASN blue vibes */
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.reference-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.reference-card a {
+  text-decoration: none;
+}
+
+.reference-card a:hover {
+  text-decoration: underline;
+}
+
+.reference-card .authors {
+  margin-bottom: 0.25rem;
+}
+
+.reference-card .journal {
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.reference-card .doi {
+  font-size: 0.9rem;
+}
+
+
+.reference-highlight {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.reference-highlight h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.reference-highlight .doi-label {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
