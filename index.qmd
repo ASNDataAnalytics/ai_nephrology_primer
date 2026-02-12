@@ -8,7 +8,7 @@ title: "Data and Generative AI"
 
 ::: {.speaker}
 
-![](images/luca-neri.jpg)
+![](../images/luca-neri.jpg)
 
 ::: {.speaker-text}
 
@@ -22,7 +22,7 @@ title: "Data and Generative AI"
 
 ::: {.speaker}
 
-![](images/kurtis-pivert.jpg)
+![](../images/kurtis-pivert.jpg)
 
 ::: {.speaker-text}
 
