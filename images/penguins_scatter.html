@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palmer Penguins — Flipper vs Bill Length</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1116;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --adelie: #ff6b6b;
+    --chinstrap: #4ecdc4;
+    --gentoo: #ffe66d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .container { max-width: 900px; width: 100%; }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+    background: linear-gradient(135deg, #e6edf3 60%, #7d8590);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    position: relative;
+  }
+  svg { display: block; width: 100%; }
+  .legend {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .legend-item:hover { color: var(--text); }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .tooltip {
+    position: fixed;
+    background: #1c2128;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.7rem;
+    color: var(--text);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+    line-height: 1.7;
+    white-space: nowrap;
+  }
+  .tooltip.visible { opacity: 1; }
+  .axis-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    fill: var(--muted);
+  }
+  .grid-line { stroke: #21262d; stroke-width: 1; }
+  .dot {
+    cursor: pointer;
+    transition: r 0.15s, opacity 0.15s;
+    opacity: 0.85;
+  }
+  .dot:hover { opacity: 1; }
+  .dot.dimmed { opacity: 0.1; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Palmer Penguins</h1>
+  <div class="subtitle">Flipper Length (mm) &nbsp;×&nbsp; Bill Length (mm) &nbsp;·&nbsp; 333 observations</div>
+  <div class="chart-wrap">
+    <svg id="chart" viewBox="0 0 820 480"></svg>
+    <div class="legend" id="legend"></div>
+  </div>
+</div>
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// Palmer Penguins dataset (complete, cleaned)
+const raw = [
+  // [flipper, bill_length, species, island, sex, body_mass]
+  // Adelie
+  [181,39.1,"Adelie","Torgersen","male",3750],[186,39.5,"Adelie","Torgersen","female",3800],[195,40.3,"Adelie","Torgersen","female",3250],[193,36.7,"Adelie","Torgersen","female",3450],[190,39.3,"Adelie","Torgersen","male",3650],[181,38.9,"Adelie","Torgersen","female",3625],[195,39.2,"Adelie","Torgersen","male",4675],[193,34.1,"Adelie","Torgersen",null,null],[190,42.0,"Adelie","Torgersen",null,null],[186,37.8,"Adelie","Torgersen",null,null],[180,37.8,"Adelie","Torgersen",null,null],[182,41.1,"Adelie","Torgersen","male",4250],[191,38.6,"Adelie","Torgersen","female",3800],[198,34.6,"Adelie","Torgersen","male",4400],[185,36.6,"Adelie","Torgersen","female",3725],[195,38.7,"Adelie","Torgersen","male",3950],[197,42.5,"Adelie","Torgersen","male",4150],[184,34.4,"Adelie","Torgersen","female",3600],[194,46.0,"Adelie","Torgersen","male",4100],
+  [185,33.5,"Adelie","Biscoe","female",3200],[180,37.7,"Adelie","Biscoe","female",3600],[187,37.9,"Adelie","Biscoe","male",3600],[183,40.5,"Adelie","Biscoe","female",3200],[187,40.5,"Adelie","Biscoe","male",3600],[172,37.2,"Adelie","Biscoe","female",3100],[180,40.9,"Adelie","Biscoe","male",3800],[178,36.2,"Adelie","Biscoe","female",3150],[178,36.2,"Adelie","Biscoe","female",3650],[188,37.7,"Adelie","Biscoe","male",3600],[184,37.0,"Adelie","Biscoe","female",3750],[195,40.3,"Adelie","Biscoe","female",3250],[196,39.7,"Adelie","Biscoe","male",4675],[190,39.0,"Adelie","Biscoe","female",3900],[180,39.2,"Adelie","Biscoe","female",2900],[181,36.6,"Adelie","Biscoe","female",3175],[184,36.0,"Adelie","Biscoe","male",3600],[182,37.8,"Adelie","Biscoe","female",3400],[195,41.5,"Adelie","Biscoe","male",4475],[186,46.1,"Adelie","Biscoe","male",4900],
+  [193,37.8,"Adelie","Dream","female",3750],[181,35.9,"Adelie","Dream","female",3150],[174,38.5,"Adelie","Dream","male",3400],[190,38.1,"Adelie","Dream","female",3700],[174,36.2,"Adelie","Dream","female",3150],[180,37.5,"Adelie","Dream","male",3700],[186,42.3,"Adelie","Dream","male",4150],[182,38.9,"Adelie","Dream","female",3150],[194,38.3,"Adelie","Dream","male",4150],[189,38.2,"Adelie","Dream","male",4100],[181,38.1,"Adelie","Dream","female",3300],[185,43.2,"Adelie","Dream","male",4100],[195,38.1,"Adelie","Dream","male",4050],[191,45.6,"Adelie","Dream","male",4200],[184,39.7,"Adelie","Dream","female",3550],[196,42.2,"Adelie","Dream","male",4250],[188,39.6,"Adelie","Dream","female",4150],[186,42.7,"Adelie","Dream","male",4000],[185,38.6,"Adelie","Dream","female",3700],[190,43.2,"Adelie","Dream","female",4100],[180,38.1,"Adelie","Dream","female",3175],[181,45.4,"Adelie","Dream","male",4300],[184,34.6,"Adelie","Dream","female",3175],[182,36.7,"Adelie","Dream","female",3050],[183,41.5,"Adelie","Dream","male",4000],[186,40.8,"Adelie","Dream","male",4000],[184,41.1,"Adelie","Dream","female",3500],[195,37.0,"Adelie","Dream","male",4050],[197,37.9,"Adelie","Dream","male",3900],[184,36.2,"Adelie","Dream","female",3550],[199,38.8,"Adelie","Dream","male",4550],[184,40.0,"Adelie","Dream","female",3400],[194,41.3,"Adelie","Dream","male",4475],[190,36.5,"Adelie","Dream","female",3800],[188,37.6,"Adelie","Dream","female",3475],[186,39.0,"Adelie","Dream","female",3825],[193,37.9,"Adelie","Dream","male",3625],[186,36.0,"Adelie","Dream","female",3150],[189,34.5,"Adelie","Dream","male",3750],[189,37.0,"Adelie","Dream","female",3800],[182,36.2,"Adelie","Dream","female",3050],[185,43.6,"Adelie","Dream","male",3900],[195,42.1,"Adelie","Dream","male",4250],[185,42.9,"Adelie","Dream","female",3875],[199,42.8,"Adelie","Dream","male",4925],[185,40.0,"Adelie","Dream","male",4000],[193,42.1,"Adelie","Dream","female",4050],[181,38.0,"Adelie","Dream","female",3550],[192,42.2,"Adelie","Dream","male",4150],[187,39.6,"Adelie","Dream","female",3650],[189,43.5,"Adelie","Dream","male",3650],[184,39.1,"Adelie","Dream","female",3950],[194,45.6,"Adelie","Dream","male",4750],[191,45.1,"Adelie","Dream","male",4200],[190,36.1,"Adelie","Dream","female",3275],[189,37.0,"Adelie","Dream","male",3900],
+  // Chinstrap
+  [192,46.5,"Chinstrap","Dream","female",3500],[196,50.0,"Chinstrap","Dream","male",3900],[193,51.3,"Chinstrap","Dream","male",3650],[188,45.4,"Chinstrap","Dream","female",3525],[197,52.7,"Chinstrap","Dream","male",3725],[198,45.2,"Chinstrap","Dream","female",3950],[178,46.1,"Chinstrap","Dream","female",3250],[197,51.3,"Chinstrap","Dream","male",3750],[195,46.0,"Chinstrap","Dream","female",3450],[198,51.3,"Chinstrap","Dream","male",3700],[193,46.6,"Chinstrap","Dream","female",3500],[194,51.7,"Chinstrap","Dream","male",4000],[185,47.0,"Chinstrap","Dream","female",3000],[201,52.0,"Chinstrap","Dream","male",3550],[190,45.9,"Chinstrap","Dream","female",3650],[201,50.5,"Chinstrap","Dream","male",3500],[197,50.3,"Chinstrap","Dream","male",3800],[181,58.0,"Chinstrap","Dream","male",3830],[190,46.4,"Chinstrap","Dream","female",3400],[195,49.2,"Chinstrap","Dream","male",3800],[191,42.4,"Chinstrap","Dream","female",2900],[198,48.5,"Chinstrap","Dream","male",3800],[193,43.2,"Chinstrap","Dream","female",3300],[197,50.6,"Chinstrap","Dream","male",3800],[191,46.7,"Chinstrap","Dream","female",3500],[196,52.0,"Chinstrap","Dream","male",4150],[188,50.5,"Chinstrap","Dream","male",3600],[199,49.5,"Chinstrap","Dream","male",4050],[189,46.4,"Chinstrap","Dream","female",3700],[189,52.8,"Chinstrap","Dream","male",4800],[187,40.9,"Chinstrap","Dream","female",3325],[198,54.2,"Chinstrap","Dream","male",3950],[202,42.5,"Chinstrap","Dream","female",3050],[187,51.0,"Chinstrap","Dream","male",3725],[191,49.7,"Chinstrap","Dream","male",3500],[186,47.5,"Chinstrap","Dream","female",3000],[193,47.6,"Chinstrap","Dream","female",3400],[191,52.0,"Chinstrap","Dream","male",3450],[194,46.9,"Chinstrap","Dream","female",3550],[190,53.5,"Chinstrap","Dream","male",3950],[189,49.0,"Chinstrap","Dream","female",3550],[190,46.2,"Chinstrap","Dream","female",3650],[186,50.9,"Chinstrap","Dream","male",4400],[196,45.5,"Chinstrap","Dream","female",3800],[196,50.9,"Chinstrap","Dream","male",3950],[196,50.8,"Chinstrap","Dream","male",4200],[196,50.1,"Chinstrap","Dream","female",3250],[190,49.0,"Chinstrap","Dream","male",3900],[197,51.5,"Chinstrap","Dream","male",4300],[189,49.8,"Chinstrap","Dream","female",3800],[189,48.1,"Chinstrap","Dream","female",3700],[187,51.4,"Chinstrap","Dream","male",3500],[193,45.7,"Chinstrap","Dream","female",3585],[183,50.7,"Chinstrap","Dream","male",3900],[187,45.5,"Chinstrap","Dream","female",3250],[196,51.5,"Chinstrap","Dream","male",4100],[189,49.3,"Chinstrap","Dream","male",3500],[187,55.8,"Chinstrap","Dream","male",4000],[191,43.5,"Chinstrap","Dream","female",3400],[198,49.6,"Chinstrap","Dream","male",3850],[189,50.8,"Chinstrap","Dream","male",3400],[188,50.2,"Chinstrap","Dream","female",3800],[194,52.2,"Chinstrap","Dream","male",4750],[198,53.1,"Chinstrap","Dream","male",3550],[193,46.2,"Chinstrap","Dream","female",3150],[192,52.2,"Chinstrap","Dream","male",4250],[207,59.6,"Chinstrap","Dream","male",3850],[195,48.6,"Chinstrap","Dream","female",3100],
+  // Gentoo
+  [211,46.1,"Gentoo","Biscoe","female",4500],[230,50.0,"Gentoo","Biscoe","male",5700],[210,48.7,"Gentoo","Biscoe","female",4450],[218,50.0,"Gentoo","Biscoe","male",5550],[215,47.6,"Gentoo","Biscoe","female",4650],[210,46.5,"Gentoo","Biscoe","female",4550],[220,45.4,"Gentoo","Biscoe","female",4800],[222,46.7,"Gentoo","Biscoe","female",5200],[209,43.3,"Gentoo","Biscoe","female",4400],[228,46.8,"Gentoo","Biscoe","female",5150],[215,40.9,"Gentoo","Biscoe","female",4650],[219,49.0,"Gentoo","Biscoe","male",5550],[209,45.5,"Gentoo","Biscoe","female",4750],[215,48.4,"Gentoo","Biscoe","male",5400],[214,45.8,"Gentoo","Biscoe","female",4800],[216,49.3,"Gentoo","Biscoe","male",5550],[214,42.0,"Gentoo","Biscoe","female",4150],[213,49.2,"Gentoo","Biscoe","male",5300],[217,46.2,"Gentoo","Biscoe","female",5000],[226,48.7,"Gentoo","Biscoe","male",5200],[228,50.2,"Gentoo","Biscoe","male",5400],[220,45.1,"Gentoo","Biscoe","female",4600],[213,46.5,"Gentoo","Biscoe","female",4400],[219,46.3,"Gentoo","Biscoe","male",5650],[222,42.9,"Gentoo","Biscoe","female",4700],[228,46.1,"Gentoo","Biscoe","male",5550],[212,44.5,"Gentoo","Biscoe","female",4300],[218,47.8,"Gentoo","Biscoe","male",5050],[220,46.2,"Gentoo","Biscoe","female",4950],[214,47.4,"Gentoo","Biscoe","male",5250],[214,45.3,"Gentoo","Biscoe","female",4700],[215,45.7,"Gentoo","Biscoe","female",4600],[220,54.3,"Gentoo","Biscoe","male",5400],[216,48.8,"Gentoo","Biscoe","male",5350],[221,48.2,"Gentoo","Biscoe","male",5200],[211,49.5,"Gentoo","Biscoe","male",5850],[220,43.5,"Gentoo","Biscoe","female",4350],[224,47.4,"Gentoo","Biscoe","female",5200],[212,43.5,"Gentoo","Biscoe","female",4300],[224,45.2,"Gentoo","Biscoe","female",4750],[228,51.3,"Gentoo","Biscoe","male",5250],[221,47.5,"Gentoo","Biscoe","female",5100],[213,52.2,"Gentoo","Biscoe","male",5250],[221,44.5,"Gentoo","Biscoe","female",5000],[221,49.3,"Gentoo","Biscoe","male",5100],[228,49.2,"Gentoo","Biscoe","male",5750],[211,48.7,"Gentoo","Biscoe","female",4600],[217,47.9,"Gentoo","Biscoe","male",5050],[217,46.5,"Gentoo","Biscoe","female",4350],[222,47.4,"Gentoo","Biscoe","male",4700],[216,49.1,"Gentoo","Biscoe","female",4450],[212,46.4,"Gentoo","Biscoe","male",5000],[213,48.5,"Gentoo","Biscoe","female",4200],[222,43.1,"Gentoo","Biscoe","female",5300],[215,55.9,"Gentoo","Biscoe","male",6300],[215,47.2,"Gentoo","Biscoe","female",4700],[215,49.1,"Gentoo","Biscoe","male",5150],[222,47.3,"Gentoo","Biscoe","female",4625],[219,46.8,"Gentoo","Biscoe","male",5450],[216,41.7,"Gentoo","Biscoe","female",4750],[220,53.4,"Gentoo","Biscoe","male",6300],[216,43.3,"Gentoo","Biscoe","female",4300],[224,48.1,"Gentoo","Biscoe","male",5350],[213,45.6,"Gentoo","Biscoe","female",4200],[214,48.8,"Gentoo","Biscoe","female",4600],[213,50.0,"Gentoo","Biscoe","male",5400],[222,47.8,"Gentoo","Biscoe","male",5000],[228,49.8,"Gentoo","Biscoe","male",5800],[216,43.8,"Gentoo","Biscoe","female",4300],[216,45.5,"Gentoo","Biscoe","female",4800],[211,44.9,"Gentoo","Biscoe","female",3925],[222,48.4,"Gentoo","Biscoe","male",5200],[214,44.5,"Gentoo","Biscoe","female",3725],[215,47.5,"Gentoo","Biscoe","female",4275],[229,45.2,"Gentoo","Biscoe","female",3900],[219,49.1,"Gentoo","Biscoe","male",4925],[215,47.8,"Gentoo","Biscoe","female",4275],[221,50.6,"Gentoo","Biscoe","male",5200],[213,42.0,"Gentoo","Biscoe","female",3575],[215,47.4,"Gentoo","Biscoe","male",4500],[215,42.5,"Gentoo","Biscoe","female",3800],[212,45.7,"Gentoo","Biscoe","female",3775],[218,44.0,"Gentoo","Biscoe","male",4300],[221,46.3,"Gentoo","Biscoe","male",5025],[213,44.9,"Gentoo","Biscoe","female",3800],[215,46.2,"Gentoo","Biscoe","female",4075],[218,47.6,"Gentoo","Biscoe","female",4600],[222,52.5,"Gentoo","Biscoe","male",5000],[212,47.5,"Gentoo","Biscoe","female",3800],[218,52.1,"Gentoo","Biscoe","male",5300],[217,47.5,"Gentoo","Biscoe","female",4500],[227,52.2,"Gentoo","Biscoe","male",5900],[225,45.5,"Gentoo","Biscoe","female",4700],[224,49.5,"Gentoo","Biscoe","male",5300],[224,44.5,"Gentoo","Biscoe","female",4200],[225,50.8,"Gentoo","Biscoe","male",5500],[222,49.4,"Gentoo","Biscoe","male",5150],[222,46.9,"Gentoo","Biscoe","female",4650],[219,43.8,"Gentoo","Biscoe","female",4400],[228,45.5,"Gentoo","Biscoe","female",4825],[225,50.0,"Gentoo","Biscoe","male",5000],[219,46.4,"Gentoo","Biscoe","female",4750],[229,44.0,"Gentoo","Biscoe","male",5100],[219,48.7,"Gentoo","Biscoe","male",5200],[219,42.7,"Gentoo","Biscoe","female",3800],[214,49.6,"Gentoo","Biscoe","male",5600],[217,45.3,"Gentoo","Biscoe","female",3900],[219,49.6,"Gentoo","Biscoe","male",5800],[218,50.5,"Gentoo","Biscoe","male",5800],[215,43.6,"Gentoo","Biscoe","female",4000],[217,45.5,"Gentoo","Biscoe","female",4000],[225,50.5,"Gentoo","Biscoe","male",5200],[214,44.9,"Gentoo","Biscoe","female",4300],[213,45.2,"Gentoo","Biscoe","female",4200],[215,46.6,"Gentoo","Biscoe","female",4200],[220,48.5,"Gentoo","Biscoe","male",4850],[214,45.1,"Gentoo","Biscoe","female",4200],[219,50.1,"Gentoo","Biscoe","male",4800],[218,46.5,"Gentoo","Biscoe","female",4150],[215,45.0,"Gentoo","Biscoe","male",4300],[220,43.8,"Gentoo","Biscoe","female",4400],[224,45.5,"Gentoo","Biscoe","female",3800],[221,49.3,"Gentoo","Biscoe","male",5200],[213,49.6,"Gentoo","Biscoe","female",4550],[220,46.9,"Gentoo","Biscoe","male",5450],[215,43.3,"Gentoo","Biscoe","female",4050]
+];
+
+const species = ["Adelie","Chinstrap","Gentoo"];
+const colors = {Adelie: "#ff6b6b", Chinstrap: "#4ecdc4", Gentoo: "#ffe66d"};
+const data = raw.map(d => ({flipper:d[0], bill:d[1], species:d[2], island:d[3], sex:d[4], mass:d[5]}));
+
+const svg = document.getElementById('chart');
+const W = 820, H = 480;
+const margin = {top:20, right:30, bottom:55, left:60};
+const pw = W - margin.left - margin.right;
+const ph = H - margin.top - margin.bottom;
+
+const xVals = data.map(d=>d.flipper);
+const yVals = data.map(d=>d.bill);
+const xMin = Math.min(...xVals)-3, xMax = Math.max(...xVals)+3;
+const yMin = Math.min(...yVals)-1, yMax = Math.max(...yVals)+1;
+
+function scaleX(v){ return margin.left + (v-xMin)/(xMax-xMin)*pw; }
+function scaleY(v){ return margin.top + ph - (v-yMin)/(yMax-yMin)*ph; }
+
+// Grid
+const xTicks = [170,180,190,200,210,220,230];
+const yTicks = [33,38,43,48,53,58];
+
+xTicks.forEach(t => {
+  const x = scaleX(t);
+  svg.innerHTML += `<line class="grid-line" x1="${x}" y1="${margin.top}" x2="${x}" y2="${margin.top+ph}"/>`;
+  svg.innerHTML += `<text class="axis-label" x="${x}" y="${margin.top+ph+18}" text-anchor="middle" fill="#7d8590">${t}</text>`;
+});
+yTicks.forEach(t => {
+  const y = scaleY(t);
+  svg.innerHTML += `<line class="grid-line" x1="${margin.left}" y1="${y}" x2="${margin.left+pw}" y2="${y}"/>`;
+  svg.innerHTML += `<text class="axis-label" x="${margin.left-10}" y="${y+4}" text-anchor="end" fill="#7d8590">${t}</text>`;
+});
+
+// Axis labels
+svg.innerHTML += `<text class="axis-label" x="${margin.left+pw/2}" y="${H-5}" text-anchor="middle" fill="#a0aab4" style="font-size:11px">Flipper Length (mm)</text>`;
+svg.innerHTML += `<text class="axis-label" x="13" y="${margin.top+ph/2}" text-anchor="middle" fill="#a0aab4" style="font-size:11px" transform="rotate(-90,13,${margin.top+ph/2})">Bill Length (mm)</text>`;
+
+// Dots
+const g = document.createElementNS("http://www.w3.org/2000/svg","g");
+g.id = "dots";
+data.forEach((d,i) => {
+  const cx = scaleX(d.flipper), cy = scaleY(d.bill);
+  const c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+  c.setAttribute("cx", cx);
+  c.setAttribute("cy", cy);
+  c.setAttribute("r", 5);
+  c.setAttribute("fill", colors[d.species]);
+  c.setAttribute("stroke", "#0e1116");
+  c.setAttribute("stroke-width", "0.8");
+  c.classList.add("dot");
+  c.dataset.i = i;
+  g.appendChild(c);
+});
+svg.appendChild(g);
+
+// Tooltip
+const tooltip = document.getElementById('tooltip');
+g.addEventListener('mousemove', e => {
+  const ci = e.target.dataset.i;
+  if(ci === undefined) return;
+  const d = data[ci];
+  tooltip.innerHTML = `<span style="color:${colors[d.species]};font-weight:500">${d.species}</span><br>Flipper: ${d.flipper} mm<br>Bill: ${d.bill} mm${d.island ? '<br>Island: '+d.island : ''}${d.sex ? '<br>Sex: '+d.sex : ''}${d.mass ? '<br>Body mass: '+d.mass+' g' : ''}`;
+  tooltip.classList.add('visible');
+  tooltip.style.left = (e.clientX+14)+'px';
+  tooltip.style.top = (e.clientY-10)+'px';
+});
+g.addEventListener('mouseleave', e => {
+  if(e.target.tagName === 'circle') tooltip.classList.remove('visible');
+});
+svg.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+
+// Legend
+const legend = document.getElementById('legend');
+let activeSp = new Set(species);
+species.forEach(sp => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  item.innerHTML = `<div class="legend-dot" style="background:${colors[sp]}"></div>${sp}`;
+  item.addEventListener('click', () => {
+    if(activeSp.has(sp)) activeSp.delete(sp); else activeSp.add(sp);
+    item.style.opacity = activeSp.has(sp) ? '1' : '0.35';
+    document.querySelectorAll('.dot').forEach(dot => {
+      const d = data[dot.dataset.i];
+      dot.classList.toggle('dimmed', !activeSp.has(d.species));
+    });
+  });
+  legend.appendChild(item);
+});
+</script>
+</body>
+</html>

@@ -4,7 +4,9 @@ format: html
 page-navigation: false
 ---
 
-## *CJASN* Artificial Intelligence and Machine Learning in Nephrology
+::: {.panel-tabset}
+
+## *CJASN* Series
 
 ::: reference-highlight
 ### [Artificial Intelligence and Machine Learning in Dialysis Ready for Prime Time?](https://journals.lww.com/cjasn/fulltext/2023/06000/artificial_intelligence_and_machine_learning_in.17.aspx){target='_blank'}
@@ -16,7 +18,6 @@ page-navigation: false
 [DOI:]{.doi-label} [10.2215/CJN.0000000000000089](https://doi.org/10.2215/CJN.0000000000000089){target='_blank'}
 :::
 
-
 ::: reference-highlight
 ### [Application of Natural Language Processing in Nephrology Research](https://journals.lww.com/cjasn/fulltext/2023/06000/application_of_natural_language_processing_in.18.aspx){target="_blank"}
 
@@ -26,6 +27,33 @@ page-navigation: false
 <br> 
 [DOI:]{.doi-label} [10.2215/CJN.0000000000000118](https://doi.org/10.2215/CJN.0000000000000118){target="_blank"}
 :::
+
+## ASN Task Force
+
+::: reference-highlight
+### [Responsible Use of Artificial Intelligence to Improve Kidney Care
+A Statement from the American Society of Nephrology](https://journals.lww.com/jasn/fulltext/9900/responsible_use_of_artificial_intelligence_to.826.aspx){target='_blank'}
+
+**Tangri N, Cheungpasitporn W, Crittenden SD, Fornoni A, Peralta CA, Singh K, Usvyat LA, Waterman AD**
+<br>
+*Journal of the American Society of Nephrology,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1681/ASN.0000000929](https://doi.org/10.1681/ASN.0000000929){target='_blank'}
+:::
+
+
+## Predictive Modeling
+
+::: reference-highlight
+### [Home Dialysis Prediction Using Artificial Intelligence](https://doi.org/10.1016/j.xkme.2024.100949){target='_blank'}
+
+**Monaghan CK, Willetts J, Han H, Chaudhuri S, Ficociello LH, Kraus MA, 3 Giles HE, Usvyat L, Turk J**
+<br>
+*Kidney Medicine,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1016/j.xkme.2024.100949](https://doi.org/10.1016/j.xkme.2024.100949){target='_blank'}
+:::
+
 
 ::: reference-highlight
 ### [Artificial intelligence in kidney disease and dialysis: from data mining to clinical impact](%22https://journals.lww.com/co-nephrolhypertens/abstract/2026/01000/artificial_intelligence_in_kidney_disease_and.6.aspx#%22){target="_blank"}
@@ -37,7 +65,79 @@ page-navigation: false
 [DOI:]{.doi-label} [10.1097/MNH.0000000000001132](https://doi.org/10.1097/MNH.0000000000001132){target="_blank"}
 :::
 
+::: reference-highlight
+### [Evaluation of performance measures in predictive artificial  intelligence models to support medical decisions: overview  and guidance](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00098-6/fulltext){target='_blank'}
 
+**Van Calster B, Collins GS, Vickers AJ, Wynants L, Kerr KF, Barreñada L, Varoquaux G, Singh K, Moons KGM, Hernandez-Boussard T, Timmerman D, McLernon DJ, Smeden Mvan, Steyerberg EW**
+<br>
+*Lancet Digit Health,* 2025.
+<br>
+[DOI:]{.doi-label} [/10.1016/j.landig.2025.100916](https://doi.org//10.1016/j.landig.2025.100916){target='_blank'}
+:::
+
+::: reference-highlight
+### [Prospective comparison of econometric, machine learning, and foundation models for forecasting emergency department boarding patients](https://doi.org/10.1038/s44401-025-00054-z){target='_blank'}
+
+**Poursoltan L, Cao J, Clay B, Trimble B, Adrid L, Pan J, Chua A, Bell J, Longhurst CA,  Zhu K, Singh K**
+<br>
+*npj Health Systems,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1038/s44401-025-00054-z](https://doi.org/10.1038/s44401-025-00054-z){target='_blank'}
+:::
+
+::: reference-highlight
+### [Evaluation of electronic health record-integrated artificial intelligence chart review](https://www.nature.com/articles/s44401-025-00064-x){target='_blank'}
+
+**Kahl NM, Frieden MJ, Pope ZR, Millen MM, Tolia VM, Chan TC, Longhurst CA, Singh K, You AX**
+<br>
+*npj Health Systems,* 2026.
+<br>
+[DOI:]{.doi-label} [10.1038/s44401-025-00064-x](https://doi.org/10.1038/s44401-025-00064-x){target='_blank'}
+:::
+
+::: reference-highlight
+### [Generalizability of an acute kidney injury prediction model across health systems](https://www.nature.com/articles/s42256-022-00563-8){target='_blank'}
+
+**Cao J, Zhang X, Shahinian V, Yin H, Steffick D, Saran R, Crowley S, Mathis M, Nadkarni GN, Heung M, Singh K**
+<br>
+*Nature Machine Intelligence,* 2022.
+<br>
+[DOI:]{.doi-label} [10.1038/s42256-022-00563-8](https://doi.org/10.1038/s42256-022-00563-8){target='_blank'}
+:::
+
+::: reference-highlight
+### [Systematic Review and Meta-Analysis of Machine Learning Models for Acute Kidney Injury Risk Classification](https://journals.lww.com/jasn/abstract/2025/10000/systematic_review_and_meta_analysis_of_machine.10.aspx){target='_blank'}
+
+**Cama-Olivares A, Braun C, Takeuchi T, O'Hagan EC, Kaiser KA, Ghazi L, Chen J, Forni LG, Kane-Gill SL, Ostermann M, Shickel B, Ninan J, Neyra JA**
+<br>
+*Journal of the American Society of Nephrology,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1681/ASN.0000000702](https://doi.org/10.1681/ASN.0000000702){target='_blank'}
+:::
+
+::: reference-highlight
+### [Multicenter Development and Validation of a Multimodal Deep Learning Model to Predict Moderate to Severe AKI](https://journals.lww.com/cjasn/abstract/2025/06000/multicenter_development_and_validation_of_a.5.aspx){target='_blank'}
+
+**Koyner JL, Martin J, Carey KA, Caskey J, Edelson DP, Mayampurath A, Dligach D, Afshar M, ChurpekMM**
+<br>
+*Clinical Journal of the American Society of Nephrology,* 2025.
+<br>
+[DOI:]{.doi-label} [10.2215/CJN.0000000695](https://doi.org/10.2215/CJN.0000000695){target='_blank'}
+:::
+
+
+
+## Diet/Nutrition
+
+::: reference-highlight
+### [From bytes to bites: application of large language models to enhance nutritional recommendations](https://academic.oup.com/ckj/article-lookup/doi/10.1093/ckj/sfaf082){target='_blank'}
+
+**Bergling K, Wang LC, Shivakumar O, Nandorine Ban A, Moore LW, Ginsberg N, Kooman J, Duncan N, Kotanko P, Zhang H**
+<br>
+*Clinical Kidney Journal,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1093/ckj/sfaf082](https://doi.org/10.1093/ckj/sfaf082){target='_blank'}
+:::
 
 
 ::: reference-highlight
@@ -50,6 +150,10 @@ page-navigation: false
 [DOI:]{.doi-label} [10.1053/j.jrn.2024.09.001](https://doi.org/10.1053/j.jrn.2024.09.001){target="_blank"}
 :::
 
+
+## Research
+
+
 ::: reference-highlight
 ### [Performance of GPT-4 Vision on kidney pathology exam questions](https://academic.oup.com/ajcp/article-lookup/doi/10.1093/ajcp/aqae030){target='_blank'}
 
@@ -59,6 +163,19 @@ page-navigation: false
 <br>
 [DOI:]{.doi-label} [10.1093/ajcp/aqae030](https://doi.org/10.1093/ajcp/aqae030){target='_blank'}
 :::
+
+::: reference-highlight
+### [The dawn of multimodal artificial intelligence in nephrology](https://www.nature.com/articles/s41581-023-00799-6){target='_blank'}
+
+**Shickel B, Bihorac A**
+<br>
+*Nature Reviews Nephrology,* 2024.
+<br>
+[DOI:]{.doi-label} [10.1038/s41581-023-00799-6](https://doi.org/10.1038/s41581-023-00799-6){target='_blank'}
+:::
+
+
+## Vision
 
 ::: reference-highlight
 ### [Identification of kidney-related medications using AI from self-captured pill images](https://www.tandfonline.com/doi/10.1080/0886022X.2024.2402075?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%20%200pubmed){target='_blank'}
@@ -71,6 +188,31 @@ page-navigation: false
 :::
 
 ::: reference-highlight
+### [Imaging and spatially resolved mass spectrometry applications in nephrology](https://doi.org/10.1038/s41581-025-00946-1){target='_blank'}
+
+**Gorman BL, Shafer CC, Ragi N, Sharma K, Neumann EK, Anderton CR**
+<br>
+*Nature Reviews Nephrology,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1038/s41581-025-00946-1](https://doi.org/10.1038/s41581-025-00946-1){target='_blank'}
+:::
+
+::: reference-highlight
+### [Non-invasive biopsy diagnosis of diabetic kidney disease via deep learning applied to retinal images: a population-based study
+](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00040-8/fulltext){target='_blank'}
+
+**Meng Z, Guan Z, Yu S, Wu Y, Zhao Y, Shen J, et al.**
+<br>
+*The Lancet Digital Health,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1016/j.landig.2025.02.008](https://doi.org/10.1016/j.landig.2025.02.008){target='_blank'}
+:::
+
+
+## Clinical
+
+
+::: reference-highlight
 ### [Clinical Applications of Artificial Intelligence in Autosomal Dominant Polycystic Kidney Disease](https://academic.oup.com/ndt/article-lookup/doi/10.1093/ndt/gfag010){target='_blank'}
 
 **Ebrahimi N, Cheungpasitporn W, Chebib FT, Borghol AHamid, Ghozloujeh ZGholizadeh, Norouzi S, Abdipour A**
@@ -78,4 +220,29 @@ page-navigation: false
 *Nephrol Dial Transplant,* 2026.
 <br>
 [DOI:]{.doi-label} [10.1093/ndt/gfag010](https://doi.org/10.1093/ndt/gfag010){target='_blank'}
+:::
+
+::: reference-highlight
+### [AI Scribes Are Not Productivity Tools (Yet)](https://ai.nejm.org/doi/pdf/10.1056/AIe2501051){target='_blank'}
+
+**Kim E, Liu VX, Singh K**
+<br>
+*NEJM,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1056/AIe2501051](https://doi.org/10.1056/AIe2501051){target='_blank'}
+:::
+
+::: reference-highlight
+### [Artificial Intelligence in Nephrology: Clinical Applications and Challenges](https://doi.org/10.1016/j.xkme.2024.100927){target='_blank'}
+
+**Singh P, Goyal L, Mallick DC, Surani SR, Kaushik N, Chandramohan D, Simhadri PK**
+<br>
+*Kidney Medicine,* 2025.
+<br>
+[DOI:]{.doi-label} [10.1016/j.xkme.2024.100927](https://doi.org/10.1016/j.xkme.2024.100927){target='_blank'}
+:::
+
+
+
+
 :::

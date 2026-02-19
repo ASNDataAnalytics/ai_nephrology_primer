@@ -135,10 +135,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prompt-resources" id="toc-prompt-resources" class="nav-link active" data-scroll-target="#prompt-resources">Prompt Resources</a>
-  <ul class="collapse">
-  <li><a href="#anthropic-prompt-engineering-overview" id="toc-anthropic-prompt-engineering-overview" class="nav-link" data-scroll-target="#anthropic-prompt-engineering-overview">1. <strong>Anthropic Prompt Engineering Overview</strong></a></li>
-  </ul></li>
+  <li><a href="#prompt-best-practices" id="toc-prompt-best-practices" class="nav-link active" data-scroll-target="#prompt-best-practices">Prompt Best Practices</a></li>
+  <li><a href="#co-star-prompt-framework" id="toc-co-star-prompt-framework" class="nav-link" data-scroll-target="#co-star-prompt-framework">CO-STAR Prompt Framework</a></li>
+  <li><a href="#additional-prompt-engineering-resources" id="toc-additional-prompt-engineering-resources" class="nav-link" data-scroll-target="#additional-prompt-engineering-resources">Additional Prompt Engineering Resources</a></li>
   </ul>
 </nav>
     </div>
@@ -164,11 +163,75 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prompt-resources" class="level2">
-<h2 class="anchored" data-anchor-id="prompt-resources">Prompt Resources</h2>
-<section id="anthropic-prompt-engineering-overview" class="level3">
-<h3 class="anchored" data-anchor-id="anthropic-prompt-engineering-overview">1. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank"><strong>Anthropic Prompt Engineering Overview</strong></a></h3>
-<p><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview</a></p>
+<section id="prompt-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-best-practices">Prompt Best Practices</h3>
+<div class="grey-box">
+<p><strong>The fundamentals that work across all LLMs:</strong></p>
+<ul>
+<li><p><strong>Role/Persona:</strong> Who the AI should act as</p></li>
+<li><p><strong>Context:</strong> What background info it needs</p></li>
+<li><p><strong>Task:</strong> What you want it to do explicitly</p></li>
+<li><p><strong>Format:</strong> How you want the output structured</p></li>
+<li><p><strong>Constraints:</strong> What to avoid or limits to follow</p></li>
+</ul>
+</div>
+<p><br> <strong>Source:</strong> <a href="https://www.reddit.com/r/ChatGPTPromptGenius/comments/1nytjzy/best_practices_for_ai_prompting_2025">Reddit: Best Practices for AI Prompting 2025?</a></p>
+</section>
+<section id="co-star-prompt-framework" class="level3">
+<h3 class="anchored" data-anchor-id="co-star-prompt-framework">CO-STAR Prompt Framework</h3>
+<div class="grey-box">
+<p>A great prompt usually includes these specific elements to provide context and direction:</p>
+<ul>
+<li><p><strong>Context:</strong> Provide background information on the task.</p></li>
+<li><p><strong>Objective:</strong> Define exactly what you want me to do.</p></li>
+<li><p><strong>Style:</strong> Specify a writing style (e.g., professional, humorous, poetic).</p></li>
+<li><p><strong>Tone:</strong> Set the emotional vibe (e.g., empathetic, direct, enthusiastic).</p></li>
+<li><p><strong>Audience:</strong> Who is this for? (e.g., a CEO, a 5-year-old, a software engineer).</p></li>
+<li><p><strong>Response:</strong> Define the format (e.g., a table, a list, a JSON object).</p></li>
+</ul>
+<p><em>Additional Components</em></p>
+<ul>
+<li><p><strong>Few-Shot Prompting/Using Examples:</strong> Provide examples of desired output and formatting (e.g., programming language, file type [CSV, Markdown, PNG])</p></li>
+<li><p><strong>Use Delimiters: </strong> Use triple quotes (“““), XML tags (<text></text>), or dashes (—) to wrap your content. (e.g., “Summarize the text delimited by triple quotes:”““[Insert long article here]”““”)</p></li>
+</ul>
+</div>
+<p><br></p>
+<p><strong>Source:</strong> Google Gemini (<em>Prompt:</em> do you have any prompt engineering best practices)</p>
+</section>
+<section id="additional-prompt-engineering-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-prompt-engineering-resources">Additional Prompt Engineering Resources</h3>
+<section id="anthropic" class="level4">
+<h4 class="anchored" data-anchor-id="anthropic">Anthropic</h4>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank">Prompt Engineering Guide Overview</a></li>
+<li><a href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank">Prompt Engineering Interactive Tutorial</a></li>
+</ul>
+</section>
+<section id="openai" class="level4">
+<h4 class="anchored" data-anchor-id="openai">OpenAI</h4>
+<ul>
+<li><a href="https://developers.openai.com/cookbook">OpenAI Developers Cookbook</a></li>
+<li><a href="https://developers.openai.com/cookbook/topic/chatgpt">OpenAI ChatGPT Cookbook</a></li>
+<li><a href="https://github.com/openai/openai-cookbook">OpenAI Cookbook Code Repo</a></li>
+<li><a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api">Best Practices for Prompt Engineering with the OpenAI API</a></li>
+<li><a href="https://developers.openai.com/api/docs/guides/prompt-engineering/">Prompt Engineering</a></li>
+</ul>
+</section>
+<section id="google" class="level4">
+<h4 class="anchored" data-anchor-id="google">Google</h4>
+<p><a href="https://cloud.google.com/discover/what-is-prompt-engineering">Prompt engineering: overview and guide</a></p>
+</section>
+<section id="best-practices-for-prompt-engineering-with-any-model" class="level4">
+<h4 class="anchored" data-anchor-id="best-practices-for-prompt-engineering-with-any-model">10 Best Practices for Prompt Engineering With Any Model</h4>
+<ul>
+<li><a href="https://www.prompthub.us/blog/10-best-practices-for-prompt-engineering-with-any-model">PromptHub</a></li>
+</ul>
+</section>
+<section id="github-awesome-ai-system-prompts" class="level4">
+<h4 class="anchored" data-anchor-id="github-awesome-ai-system-prompts">GitHub: Awesome AI System Prompts</h4>
+<ul>
+<li><a href="https://github.com/dontriskit/awesome-ai-system-prompts">Awesome AI System Prompts</a></li>
+</ul>
 
 
 </section>

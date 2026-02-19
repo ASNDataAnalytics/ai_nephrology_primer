@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Untitled – Data and Generative AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./logos/asn_blue_button.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8caf6eaa0938078aad3b4e3e78d03e50.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-391dc9eaa9d5ee7385b50e8209b8eefe.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8caf6eaa0938078aad3b4e3e78d03e50.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0b66712dabb99baccfdbccc075ec08cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e05bb00e9f0940cd543e931fcf3ff44d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0b66712dabb99baccfdbccc075ec08cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./logos\asn_blue_button.png" alt="American Society of Nephrology" class="navbar-logo light-content">
+    <img src="./logos\asn_blue_button.png" alt="American Society of Nephrology" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Data and Generative AI</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./literature.html"> 
+<span class="menu-text">Literature</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./exercises.html"> 
+<span class="menu-text">Exercises</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./solutions.html"> 
+<span class="menu-text">Solutions</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#integrating-ai-into-everyday-kidney-care-highlights-from-nkf-2025-in-boston" id="toc-integrating-ai-into-everyday-kidney-care-highlights-from-nkf-2025-in-boston" class="nav-link active" data-scroll-target="#integrating-ai-into-everyday-kidney-care-highlights-from-nkf-2025-in-boston"><strong>Integrating AI into Everyday Kidney Care: Highlights from NKF 2025 in Boston</strong></a></li>
+  <li><a href="#nkf" id="toc-nkf" class="nav-link" data-scroll-target="#nkf">NKF</a></li>
+  <li><a href="#aki" id="toc-aki" class="nav-link" data-scroll-target="#aki">AKI</a></li>
+  <li><a href="#what-i-learned-at-era25-ai-in-nephrology--a-brief-synthesis-from-multiple-sessions-and-therere-more" id="toc-what-i-learned-at-era25-ai-in-nephrology--a-brief-synthesis-from-multiple-sessions-and-therere-more" class="nav-link" data-scroll-target="#what-i-learned-at-era25-ai-in-nephrology--a-brief-synthesis-from-multiple-sessions-and-therere-more">📘 What I Learned at #ERA25: AI in Nephrology- A brief synthesis from multiple sessions and there’re more</a></li>
+  <li><a href="#reflections-on-the-role-of-ai-in-kidney-care" id="toc-reflections-on-the-role-of-ai-in-kidney-care" class="nav-link" data-scroll-target="#reflections-on-the-role-of-ai-in-kidney-care">🤔 Reflections on the Role of AI in Kidney Care</a></li>
+  <li><a href="#foundations-when-and-why-to-use-aiml" id="toc-foundations-when-and-why-to-use-aiml" class="nav-link" data-scroll-target="#foundations-when-and-why-to-use-aiml">🧠 Foundations: When and Why to Use AI/ML</a>
+  <ul class="collapse">
+  <li><a href="#when-aiml-excels" id="toc-when-aiml-excels" class="nav-link" data-scroll-target="#when-aiml-excels">When AI/ML Excels:</a></li>
+  <li><a href="#key-benefits" id="toc-key-benefits" class="nav-link" data-scroll-target="#key-benefits">Key Benefits:</a></li>
+  <li><a href="#core-limitations" id="toc-core-limitations" class="nav-link" data-scroll-target="#core-limitations">Core Limitations:</a></li>
+  </ul></li>
+  <li><a href="#ai-tools-in-kidney-care-practice" id="toc-ai-tools-in-kidney-care-practice" class="nav-link" data-scroll-target="#ai-tools-in-kidney-care-practice">🧪 AI Tools in Kidney Care Practice</a>
+  <ul class="collapse">
+  <li><a href="#ckd-progression-prediction-with-klinrisk" id="toc-ckd-progression-prediction-with-klinrisk" class="nav-link" data-scroll-target="#ckd-progression-prediction-with-klinrisk">✅ CKD Progression Prediction with Klinrisk</a></li>
+  <li><a href="#kidney-biopsy-deep-learning" id="toc-kidney-biopsy-deep-learning" class="nav-link" data-scroll-target="#kidney-biopsy-deep-learning">🧬 Kidney Biopsy &amp; Deep Learning</a></li>
+  <li><a href="#ai-powered-anemia-management" id="toc-ai-powered-anemia-management" class="nav-link" data-scroll-target="#ai-powered-anemia-management">🩸 AI-Powered Anemia Management</a></li>
+  <li><a href="#large-language-models-llms-in-emrs" id="toc-large-language-models-llms-in-emrs" class="nav-link" data-scroll-target="#large-language-models-llms-in-emrs">💻 Large Language Models (LLMs) in EMRs</a></li>
+  </ul></li>
+  <li><a href="#regulatory-ethical-considerations" id="toc-regulatory-ethical-considerations" class="nav-link" data-scroll-target="#regulatory-ethical-considerations">⚖️ Regulatory &amp; Ethical Considerations</a>
+  <ul class="collapse">
+  <li><a href="#regulatory-frameworks-eu-ai-act-mdr-pld" id="toc-regulatory-frameworks-eu-ai-act-mdr-pld" class="nav-link" data-scroll-target="#regulatory-frameworks-eu-ai-act-mdr-pld">Regulatory Frameworks (EU AI Act, MDR, PLD):</a></li>
+  <li><a href="#governance-imperatives" id="toc-governance-imperatives" class="nav-link" data-scroll-target="#governance-imperatives">Governance Imperatives:</a></li>
+  </ul></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">✨ Final Thoughts</a></li>
+  <li><a href="#how-physicians-can-prepare-for-generative-ai.-jama-internal-medicine-oct-13-2025" id="toc-how-physicians-can-prepare-for-generative-ai.-jama-internal-medicine-oct-13-2025" class="nav-link" data-scroll-target="#how-physicians-can-prepare-for-generative-ai.-jama-internal-medicine-oct-13-2025"><u><strong>“How Physicians Can Prepare for Generative AI.”</strong></u> JAMA Internal Medicine, Oct 13, 2025</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Untitled</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="integrating-ai-into-everyday-kidney-care-highlights-from-nkf-2025-in-boston" class="level2">
+<h2 class="anchored" data-anchor-id="integrating-ai-into-everyday-kidney-care-highlights-from-nkf-2025-in-boston"><strong>Integrating AI into Everyday Kidney Care: Highlights from NKF 2025 in Boston</strong></h2>
+<p>At this year’s National Kidney Foundation Spring Clinical Meetings in Boston, Dr.&nbsp;<a href="https://community.asn-online.org/profile?UserKey=732ae0e3-810e-4a62-97fb-03afa25d7353">@Lili Chan</a>&nbsp;of the Barbara T. Murphy Division of Nephrology and the Windreich Department of Artificial Intelligence and Human Health at the Icahn School of Medicine at Mount Sinai gave a compelling presentation on <strong>the integration of artificial intelligence into routine kidney care.</strong></p>
+<p><strong>The AI Revolution in Kidney Care</strong></p>
+<p>Dr.&nbsp;Chan began her session by polling the audience on their use of AI in clinical practice, highlighting how artificial intelligence is no longer a futuristic concept-it is increasingly embedded in the day-to-day workflows of healthcare. She organized her presentation around three primary learning objectives:</p>
+<ol type="1">
+<li><p>Understanding Natural Language Processing (NLP) and Large Language Models (LLMs)</p></li>
+<li><p>Reviewing machine learning (ML) applications in clinical care</p></li>
+<li><p>Discussing risks and responsible approaches to AI implementation</p></li>
+</ol>
+<p>To ground these concepts in clinical relevance, she presented a patient case journey-demonstrating how AI impacts multiple touchpoints, from patients Googling lab results to decision support in clinical encounters and follow-up planning.</p>
+<p><strong>Technical Foundations: Making AI Understandable</strong></p>
+<p>Dr.&nbsp;Chan provided an approachable explanation of AI’s inner workings, particularly for attendees less familiar with the technology. She described NLP as the subfield of AI that enables machines to analyze and understand human language, and LLMs as its most sophisticated tools-trained with vast datasets to generate and interpret medical text.</p>
+<p>She illustrated the vectorization process-how computers convert language into numerical data for processing-using Word2Vec and BERT. The concept of attention mechanisms in transformer models was brought to life with a striking example of the word “bark,” which has entirely different meanings based on context. These demonstrations helped demystify how AI models contextualize medical language.</p>
+<p><strong>AI’s Clinical Impact: Real-World Examples in Nephrology</strong></p>
+<p>What set Dr.&nbsp;Chan’s presentation apart was her focus on actionable, real-world applications of AI:</p>
+<ul>
+<li><strong>Symptom Detection in Dialysis:</strong> Her team showed that AI-driven analysis of clinical notes outperformed patient surveys in identifying symptoms, with sensitivity scores of 0.92 versus 0.58-highlighting AI’s potential to uncover unreported concerns in hemodialysis patients.&nbsp;</li>
+</ul>
+<p><img src="images/paste-1.png" class="img-fluid"></p>
+<ul>
+<li><p><strong>Ambient AI Scribes:</strong> Data from the Permanente Medical Group demonstrated tangible workflow improvements, including reduced after-hours EHR use, faster documentation, and high-quality note generation (48 out of 50 on scoring metrics).</p></li>
+<li><p><strong>AI in Pathology:</strong> Dr.&nbsp;Chan showcased cutting-edge developments in nephropathology, where AI is used to segment kidney structures, detect interstitial fibrosis, and even predict eGFR decline based on histomorphological data.</p></li>
+</ul>
+<p><strong>Practical Implementation: Prompt Engineering and Use Cases</strong></p>
+<p>For clinicians ready to experiment with AI tools, Dr.&nbsp;Chan introduced best practices in prompt engineering. Her guidance included being specific and clear, setting expectations for tone and output format, and iterating through revisions for optimal results. She encouraged participants to try generating LLM-powered diet recommendations customized for kidney patients, as a hands-on exercise in refining AI prompts.</p>
+<p><strong>Balanced Perspective: Ethical and Practical Cautions</strong></p>
+<p>While optimistic about AI’s future in kidney care, Dr.&nbsp;Chan was careful to underscore the limitations and ethical concerns:</p>
+<ul>
+<li><p><strong>Privacy:</strong> AI systems often run in the cloud-meaning uploading protected health information (PHI) poses serious risks.</p></li>
+<li><p><strong>Hallucinations:</strong> AI may fabricate content or citations, which necessitates careful cross-verification by clinicians.</p></li>
+<li><p><strong>Implementation Barriers:</strong> Key challenges include the opaque (“black box”) nature of many models, the need for informed consent, and ensuring AI tools are accessible to all populations.</p></li>
+</ul>
+<p><img src="images/paste-2.png" class="img-fluid"></p>
+<p>😊 Thank for for your wonderful talk, we really enjoyed learning from you <a href="https://community.asn-online.org/profile?UserKey=732ae0e3-810e-4a62-97fb-03afa25d7353">@Lili Chan</a> ; my friends/colleagues <a href="https://community.asn-online.org/profile?UserKey=bf3d286d-db97-48a6-bf3e-5e6d468c7f6e">@Jing Miao</a> <a href="https://community.asn-online.org/profile?UserKey=e1f91f1b-1206-405b-be74-8080e1966218">@Muhammad Yasir Baloch</a> and I were truly fascinated by your presentation.</p>
+<p><strong>What are the most significant obstacles preventing frontline nephrologists from using AI tools regularly?</strong> → Time, cost, trust, or lack of training? Happy to hear discussions from you all <a href="https://community.asn-online.org/profile?UserKey=732ae0e3-810e-4a62-97fb-03afa25d7353">@Lili Chan</a> <a href="https://community.asn-online.org/profile?UserKey=03e05336-f4de-4685-92cc-b2d85f3be8c3">@Karin Bergling</a> <a href="https://community.asn-online.org/profile?UserKey=fe7a0e03-7cc6-431a-8e1c-e0b63ab09a48">@Len Usvyat</a> <a href="https://community.asn-online.org/profile?UserKey=bbbe9339-277e-4396-9f20-b76cb59b67fa">@Kim Solez</a></p>
+</section>
+<section id="nkf" class="level2">
+<h2 class="anchored" data-anchor-id="nkf">NKF</h2>
+<p>At the 2025 NKF Spring Clinical Meetings, Dr.&nbsp;<a href="https://community.asn-online.org/profile?UserKey=494f5e23-bec7-40e7-9b9b-5ae9ad85c440">@Navdeep Tangri</a>&nbsp;presented an in-depth overview of how predictive—not generative—AI is transforming kidney care. As a global thought leader in nephrology innovation, he emphasized supervised machine learning’s (ML) role in accurate, efficient, and scalable clinical predictions.</p>
+<p><img src="images/paste-6.png" class="img-fluid"></p>
+<p><strong>Key Insights and Applications</strong></p>
+<p><strong>Supervised ML dominates</strong> current AI use in nephrology, especially in predicting AKI, CKD progression, and dialysis-related complications.</p>
+<ul>
+<li><p><strong>Simple models still work:</strong> Logistic regression often performs nearly as well as complex ML methods for structured datasets.</p></li>
+<li><p><strong>Imaging-driven AI is powerful:</strong> Deep learning excels in pathology and radiology, where it outperforms traditional biopsy interpretations and integrates with NLP to automate disease registries.</p></li>
+<li><p><strong>Commercial models are maturing:</strong> Tools like <strong>Klinrisk</strong> and <strong>KidneyIntelX</strong> are externally validated and used across trials, payers, and health systems.</p></li>
+<li><p><strong>Integration is key:</strong> AI must be embedded into the clinical workflow, with transparency, physician leadership, and real-time decision support.</p></li>
+</ul>
+<p><img src="images/paste-5.png" class="img-fluid"></p>
+<p>These are the performance metrics of machine learning models in kidney care, as presented in Dr.&nbsp;Navdeep Tangri’s NKF 2025 talk. It visualizes key AUC, sensitivity, and specificity values for acute kidney injury (AKI) prediction and intradialytic hypotension (IDH) prediction.</p>
+<p><strong>ML for CKD Progression Prediction</strong></p>
+<p><strong>Objective:</strong> Improve early identification and risk stratification of patients at risk of rapid CKD progression—<em>without relying on invasive biomarkers or complex imaging</em>.</p>
+<p><img src="images/paste-4.png" class="img-fluid"></p>
+<p><img src="images/paste-3.png" class="img-fluid"></p>
+<p><strong>Strategic Implications for Practice</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Implementation Principle</strong></td>
+<td><strong>Example from Talk</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Simple ≠ Inferior</strong></td>
+<td>Klinrisk uses basic labs but performs as well as complex tools</td>
+</tr>
+<tr class="odd">
+<td><strong>Clinical Workflow Integration First</strong></td>
+<td>SONIC/Trajvis are designed for real-time flagging</td>
+</tr>
+<tr class="even">
+<td><strong>Validate &gt; Invent</strong></td>
+<td>Every model Dr.&nbsp;Tangri supports is externally validated</td>
+</tr>
+<tr class="odd">
+<td><strong>Personalization Matters</strong></td>
+<td>Models stratify individual risk for resource targeting</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical Takeaways from Dr.&nbsp;Tangri</strong></p>
+<ul>
+<li><p><strong>Don’t always default to complex ML</strong>—many CKD progression problems are solvable with regression models.</p></li>
+<li><p><strong>Evaluate models on three axes</strong>: Performance, Generalizability, and Clinical Integration.</p></li>
+<li><p><strong>Demand external validation</strong>—not just ROC curves from a single health system.</p></li>
+<li><p><strong>KFRE</strong> has limitations in <strong>early CKD</strong>; new models must cover <strong>CKD stages 1–5</strong> and <strong>at-risk populations</strong>.</p></li>
+<li><p><strong>Transparency and simplicity matter</strong>: Interpretability boosts clinician adoption.</p></li>
+</ul>
+<p>Given the diversity of CKD patients (by race, SES, comorbidity), how do we ensure model generalizability across health systems and geographies?&nbsp;</p>
+<p>How can we build a national registry of AI model performance across institutions to accelerate benchmarking, transparency, and trust? <a href="https://community.asn-online.org/profile?UserKey=494f5e23-bec7-40e7-9b9b-5ae9ad85c440">@Navdeep Tangri</a> <a href="https://community.asn-online.org/profile?UserKey=06e55517-3060-4c5a-9359-ff91cc793acc">@Karandeep Singh</a> <a href="https://community.asn-online.org/profile?UserKey=732ae0e3-810e-4a62-97fb-03afa25d7353">@Lili Chan</a> <a href="https://community.asn-online.org/profile?UserKey=0c27498a-c468-4b82-93e8-ad5cc95810b5">@Girish Nadkarni</a> <a href="https://community.asn-online.org/profile?UserKey=03e05336-f4de-4685-92cc-b2d85f3be8c3">@Karin Bergling</a> <a href="https://community.asn-online.org/profile?UserKey=bbbe9339-277e-4396-9f20-b76cb59b67fa">@Kim Solez</a></p>
+</section>
+<section id="aki" class="level2">
+<h2 class="anchored" data-anchor-id="aki">AKI</h2>
+<p>The authors conducted a comprehensive search of PubMed, EMBASE, Web of Science, and Scopus up to August 2023. They screened 4816 articles and ultimately included <strong>95 studies</strong> evaluating <strong>302 externally validated ML models</strong> for AKI-related outcomes across <strong>3.8 million admissions</strong>, covering both adult and pediatric populations.</p>
+<p><strong>Key Findings</strong></p>
+<p><img src="images/paste-7.png" class="img-fluid"></p>
+<p><strong>🤔 So… Are These Models Ready for the Real World?</strong></p>
+<p>🟢 <strong>Yes, because:</strong></p>
+<ul>
+<li><p>They show strong performance in predicting AKI across different settings.</p></li>
+<li><p>Even simple models work well (logistic regression = MVP).</p></li>
+<li><p>🔴 <strong>No, because:</strong></p></li>
+<li><p>Too much variation between studies makes results hard to apply at the bedside.</p></li>
+<li><p>High bias in study design raises concerns.</p></li>
+<li><p>Not enough real-world testing in diverse patient groups.</p></li>
+</ul>
+<p><strong>🧭 Where Do We Go From Here?</strong><br>
+To bring AI into everyday kidney care, we need:</p>
+<ul>
+<li><p><em>Standardized predictors and outcomes 📏</em></p></li>
+<li><p><em>More external validations 🏥</em></p></li>
+<li><p><em>Better calibration and user-friendly tools ⚙️</em></p></li>
+<li><p><em>Integration into clinical workflows with real-time feedback 👩‍⚕️👨‍⚕️</em></p></li>
+</ul>
+<p><strong>💬 Food for Thought:</strong></p>
+<ul>
+<li><p>What clinical features would <em>you</em> want an AKI prediction model to consider?</p></li>
+<li><p>Should hospitals invest in developing their own local ML models or adopt published ones?</p></li>
+<li><p>How can we balance accuracy with explainability in high-risk predictions?</p></li>
+<li><p>What would it take for <em>you</em> to trust an AI model with real clinical decisions? <a href="https://community.asn-online.org/profile?UserKey=bbbe9339-277e-4396-9f20-b76cb59b67fa">@Kim Solez</a> <a href="https://community.asn-online.org/profile?UserKey=03e05336-f4de-4685-92cc-b2d85f3be8c3">@Karin Bergling</a> <a href="https://community.asn-online.org/profile?UserKey=06e55517-3060-4c5a-9359-ff91cc793acc">@Karandeep Singh</a> <a href="https://community.asn-online.org/profile?UserKey=cb61f382-4dbd-486c-842b-f2fd26a8963c">@Jay Koyner</a> <a href="https://community.asn-online.org/profile?UserKey=626026bb-de64-4d37-81e6-7112d1128482">@Kianoush Kashani</a></p></li>
+</ul>
+</section>
+<section id="what-i-learned-at-era25-ai-in-nephrology--a-brief-synthesis-from-multiple-sessions-and-therere-more" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-learned-at-era25-ai-in-nephrology--a-brief-synthesis-from-multiple-sessions-and-therere-more">📘 What I Learned at #ERA25: AI in Nephrology- A brief synthesis from multiple sessions and there’re more</h2>
+</section>
+<section id="reflections-on-the-role-of-ai-in-kidney-care" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-on-the-role-of-ai-in-kidney-care">🤔 Reflections on the Role of AI in Kidney Care</h2>
+<p>At ERA 2025 in Vienna, the conversation around artificial intelligence (AI) in nephrology has clearly evolved—from curiosity to implementation. This session, <em>CME 9 – Artificial Intelligence for Nephrologists</em>, showcased not just emerging tools but tangible outcomes from AI already being deployed in clinical practice. What stood out was the shift toward practical, integrated applications: systems that predict CKD progression using routine labs, guide anemia management in dialysis, and streamline EMR workflows with large language models. Yet, alongside innovation came important reminders about ethics, governance, and clinician accountability. Below is a structured summary of key insights, tools, and regulatory concerns discussed at the session.&nbsp;</p>
+<p><a href="https://community.asn-online.org/profile?UserKey=b1571182-6c37-46ea-8dbb-628c4dd04975">@Valentin Goutaudier</a> <a href="https://community.asn-online.org/profile?UserKey=fe7a0e03-7cc6-431a-8e1c-e0b63ab09a48">@Len Usvyat</a>&nbsp;</p>
+</section>
+<section id="foundations-when-and-why-to-use-aiml" class="level2">
+<h2 class="anchored" data-anchor-id="foundations-when-and-why-to-use-aiml">🧠 Foundations: When and Why to Use AI/ML</h2>
+<p><br>
+<strong>Talk:</strong> <em>AI and Machine Learning Demystified</em></p>
+<section id="when-aiml-excels" class="level3">
+<h3 class="anchored" data-anchor-id="when-aiml-excels">When AI/ML Excels:</h3>
+<ol type="1">
+<li></li>
+<li><p>Complex decision-making (e.g., multi-morbidity)</p></li>
+<li></li>
+<li><p>Large, multivariate data</p></li>
+<li></li>
+<li><p>Heterogeneous syndromes like CKD</p></li>
+<li></li>
+<li><p>Personalized care—risk prediction, treatment targeting</p></li>
+<li></li>
+</ol>
+</section>
+<section id="key-benefits" class="level3">
+<h3 class="anchored" data-anchor-id="key-benefits">Key Benefits:</h3>
+<ul>
+<li></li>
+<li><p>Captures nonlinear relationships</p></li>
+<li></li>
+<li><p>Integrates structured + unstructured data</p></li>
+<li></li>
+<li><p>Enables scalable clinical decision support</p></li>
+<li></li>
+</ul>
+</section>
+<section id="core-limitations" class="level3">
+<h3 class="anchored" data-anchor-id="core-limitations">Core Limitations:</h3>
+<ul>
+<li></li>
+<li><p>Susceptible to biased/poor-quality data</p></li>
+<li></li>
+<li><p>Poor generalizability without external validation</p></li>
+<li></li>
+<li><p>Opaque “black box” nature → interpretability challenge</p></li>
+<li></li>
+</ul>
+</section>
+</section>
+<section id="ai-tools-in-kidney-care-practice" class="level2">
+<h2 class="anchored" data-anchor-id="ai-tools-in-kidney-care-practice">🧪 AI Tools in Kidney Care Practice</h2>
+<section id="ckd-progression-prediction-with-klinrisk" class="level3">
+<h3 class="anchored" data-anchor-id="ckd-progression-prediction-with-klinrisk">✅ CKD Progression Prediction with Klinrisk</h3>
+<ul>
+<li></li>
+<li><p>No EHR or advanced biomarkers needed</p></li>
+<li></li>
+<li><p>Uses only routine labs</p></li>
+<li></li>
+<li><p><strong>Outperforms</strong> KDIGO and KFRE at 2–4 years</p></li>
+<li></li>
+<li><p><strong>AUC up to 0.86</strong> at 4 years</p></li>
+<li></li>
+<li><p>Built for population-level monitoring in T2DM patients</p></li>
+<li></li>
+</ul>
+</section>
+<section id="kidney-biopsy-deep-learning" class="level3">
+<h3 class="anchored" data-anchor-id="kidney-biopsy-deep-learning">🧬 Kidney Biopsy &amp; Deep Learning</h3>
+<ul>
+<li></li>
+<li><p>AI outperforms manual review in morphologic quantification</p></li>
+<li></li>
+<li><p>Predicts <strong>graft loss</strong> and segments glomerular lesions</p></li>
+<li></li>
+<li><p>87% of regulatory-cleared AI tools = radiology/pathology</p></li>
+<li></li>
+</ul>
+</section>
+<section id="ai-powered-anemia-management" class="level3">
+<h3 class="anchored" data-anchor-id="ai-powered-anemia-management">🩸 AI-Powered Anemia Management</h3>
+<p><strong>Tool:</strong> Anemia Control Model (ACM)</p>
+<ul>
+<li></li>
+<li><p>Active since 2013 in &gt;100 clinics</p></li>
+<li></li>
+<li><p>Decision support for ESA/iron dosing</p></li>
+<li></li>
+<li><p><strong>Outcomes:</strong></p>
+<ul>
+<li></li>
+<li><p>25% ESA use reduction</p></li>
+<li></li>
+<li><p>12% lower hospitalization rate</p></li>
+<li></li>
+<li><p>12-year safety track record</p></li>
+<li></li>
+</ul></li>
+<li></li>
+</ul>
+</section>
+<section id="large-language-models-llms-in-emrs" class="level3">
+<h3 class="anchored" data-anchor-id="large-language-models-llms-in-emrs">💻 Large Language Models (LLMs) in EMRs</h3>
+<ul>
+<li></li>
+<li><p>GPT-based tools increasingly embedded in EMRs</p></li>
+<li></li>
+<li><p>Use cases:</p>
+<ul>
+<li></li>
+<li><p>Inbox triage</p></li>
+<li></li>
+<li><p>Progress note generation</p></li>
+<li></li>
+<li><p>Prior auths &amp; billing support</p></li>
+<li></li>
+<li><p>Patient-specific reminders between visits</p></li>
+<li></li>
+</ul></li>
+<li></li>
+</ul>
+</section>
+</section>
+<section id="regulatory-ethical-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="regulatory-ethical-considerations">⚖️ Regulatory &amp; Ethical Considerations</h2>
+<p><strong>Speaker:</strong> Dr.&nbsp;Pierpaolo Maio<br>
+<strong>Talk:</strong> <em>AI in Nephrology – Useful or Dangerous? (CON)</em></p>
+<section id="regulatory-frameworks-eu-ai-act-mdr-pld" class="level3">
+<h3 class="anchored" data-anchor-id="regulatory-frameworks-eu-ai-act-mdr-pld">Regulatory Frameworks (EU AI Act, MDR, PLD):</h3>
+<ul>
+<li></li>
+<li><p>AI for nephrology = “high-risk” designation</p></li>
+<li></li>
+<li><p>Requires CE mark, ISO 13485, surveillance</p></li>
+<li></li>
+<li><p>Developers + clinicians share legal liability</p></li>
+<li></li>
+</ul>
+</section>
+<section id="governance-imperatives" class="level3">
+<h3 class="anchored" data-anchor-id="governance-imperatives">Governance Imperatives:</h3>
+<ul>
+<li></li>
+<li><p>Mandatory human oversight</p></li>
+<li></li>
+<li><p>Transparent AI logic</p></li>
+<li></li>
+<li><p>High-value/low-risk cases prioritized</p></li>
+<li></li>
+<li><p>Incident reporting for AI-related errors mandatory</p></li>
+<li></li>
+</ul>
+</section>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">✨ Final Thoughts</h2>
+<p>AI is transitioning from conceptual hype to practical utility in nephrology. As seen at #ERA25, its applications—from CKD prediction and glomerular image analysis to automated ESA dosing—are yielding real-world benefits. However, success hinges on <strong>data quality</strong>, <strong>regulatory compliance</strong>, and <strong>ongoing clinician oversight</strong>.</p>
+<p>The future of AI in nephrology is not just about algorithms—it is about responsible integration, trust-building, and ensuring that every decision still begins and ends with the patient.</p>
+<p>This is just my personal summary of what I learned from the #ERA25 session on AI in nephrology. I may have missed some points, and others might have different takeaways. Feel free to add or share more insights! 😊🙏</p>
+</section>
+<section id="how-physicians-can-prepare-for-generative-ai.-jama-internal-medicine-oct-13-2025" class="level2">
+<h2 class="anchored" data-anchor-id="how-physicians-can-prepare-for-generative-ai.-jama-internal-medicine-oct-13-2025"><u><strong>“How Physicians Can Prepare for Generative AI.”</strong></u> JAMA Internal Medicine, Oct 13, 2025</h2>
+<p><img src="images/paste-8.png" class="img-fluid"></p>
+<p>Generative artificial intelligence (GenAI) is no longer a futuristic concept-it has arrived in clinics, hospitals, and patient portals. While today’s AI scribes and documentation tools may seem revolutionary, the authors emphasize that these are just the beginning. The next generation of GenAI will not only summarize notes-it will help <strong>diagnose, counsel, and even manage</strong> clinical conditions. Physicians who understand how to integrate and supervise these systems will lead the transformation of healthcare.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-9.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1200"></p>
+</figure>
+</div>
+<p><strong>Using AI as a Partner</strong></p>
+<p><strong>Treat AI as a partner, not just a tool.</strong> It can reason and communicate but requires clinical oversight and validation.</p>
+<p><strong>Prompting matters.</strong> <strong>The way a question is framed affects the quality of the response; rephrasing and specifying the AI’s “role” (e.g., “You are an emergency physician…”)</strong> can improve accuracy.</p>
+<p><strong>Data input quality determines output quality.</strong> Clinicians should provide complete, relevant data (e.g., key labs, discharge summaries).</p>
+<p><strong>Interactive learning is key.</strong> Physicians should probe chatbot reasoning-ask <em>why</em> and <em>where</em> it obtained information to uncover reasoning flaws.</p>
+<p><strong>Clinical Workflow and Responsibility</strong></p>
+<p><strong>GenAI will reshape workflows.</strong> Clinicians will shift from writing to editing, as AI scribes generate notes and summaries.</p>
+<p><strong>Legal accountability remains with clinicians.</strong> Physicians are responsible for AI-generated documentation until regulatory oversight evolves.</p>
+<p><strong>AI outputs require review.</strong> Clinicians must verify accuracy before signing notes or using AI-suggested recommendations.</p>
+<p><strong>Future FDA oversight</strong> will likely extend to documentation and decision-support tools, but clinicians should demand performance validation now.</p>
+<p><strong>Evolving Physician–Patient Relationship</strong></p>
+<p><strong>Patient expectations are changing.</strong> Many patients already use GenAI to interpret symptoms, lab results, and possible diagnoses.</p>
+<p><strong>The physician’s role will shift</strong>-from sole knowledge authority to <em>expert adjudicator</em> who validates AI- or patient-generated insights.</p>
+<p><strong>Human skills gain importance.</strong> Empathy, physical examination, and shared decision-making will distinguish clinicians from algorithms.</p>
+<p><strong>Education and Skill Development</strong></p>
+<p><strong>All clinicians need foundational AI literacy.</strong> Understanding how LLMs work is now part of medical competence.</p>
+<p><strong>Formal training is emerging.</strong> Institutions like NYU Langone and Harvard offer GenAI prompt training; the American College of Physicians offers short AI courses.</p>
+<p><strong>Hands-on experience</strong> with safe, HIPAA-compliant tools (e.g., Microsoft Copilot, ChatGPT Enterprise) helps clinicians build confidence.</p>
+<p><strong>Ethical literacy is essential.</strong> Understanding bias, hallucination, and patient data protection is as important as technical skills.</p>
+<p><strong>Future Outlook</strong></p>
+<p><strong>GenAI will evolve from assistant to agent.</strong> Future “agentic” systems may independently collect histories, counsel patients, or generate management plans-requiring new oversight, ethics frameworks, and trials to assess safety and efficacy.</p>
+<p><a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2840192" class="uri">https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2840192</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<footer class="custom-footer">
+
+  <div class="logo-row">
+
+    <a href="https://renalresearch.com/"><img src="./logos/logo_rri_full.svg" alt="Renal Research Institute"></a>
+
+    <a href="https://icahn.mssm.edu/about/artificial-intelligence"><img src="./logos/sinai.png" alt="Icahn Mt. Sinai"></a>
+
+    <a href="https://data.asn-online.org"><img src="./logos/asn_data.png" alt="ASN Data"></a>
+
+  </div>
+
+</footer>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

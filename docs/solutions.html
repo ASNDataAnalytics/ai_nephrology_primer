@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -43,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-8caf6eaa0938078aad3b4e3e78d03e50.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0b66712dabb99baccfdbccc075ec08cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e05bb00e9f0940cd543e931fcf3ff44d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-0b66712dabb99baccfdbccc075ec08cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8f8c2a3d06cee57b7e7b118badafc950.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-fdfea10fff9abfa4eb9bd456a7d42bb7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8f8c2a3d06cee57b7e7b118badafc950.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -183,57 +218,691 @@ Important
 <h2 class="anchored" data-anchor-id="possible-solutions-to-exercises">Possible Solutions to Exercises</h2>
 <section id="exercise-1" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>Prompt:</p>
-<p>Possible Solution:</p>
+<p><strong>Prompt:</strong> Use an LLM to clean data in preparation for analysis and modeling.</p>
+<p><strong>Possible Solutions</strong></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="llm1">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">ChatGPT</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Claude</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Gemini</a></li></ul>
 <div class="tab-content" data-group="llm1">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> You are Dr.&nbsp;Karandeep Singh, the creator of TidierOrg and Tidier.jl. You are an expert in coding, AI, and nephrology.</p>
+<p>[Objective] Clean messy clinical trial data to prepare for analysis and predictive modeling.</p>
+<p>[Context] Take this messy data {messy_aki.xlsx} and provide valid Julia code to accurately clean the data.</p>
+<p>[Constraints] You must use TidierOrg tools to clean the data.</p>
+<p>[Format] Return valid Julia code to read in the messy data, clean and validate the data, and export the data to a csv. Provide a report in markdown that catalogs missing data, outliers, and any edge cases that need HITL review before modeling. Clearly explain which Tidier.jl packages you are using and what each section of the code achieves with the resulting Julia code you generate. Do this in a manner for someone who is familiar with code but knows nothing about Julia. Provide key points for choosing Julia over other programming languages.</p>
+<p><strong>Response:</strong></p>
+<p>Julia cleaning script (TidierOrg-first)</p>
+<pre class="{julia}"><code>
+############################################################
+# AKI trial data cleaning (TidierOrg / Tidier.jl workflow)
+# - Reads messy Excel
+# - Detects the true header row
+# - Cleans/standardizes fields (dates, categories, numerics)
+# - Validates + flags HITL edge cases
+# - Exports clean CSV + a markdown QA report
+############################################################
+
+using Tidier                    # meta-package (re-exports TidierData, TidierFiles, TidierStrings, TidierDates, etc.)
+using DataFrames
+using Dates
+using Statistics
+
+# -------------------------
+# 0) I/O paths
+# -------------------------
+in_path  = "/mnt/data/messy_aki.xlsx"
+out_csv  = "aki_clean.csv"
+out_md   = "aki_cleaning_report.md"
+
+# -------------------------
+# 1) Read Excel (TidierFiles)
+#    We read with col_names=false because the file has title rows above the real header
+# -------------------------
+df_raw = TidierFiles.read_xlsx(in_path; sheet=1, col_names=false, trim_ws=true)
+
+# -------------------------
+# 2) Find the header row containing "study_id" in the first column, then re-read as data
+# -------------------------
+firstcol = df_raw[:, 1]
+header_row = findfirst(x -&gt; !ismissing(x) &amp;&amp; lowercase(String(x)) == "study_id", firstcol)
+
+if header_row === nothing
+    error("Could not find a header row with 'study_id' in column 1. Inspect df_raw to locate headers.")
+end
+
+# Extract header values and data rows
+hdr_vals = df_raw[header_row, :]
+df = df_raw[(header_row + 1):nrow(df_raw), :]
+
+# Assign column names from the header row
+rename!(df, Symbol.(map(x -&gt; ismissing(x) ? "" : String(x), collect(hdr_vals))))
+
+# Drop any columns with empty names (common when there are blank columns in the sheet)
+empty_name_cols = names(df)[map(nm -&gt; nm == Symbol(""), names(df))]
+if !isempty(empty_name_cols)
+    select!(df, Not(empty_name_cols))
+end
+
+# Clean column names to snake_case (TidierData)
+df = @chain df begin
+    @clean_names()
+end
+
+# -------------------------
+# 3) Drop trailing note rows / non-data rows
+#    (in this file, rows with missing study_id are notes/permissions)
+# -------------------------
+df = @chain df begin
+    @filter(!ismissing(study_id))
+end
+
+# -------------------------
+# 4) Helper parsers (used inside @mutate)
+# -------------------------
+# Extract the first number from messy strings like "19 but poor collection"
+function first_number(x)
+    if ismissing(x)
+        return missing
+    end
+    if x isa Number
+        return Float64(x)
+    end
+    s = strip(String(x))
+    m = match(r"-?\d+(\.\d+)?", s)
+    return m === nothing ? missing : parse(Float64, m.match)
+end
+
+# Parse DOB from multiple common Excel/string formats
+function parse_dob(x)
+    if ismissing(x)
+        return missing
+    end
+    # Already a Date/DateTime
+    if x isa Date
+        return x
+    elseif x isa DateTime
+        return Date(x)
+    end
+
+    s = strip(String(x))
+    if isempty(s)
+        return missing
+    end
+
+    # Normalize month-name strings like "may 5 1970" -&gt; "May 5 1970"
+    s2 = join(uppercasefirst.(split(lowercase(s), ' ')), ' ')
+
+    # Try a few formats
+    for fmt in (dateformat"y-m-d", dateformat"m/d/y", dateformat"u d y", dateformat"u d, y")
+        try
+            return Date(s2, fmt)
+        catch
+        end
+    end
+
+    # Last resort: try Date(s2) (can work for some ISO-ish strings)
+    try
+        return Date(s2)
+    catch
+        return missing
+    end
+end
+
+# Standardize Yes/No-ish fields
+function yesno(x)
+    if ismissing(x)
+        return missing
+    end
+    s = lowercase(strip(String(x)))
+    if s in ("yes", "y", "true", "1")
+        return "Yes"
+    elseif s in ("no", "n", "false", "0")
+        return "No"
+    else
+        return missing
+    end
+end
+
+# Standardize sex
+function sex_std(x)
+    if ismissing(x)
+        return missing
+    end
+    s = lowercase(strip(String(x)))
+    if s in ("m", "male")
+        return "Male"
+    elseif s in ("f", "female")
+        return "Female"
+    else
+        return missing
+    end
+end
+
+# Standardize race (example mapping—edit if your protocol uses different groupings)
+function race_std(x)
+    if ismissing(x)
+        return missing
+    end
+    s = lowercase(strip(String(x)))
+    if s in ("white", "caucasian", "w", "white ")
+        return "White"
+    elseif s in ("black", "af-am", "african american", "african-american")
+        return "Black"
+    elseif s in ("asian")
+        return "Asian"
+    elseif s in ("mixed", "multiracial")
+        return "Mixed"
+    elseif s in ("other")
+        return "Other"
+    else
+        return "Other"
+    end
+end
+
+# Standardize Hispanic ethnicity with typo handling
+function hispanic_std(x)
+    if ismissing(x)
+        return missing
+    end
+    s = lowercase(strip(String(x)))
+    if s in ("hispanic", "h", "h ", "hisspanic", "hispannic")
+        return "Hispanic"
+    elseif s in ("not hispanic", "nh", "non-hispanic", "non hispanic")
+        return "Not Hispanic"
+    else
+        return missing
+    end
+end
+
+# -------------------------
+# 5) Main cleaning transforms (TidierData)
+#    - Parse types
+#    - Keep “raw” copies where useful for audit
+#    - Create QA flags for HITL review
+# -------------------------
+df_clean = @chain df begin
+    @mutate(
+        # IDs
+        study_id = as_integer(study_id),
+
+        # DOB -&gt; Date
+        dob_raw = dob,
+        dob = ~parse_dob(dob),
+
+        # Demographics standardization
+        sex_raw = sex,
+        sex = ~sex_std(sex),
+
+        race_raw = race,
+        race = ~race_std(race),
+
+        hispanic_raw = hispanic,
+        hispanic = ~hispanic_std(hispanic),
+
+        # GFR numerics (keep raw columns + parsed numeric columns)
+        admission_gfr_raw = admission_gfr,
+        day_1_gfr_raw      = day_1_gfr,
+        day2gfr_raw        = day2gfr,
+        day_3_gfr_raw      = day_3_gfr,
+        day_4_gfr_raw      = day_4_gfr,
+        day5_gfr_raw       = day5_gfr,
+
+        admission_gfr = ~first_number(admission_gfr),
+        day_1_gfr     = ~first_number(day_1_gfr),
+        day2_gfr      = ~first_number(day2gfr),
+        day_3_gfr     = ~first_number(day_3_gfr),
+        day_4_gfr     = ~first_number(day_4_gfr),
+        day5_gfr      = ~first_number(day5_gfr),
+
+        # Flags: “had extra text” (e.g., "19 but poor collection")
+        day2_parse_note = !(ismissing(day2gfr_raw)) &amp;&amp; !(String(day2gfr_raw) |&gt; strip |&gt; x -&gt; occursin(r"^-?\d+(\.\d+)?$", x)),
+
+        # Devices
+        hd_catheter_raw = hd_catheter,
+        hd_catheter = ~yesno(hd_catheter),
+
+        av_fistula_raw = av_fistula,
+        av_fistula = ~yesno(av_fistula)
+    ) |&gt;
+
+    # Keep a tidy column order (optional)
+    @select(
+        study_id, dob, sex, race, hispanic,
+        admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr,
+        diagnosis, sediment, hd_catheter, av_fistula,
+        day2_parse_note,
+        # audit columns at the end
+        dob_raw, sex_raw, race_raw, hispanic_raw,
+        admission_gfr_raw, day_1_gfr_raw, day2gfr_raw, day_3_gfr_raw, day_4_gfr_raw, day5_gfr_raw,
+        hd_catheter_raw, av_fistula_raw
+    )
+end
+
+# -------------------------
+# 6) Validation + HITL flags
+# -------------------------
+
+# Duplicated study_id check
+dup_ids = @chain df_clean begin
+    @count(study_id)
+    @filter(n &gt; 1)
+end
+
+# Missingness summary
+missing_summary = DataFrame(
+    column = String[],
+    n_missing = Int[],
+    pct_missing = Float64[]
+)
+for nm in names(df_clean)
+    col = df_clean[!, nm]
+    nmiss = count(ismissing, col)
+    push!(missing_summary, (String(nm), nmiss, round(100 * nmiss / nrow(df_clean); digits=1)))
+end
+
+# Outlier thresholds (IQR rule) for each GFR column
+gfr_cols = [:admission_gfr, :day_1_gfr, :day2_gfr, :day_3_gfr, :day_4_gfr, :day5_gfr]
+
+function iqr_bounds(v::Vector{Union{Missing, Float64}})
+    x = collect(skipmissing(v))
+    if length(x) &lt; 4
+        return (missing, missing)  # too few points
+    end
+    q1 = quantile(x, 0.25)
+    q3 = quantile(x, 0.75)
+    iqr = q3 - q1
+    return (q1 - 1.5*iqr, q3 + 1.5*iqr)
+end
+
+outlier_rows = DataFrame()
+for c in gfr_cols
+    lo, hi = iqr_bounds(df_clean[!, c])
+    if !(ismissing(lo) || ismissing(hi))
+        tmp = @chain df_clean begin
+            @mutate(_col = String(c), _lo = lo, _hi = hi)
+            @filter(!ismissing($(c)) &amp;&amp; (($(c) &lt; lo) || ($(c) &gt; hi)))
+            @select(study_id, _col, $(c), _lo, _hi)
+        end
+        outlier_rows = vcat(outlier_rows, tmp; cols=:union)
+    end
+end
+
+# Extra clinical sanity flags (edit thresholds to your protocol)
+sanity_flags = @chain df_clean begin
+    @mutate(
+        flag_dob_unparsed = ismissing(dob),
+        flag_gfr_negative = any.((admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr) .&lt; 0),
+        flag_gfr_very_high = any.((admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr) .&gt; 200),
+        flag_day3_missing = ismissing(day_3_gfr),
+        flag_day2_note = day2_parse_note
+    )
+end
+
+# -------------------------
+# 7) Export clean CSV (TidierFiles)
+# -------------------------
+TidierFiles.write_csv(df_clean, out_csv)
+
+# -------------------------
+# 8) Write a markdown QA report
+# -------------------------
+function df_to_md_table(d::DataFrame; max_rows::Int=50)
+    n = min(nrow(d), max_rows)
+    cols = names(d)
+    header = "|" * join(string.(cols), "|") * "|\n"
+    sep    = "|" * join(fill("---", length(cols)), "|") * "|\n"
+    rows = ""
+    for i in 1:n
+        vals = [ismissing(d[i, c]) ? "missing" : string(d[i, c]) for c in cols]
+        rows *= "|" * join(vals, "|") * "|\n"
+    end
+    if nrow(d) &gt; max_rows
+        rows *= "\n*(truncated to first $(max_rows) rows)*\n"
+    end
+    return header * sep * rows
+end
+
+report = """
+# AKI Data Cleaning QA Report
+
+## Files
+- Input: `$(in_path)`
+- Output CSV: `$(out_csv)`
+
+## Row counts
+- Rows after header detection + dropping note rows: **$(nrow(df_clean))**
+- Columns: **$(ncol(df_clean))**
+
+## Missing data (all columns)
+$(df_to_md_table(sort(missing_summary, :n_missing, rev=true)))
+
+## Duplicate study IDs (requires HITL)
+$(nrow(dup_ids) == 0 ? "_None detected._" : df_to_md_table(dup_ids))
+
+## Parsed-text notes (e.g., GFR cell had extra text)
+Rows with `day2_parse_note = true` should be reviewed to confirm the numeric extraction matches intent.
+$(df_to_md_table(@chain df_clean begin
+    @filter(day2_parse_note == true)
+    @select(study_id, day2gfr_raw, day2_gfr)
+end))
+
+## Outliers by IQR rule (requires HITL)
+$(nrow(outlier_rows) == 0 ? "_None detected by IQR rule._" : df_to_md_table(outlier_rows))
+
+## Sanity flags (requires HITL)
+$(df_to_md_table(@chain sanity_flags begin
+    @filter(flag_dob_unparsed || flag_gfr_very_high || flag_day3_missing || flag_day2_note)
+    @select(study_id, flag_dob_unparsed, flag_gfr_very_high, flag_day3_missing, flag_day2_note,
+            admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr,
+            dob_raw)
+end))
+"""
+
+open(out_md, "w") do io
+    write(io, report)
+end
+
+println("Wrote clean CSV -&gt; $(out_csv)")
+println("Wrote QA report -&gt; $(out_md)")
+</code></pre>
+<p><strong>What TidierOrg packages this uses (and why)</strong></p>
+<ul>
+<li><p><strong>Tidier.jl (meta-package)</strong>: loads the “tidyverse-like” ecosystem in one import. Tidier.jl is designed as a meta-package that re-exports functionality from smaller TidierOrg packages.</p></li>
+<li><p><strong>TidierFiles.jl</strong>: provides <code>read_xlsx()</code> and <code>write_csv()</code> with a consistent “readr/readxl-ish” API, powered by XLSX.jl/CSV.jl under the hood.</p></li>
+<li><p><strong>TidierData.jl</strong>: provides tidy macros like <code>@chain</code>, <code>@mutate</code>, <code>@filter</code>, <code>@select</code>, and <code>@clean_names()</code> for dplyr/tidyr-like transformations.</p></li>
+</ul>
+<p>Markdown QA report (based on <em>this</em> <code>messy_aki.xlsx</code>)</p>
+<p><strong>Summary</strong></p>
+<ul>
+<li><p><strong>Excel rows:</strong> 27 total on the sheet</p></li>
+<li><p><strong>True data table rows:</strong> 23 (after skipping title/header junk)</p></li>
+<li><p><strong>Non-data note rows removed:</strong> 3 (permission/notes at bottom with missing <code>study_id</code>)</p></li>
+<li><p><strong>Final analytic rows:</strong> <strong>20</strong></p></li>
+<li><p><strong>Key HITL items:</strong> duplicate study IDs, extreme/implausible GFR values, one missing Day 3 GFR, “numeric-with-text” cell.</p></li>
+</ul>
+<p><strong>Missing data</strong></p>
+<ul>
+<li><code>day_3_gfr</code>: <strong>1 missing</strong> (study_id <strong>21</strong>)</li>
+</ul>
+<p><strong>Outliers (needs HITL review)</strong></p>
+<p>Using an IQR rule on the numeric-parsed GFR values, these stand out:</p>
+<ul>
+<li><p><strong>Admission GFR = 232</strong> (study_id <strong>20</strong>) — likely a data entry error (e.g., “23.2” or “23”?) given subsequent days are ~19–33.</p></li>
+<li><p><strong>Admission GFR = 177</strong> (study_id <strong>21</strong>) — unusually high vs cohort; may be real or a typo (“17.7” / “17”?).</p></li>
+<li><p><strong>Day 1 GFR = 322</strong> (study_id <strong>15</strong>) — almost certainly a typo (pattern suggests “32”).</p></li>
+</ul>
+<p><strong>Edge cases / messy-field normalization</strong></p>
+<ul>
+<li><p><strong>DOB</strong> includes a free-text date (<code>"may 5 1970"</code>) that must be parsed carefully (the script handles multiple formats).</p></li>
+<li><p><strong>Sex</strong> mixes <code>Male/Female</code> with <code>M/F</code> and trailing whitespace.</p></li>
+<li><p><strong>Race</strong> mixes casing and abbreviations (<code>WHITE</code>, <code>Af-Am</code>, <code>Caucasian</code>, etc.).</p></li>
+<li><p><strong>Hispanic</strong> includes typos (<code>Hisspanic</code>, <code>Hispannic</code>, <code>H</code>) and shorthand (<code>NH</code>).</p></li>
+<li><p><strong>Day2 GFR</strong> contains at least one cell like <code>"19 but poor collection"</code>; the script extracts the first numeric value (=19) <strong>and flags it</strong> (<code>day2_parse_note=true</code>) for review.</p></li>
+</ul>
+<p><strong>ID integrity (must resolve before modeling)</strong></p>
+<ul>
+<li><strong>Duplicate <code>study_id</code>: 3 appears twice; 8 appears twice.</strong><br>
+These represent clearly different patients/records and should be reconciled (true duplicates vs mis-keyed IDs) before train/test splits.</li>
+</ul>
+<p><strong>How to read the Julia code if you “know code but not Julia”</strong></p>
+<ul>
+<li><p><code>using Tidier</code> is like <code>library(tidyverse)</code>—it brings in the TidierOrg ecosystem.</p></li>
+<li><p><code>@chain df begin ... end</code> is like <code>%&gt;%</code> in R or method-chaining in Python; it pipes a DataFrame through steps.</p></li>
+<li><p><code>@mutate(new = f(old))</code> creates/overwrites columns.</p></li>
+<li><p><code>missing</code> is Julia’s NA.</p></li>
+<li><p>The <code>~</code> prefix inside TidierData macros tells TidierData <strong>not</strong> to auto-vectorize a function (important when you’re calling helper functions that should run “per-cell” rather than being broadcast in a surprising way).</p></li>
+</ul>
+<p><strong>Why choose Julia here (vs Python/R) — the practical version</strong></p>
+<ul>
+<li><p><strong>Speed without giving up expressiveness</strong>: you can do heavy feature engineering and modeling in one language without “two-language” rewrites.</p></li>
+<li><p><strong>Composable, high-performance tabular + ML stack</strong>: DataFrames + MLJ/Flux/etc. can stay fast as the pipeline grows.</p></li>
+<li><p><strong>Tidyverse-like ergonomics (TidierOrg)</strong>: if your team thinks in <code>dplyr</code> verbs, TidierData lowers the adoption cost while staying Julia-native.</p></li>
+</ul>
+<p>If you want, I can adapt the race/ethnicity mappings and the GFR plausibility thresholds to match your trial’s data dictionary / SAP (e.g., “Unknown” handling, allowable ranges, and whether GFR is eGFR vs measured clearance).</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
+<p><strong>Response:</strong></p>
+<p>Here’s a well-commented cleaning script that tackles every issue I spotted:</p>
+<div id="3751eb7e" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dateutil <span class="im">import</span> parser <span class="im">as</span> dateparser</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 1. Load, skip the 3-row title block, drop the empty column F ──────────────</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"messy_aki.xlsx"</span>, skiprows<span class="op">=</span><span class="dv">4</span>, header<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[df.columns[<span class="dv">5</span>]])          <span class="co"># unnamed empty column between Hispanic and Admission GFR</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(how<span class="op">=</span><span class="st">"all"</span>)                       <span class="co"># drop fully-empty rows (incl. footer notes)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 2. Standardise column names ───────────────────────────────────────────────</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"study_id"</span>, <span class="st">"dob"</span>, <span class="st">"race"</span>, <span class="st">"sex"</span>, <span class="st">"hispanic"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gfr_admission"</span>, <span class="st">"gfr_day1"</span>, <span class="st">"gfr_day2"</span>, <span class="st">"gfr_day3"</span>, <span class="st">"gfr_day4"</span>, <span class="st">"gfr_day5"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"diagnosis"</span>, <span class="st">"sediment"</span>, <span class="st">"hd_catheter"</span>, <span class="st">"av_fistula"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 3. Duplicate / invalid study IDs ─────────────────────────────────────────</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># IDs 3 and 8 appear twice; IDs 9, 10, 18 are missing entirely.</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag duplicates so you can review — don't silently drop them.</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"duplicate_id_flag"</span>] <span class="op">=</span> df.duplicated(subset<span class="op">=</span><span class="st">"study_id"</span>, keep<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 4. Parse dates of birth ───────────────────────────────────────────────────</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_dob(val):</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.NaT</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(val, pd.Timestamp):</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> val</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Handle obvious typo like "5=11-1984"</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> <span class="bu">str</span>(val).replace(<span class="st">"="</span>, <span class="st">"-"</span>)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dateparser.parse(val, dayfirst<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.NaT</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"dob"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"dob"</span>].<span class="bu">apply</span>(parse_dob), errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 5. Standardise race ───────────────────────────────────────────────────────</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>race_map <span class="op">=</span> {</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"caucasian"</span>: <span class="st">"White"</span>,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"white"</span>:     <span class="st">"White"</span>,</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"af-am"</span>:     <span class="st">"Black"</span>,</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"black"</span>:     <span class="st">"Black"</span>,</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"asian"</span>:     <span class="st">"Asian"</span>,</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mixed"</span>:     <span class="st">"Other"</span>,</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"other"</span>:     <span class="st">"Other"</span>,</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"race"</span>] <span class="op">=</span> (df[<span class="st">"race"</span>]</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">str</span>.strip()</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">str</span>.lower()</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">map</span>(race_map)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>              .fillna(<span class="st">"Unknown"</span>))</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 6. Standardise sex ────────────────────────────────────────────────────────</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_sex(val):</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower()</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"male"</span>, <span class="st">"m"</span>):</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Male"</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"female"</span>, <span class="st">"f"</span>):</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Female"</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"sex"</span>] <span class="op">=</span> df[<span class="st">"sex"</span>].<span class="bu">apply</span>(clean_sex)</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 7. Standardise hispanic ethnicity ────────────────────────────────────────</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_hispanic(val):</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower().replace(<span class="st">" "</span>, <span class="st">""</span>)</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"hispanic"</span>, <span class="st">"h"</span>, <span class="st">"hispannic"</span>, <span class="st">"hisspanic"</span>):   <span class="co"># typos</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Hispanic"</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"nothispanic"</span>, <span class="st">"nh"</span>):</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Not Hispanic"</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"hispanic"</span>] <span class="op">=</span> df[<span class="st">"hispanic"</span>].<span class="bu">apply</span>(clean_hispanic)</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 8. Clean GFR columns — coerce text to numeric, flag outliers ──────────────</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>gfr_cols <span class="op">=</span> [<span class="st">"gfr_admission"</span>, <span class="st">"gfr_day1"</span>, <span class="st">"gfr_day2"</span>, <span class="st">"gfr_day3"</span>, <span class="st">"gfr_day4"</span>, <span class="st">"gfr_day5"</span>]</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_numeric(val):</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pull the first number out of a cell; return NaN if none found."""</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(val)</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>):</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        match <span class="op">=</span> re.search(<span class="vs">r"</span><span class="dv">\d</span><span class="op">+</span><span class="ch">\.</span><span class="op">?</span><span class="dv">\d</span><span class="op">*</span><span class="vs">"</span>, <span class="bu">str</span>(val))</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(match.group()) <span class="cf">if</span> match <span class="cf">else</span> np.nan</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> df[col].<span class="bu">apply</span>(extract_numeric)</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag physiologically implausible GFR values (&gt; 200 are likely data-entry errors)</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>GFR_MAX <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>    flag_col <span class="op">=</span> col <span class="op">+</span> <span class="st">"_outlier_flag"</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    df[flag_col] <span class="op">=</span> df[col] <span class="op">&gt;</span> GFR_MAX</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 9. Standardise Yes/No columns ────────────────────────────────────────────</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_yesno(val):</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower().replace(<span class="st">"`"</span>, <span class="st">""</span>)   <span class="co"># "No`" typo</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="st">"yes"</span>:</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Yes"</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="st">"no"</span>:</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"No"</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"hd_catheter"</span>, <span class="st">"av_fistula"</span>]:</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> df[col].<span class="bu">apply</span>(clean_yesno)</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 10. Standardise sediment free-text (minor normalisation) ─────────────────</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"sediment"</span>] <span class="op">=</span> (df[<span class="st">"sediment"</span>]</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.strip()</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.lower()</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="vs">r"</span><span class="dv">\s</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="st">"epi cell"</span>, <span class="st">"epithelial cell"</span>)</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="st">"gran "</span>, <span class="st">"granular "</span>))</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 11. Report a cleaning summary ─────────────────────────────────────────────</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"=== Cleaning summary ==="</span>)</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rows: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Duplicate study IDs:</span><span class="ch">\n</span><span class="sc">{</span>df[df[<span class="st">'duplicate_id_flag'</span>]][[<span class="st">'study_id'</span>,<span class="st">'dob'</span>,<span class="st">'diagnosis'</span>]]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Unparseable DOBs: </span><span class="sc">{</span>df[<span class="st">'dob'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">GFR outlier flags:"</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> df[col <span class="op">+</span> <span class="st">"_outlier_flag"</span>].<span class="bu">sum</span>()</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n:</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> outlier(s) — </span><span class="sc">{</span>df<span class="sc">.</span>loc[df[col<span class="op">+</span><span class="st">'_outlier_flag'</span>], [<span class="st">'study_id'</span>, col]]<span class="sc">.</span>values<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Sex nulls after cleaning:      </span><span class="sc">{</span>df[<span class="st">'sex'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Hispanic nulls after cleaning: </span><span class="sc">{</span>df[<span class="st">'hispanic'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Race unknowns:                 </span><span class="sc">{</span>(df[<span class="st">'race'</span>]<span class="op">==</span><span class="st">'Unknown'</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 12. Save ──────────────────────────────────────────────────────────────────</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"aki_clean.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Saved to aki_clean.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<pre><code>=== Cleaning summary ===
+Rows: 22
+
+Duplicate study IDs:
+    study_id        dob           diagnosis
+2        3.0 1970-05-05        bleeding out
+3        3.0 1981-06-03  norovirus diarrhea
+8        8.0 1982-04-22     C diff diarrhea
+9        8.0 2003-10-12           NSAID tox
+21       NaN        NaT                 NaN
+22       NaN        NaT                 NaN
+
+Unparseable DOBs: 2
+
+GFR outlier flags:
+  gfr_admission: 1 outlier(s) — [[20.0, 232.0]]
+  gfr_day1: 1 outlier(s) — [[15.0, 322.0]]
+
+Sex nulls after cleaning:      2
+Hispanic nulls after cleaning: 2
+Race unknowns:                 2
+
+Saved to aki_clean.csv</code></pre>
+<p>Here’s a rundown of every issue it handles:</p>
+<p><strong>Structure</strong> — skips the 3-row title block (“Acute Kidney Injury Study”, resident name, project name) and the stray empty column between Hispanic and Admission GFR.</p>
+<p><strong>Column names</strong> — normalises the wildly inconsistent headers (<code>DAY2GFR\``,</code>day 3 GfR`, etc.) to snake_case.</p>
+<p><strong>Duplicate IDs</strong> — study_ids 3 and 8 each appear twice (and 9, 10, 18 are missing). The script flags duplicates rather than silently dropping them, since you’ll need to decide which row is correct.</p>
+<p><strong>Dates of birth</strong> — handles three formats: Excel dates, “may 5 1970” (free text), and “5=11-1984” (typo with <code>=</code> instead of <code>-</code>).</p>
+<p><strong>Race</strong> — merges “Caucasian”/“WHITE”/“white” → “White”, “Af-Am”/“Black” → “Black”, etc.</p>
+<p><strong>Sex</strong> — normalises “M”, “F”, “Male”, “Female”, “F” → consistent “Male”/“Female”.</p>
+<p><strong>Hispanic</strong> — fixes typos (“Hispannic”, “Hisspanic”) and abbreviations (“H”, “NH”).</p>
+<p><strong>GFR values</strong> — row 2 has “19 but poor collection” (extracts 19), and several rows have values like 322 or 232 that are almost certainly data-entry errors (extra digit). Those are flagged with outlier columns.</p>
+<p><strong>Yes/No fields</strong> — handles “YES”, “NO”, “No`” (backtick typo) → “Yes”/“No”.</p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
+<p><strong>Response:</strong></p>
+<pre class="{r}"><code>#| eval: false
+</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section id="exercise-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>Prompt:</p>
-<p>Possible Solution:</p>
+<p><strong>Prompt:</strong> Use an LLM to clean data in preparation for analysis and modeling.</p>
+<p><strong>Possible Solutions</strong></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="llm2">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">ChatGPT</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Claude</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Gemini</a></li></ul>
 <div class="tab-content" data-group="llm2">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?<br>
+<br>
+<strong>Response:</strong></p>
+<pre class="{julia}"><code>#| eval: false
+</code></pre>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
+<p><strong>Response:</strong></p>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
+<p><strong>Response:</strong></p>
+<pre class="{r}"><code>#| eval: false
+</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section id="exercise-3" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>Prompt:</p>
-<p>Possible Solution:</p>
+<p><strong>Prompt:</strong> Use an LLM to clean data in preparation for analysis and modeling.</p>
+<p><strong>Possible Solutions</strong></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="llm3">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">ChatGPT</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Claude</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Gemini</a></li></ul>
 <div class="tab-content" data-group="llm3">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
+<p><strong>Response:</strong></p>
+<pre class="{julia}"><code>#| eval: false
+
+</code></pre>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
+<p><strong>Response:</strong></p>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<p><code>You are an expert biostatistician and epidemilogist.</code></p>
+<p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
+<p><strong>Response:</strong></p>
+<pre class="{r}"><code>#| eval: false
+
+</code></pre>
 </div>
 </div>
 </div>

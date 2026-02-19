@@ -3,9 +3,87 @@ title: "Resources"
 format: html
 ---
 
-## Prompt Resources 
+## Recommendations 
 
-### 1. [**Anthropic Prompt Engineering Overview**](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview){target="_blank"}
+-   Know your ToS
+-   
+-   Even when secure, avoid passing raw deidentified data to LLM
+-   Provide column names and data types
+-   Synthetic data set 
+-   
 
-[https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview){target="_blank"}
+
+### Prompt Best Practices
+
+::: grey-box
+**The fundamentals that work across all LLMs:**
+
+-   **Role/Persona:** Who the AI should act as
+
+-   **Context:** What background info it needs
+
+-   **Task:** What you want it to do explicitly
+
+-   **Format:** How you want the output structured
+
+-   **Constraints:** What to avoid or limits to follow
+:::
+
+<br> **Source:** [Reddit: Best Practices for AI Prompting 2025?](https://www.reddit.com/r/ChatGPTPromptGenius/comments/1nytjzy/best_practices_for_ai_prompting_2025)
+
+### CO-STAR Prompt Framework
+
+::: {.grey-box}
+A great prompt usually includes these specific elements to provide context and direction:
+
+-   **Context:** Provide background information on the task.
+
+-   **Objective:** Define exactly what you want me to do.
+
+-   **Style:** Specify a writing style (e.g., professional, humorous, poetic).
+
+-   **Tone:** Set the emotional vibe (e.g., empathetic, direct, enthusiastic).
+
+-   **Audience:** Who is this for? (e.g., a CEO, a 5-year-old, a software engineer).
+
+-   **Response:** Define the format (e.g., a table, a list, a JSON object).
+
+*Additional Components*
+
+-   **Few-Shot Prompting/Using Examples:** Provide examples of desired output and formatting (e.g., programming language, file type [CSV, Markdown, PNG])
+
+-   **Use Delimiters: ** Use triple quotes ("""), XML tags (<text></text>), or dashes (---) to wrap your content. (e.g., “Summarize the text delimited by triple quotes:”““[Insert long article here]”““”)
+:::
+
+<br> 
+
+**Source:** Google Gemini (*Prompt:* do you have any prompt engineering best practices)
+
+
+### Additional Prompt Engineering Resources
+
+#### Anthropic
+
+-   [Prompt Engineering Guide Overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview){target="_blank"}
+-   [Prompt Engineering Interactive Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial){target="_blank"}
+
+#### OpenAI
+
+-   [OpenAI Developers Cookbook](https://developers.openai.com/cookbook)
+-   [OpenAI ChatGPT Cookbook](https://developers.openai.com/cookbook/topic/chatgpt)
+-   [OpenAI Cookbook Code Repo](https://github.com/openai/openai-cookbook)
+-   [Best Practices for Prompt Engineering with the OpenAI API](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api)
+-   [Prompt Engineering](https://developers.openai.com/api/docs/guides/prompt-engineering/)
+
+#### Google
+
+-   [Prompt engineering: overview and guide](https://cloud.google.com/discover/what-is-prompt-engineering)
+
+#### 10 Best Practices for Prompt Engineering With Any Model
+
+-   [PromptHub](https://www.prompthub.us/blog/10-best-practices-for-prompt-engineering-with-any-model)
+
+#### GitHub: Awesome AI System Prompts
+
+-   [Awesome AI System Prompts](https://github.com/dontriskit/awesome-ai-system-prompts)
 
