@@ -1,0 +1,41 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Target plain text code blocks (not R/Python, which already have buttons)
+  document.querySelectorAll("pre > code:not([class*='language-']):not([class*='r ']):not([class*='python'])").forEach(function (codeBlock) {
+    const pre = codeBlock.parentNode;
+
+    // Avoid double-adding
+    if (pre.parentNode.classList.contains("copy-wrapper")) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("copy-wrapper");
+    wrapper.style.position = "relative";
+
+    const button = document.createElement("button");
+    button.innerText = "Copy";
+    button.classList.add("copy-btn");
+    Object.assign(button.style, {
+      position:   "absolute",
+      top:        "6px",
+      right:      "6px",
+      padding:    "2px 8px",
+      fontSize:   "0.75em",
+      cursor:     "pointer",
+      border:     "1px solid #ccc",
+      borderRadius: "4px",
+      background: "#f8f8f8",
+    });
+
+    button.addEventListener("click", function () {
+      navigator.clipboard.writeText(codeBlock.innerText).then(function () {
+        button.innerText = "Copied!";
+        setTimeout(() => (button.innerText = "Copy"), 2000);
+      });
+    });
+
+    pre.parentNode.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+    wrapper.appendChild(button);
+  });
+});
+</script>

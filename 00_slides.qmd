@@ -1,0 +1,123 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    transition: slide
+    include-after-body: slides_footer.html
+    toc: false
+    number-sections: false
+    dpi: 300
+    chalkboard: true
+    width: 1280
+    height: 720
+editor: visual
+execute: 
+  echo: false
+  warning: false
+---
+
+## Data and Generative AI {.center background-color="black" background-image="images/cover.png"}
+
+## Disclosures
+
+::: {.fragment .fade-up}
+**Luca Neri, MD, PhD** - TK
+:::
+
+::: {.fragment .fade-up}
+**Kurtis A. Pivert** - Employee, American Society of Nephrology
+:::
+
+## The Best of Times....
+
+::: {.fragment .fade-left}
+**Can We Build It?**
+:::
+
+::: {.fragment .fade-up}
+**Yes**
+:::
+
+## .... The Worst of Times
+
+::: {.fragment .fade-left}
+**Can We Trust It?**
+:::
+
+::: {.fragment .fade-up}
+**?**
+:::
+
+::: {.fragment .fade-up}
+**JD Long**\
+*R!sk 2026 Conference* <br> February 18, 2026
+:::
+
+## Using LLMs for Data Analysis: Recommendations
+
+-   TK
+
+-   TK
+
+-   TK
+
+## Security
+
+-   Know your ToS
+-   Don't allow use for model improvement
+    -   *ChatGPT: Settings \> Data Controls \> Improve The Model for Everyone:* **Off**
+    -   *Claude: Settings \> Privacy \> Help Improve Claude:* **Off**
+    -   *Gemini: Google Account \> Gemini Apps Activity \> Improve Google service:* **Unchecked**
+-   Even when secure, avoid passing raw deidentified data to LLM
+
+## Options
+
+::: {.fragment .fade-in-then-semi-out}
+-   Provide column names and data types
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Synthetic data set
+:::
+
+## Exercise 1
+
+**Code Explanation**
+
+Search for and copy code from [GitHub](https://github.com/) and ask the LLM for a detailed explanation for what libraries and packages are being used and what code accomplishes.
+
+{{< countdown "10:00" >}}
+
+## Exercise 2
+
+**Screening for Clinical Trials**
+
+Search for a kidney-related active trial on [clinicaltrials.gov](https://clinicaltrials.gov/) and copy the Participation Criteria. Ask the LLM to write code to identify patients in your database eligible for the trial.
+
+[Example Trial Participation Criteria](https://clinicaltrials.gov/study/NCT05638880?cond=Kidney%20Diseases&aggFilters=status:rec&rank=1#participation-criteria)
+
+{{< countdown "10:00" >}}
+
+## Exercise 3
+
+**Visualization and Predictive Modeling**
+
+Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and ask it to:
+
+1\. Create a *JAMA* style Table 1 in Markdown.
+
+2\. Provide and explain code for building multiple predictive models for `remission` (remission = 1).
+
+3\. Optional: Download the dataset and evaluate the code in Google Colab.
+
+{{< countdown "10:00" >}}
+
+## Bonus Exercise
+
+**Handling Messy Data**
+
+Use an LLM to clean data in preparation for analysis and modeling.
+
+1.  Download the [**messy_aki**](https://github.com/higgi13425/medicaldata/raw/master/data-raw/messy_data/messy_aki.xlsx) dataset from Dr. Peter Higgins' [**{medicaldata}**](https://higgi13425.github.io/medicaldata/index.html) R package.
+2.  Prompt an LLM to write code to clean the data.
+3.  Evaluate the results and adjust your prompt to address any missed issues.

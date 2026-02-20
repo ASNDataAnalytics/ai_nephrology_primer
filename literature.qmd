@@ -31,8 +31,7 @@ page-navigation: false
 ## ASN Task Force
 
 ::: reference-highlight
-### [Responsible Use of Artificial Intelligence to Improve Kidney Care
-A Statement from the American Society of Nephrology](https://journals.lww.com/jasn/fulltext/9900/responsible_use_of_artificial_intelligence_to.826.aspx){target='_blank'}
+### [Responsible Use of Artificial Intelligence to Improve Kidney Care: A Statement from the American Society of Nephrology](https://journals.lww.com/jasn/fulltext/9900/responsible_use_of_artificial_intelligence_to.826.aspx){target='_blank'}
 
 **Tangri N, Cheungpasitporn W, Crittenden SD, Fornoni A, Peralta CA, Singh K, Usvyat LA, Waterman AD**
 <br>
@@ -198,8 +197,7 @@ A Statement from the American Society of Nephrology](https://journals.lww.com/ja
 :::
 
 ::: reference-highlight
-### [Non-invasive biopsy diagnosis of diabetic kidney disease via deep learning applied to retinal images: a population-based study
-](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00040-8/fulltext){target='_blank'}
+### [Non-invasive biopsy diagnosis of diabetic kidney disease via deep learning applied to retinal images: a population-based study](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00040-8/fulltext){target='_blank'}
 
 **Meng Z, Guan Z, Yu S, Wu Y, Zhao Y, Shen J, et al.**
 <br>
@@ -210,7 +208,6 @@ A Statement from the American Society of Nephrology](https://journals.lww.com/ja
 
 
 ## Clinical
-
 
 ::: reference-highlight
 ### [Clinical Applications of Artificial Intelligence in Autosomal Dominant Polycystic Kidney Disease](https://academic.oup.com/ndt/article-lookup/doi/10.1093/ndt/gfag010){target='_blank'}
@@ -241,8 +238,6 @@ A Statement from the American Society of Nephrology](https://journals.lww.com/ja
 <br>
 [DOI:]{.doi-label} [10.1016/j.xkme.2024.100927](https://doi.org/10.1016/j.xkme.2024.100927){target='_blank'}
 :::
-
-
 
 
 :::

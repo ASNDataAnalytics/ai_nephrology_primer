@@ -3,16 +3,6 @@ title: "Resources"
 format: html
 ---
 
-## Recommendations 
-
--   Know your ToS
--   
--   Even when secure, avoid passing raw deidentified data to LLM
--   Provide column names and data types
--   Synthetic data set 
--   
-
-
 ### Prompt Best Practices
 
 ::: grey-box
@@ -52,12 +42,23 @@ A great prompt usually includes these specific elements to provide context and d
 
 -   **Few-Shot Prompting/Using Examples:** Provide examples of desired output and formatting (e.g., programming language, file type [CSV, Markdown, PNG])
 
--   **Use Delimiters: ** Use triple quotes ("""), XML tags (<text></text>), or dashes (---) to wrap your content. (e.g., “Summarize the text delimited by triple quotes:”““[Insert long article here]”““”)
+-   **Use Delimiters:** Use triple quotes ("""), XML tags (<text></text>), or dashes (---) to wrap your content (e.g., Summarize the text delimited by triple quotes: """[Insert article]""")
 :::
 
 <br> 
 
 **Source:** Google Gemini (*Prompt:* do you have any prompt engineering best practices)
+
+### Chicago Booth Algorithmic Bias Initiative 
+
+-   [Algorithmic Bias Initiative Website](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias)
+-   [Algorithmic Bias Playbook](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias/playbook)
+
+### Melissa Van Bussel posit::conf 2024 Keynote
+
+-   [Practical Tips for Using Generative AI in Data Science Workflows](https://www.youtube.com/watch?v=rPeOdc8jTSE)
+
+-   [Slides](https://github.com/melissavanbussel/posit-conf-2024?tab=readme-ov-file)
 
 
 ### Additional Prompt Engineering Resources

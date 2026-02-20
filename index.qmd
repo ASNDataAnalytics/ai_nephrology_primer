@@ -4,6 +4,14 @@ title: "Data and Generative AI"
 
 ## AI in Nephrology: Hands-On Session
 
+## Slides
+
+[View slides in full screen](00_slides.html)
+
+```{=html}
+<iframe class="slide-deck" src="00_slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
 ### March 17, 2026
 
 ::: {.speaker}
@@ -40,9 +48,9 @@ title: "Data and Generative AI"
 
 |                         |                            |
 |-------------------------|----------------------------|
-| **9:00 a.m.** | Introduction, Bias, FASTER |
-| **9:10 a.m.** | [Hands-On Exercise 1](exercises.qmd#exercise-1)        |
-| **9:20 a.m.** | [Hands-On Exercise 2](exercises.qmd#exercise-2)        |
-| **9:30 a.m.** | [Hands-On Exercise 3](exercises.qmd#exercise-3)        |
+| **9:00 a.m.** | Introduction |
+| **9:10 a.m.** | [Hands-On Exercise 1](exercises.qmd#exercise-1-code-explanation)        |
+| **9:20 a.m.** | [Hands-On Exercise 2](exercises.qmd#exercise-2-screening-for-clinical-trials)        |
+| **9:30 a.m.** | [Hands-On Exercise 3](exercises.qmd#exercise-3-visualization-and-predictive-modeling)        |
 | **9:40 a.m.** | Wrap-Up                    |
 

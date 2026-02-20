@@ -1,0 +1,57 @@
+<!-- <footer class="custom-footer">
+  <div class="logo-row">
+    <a href="https://renalresearch.com/" target="_blank" rel="noopener">
+      <img src="logos/logo_rri_full.svg" alt="Renal Research Institute">
+    </a>
+    <a href="https://icahn.mssm.edu/about/artificial-intelligence" target="_blank" rel="noopener">
+      <img src="logos/sinai.png" alt="Icahn Mt. Sinai">
+    </a>
+    <a href="https://data.asn-online.org" target="_blank" rel="noopener">
+      <img src="logos/asn_data.png" alt="ASN Data">
+    </a>
+  </div>
+</footer> -->
+<footer class="custom-footer">
+  <div class="logo-row">
+    <a href="https://renalresearch.com/" target="_blank" rel="noopener">
+      <img src="logos/logo_rri_full.svg" alt="Renal Research Institute">
+    </a>
+    <a href="https://icahn.mssm.edu/about/artificial-intelligence" target="_blank" rel="noopener">
+      <img src="logos/sinai.png" alt="Icahn Mt. Sinai">
+    </a>
+    <a href="https://data.asn-online.org" target="_blank" rel="noopener">
+      <img src="logos/asn_data.png" alt="ASN Data">
+    </a>
+  </div>
+</footer>
+
+<!-- <script>
+  // Move footer inside Reveal so it sits in the same stacking context
+  document.addEventListener("DOMContentLoaded", () => {
+    const footer = document.querySelector(".custom-footer");
+    const reveal = document.querySelector(".reveal");
+    if (footer && reveal) reveal.appendChild(footer);
+  });
+</script> -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    function setFooterHiddenForSlide1() {
+      const first = document.querySelector(".reveal .slides section");
+      const hide = first && first.classList.contains("present");
+      document.documentElement.classList.toggle("hide-footer", !!hide);
+    }
+
+    // initial
+    setFooterHiddenForSlide1();
+
+    // on slide change
+    if (window.Reveal && Reveal.on) {
+      Reveal.on("slidechanged", setFooterHiddenForSlide1);
+      Reveal.on("ready", setFooterHiddenForSlide1);
+    } else {
+      // fallback in case Reveal isn't ready at DOMContentLoaded
+      window.addEventListener("load", setFooterHiddenForSlide1);
+    }
+  });
+</script>
