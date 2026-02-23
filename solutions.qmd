@@ -1,5 +1,5 @@
 ---
-title: "Solutions"
+title: "Potential Solutions"
 format: html
 code-fold: true
 code-copy: true
@@ -9,15 +9,271 @@ code-copy: true
 Note that LLMs are stochastic/non-deteriministic, so there are no definitive solutions.
 :::
 
-## Possible Solutions to Exercises
+## Exercise 1: Code Explanation
 
-### Exercise 1
+**Exercise:** Prompt LLM for a detailed explanation of code, including libraries/packages used, required data types and functional outputs.
 
-**Prompt:** Use an LLM to clean data in preparation for analysis and modeling.
-
-**Possible Solutions**
+**Potential Solutions**
 
 ::: {.panel-tabset group="llm1"}
+
+## ChatGPT
+
+**Prompt:** [SAS/Julia TK]
+
+**Response:**
+
+## Claude
+
+**Prompt:** [Python TK]
+
+**Response:**
+
+## Gemini
+
+**Prompt:** [R TK]
+
+**Response:**
+
+:::
+
+## Exercise 2: Screening Patient Data for Clinical Trial Eligibility
+
+**Exercise:** Search for a kidney-related active trial on [clinicaltrials.gov](https://clinicaltrials.gov/) and copy the Participation Criteria. Prompt LLM to write code to identify eligible patients in a hypothetical database that has the relevant patient data for participation.
+
+**Potential Solutions**
+
+::: {.panel-tabset group="llm2"}
+## ChatGPT
+
+**Prompt:** [Julia TK]\
+\
+**Response:**
+
+```{julia}
+#| eval: false
+
+```
+
+## Claude
+
+**Prompt:** [Python TK]
+
+**Response:**
+
+```{python}
+#| eval: false
+
+```
+
+## Gemini
+
+**Prompt:** [R TK]
+
+**Response:**
+
+```{r}
+#| eval: false
+
+```
+
+:::
+
+## Exercise 3: Data Reporting, Visualization, and Predictive Modeling
+
+**Exercise:** Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to: 
+1. Create a *JAMA* style Table 1 in Markdown.
+2. Explore and visualize an important relationship(s) between the predictors and `remission.`
+3. Provide and explain code for building multiple predictive models for `remission` (remission = 1).
+
+**Potential Solutions**
+
+::: {.panel-tabset group="llm3"}
+
+## ChatGPT
+
+**Prompt:** [Julia TK]
+
+**Response:**
+
+```{julia}
+#| eval: false
+
+
+```
+
+## Claude
+
+**Prompt:** you are an expert python coder. Using polars and scikitlearn, write code to predict remission status (1=remission) using a dataset with the following variables:
+
+Variables
+
+days_of_life - age in days. Numeric. Range: 1207-32356. 1 missing value. plt - Platelet Count. Numeric. Range: 11-1114. 4 missing values. mpv - Mean Platelet Volume. Numeric. Range: 5.3-13.5. 21 missing values. un - Blood Urea Nitrogen. Numeric. Range: 2-118. 53 missing values. wbc - White Blood Cell Count. Numeric. Range: 0.7-33.5. No missing values. hgb - Hemoglobin. Numeric. Range: 4.5-18.6. 4 missing values. hct Hematocrit. Numeric. Range: 13.7-55.2. 3 missing values. rbc - Red Blood Cell Count. Numeric. Range: 1.57-7.04. 3 missing values. mcv - Mean Corpuscular (RBC) Volume. Numeric. Range: 56.5-124. 3 missing values. mch - Mean Corpuscular (RBC) Hemoglobin. Numeric. Range: 16.7-42.3. 7 missing values. mchc - Mean Corpuscular (RBC) Hemoglobin per Cell. Numeric. Range: 28.2-38.0. 7 missing values. rdw - Red cell Distribution Width. Numeric. Range: 11.3-39.7. 3 missing values. neut_percent - Percent of Neutrophils in WBC count. Numeric. Range: 17-98.1. No missing values. lymph_percent - Percent of Lymphocytes in WBC count. Numeric. Range: 1-67.9. No missing values. mono_percent - Percent of Monocytes in WBC count. Numeric. Range: 0-30.3. No missing values. eos_percent - Percent of Eosinophils in WBC count. Numeric. Range: 0.5-29.3. 6 missing values. baso_percent - Percent of Basoophils in WBC count. Numeric. Range: 0.2-5.3. 6 missing values. sod - Sodium. Numeric. Range: 116-151. No missing values. pot - Potassium. Numeric. Range: 2.6-10.1. 1 missing value. chlor - Chloride. Numeric. Range: 83-126. No missing values. co2 - Bicarbonate (CO2). Numeric. Range: 12-40. 5 missing values. creat - Creatinine. Numeric. Range: 0.2-8.4. No missing values. gluc - Glucose. Numeric. Range: 41-486. No missing values. cal - Calcium. Numeric. Range: 6.5-11.8. 1 missing value. prot - Protein. Numeric, range 2.9-10, 0 missing values alb - Albumin. Numeric, range 1.2-5.5, 0 missing values ast - Aspartate Transaminase. Numeric, range 5-7765, 0 missing values alt - Alanine Transaminase. Numeric, range 1-10666, 18 missing values alk - Alkaline phosphatase. Numeric, range 13-1938, 0 missing values tbil - Total Bilirubin. Numeric, range 0.09-27, 0 missing values active - Active Inflammation despite Thiopurines for \> 12 weeks. Numeric, range 0-1, 0 missing values remission - Remission of Inflammation after Thiopurines for \> 12 weeks. Numeric, range 0-1, 0 missing values
+
+**Response:**
+
+Here's a complete script using Polars and scikit-learn to predict remission status:
+
+```{python}
+#| eval: false
+
+import polars as pl
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import StratifiedKFold, cross_validate
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import (
+    classification_report, roc_auc_score, average_precision_score,
+    make_scorer, f1_score
+)
+import warnings
+warnings.filterwarnings("ignore")
+
+# ── 1. Load data ──────────────────────────────────────────────────────────────
+df = pl.read_csv("your_data.csv")          # ← adjust path / format as needed
+
+# ── 2. Define features & target ───────────────────────────────────────────────
+TARGET = "remission"
+
+FEATURES = [
+    "days_of_life", "plt", "mpv", "un", "wbc", "hgb", "hct", "rbc",
+    "mcv", "mch", "mchc", "rdw",
+    "neut_percent", "lymph_percent", "mono_percent", "eos_percent", "baso_percent",
+    "sod", "pot", "chlor", "co2", "creat", "gluc", "cal",
+    "prot", "alb", "ast", "alt", "alk", "tbil",
+    "active",        # clinical flag — strong prior candidate
+]
+
+# ── 3. Polars preprocessing ───────────────────────────────────────────────────
+# Log-transform right-skewed lab values to reduce outlier influence
+skewed = ["ast", "alt", "alk", "tbil", "gluc", "wbc", "plt", "un", "creat"]
+
+df = df.with_columns([
+    pl.col(c).log1p().alias(c) for c in skewed if c in df.columns
+])
+
+# Extract numpy arrays (Polars → numpy for sklearn)
+X = df.select(FEATURES).to_numpy().astype(np.float64)
+y = df[TARGET].to_numpy().astype(int)
+
+print(f"Dataset shape : {X.shape}")
+print(f"Class balance : {np.bincount(y)} (0=no remission, 1=remission)")
+
+# ── 4. Build pipelines ────────────────────────────────────────────────────────
+# Median imputation handles the missing values described above; scaler for LR
+imputer  = SimpleImputer(strategy="median")
+scaler   = StandardScaler()
+
+pipelines = {
+    "Logistic Regression": Pipeline([
+        ("impute", imputer),
+        ("scale",  scaler),
+        ("clf",    LogisticRegression(max_iter=1000, class_weight="balanced",
+                                      C=0.1, solver="lbfgs")),
+    ]),
+    "Random Forest": Pipeline([
+        ("impute", imputer),
+        ("clf",    RandomForestClassifier(
+            n_estimators=500, max_features="sqrt",
+            class_weight="balanced", random_state=42, n_jobs=-1
+        )),
+    ]),
+    "Gradient Boosting": Pipeline([
+        ("impute", imputer),
+        ("clf",    GradientBoostingClassifier(
+            n_estimators=300, learning_rate=0.05,
+            max_depth=3, subsample=0.8, random_state=42
+        )),
+    ]),
+}
+
+# ── 5. Cross-validation ───────────────────────────────────────────────────────
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+
+scorers = {
+    "roc_auc"  : "roc_auc",
+    "avg_prec" : "average_precision",
+    "f1"       : make_scorer(f1_score, zero_division=0),
+    "accuracy" : "accuracy",
+}
+
+results = {}
+for name, pipe in pipelines.items():
+    cv_res = cross_validate(pipe, X, y, cv=cv, scoring=scorers,
+                            return_train_score=False)
+    results[name] = {k: cv_res[f"test_{k}"] for k in scorers}
+    print(f"\n{'─'*50}")
+    print(f"  {name}")
+    print(f"{'─'*50}")
+    for metric, vals in results[name].items():
+        print(f"  {metric:<12}  {vals.mean():.3f}  ±  {vals.std():.3f}")
+
+# ── 6. Feature importance (Random Forest) ────────────────────────────────────
+print("\n\n── Feature Importance (Random Forest) ──")
+rf_pipe = pipelines["Random Forest"]
+rf_pipe.fit(X, y)
+importances = rf_pipe.named_steps["clf"].feature_importances_
+
+feat_df = (
+    pl.DataFrame({"feature": FEATURES, "importance": importances})
+    .sort("importance", descending=True)
+)
+print(feat_df)
+
+# ── 7. Final model + hold-out evaluation (optional) ──────────────────────────
+# Uncomment if you have a separate test set:
+
+# df_test = pl.read_csv("test_data.csv")
+# X_test  = df_test.select(FEATURES).to_numpy().astype(np.float64)
+# y_test  = df_test[TARGET].to_numpy().astype(int)
+#
+# best_pipe = pipelines["Random Forest"]   # swap to whichever won CV
+# best_pipe.fit(X, y)
+# y_pred  = best_pipe.predict(X_test)
+# y_prob  = best_pipe.predict_proba(X_test)[:, 1]
+#
+# print(classification_report(y_test, y_pred, target_names=["No Remission","Remission"]))
+# print(f"ROC-AUC : {roc_auc_score(y_test, y_prob):.3f}")
+# print(f"Avg Prec: {average_precision_score(y_test, y_prob):.3f}")
+```
+
+**Key design decisions explained:**
+
+**Missing data** — `SimpleImputer(strategy="median")` handles all the missingness you described. Median is preferred over mean here because several lab values (AST, ALT, ALK, BUN) are heavily right-skewed.
+
+**Log transforms** — Applied via Polars before the sklearn pipeline for AST, ALT, ALK, tbil, glucose, WBC, platelets, BUN, and creatinine. These are notorious for extreme outliers in clinical labs that can destabilize linear models and impair tree splits.
+
+**Class imbalance** — `class_weight="balanced"` is set for both Logistic Regression and Random Forest, which automatically up-weights the minority class. GBM handles this implicitly through its loss function but you can add `scale_pos_weight` if imbalance is severe.
+
+**Three model types** — Logistic Regression gives interpretable coefficients and a calibration baseline; Random Forest is robust to multicollinearity (which will be present among the CBC components like HGB/HCT/RBC); Gradient Boosting often wins on tabular clinical data.
+
+**Evaluation metrics** — ROC-AUC, Average Precision (PR-AUC), and F1 are all reported because accuracy alone is misleading with class imbalance.
+
+**`active` feature** — Included intentionally since active inflammation is clinically the most direct predictor of remission failure; if you want a "lab-only" model, simply remove it from `FEATURES`.
+
+## Gemini
+
+**Prompt:** [R TK]
+
+**Response:**
+
+```{r}
+#| eval: false
+
+
+```
+
+:::
+
+## Bonus Exercise: Handling Messy Data
+
+Prompt an LLM to clean and validate the `messy_aki` dataset in preparation for analysis and modeling.
+
+::: {.panel-tabset group="llm4"}
+
 ## ChatGPT
 
 **Prompt:** You are Dr. Karandeep Singh, the creator of TidierOrg and Tidier.jl. You are an expert in coding, AI, and nephrology.
@@ -35,6 +291,7 @@ Note that LLMs are stochastic/non-deteriministic, so there are no definitive sol
 Julia cleaning script (TidierOrg-first)
 
 ```{julia}
+#| eval: false
 
 ############################################################
 # AKI trial data cleaning (TidierOrg / Tidier.jl workflow)
@@ -495,6 +752,7 @@ Here's a well-commented cleaning script that tackles every issue I spotted:
 
 ```{python}
 #| eval: false         
+
 import pandas as pd
 import numpy as np
 from dateutil import parser as dateparser
@@ -687,7 +945,7 @@ Here's a rundown of every issue it handles:
 
 ## Gemini
 
-**Prompt:** can you show me some python code to clean this data up?
+**Prompt:** You are an expert R programmer fluent in the Tidyverse. Provide a [TK] 
 
 **Response:**
 
@@ -695,229 +953,6 @@ Here's a rundown of every issue it handles:
 #| eval: false
 
 ```
-:::
-
-### Exercise 2
-
-**Prompt:** Use an LLM to clean data in preparation for analysis and modeling.
-
-**Possible Solutions**
-
-::: {.panel-tabset group="llm2"}
-## ChatGPT
-
-**Prompt:** can you show me some python code to clean this data up?\
-\
-**Response:**
-
-```{julia}
-#| eval: false
-
-```
-
-## Claude
-
-**Prompt:** you are an expert python coder. Using polars and scikitlearn, write code to predict remission status (1=remission) using a dataset with the following variables:
-
-Variables
-
-days_of_life - age in days. Numeric. Range: 1207-32356. 1 missing value. plt - Platelet Count. Numeric. Range: 11-1114. 4 missing values. mpv - Mean Platelet Volume. Numeric. Range: 5.3-13.5. 21 missing values. un - Blood Urea Nitrogen. Numeric. Range: 2-118. 53 missing values. wbc - White Blood Cell Count. Numeric. Range: 0.7-33.5. No missing values. hgb - Hemoglobin. Numeric. Range: 4.5-18.6. 4 missing values. hct Hematocrit. Numeric. Range: 13.7-55.2. 3 missing values. rbc - Red Blood Cell Count. Numeric. Range: 1.57-7.04. 3 missing values. mcv - Mean Corpuscular (RBC) Volume. Numeric. Range: 56.5-124. 3 missing values. mch - Mean Corpuscular (RBC) Hemoglobin. Numeric. Range: 16.7-42.3. 7 missing values. mchc - Mean Corpuscular (RBC) Hemoglobin per Cell. Numeric. Range: 28.2-38.0. 7 missing values. rdw - Red cell Distribution Width. Numeric. Range: 11.3-39.7. 3 missing values. neut_percent - Percent of Neutrophils in WBC count. Numeric. Range: 17-98.1. No missing values. lymph_percent - Percent of Lymphocytes in WBC count. Numeric. Range: 1-67.9. No missing values. mono_percent - Percent of Monocytes in WBC count. Numeric. Range: 0-30.3. No missing values. eos_percent - Percent of Eosinophils in WBC count. Numeric. Range: 0.5-29.3. 6 missing values. baso_percent - Percent of Basoophils in WBC count. Numeric. Range: 0.2-5.3. 6 missing values. sod - Sodium. Numeric. Range: 116-151. No missing values. pot - Potassium. Numeric. Range: 2.6-10.1. 1 missing value. chlor - Chloride. Numeric. Range: 83-126. No missing values. co2 - Bicarbonate (CO2). Numeric. Range: 12-40. 5 missing values. creat - Creatinine. Numeric. Range: 0.2-8.4. No missing values. gluc - Glucose. Numeric. Range: 41-486. No missing values. cal - Calcium. Numeric. Range: 6.5-11.8. 1 missing value. prot - Protein. Numeric, range 2.9-10, 0 missing values alb - Albumin. Numeric, range 1.2-5.5, 0 missing values ast - Aspartate Transaminase. Numeric, range 5-7765, 0 missing values alt - Alanine Transaminase. Numeric, range 1-10666, 18 missing values alk - Alkaline phosphatase. Numeric, range 13-1938, 0 missing values tbil - Total Bilirubin. Numeric, range 0.09-27, 0 missing values active - Active Inflammation despite Thiopurines for \> 12 weeks. Numeric, range 0-1, 0 missing values remission - Remission of Inflammation after Thiopurines for \> 12 weeks. Numeric, range 0-1, 0 missing values
-
-**Response:**
-
-Here's a complete script using Polars and scikit-learn to predict remission status:
-
-```{python}
-#| eval: false
-import polars as pl
-import numpy as np
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import StratifiedKFold, cross_validate
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import (
-    classification_report, roc_auc_score, average_precision_score,
-    make_scorer, f1_score
-)
-import warnings
-warnings.filterwarnings("ignore")
-
-# ── 1. Load data ──────────────────────────────────────────────────────────────
-df = pl.read_csv("your_data.csv")          # ← adjust path / format as needed
-
-# ── 2. Define features & target ───────────────────────────────────────────────
-TARGET = "remission"
-
-FEATURES = [
-    "days_of_life", "plt", "mpv", "un", "wbc", "hgb", "hct", "rbc",
-    "mcv", "mch", "mchc", "rdw",
-    "neut_percent", "lymph_percent", "mono_percent", "eos_percent", "baso_percent",
-    "sod", "pot", "chlor", "co2", "creat", "gluc", "cal",
-    "prot", "alb", "ast", "alt", "alk", "tbil",
-    "active",        # clinical flag — strong prior candidate
-]
-
-# ── 3. Polars preprocessing ───────────────────────────────────────────────────
-# Log-transform right-skewed lab values to reduce outlier influence
-skewed = ["ast", "alt", "alk", "tbil", "gluc", "wbc", "plt", "un", "creat"]
-
-df = df.with_columns([
-    pl.col(c).log1p().alias(c) for c in skewed if c in df.columns
-])
-
-# Extract numpy arrays (Polars → numpy for sklearn)
-X = df.select(FEATURES).to_numpy().astype(np.float64)
-y = df[TARGET].to_numpy().astype(int)
-
-print(f"Dataset shape : {X.shape}")
-print(f"Class balance : {np.bincount(y)} (0=no remission, 1=remission)")
-
-# ── 4. Build pipelines ────────────────────────────────────────────────────────
-# Median imputation handles the missing values described above; scaler for LR
-imputer  = SimpleImputer(strategy="median")
-scaler   = StandardScaler()
-
-pipelines = {
-    "Logistic Regression": Pipeline([
-        ("impute", imputer),
-        ("scale",  scaler),
-        ("clf",    LogisticRegression(max_iter=1000, class_weight="balanced",
-                                      C=0.1, solver="lbfgs")),
-    ]),
-    "Random Forest": Pipeline([
-        ("impute", imputer),
-        ("clf",    RandomForestClassifier(
-            n_estimators=500, max_features="sqrt",
-            class_weight="balanced", random_state=42, n_jobs=-1
-        )),
-    ]),
-    "Gradient Boosting": Pipeline([
-        ("impute", imputer),
-        ("clf",    GradientBoostingClassifier(
-            n_estimators=300, learning_rate=0.05,
-            max_depth=3, subsample=0.8, random_state=42
-        )),
-    ]),
-}
-
-# ── 5. Cross-validation ───────────────────────────────────────────────────────
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-
-scorers = {
-    "roc_auc"  : "roc_auc",
-    "avg_prec" : "average_precision",
-    "f1"       : make_scorer(f1_score, zero_division=0),
-    "accuracy" : "accuracy",
-}
-
-results = {}
-for name, pipe in pipelines.items():
-    cv_res = cross_validate(pipe, X, y, cv=cv, scoring=scorers,
-                            return_train_score=False)
-    results[name] = {k: cv_res[f"test_{k}"] for k in scorers}
-    print(f"\n{'─'*50}")
-    print(f"  {name}")
-    print(f"{'─'*50}")
-    for metric, vals in results[name].items():
-        print(f"  {metric:<12}  {vals.mean():.3f}  ±  {vals.std():.3f}")
-
-# ── 6. Feature importance (Random Forest) ────────────────────────────────────
-print("\n\n── Feature Importance (Random Forest) ──")
-rf_pipe = pipelines["Random Forest"]
-rf_pipe.fit(X, y)
-importances = rf_pipe.named_steps["clf"].feature_importances_
-
-feat_df = (
-    pl.DataFrame({"feature": FEATURES, "importance": importances})
-    .sort("importance", descending=True)
-)
-print(feat_df)
-
-# ── 7. Final model + hold-out evaluation (optional) ──────────────────────────
-# Uncomment if you have a separate test set:
-
-# df_test = pl.read_csv("test_data.csv")
-# X_test  = df_test.select(FEATURES).to_numpy().astype(np.float64)
-# y_test  = df_test[TARGET].to_numpy().astype(int)
-#
-# best_pipe = pipelines["Random Forest"]   # swap to whichever won CV
-# best_pipe.fit(X, y)
-# y_pred  = best_pipe.predict(X_test)
-# y_prob  = best_pipe.predict_proba(X_test)[:, 1]
-#
-# print(classification_report(y_test, y_pred, target_names=["No Remission","Remission"]))
-# print(f"ROC-AUC : {roc_auc_score(y_test, y_prob):.3f}")
-# print(f"Avg Prec: {average_precision_score(y_test, y_prob):.3f}")
-```
-
-**Key design decisions explained:**
-
-**Missing data** — `SimpleImputer(strategy="median")` handles all the missingness you described. Median is preferred over mean here because several lab values (AST, ALT, ALK, BUN) are heavily right-skewed.
-
-**Log transforms** — Applied via Polars before the sklearn pipeline for AST, ALT, ALK, tbil, glucose, WBC, platelets, BUN, and creatinine. These are notorious for extreme outliers in clinical labs that can destabilize linear models and impair tree splits.
-
-**Class imbalance** — `class_weight="balanced"` is set for both Logistic Regression and Random Forest, which automatically up-weights the minority class. GBM handles this implicitly through its loss function but you can add `scale_pos_weight` if imbalance is severe.
-
-**Three model types** — Logistic Regression gives interpretable coefficients and a calibration baseline; Random Forest is robust to multicollinearity (which will be present among the CBC components like HGB/HCT/RBC); Gradient Boosting often wins on tabular clinical data.
-
-**Evaluation metrics** — ROC-AUC, Average Precision (PR-AUC), and F1 are all reported because accuracy alone is misleading with class imbalance.
-
-**`active` feature** — Included intentionally since active inflammation is clinically the most direct predictor of remission failure; if you want a "lab-only" model, simply remove it from `FEATURES`.
-
-## Gemini
-
-**Prompt:** can you show me some python code to clean this data up?
-
-**Response:**
-
-```{r}
-#| eval: false
-
-```
-:::
-
-### Exercise 3
-
-**Prompt:** Use an LLM to clean data in preparation for analysis and modeling.
-
-**Possible Solutions**
-
-::: {.panel-tabset group="llm3"}
-## ChatGPT
-
-**Prompt:** can you show me some python code to clean this data up?
-
-**Response:**
-
-```{julia}
-#| eval: false
 
 
-```
-
-## Claude
-
-**Prompt:** can you show me some python code to clean this data up?
-
-**Response:**
-
-```{python}
-#| eval: false
-
-
-```
-
-## Gemini
-
-**Prompt:** can you show me some python code to clean this data up?
-
-**Response:**
-
-```{r}
-#| eval: false
-
-
-```
 :::
