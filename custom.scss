@@ -130,3 +130,83 @@ $footer-height: 70px;
   z-index: 2147483647; /* go nuclear */
   // pointer-events: auto;
 }
+
+
+/* Move countdown above custom footer */
+// .reveal .countdown-time,
+// .reveal .countdown-controls {
+//   position: fixed !important;
+//   bottom: 100px !important;   /* increase until it clears footer */
+//   right: 30px;               /* adjust as desired */
+//   z-index: 9999 !important;  /* ensure it sits above footer */
+// }
+
+// .reveal .countdown-time {
+//   background: red !important;
+// }
+
+/* ---- Countdown: keep controls + time together, above footer ---- */
+:root {
+  --cd-right: 40px;     /* distance from right edge */
+  --cd-bottom: 110px;    /* distance from bottom (clear your footer) */
+
+  /* time block width: MM:SS is 5 chars; add some padding room */
+  --cd-time-block: calc(6.5ch + 28px);
+}
+
+.reveal .countdown-time,
+.reveal .countdown-controls {
+  position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+  bottom: var(--cd-bottom) !important;
+  z-index: 10000 !important;
+}
+
+/* Right pill: the digits */
+.reveal .countdown-time {
+  right: var(--cd-right) !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-width: 6.5ch; /* keeps it stable so controls don't drift */
+  padding: 10px 14px !important;
+
+  font-variant-numeric: tabular-nums;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 0 9999px 9999px 0 !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+}
+
+/* Left pill: the +/- controls */
+.reveal .countdown-controls {
+  /* place it immediately to the left of the time pill */
+  right: calc(var(--cd-right) + var(--cd-time-block) - 1px) !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+
+  padding: 8px 10px !important;
+
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-right: none; /* seamless join */
+  border-radius: 9999px 0 0 9999px !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+}
+
+/* Make the buttons look sane */
+.reveal .countdown-controls button {
+  width: 30px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.03);
+  line-height: 1;
+  font-size: 18px;
+  cursor: pointer;
+}

@@ -50,7 +50,7 @@ title: "Data and Generative AI"
 |-------------------------|----------------------------|
 | **9:00 a.m.** | Introduction |
 | **9:10 a.m.** | [Hands-On Exercise 1](exercises.qmd#exercise-1-code-explanation)        |
-| **9:20 a.m.** | [Hands-On Exercise 2](exercises.qmd#exercise-2-screening-for-clinical-trials)        |
-| **9:30 a.m.** | [Hands-On Exercise 3](exercises.qmd#exercise-3-visualization-and-predictive-modeling)        |
+| **9:20 a.m.** | [Hands-On Exercise 2](exercises.qmd#exercise-2-screening-patient-data-for-clinical-trial-eligibility)        |
+| **9:30 a.m.** | [Hands-On Exercise 3](exercises.qmd#exercise-3-data-reporting-visualization-and-predictive-modeling)        |
 | **9:40 a.m.** | Wrap-Up                    |
 

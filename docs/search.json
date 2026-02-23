@@ -112,18 +112,18 @@
     "text": "…. The Worst of Times\n\nCan We Trust It?\n\n\n?\n\n\nJD Long\nR!sk 2026 Conference  February 18, 2026"
   },
   {
-    "objectID": "00_slides.html#using-llms-for-data-analysis-recommendations",
-    "href": "00_slides.html#using-llms-for-data-analysis-recommendations",
+    "objectID": "00_slides.html#llms-for-data-analysis",
+    "href": "00_slides.html#llms-for-data-analysis",
     "title": "Data and Generative AI",
-    "section": "Using LLMs for Data Analysis: Recommendations",
-    "text": "Using LLMs for Data Analysis: Recommendations\n\nTK\nTK\nTK"
+    "section": "LLMs for Data Analysis",
+    "text": "LLMs for Data Analysis\n\n\nKnow your ToS\n\n\n\n\nDon’t allow use for model improvement\n\n\n\n\nChatGPT: Settings &gt; Data Controls &gt; Improve The Model for Everyone: Off\nClaude: Settings &gt; Privacy &gt; Help Improve Claude: Off\nGemini: Google Account &gt; Gemini Apps Activity &gt; Improve Google service: Unchecked\n\n\n\n\nAvoid passing deidentified data to LLM"
   },
   {
-    "objectID": "00_slides.html#security",
-    "href": "00_slides.html#security",
+    "objectID": "00_slides.html#faster",
+    "href": "00_slides.html#faster",
     "title": "Data and Generative AI",
-    "section": "Security",
-    "text": "Security\n\nKnow your ToS\nDon’t allow use for model improvement\n\nChatGPT: Settings &gt; Data Controls &gt; Improve The Model for Everyone: Off\nClaude: Settings &gt; Privacy &gt; Help Improve Claude: Off\nGemini: Google Account &gt; Gemini Apps Activity &gt; Improve Google service: Unchecked\n\nEven when secure, avoid passing raw deidentified data to LLM"
+    "section": "FASTER",
+    "text": "FASTER\n\nFair  Accountable  Secure  Transparent\n Educated  Relevant\n\nSource: Canadian Guide on the use of generative artificial intelligence"
   },
   {
     "objectID": "00_slides.html#options",
@@ -137,21 +137,21 @@
     "href": "00_slides.html#exercise-1",
     "title": "Data and Generative AI",
     "section": "Exercise 1",
-    "text": "Exercise 1\nCode Explanation\nSearch for and copy code from GitHub and ask the LLM for a detailed explanation for what libraries and packages are being used and what code accomplishes."
+    "text": "Exercise 1\nCode Explanation\nPrompt LLM for a detailed explanation of:\n\nCode, including libraries/packages used\nRequired data types\nFunctional outputs"
   },
   {
     "objectID": "00_slides.html#exercise-2",
     "href": "00_slides.html#exercise-2",
     "title": "Data and Generative AI",
     "section": "Exercise 2",
-    "text": "Exercise 2\nScreening for Clinical Trials\nSearch for a kidney-related active trial on clinicaltrials.gov and copy the Participation Criteria. Ask the LLM to write code to identify patients in your database eligible for the trial.\nExample Trial Participation Criteria"
+    "text": "Exercise 2\nScreening Patient Data for Clinical Trial Eligibility\n\nSearch for a kidney-related active trial on clinicaltrials.gov\nCopy the Participation Criteria\nPrompt LLM to write code to identify eligible patients in a hypothetical database"
   },
   {
     "objectID": "00_slides.html#exercise-3",
     "href": "00_slides.html#exercise-3",
     "title": "Data and Generative AI",
     "section": "Exercise 3",
-    "text": "Exercise 3\nVisualization and Predictive Modeling\nUsing the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and ask it to:\n1. Create a JAMA style Table 1 in Markdown.\n2. Provide and explain code for building multiple predictive models for remission (remission = 1).\n3. Optional: Download the dataset and evaluate the code in Google Colab."
+    "text": "Exercise 3\nData Reporting, Visualization, and Predictive Modeling\nUsing the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to:\n\nCreate a JAMA style Table 1 in Markdown.\nExplore and visualize an important relationship(s) between the predictors and remission.\nProvide and explain code for building multiple predictive models for remission (remission = 1)."
   },
   {
     "objectID": "00_slides.html#bonus-exercise",

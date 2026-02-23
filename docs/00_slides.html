@@ -31,7 +31,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-edba3b7b0e380cb9e26e3b9d96484488.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-6554933200080453342b88e3a8de4f0e.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -145,46 +145,58 @@
 </section>
 <section id="the-best-of-times." class="slide level2">
 <h2>The Best of Times….</h2>
-<div class="fragment fade-left">
+<div class="fragment fade-left" style="font-size: 1.8em; font-weight: 900; text-align: center; margin: 50px;">
 <p><strong>Can We Build It?</strong></p>
 </div>
-<div class="fragment fade-up">
+<div class="fragment fade-up" style="font-size: 1.8em; font-weight: 900; color: #ff8200; text-align: center;">
 <p><strong>Yes</strong></p>
 </div>
 </section>
 <section id="the-worst-of-times" class="slide level2">
 <h2>…. The Worst of Times</h2>
-<div class="fragment fade-left">
+<div class="fragment fade-left" style="font-size: 1.8em; font-weight: 900; text-align: center; margin: 50px">
 <p><strong>Can We Trust It?</strong></p>
 </div>
-<div class="fragment fade-up">
+<div class="fragment fade-up" style="font-size: 1.8em; font-weight: 900; color: #00468b; text-align: center;">
 <p><strong>?</strong></p>
 </div>
 <div class="fragment fade-up">
-<p><strong>JD Long</strong><br>
+<p><span style="font-size: 1.4em; font-weight: 800; color: #00468b;"><strong>JD Long</strong></span><br>
 <em>R!sk 2026 Conference</em> <br> February 18, 2026</p>
 </div>
 </section>
-<section id="using-llms-for-data-analysis-recommendations" class="slide level2">
-<h2>Using LLMs for Data Analysis: Recommendations</h2>
-<ul>
-<li><p>TK</p></li>
-<li><p>TK</p></li>
-<li><p>TK</p></li>
-</ul>
-</section>
-<section id="security" class="slide level2">
-<h2>Security</h2>
+<section id="llms-for-data-analysis" class="slide level2">
+<h2>LLMs for Data Analysis</h2>
+<div class="fragment fade-in-then-semi-out">
 <ul>
 <li>Know your ToS</li>
-<li>Don’t allow use for model improvement
-<ul>
-<li><em>ChatGPT: Settings &gt; Data Controls &gt; Improve The Model for Everyone:</em> <strong>Off</strong></li>
-<li><em>Claude: Settings &gt; Privacy &gt; Help Improve Claude:</em> <strong>Off</strong></li>
-<li><em>Gemini: Google Account &gt; Gemini Apps Activity &gt; Improve Google service:</em> <strong>Unchecked</strong></li>
-</ul></li>
-<li>Even when secure, avoid passing raw deidentified data to LLM</li>
 </ul>
+</div>
+<div class="fragment fade-up">
+<ul>
+<li>Don’t allow use for model improvement</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li><p>ChatGPT: Settings &gt; Data Controls &gt; Improve The Model for Everyone: <strong>Off</strong></p></li>
+<li><p>Claude: Settings &gt; Privacy &gt; Help Improve Claude: <strong>Off</strong></p></li>
+<li><p>Gemini: Google Account &gt; Gemini Apps Activity &gt; Improve Google service: <strong>Unchecked</strong></p></li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<ul>
+<li>Avoid passing deidentified data to LLM</li>
+</ul>
+</div>
+</section>
+<section id="faster" class="slide level2">
+<h2>FASTER</h2>
+<div style="font-size: 2em;">
+<p><span class="fragment" data-fragment-index="1"><strong>F</strong></span><span class="fragment" data-fragment-index="7">air</span> <br> <span class="fragment" data-fragment-index="2"><strong>A</strong></span><span class="fragment" data-fragment-index="8">ccountable</span> <br> <span class="fragment" data-fragment-index="3"><strong>S</strong></span><span class="fragment" data-fragment-index="9">ecure</span> <br> <span class="fragment" data-fragment-index="4"><strong>T</strong></span><span class="fragment" data-fragment-index="10">ransparent</span><br>
+<br> <span class="fragment" data-fragment-index="5"><strong>E</strong></span><span class="fragment" data-fragment-index="11">ducated</span> <br> <span class="fragment" data-fragment-index="6"><strong>R</strong></span><span class="fragment" data-fragment-index="12">elevant</span></p>
+</div>
+<p><span class="fragment" data-fragment-index="13" style="font-size: 0.8em; text-align: right;"><em>Source:</em> <a href="https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-generative-ai.html">Canadian Guide on the use of generative artificial intelligence</a></span></p>
 </section>
 <section id="options" class="slide level2">
 <h2>Options</h2>
@@ -202,26 +214,36 @@
 <section id="exercise-1" class="slide level2">
 <h2>Exercise 1</h2>
 <p><strong>Code Explanation</strong></p>
-<p>Search for and copy code from <a href="https://github.com/">GitHub</a> and ask the LLM for a detailed explanation for what libraries and packages are being used and what code accomplishes.</p>
-<countdown-timer id="timer_18a8335f96c4164ac13f406d1bec7f7d4c3023a8" minutes="10" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<p>Prompt LLM for a detailed explanation of:</p>
+<ul>
+<li><p>Code, including libraries/packages used</p></li>
+<li><p>Required data types</p></li>
+<li><p>Functional outputs</p></li>
+</ul>
+<countdown-timer id="timer_321ffa3f906f1fff835485a3f895b623e70b0a08" minutes="10" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
  </countdown-timer>
 </section>
 <section id="exercise-2" class="slide level2">
 <h2>Exercise 2</h2>
-<p><strong>Screening for Clinical Trials</strong></p>
-<p>Search for a kidney-related active trial on <a href="https://clinicaltrials.gov/">clinicaltrials.gov</a> and copy the Participation Criteria. Ask the LLM to write code to identify patients in your database eligible for the trial.</p>
-<p><a href="https://clinicaltrials.gov/study/NCT05638880?cond=Kidney%20Diseases&amp;aggFilters=status:rec&amp;rank=1#participation-criteria">Example Trial Participation Criteria</a></p>
-<countdown-timer id="timer_18a8335f96c4164ac13f406d1bec7f7d4c3023a8" minutes="10" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<p><strong>Screening Patient Data for Clinical Trial Eligibility</strong></p>
+<ul>
+<li><p>Search for a kidney-related active trial on <a href="https://clinicaltrials.gov/">clinicaltrials.gov</a></p></li>
+<li><p>Copy the Participation Criteria</p></li>
+<li><p>Prompt LLM to write code to identify eligible patients in a hypothetical database</p></li>
+</ul>
+<countdown-timer id="timer_321ffa3f906f1fff835485a3f895b623e70b0a08" minutes="10" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
  </countdown-timer>
 </section>
 <section id="exercise-3" class="slide level2">
 <h2>Exercise 3</h2>
-<p><strong>Visualization and Predictive Modeling</strong></p>
-<p>Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and ask it to:</p>
-<p>1. Create a <em>JAMA</em> style Table 1 in Markdown.</p>
-<p>2. Provide and explain code for building multiple predictive models for <code>remission</code> (remission = 1).</p>
-<p>3. Optional: Download the dataset and evaluate the code in Google Colab.</p>
-<countdown-timer id="timer_18a8335f96c4164ac13f406d1bec7f7d4c3023a8" minutes="10" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<p><strong>Data Reporting, Visualization, and Predictive Modeling</strong></p>
+<p>Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to:</p>
+<ol type="1">
+<li><p>Create a <em>JAMA</em> style Table 1 in Markdown.</p></li>
+<li><p>Explore and visualize an important relationship(s) between the predictors and <code>remission.</code></p></li>
+<li><p>Provide and explain code for building multiple predictive models for <code>remission</code> (remission = 1).</p></li>
+</ol>
+<countdown-timer id="timer_321ffa3f906f1fff835485a3f895b623e70b0a08" minutes="10" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
  </countdown-timer>
 </section>
 <section id="bonus-exercise" class="slide level2">
@@ -233,6 +255,8 @@
 <li>Prompt an LLM to write code to clean the data.</li>
 <li>Evaluate the results and adjust your prompt to address any missed issues.</li>
 </ol>
+<countdown-timer id="timer_321ffa3f906f1fff835485a3f895b623e70b0a08" minutes="05" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+ </countdown-timer>
 
 
 </section>
