@@ -32,6 +32,10 @@ $presentation-font-size-root: 34px;
   font-family: Gotham, Roboto, Helvetica, Arial, sans-serif !important;
 }
 
+.reveal .code {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace !important;
+}
+
 // .reveal .slide blockquote {
 //   border-left: 3px solid $text-muted;
 //   padding-left: 0.5em;

@@ -130,14 +130,14 @@
     "href": "00_slides.html#guidelines",
     "title": "Data and Generative AI",
     "section": "Guidelines",
-    "text": "Guidelines\n\n\nRole: Who LLM should act as\n\n\n\n“You are an experienced Python coder…”\n\n\n\nContext: Info LLM needs\n\n\n\n“A dataframe with column names & data types:”“““df = {name: string, dob: date, egfr: double….}”““\n\n\n\nTask: What you want LLM to do explicitly\n\n\n\n“Generate valid R Tidyverse code to visualize collinearity…”\n\n\n\nFormat: How you want the output structured\n\n\n\n“1. Instructions to install uv. 2. Create a .venv…”"
+    "text": "Guidelines\n\n\nRole: Who LLM should act as\n\n\n\nYou are a Pythonista\n\n\n\nContext: Info LLM needs\n\n\n\nDataframe with names & data types: df = {name: string, dob: date, egfr: double}\n\n\n\nTask: What you want LLM to do explicitly\n\n\n\nWrite Tidyverse code visualizing numeric variable collinearity"
   },
   {
     "objectID": "00_slides.html#guidelines-1",
     "href": "00_slides.html#guidelines-1",
     "title": "Data and Generative AI",
     "section": "Guidelines",
-    "text": "Guidelines\n\n\nConstraints: What to avoid or limits to follow\n\n\n\n“—Do— Return a .png file. —Do Not— Provide references without a PMID…”\n\n\n\nFew-Shot Prompting: Provide example(s) of desired output/formatting\n\n\n\n“Return CPT code definitions: CPT Code {90960}: Definition {”Comprehensive monthly dialysis for ESRD, 4+ visits”}“\n\n\n\nUse Delimiters: “““/”““, XML tags (), or dashes (—) to wrap content\n\n\n\nSummarize this document: “““[Insert Email]”“\n\n\nSources: Reddit, Google"
+    "text": "Guidelines\n\n\nFormat: How you want the output structured\n\n\n\nInstructions to:\n1. Install {uv}. 2. Create a .venv\n\n\n\nConstraints: What to avoid or limits to follow\n\n\n\n---Do--- Return a PNG ---Do Not--- Return references without a PMID"
   },
   {
     "objectID": "00_slides.html#llms-for-data-analysis",
@@ -165,7 +165,7 @@
     "href": "00_slides.html#defensive-programming",
     "title": "Data and Generative AI",
     "section": "Defensive Programming",
-    "text": "Defensive Programming\n\n\nColumn Names & Data Types\n\n\n\n\n\n\n\nSynthetic data set"
+    "text": "Defensive Programming\n\n\nColumn Names & Data Types\n\n\n\nReturn ggplot code for a barplot of eGFR by glp status. Schema: df={name: string, egfr: double, glp-status: factor [0, 1]}\n\n\n\nSynthetic Data Set\n\n\n\nCreate a synthetic 300-row dataset of fictional patients with characteristics: M/F: 30%/70%, Age: 𝝁55yo 𝜎6.5 yo, eGFR: 𝝁23 𝜎2.3"
   },
   {
     "objectID": "00_slides.html#exercise-1",
@@ -179,21 +179,21 @@
     "href": "00_slides.html#exercise-2",
     "title": "Data and Generative AI",
     "section": "Exercise 2",
-    "text": "Exercise 2\nScreening Patient Data for Clinical Trial Eligibility\n\nSearch for a kidney-related active trial on clinicaltrials.gov\nCopy the Participation Criteria\nPrompt LLM to write code to identify eligible patients in a hypothetical database"
+    "text": "Exercise 2\nScreening Patient Data for Clinical Trial Eligibility\n\nSearch for an active kidney-focused trial on clinicaltrials.gov\nCopy/paste the participation criteria into your prompt for LLM to create code identifying eligible patients in a hypothetical database"
   },
   {
     "objectID": "00_slides.html#exercise-3",
     "href": "00_slides.html#exercise-3",
     "title": "Data and Generative AI",
     "section": "Exercise 3",
-    "text": "Exercise 3\nData Reporting, Visualization, and Predictive Modeling\nUsing the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to:\n\nCreate a JAMA style Table 1 in Markdown.\nExplore and visualize an important relationship(s) between the predictors and remission.\nProvide and explain code for building multiple predictive models for remission (remission = 1)."
+    "text": "Exercise 3\nReporting, Visualization, & Predictive Modeling\nCopy/paste these clinical trial variable summaries into your LLM prompt to:\n\nCreate a JAMA style Table 1\nExplore & visualize an important relationship(s) between predictors & remission\nCreate & explain code to build multiple models predicting remission (remission = 1)"
   },
   {
     "objectID": "00_slides.html#bonus-exercise",
     "href": "00_slides.html#bonus-exercise",
     "title": "Data and Generative AI",
     "section": "Bonus Exercise",
-    "text": "Bonus Exercise\nHandling Messy Data\nUse an LLM to clean data in preparation for analysis and modeling.\n\nDownload the messy_aki dataset from Dr. Peter Higgins’ {medicaldata} R package.\nPrompt an LLM to write code to clean the data.\nEvaluate the results and adjust your prompt to address any missed issues."
+    "text": "Bonus Exercise\nMunging Messy Data\nUse LLM to clean data in preparation for analysis/modeling.\n\nDownload messy_aki dataset from Dr. Peter Higgins’ {medicaldata} R package\nPrompt LLM to write data-cleaning code\nEvaluate results and adjust prompt to fix any missed issues"
   },
   {
     "objectID": "background.html",
@@ -285,5 +285,26 @@
     "title": "Resources",
     "section": "",
     "text": "Prompt Best Practices\n\nThe fundamentals that work across all LLMs:\n\nRole/Persona: Who the AI should act as\nContext: What background info it needs\nTask: What you want it to do explicitly\nFormat: How you want the output structured\nConstraints: What to avoid or limits to follow\n\n\n Source: Reddit: Best Practices for AI Prompting 2025?\n\n\nCO-STAR Prompt Framework\n\nA great prompt usually includes these specific elements to provide context and direction:\n\nContext: Provide background information on the task.\nObjective: Define exactly what you want me to do.\nStyle: Specify a writing style (e.g., professional, humorous, poetic).\nTone: Set the emotional vibe (e.g., empathetic, direct, enthusiastic).\nAudience: Who is this for? (e.g., a CEO, a 5-year-old, a software engineer).\nResponse: Define the format (e.g., a table, a list, a JSON object).\n\nAdditional Components\n\nFew-Shot Prompting/Using Examples: Provide examples of desired output and formatting (e.g., programming language, file type [CSV, Markdown, PNG])\nUse Delimiters: Use triple quotes (“““), XML tags (), or dashes (—) to wrap your content (e.g., Summarize the text delimited by triple quotes:”““[Insert article]”““)\n\n\n\nSource: Google Gemini (Prompt: do you have any prompt engineering best practices)\n\n\nChicago Booth Algorithmic Bias Initiative\n\nAlgorithmic Bias Initiative Website\nAlgorithmic Bias Playbook\n\n\n\nMelissa Van Bussel posit::conf 2024 Keynote\n\nPractical Tips for Using Generative AI in Data Science Workflows\nSlides\n\n\n\nAdditional Prompt Engineering Resources\n\nAnthropic\n\nPrompt Engineering Guide Overview\nPrompt Engineering Interactive Tutorial\n\n\n\nOpenAI\n\nOpenAI Developers Cookbook\nOpenAI ChatGPT Cookbook\nOpenAI Cookbook Code Repo\nBest Practices for Prompt Engineering with the OpenAI API\nPrompt Engineering\n\n\n\nGoogle\n\nPrompt engineering: overview and guide\n\n\n\n10 Best Practices for Prompt Engineering With Any Model\n\nPromptHub\n\n\n\nGitHub: Awesome AI System Prompts\n\nAwesome AI System Prompts"
+  },
+  {
+    "objectID": "00_slides.html#guidelines-2",
+    "href": "00_slides.html#guidelines-2",
+    "title": "Data and Generative AI",
+    "section": "Guidelines",
+    "text": "Guidelines\n\n\nFew-Shot Prompting: Provide example(s) of desired output/formatting\n\n\n\nReturn CPT code definitions. Example: CPT Code {90960}: Definition {\"Comprehensive monthly dialysis for ESRD, 4+ visits\"}\n\n\n\nUse Delimiters: Wrap content in \"\"\"/\"\"\", XML tags (&lt;text&gt;&lt;/text&gt;), or dashes (---)\n\n\n\n\nSummarize this email: \"\"\"[Insert Email]\"\"\"\n\n\nSources: Reddit, Google"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-analysis-strengths",
+    "href": "00_slides.html#llms-data-analysis-strengths",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data Analysis: Strengths",
+    "text": "LLMs & Data Analysis: Strengths\n\n\nError Messages\n\n\n\n\nSQL Queries\n\n\n\n\nScut &gt; Bot"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-analysis-hazards",
+    "href": "00_slides.html#llms-data-analysis-hazards",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data Analysis: Hazards",
+    "text": "LLMs & Data Analysis: Hazards\n\n\nKnow Terms of Service\n\n\n\n\nDo Not Allow Use for Model Training\n\n\n\n\nChatGPT: Settings &gt; Data Controls &gt; Improve The Model for Everyone: Off\nClaude: Settings &gt; Privacy &gt; Help Improve Claude: Off\nGemini: Google Account &gt; Gemini Apps Activity &gt; Improve Google service: Unchecked\n\n\n\n\nDo Not Pass LLM Deidentified/Confidential Data"
   }
 ]

@@ -129,7 +129,7 @@ async function downloadCSV() {
 
 ***Extension:*** Try using [Paper Banana](https://paper-banana.org/) to create a visualization or CONSORT diagram.
 
-## Bonus Exercise: Handling Messy Data
+## Bonus Exercise: Munging Messy Data
 
 Prompt an LLM to clean and validate the `messy_aki` dataset in preparation for analysis and modeling.
 

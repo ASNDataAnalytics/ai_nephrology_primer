@@ -268,7 +268,7 @@ print(feat_df)
 
 :::
 
-## Bonus Exercise: Handling Messy Data
+## Bonus Exercise: Munging Messy Data
 
 Prompt an LLM to clean and validate the `messy_aki` dataset in preparation for analysis and modeling.
 
