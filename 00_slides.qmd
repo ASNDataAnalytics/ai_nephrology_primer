@@ -61,7 +61,7 @@ execute:
 *R!sk 2026 Conference* <br> February 18, 2026
 :::
 
-## All Text, All The Time
+## All [Text]{.pen-cross} [Embeddings]{.pen-cross} Vectors, All The Time
 
 ::: {.fragment .fade-in-then-semi-out}
 -   Corpora
@@ -104,8 +104,7 @@ execute:
 :::
 
 ::: {.fragment .fade-up style="margin-left: 30px"}
-`Dataframe with names & data types:`<br> 
-`df = {name: string, dob: date, egfr: double}`
+`Dataframe with names & data types:`<br> `df = {name: string, dob: date, egfr: double}`
 :::
 
 ::: {.fragment .fade-right}
@@ -123,9 +122,8 @@ execute:
 :::
 
 ::: {.fragment .fade-up style="margin-left: 30px"}
-` Instructions to:`<br>   
-`1. Install {uv}.`<br>
-`2. Create a .venv`
+`Instructions to:`<br>\
+`1. Install {uv}.`<br> `2. Create a .venv`
 :::
 
 ::: {.fragment .fade-right}
@@ -133,10 +131,7 @@ execute:
 :::
 
 ::: {.fragment .fade-up style="margin-left: 30px"}
-`---Do---`<br> 
-`Return a PNG`<br>
-`---Do Not---`<br> 
-`Return references without a PMID`
+`---Do---`<br> `Return a PNG`<br> `---Do Not---`<br> `Return references without a PMID`
 :::
 
 ## Guidelines {transition="none"}
@@ -146,8 +141,7 @@ execute:
 :::
 
 ::: {.fragment .fade-up style="margin-left: 30px"}
-`Return CPT code definitions.`<br>
-`Example: CPT Code {90960}: Definition {"Comprehensive monthly dialysis for ESRD, 4+ visits"}`
+`Return CPT code definitions.`<br> `Example: CPT Code {90960}: Definition {"Comprehensive monthly dialysis for ESRD, 4+ visits"}`
 :::
 
 ::: {.fragment .fade-right}

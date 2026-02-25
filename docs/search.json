@@ -306,5 +306,12 @@
     "title": "Data and Generative AI",
     "section": "LLMs & Data Analysis: Hazards",
     "text": "LLMs & Data Analysis: Hazards\n\n\nKnow Terms of Service\n\n\n\n\nDo Not Allow Use for Model Training\n\n\n\n\nChatGPT: Settings &gt; Data Controls &gt; Improve The Model for Everyone: Off\nClaude: Settings &gt; Privacy &gt; Help Improve Claude: Off\nGemini: Google Account &gt; Gemini Apps Activity &gt; Improve Google service: Unchecked\n\n\n\n\nDo Not Pass LLM Deidentified/Confidential Data"
+  },
+  {
+    "objectID": "00_slides.html#all-text-embeddings-vectors-all-the-time",
+    "href": "00_slides.html#all-text-embeddings-vectors-all-the-time",
+    "title": "Data and Generative AI",
+    "section": "All Text Embeddings Vectors, All The Time",
+    "text": "All Text Embeddings Vectors, All The Time\n\n\nCorpora\n\n\n\n\nHTML, CSS, JavaScript, SQL\n\n\n\n\nToken Prediction\n\n\n\n\n“Call me _______”"
   }
 ]

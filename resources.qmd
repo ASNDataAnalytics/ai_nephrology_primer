@@ -57,7 +57,6 @@ A great prompt usually includes these specific elements to provide context and d
 ### Melissa Van Bussel posit::conf 2024 Keynote
 
 -   [Practical Tips for Using Generative AI in Data Science Workflows](https://www.youtube.com/watch?v=rPeOdc8jTSE)
-
 -   [Slides](https://github.com/melissavanbussel/posit-conf-2024?tab=readme-ov-file)
 
 
