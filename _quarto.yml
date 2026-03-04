@@ -4,6 +4,10 @@ project:
   resources:
   - "images/**"
   - "logos/**"
+  - "bot/*.md"
+  render: 
+    - "*.qmd"
+    - "!bot/"
 
 website:
   page-navigation: true
@@ -15,6 +19,8 @@ website:
         text: Home
       - href: resources.qmd
         text: Resources
+      - href: bot.qmd
+        text: Review Bot
       - href: literature.qmd
         text: Literature  
       - href: exercises.qmd

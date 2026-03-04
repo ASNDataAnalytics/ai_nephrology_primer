@@ -79,7 +79,7 @@ execute:
 -   "Call me \_\_\_\_\_\_\_"
 :::
 
-##  {.center background-color="black" background-image="images/prompting.jpg"}
+##  {.center background-color="black" background-image="images/prompting_2.png"}
 
 ::: {style="font-size: 2em; margin-top: 225px;"}
 **Prompting**
@@ -267,3 +267,248 @@ Use LLM to clean data in preparation for analysis/modeling.
 3.  Evaluate results and adjust prompt to fix any missed issues
 
 {{< countdown "5:00" >}}
+
+## Multi-turn Chat vs. Context Window
+
+```{=html}
+<style>
+  :root {
+    --ctx-blue: rgba(41, 128, 255, 0.88);
+    --ctx-blue-b: rgba(80, 160, 255, 0.6);
+    --ctx-gray: rgba(200, 210, 225, 0.22);
+    --ctx-gray-b: rgba(200, 210, 225, 0.35);
+    --ctx-red: rgba(220, 55, 55, 0.88);
+    --ctx-red-b: rgba(255, 90, 90, 0.6);
+    --ctx-box: rgba(255,255,255,0.28);
+    --ctx-sub: rgba(255,255,255,0.5);
+  }
+  .ctx-stage { width: 860px; margin: 0 auto; font-family: 'Inter', sans-serif; user-select: none; }
+  .ctx-window {
+    position: relative; width: 100%; height: 380px;
+    border: 2px solid var(--ctx-box); border-radius: 16px;
+    overflow: hidden; background: rgba(255,255,255,0.03);
+  }
+  .ctx-win-label {
+    position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+    font-size: 0.72rem; font-family: monospace; color: var(--ctx-sub);
+    letter-spacing: 0.05em; z-index: 10; pointer-events: none; white-space: nowrap;
+  }
+  .ctx-window::before, .ctx-window::after {
+    content: ''; position: absolute; left: 0; right: 0; height: 44px; z-index: 5; pointer-events: none;
+  }
+  .ctx-window::before { top: 0; background: linear-gradient(to bottom, rgba(18,20,28,0.9), transparent); }
+  .ctx-window::after  { bottom: 0; background: linear-gradient(to top, rgba(18,20,28,0.9), transparent); }
+
+  .ctx-track {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    display: flex; flex-direction: column; gap: 9px;
+    padding: 0 32px 24px 32px;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .ctx-bub { display: flex; align-items: flex-end; }
+  .ctx-bub.user { flex-direction: row-reverse; }
+  .ctx-bub-nub {
+    width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-bottom: 5px;
+    transition: background 0.4s;
+  }
+  .ctx-bub-inner {
+    flex: 1; padding: 10px 16px; border-radius: 18px; font-size: 0.88rem;
+    line-height: 1.4; border: 1.5px solid transparent; transition: background 0.4s, border-color 0.4s;
+  }
+  .ctx-bub-role {
+    font-size: 0.62rem; font-family: monospace; letter-spacing: 0.06em;
+    opacity: 0.5; display: block; margin-bottom: 2px;
+  }
+  .ctx-bub.user .ctx-bub-role { text-align: right; }
+  .ctx-bub.user .ctx-bub-inner {
+    background: var(--ctx-blue); border-color: var(--ctx-blue-b); border-bottom-right-radius: 5px;
+  }
+  .ctx-bub.user .ctx-bub-nub { background: var(--ctx-blue); }
+  .ctx-bub.asst .ctx-bub-inner {
+    background: var(--ctx-gray); border-color: var(--ctx-gray-b); border-bottom-left-radius: 5px;
+  }
+  .ctx-bub.asst .ctx-bub-nub { background: var(--ctx-gray-b); }
+  .ctx-bub.lost .ctx-bub-inner { background: var(--ctx-red) !important; border-color: var(--ctx-red-b) !important; }
+  .ctx-bub.lost .ctx-bub-nub   { background: var(--ctx-red) !important; }
+
+  .ctx-caption {
+    text-align: center; margin-top: 14px; font-size: 0.82rem;
+    color: var(--ctx-sub); font-family: monospace; letter-spacing: 0.01em; min-height: 1.2em;
+  }
+  .ctx-dots { display: flex; justify-content: center; gap: 7px; margin-top: 10px; }
+  .ctx-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.18); transition: background 0.3s, transform 0.3s;
+  }
+  .ctx-dot.on { background: rgba(255,255,255,0.72); transform: scale(1.35); }
+</style>
+
+<!-- Fragments hidden via inline style, NOT a CSS class, so Reveal can still track them -->
+<div style="height:0; overflow:hidden; position:absolute;">
+  <span class="fragment" id="cf0"> </span>
+  <span class="fragment" id="cf1"> </span>
+  <span class="fragment" id="cf2"> </span>
+  <span class="fragment" id="cf3"> </span>
+  <span class="fragment" id="cf4"> </span>
+  <span class="fragment" id="cf5"> </span>
+  <span class="fragment" id="cf6"> </span>
+  <span class="fragment" id="cf7"> </span>
+  <span class="fragment" id="cf8"> </span>
+</div>
+
+<div class="ctx-stage">
+  <div class="ctx-window">
+    <div class="ctx-win-label">◈ CONTEXT WINDOW — model can only "see" what's inside this box</div>
+    <div class="ctx-track" id="ctxTrack"></div>
+  </div>
+  <div class="ctx-caption" id="ctxCaption">&nbsp;</div>
+  <div class="ctx-dots" id="ctxDots"></div>
+</div>
+
+<script>
+(function(){
+
+  const BUBBLES = [
+    { role:'user', text:'How does context work in large language models?',        label:'You' },
+    { role:'asst', text:'The model sees a fixed-size window of recent tokens…',   label:'Assistant' },
+    { role:'user', text:'So does it remember everything we said earlier?',        label:'You' },
+    { role:'asst', text:"Only what fits — older turns are eventually dropped.",   label:'Assistant' },
+    { role:'user', text:'What happens when the window fills up completely?',      label:'You' },
+    { role:'asst', text:'The earliest messages fall out and are no longer seen.', label:'Assistant' },
+    { role:'user', text:'Can I ask about something from the very start still?',   label:'You' },
+    { role:'asst', text:"If those turns are gone, I won't have that context.",    label:'Assistant' },
+  ];
+
+  const MAX_VISIBLE = 5;
+  const BUBBLE_H    = 68;
+  const WIN_H       = 380;
+  const TOTAL_STEPS = 9;
+  const FRAG_IDS    = ['cf0','cf1','cf2','cf3','cf4','cf5','cf6','cf7','cf8'];
+
+  // Defer all DOM lookups until after the page is fully parsed
+  function init() {
+    const track   = document.getElementById('ctxTrack');
+    const caption = document.getElementById('ctxCaption');
+    const dotsEl  = document.getElementById('ctxDots');
+
+    // Guard: if elements not found, bail out loudly
+    if (!track || !caption || !dotsEl) {
+      console.error('CTX DEMO: DOM elements not found!', { track, caption, dotsEl });
+      return;
+    }
+
+    // Build progress dots
+    for (let i = 0; i < TOTAL_STEPS; i++) {
+      const d = document.createElement('div');
+      d.className = 'ctx-dot';
+      d.id = 'ctxd' + i;
+      dotsEl.appendChild(d);
+    }
+
+    function render(step) {
+      console.log('CTX DEMO: render called with step =', step);
+
+      for (let i = 0; i < TOTAL_STEPS; i++) {
+        const dot = document.getElementById('ctxd' + i);
+        if (dot) dot.className = 'ctx-dot' + (i === step ? ' on' : '');
+      }
+
+      if (step < 0) {
+        track.innerHTML = '';
+        caption.innerHTML = '&nbsp;';
+        track.style.transform = 'translateY(0px)';
+        return;
+      }
+
+      if (step === 0) {
+        track.innerHTML = '';
+        caption.innerHTML = '&nbsp;';
+        track.style.transform = 'translateY(0px)';
+        return;
+      }
+
+      const shown = step;
+      const lost  = Math.max(0, shown - MAX_VISIBLE);
+      const vis   = BUBBLES.slice(0, shown);
+
+      track.innerHTML = '';
+
+      vis.forEach(function(b, i) {
+        const isLost = i < lost;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'ctx-bub ' + b.role + (isLost ? ' lost' : '');
+
+        const nub = document.createElement('div');
+        nub.className = 'ctx-bub-nub';
+
+        const inner = document.createElement('div');
+        inner.className = 'ctx-bub-inner';
+
+        const rl = document.createElement('span');
+        rl.className = 'ctx-bub-role';
+        rl.textContent = isLost ? b.label + ' — out of context' : b.label;
+
+        inner.appendChild(rl);
+        inner.appendChild(document.createTextNode(b.text));
+
+        if (b.role === 'user') {
+          wrap.appendChild(inner);
+          wrap.appendChild(nub);
+        } else {
+          wrap.appendChild(nub);
+          wrap.appendChild(inner);
+        }
+
+        track.appendChild(wrap);
+      });
+
+      const trackH   = shown * BUBBLE_H + 24;
+      const overflow = trackH - WIN_H;
+      const base     = overflow > 0 ? -overflow : 0;
+      const extra    = lost > 0 ? -(lost * 16) : 0;
+      track.style.transform = 'translateY(' + (base + extra) + 'px)';
+
+      if (lost === 0) {
+        caption.textContent = 'All turns are visible within the context window.';
+      } else if (lost === 1) {
+        caption.textContent = 'The first turn has left the window — the model can no longer see it.';
+      } else {
+        caption.textContent = lost + ' turns are now outside the window — lost to the model.';
+      }
+    }
+
+    function onFragShown(e) {
+      const idx = FRAG_IDS.indexOf(e.fragment.id);
+      console.log('CTX DEMO: fragmentshown', e.fragment.id, '→ idx', idx);
+      if (idx !== -1) render(idx);
+    }
+
+    function onFragHidden(e) {
+      const idx = FRAG_IDS.indexOf(e.fragment.id);
+      console.log('CTX DEMO: fragmenthidden', e.fragment.id, '→ idx', idx);
+      if (idx !== -1) render(idx - 1);
+    }
+
+    function attachReveal() {
+      if (typeof Reveal !== 'undefined' && Reveal.isReady()) {
+        console.log('CTX DEMO: Reveal found, attaching listeners');
+        Reveal.on('fragmentshown', onFragShown);
+        Reveal.on('fragmenthidden', onFragHidden);
+      } else {
+        setTimeout(attachReveal, 100);
+      }
+    }
+    attachReveal();
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+```

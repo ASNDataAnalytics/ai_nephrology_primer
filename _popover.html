@@ -1,0 +1,79 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Popover overlay markup -->
+<div class="md-overlay" id="mdOverlay">
+  <div class="md-modal" id="mdModal">
+    <div class="modal-header">
+      <span class="modal-filename" id="modalFilename">file.md</span>
+      <span class="modal-tag">markdown source</span>
+      <button class="modal-close" onclick="closeMdPopover()" title="Close (Esc)">✕</button>
+    </div>
+    <div class="modal-body">
+      <pre id="mdContent"></pre>
+    </div>
+    <div class="modal-footer">
+      <span id="modalLines"></span>
+      <span>press Esc to close</span>
+    </div>
+  </div>
+</div>
+
+<script>
+async function openMdPopover(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const text = await res.text();
+    const filename = url.split('/').pop();
+    document.getElementById('modalFilename').textContent = filename;
+    document.getElementById('modalLines').textContent = text.split('\n').length + ' lines';
+    document.getElementById('mdContent').innerHTML = mdHighlight(text);
+    document.getElementById('mdOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  } catch (e) {
+    alert('Could not load file: ' + url + '\n' + e.message);
+  }
+}
+
+function closeMdPopover() {
+  document.getElementById('mdOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('mdOverlay').addEventListener('click', function (e) {
+    if (e.target === this) closeMdPopover();
+  });
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeMdPopover();
+});
+
+function mdHighlight(text) {
+  let s = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // YAML frontmatter
+  s = s.replace(/(^---[\s\S]*?---)/m, function (m) {
+    return m
+      .replace(/^(---)/mg, '<span class="tok-frontmatter">$1</span>')
+      .replace(/^(\w[\w-]*)(:)/mg, '<span class="tok-key">$1</span><span class="tok-frontmatter">$2</span>')
+      .replace(/:\s*(".*?"|[\w.\/\-]+)/g, function (full, v) {
+        return full.replace(v, '<span class="tok-str">' + v + '</span>');
+      });
+  });
+
+  s = s.replace(/^(#{1,3} .+)$/mg, '<span class="tok-head">$1</span>');
+  s = s.replace(/\*\*(.+?)\*\*/g, '<span class="tok-bold">**$1**</span>');
+  s = s.replace(/(```[\w]*)/g, '<span class="tok-fence">$1</span>');
+  s = s.replace(/(```)/g, '<span class="tok-fence">$1</span>');
+  s = s.replace(/`([^`]+)`/g, '<span class="tok-str">`$1`</span>');
+
+  return s;
+}
+</script>

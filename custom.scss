@@ -247,3 +247,42 @@ $footer-height: 70px;
   border-radius: 6px;
   opacity: 0.85;
 }
+
+.ctx-demo { width: 100%; display: flex; justify-content: center; }
+.ctx-svg { width: min(1100px, 95vw); height: auto; }
+
+/* Text */
+.ctx-title { font-size: 34px; font-weight: 700; }
+.ctx-label { font-size: 18px; opacity: 0.8; }
+.ctx-caption { font-size: 18px; opacity: 0.85; }
+
+/* Box */
+.ctx-box {
+  fill: rgba(255,255,255,0.04);
+  stroke: rgba(255,255,255,0.30);
+  stroke-width: 3;
+}
+
+/* Bubbles */
+.ctx-bubble use { opacity: 0.98; }
+.ctx-bubble text { font-size: 20px; dominant-baseline: middle; fill: rgba(255,255,255,0.92); }
+.ctx-bubble.user text { text-anchor: start; }
+.ctx-bubble.asst text { text-anchor: start; }
+
+/* Colors */
+.ctx-bubble.blue use rect,
+.ctx-bubble.blue use circle { fill: rgba(0, 120, 255, 0.85); }
+
+.ctx-bubble.gray use rect,
+.ctx-bubble.gray use circle { fill: rgba(200, 210, 220, 0.28); }
+
+.ctx-bubble.red use rect,
+.ctx-bubble.red use circle { fill: rgba(230, 60, 60, 0.85); }
+
+/* “Out of context” feel */
+.ctx-bubble.out { filter: saturate(1.1); opacity: 0.95; }
+
+/* Reveal fragment polish (optional) */
+.reveal .fragment.fade-in-then-out.visible { opacity: 1; }
+.reveal .fragment.fade-in-then-out.current-fragment { opacity: 1; }
+.reveal .fragment.fade-in-then-out { opacity: 0; }
