@@ -7,7 +7,6 @@ project:
   - "bot/*.md"
   render: 
     - "*.qmd"
-    - "!bot/"
 
 website:
   page-navigation: true
