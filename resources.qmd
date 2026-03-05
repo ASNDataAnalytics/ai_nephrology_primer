@@ -59,6 +59,14 @@ A great prompt usually includes these specific elements to provide context and d
 -   [Practical Tips for Using Generative AI in Data Science Workflows](https://www.youtube.com/watch?v=rPeOdc8jTSE)
 -   [Slides](https://github.com/melissavanbussel/posit-conf-2024?tab=readme-ov-file)
 
+### EHI Living Manual 
+
+-   [EHI Living Manual](https://joshuamandel.com/ehi-living-manual/)
+
+### Recommended Books
+
+-   [Deep Learning Illustrated](https://www.deeplearningillustrated.com/)
+
 
 ### Additional Prompt Engineering Resources
 
