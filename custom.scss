@@ -4,6 +4,7 @@ $body-bg: #ffffff;
 $body-color: #000000;
 $link-color: #00468b;
 $font-family-sans-serif: Gotham, Roboto, Helvetica, Arial, sans-serif;
+$font-family-monospace: 'Fira Code', 'IBM Plex Mono', monospace;
 $presentation-h2-font-size: 1.6em;
 $presentation-font-size-root: 34px;
 
@@ -35,6 +36,13 @@ $presentation-font-size-root: 34px;
 .reveal .code {
   font-family: 'Fira Code', 'Courier New', Courier, monospace !important;
 }
+
+code.sourceCode {
+  .hljs-ln-code {
+    font-family: 'Fira Code', 'IBM Plex Mono', monospace !important;
+  }
+}
+
 
 // .reveal .slide blockquote {
 //   border-left: 3px solid $text-muted;
@@ -472,4 +480,10 @@ $footer-height: 70px;
 @keyframes shimmerSweep {
   from { transform: translateX(-160%); }
   to   { transform: translateX(160%);  }
+}
+
+.featured {
+  font-weight: 900;
+  color: #00468b;
+  font-size: 1.3em;
 }
