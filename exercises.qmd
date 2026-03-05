@@ -19,6 +19,28 @@ Optional: Use [Google Colab](https://colab.research.google.com/) to evaluate Pyt
     (**NB:** A Google account is required for Google Colab access.)
 :::
 
+## Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility
+
+1. Search for a kidney-related active trial on [clinicaltrials.gov](https://clinicaltrials.gov/)
+2. Copy the _Participation Criteria_ 
+3. Prompt LLM to write code in language of your choice (Python, R, Julia, SPSS, Stata) identifying eligible patients in EPIC using relevant columns in EPIC's Clarity Database Schema
+
+[Example Trial Participation Criteria](https://clinicaltrials.gov/study/NCT05638880?cond=Kidney%20Diseases&aggFilters=status:rec&rank=1#participation-criteria)
+
+***Optional Extensions*** 
+
+*Prompt LLM to create:*
+
+-   Synthetic data set to test code
+
+-   Patient-screener web app 
+
+-   CONSORT diagram of patient eligibility criteria
+
+---
+
+## Additional Hands-On Exercises
+
 ## Exercise 1: Code Explanation
 
 Prompt LLM for a detailed explanation of code, including libraries/packages used, required data types and functional outputs.
@@ -43,15 +65,7 @@ Prompt LLM for a detailed explanation of code, including libraries/packages used
 
 ***Extension:*** Prompt an LLM for ways to improve the code. For example, to reduce run/compilation time or improve readability.
 
-## Exercise 2: Screening Patient Data for Clinical Trial Eligibility
-
-Search for a kidney-related active trial on [clinicaltrials.gov](https://clinicaltrials.gov/) and copy the Participation Criteria. Prompt LLM to write code to identify eligible patients in a hypothetical database that has the relevant patient data for participation.
-
-[Example Trial Participation Criteria](https://clinicaltrials.gov/study/NCT05638880?cond=Kidney%20Diseases&aggFilters=status:rec&rank=1#participation-criteria)
-
-***Extension:*** Prompt an LLM to create a CONSORT diagram for the patient eligibility criteria.
-
-## Exercise 3: Data Reporting, Visualization, and Predictive Modeling
+## Exercise 2: Data Reporting, Visualization, and Predictive Modeling
 
 Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to:
 
@@ -129,7 +143,7 @@ async function downloadCSV() {
 
 ***Extension:*** Try using [Paper Banana](https://paper-banana.org/) to create a visualization or CONSORT diagram.
 
-## Bonus Exercise: Munging Messy Data
+## Exercise 3: Munging Messy Data
 
 Prompt an LLM to clean and validate the `messy_aki` dataset in preparation for analysis and modeling.
 

@@ -144,14 +144,14 @@
     "href": "00_slides.html#exercise-2",
     "title": "Data and Generative AI",
     "section": "Exercise 2",
-    "text": "Exercise 2\nScreening Patient Data for Clinical Trial Eligibility\n\nSearch for an active kidney-focused trial on clinicaltrials.gov\nCopy/paste the participation criteria into your prompt for LLM to create code identifying eligible patients in a hypothetical database"
+    "text": "Exercise 2\nReporting, Visualization, & Predictive Modeling\nCopy/paste these clinical trial variable summaries into your LLM prompt to:\n\nCreate a JAMA style Table 1\nExplore & visualize an important relationship(s) between predictors & remission\nCreate & explain code to build multiple models predicting remission (remission = 1)"
   },
   {
     "objectID": "00_slides.html#exercise-3",
     "href": "00_slides.html#exercise-3",
     "title": "Data and Generative AI",
     "section": "Exercise 3",
-    "text": "Exercise 3\nReporting, Visualization, & Predictive Modeling\nCopy/paste these clinical trial variable summaries into your LLM prompt to:\n\nCreate a JAMA style Table 1\nExplore & visualize an important relationship(s) between predictors & remission\nCreate & explain code to build multiple models predicting remission (remission = 1)"
+    "text": "Exercise 3\nMunging Messy Data\nUse LLM to clean data in preparation for analysis/modeling.\n\nDownload messy_aki dataset from Dr. Peter Higgins’ {medicaldata} R package\nPrompt LLM to write data-cleaning code\nEvaluate results and adjust prompt to fix any missed issues"
   },
   {
     "objectID": "00_slides.html#bonus-exercise",
@@ -495,5 +495,19 @@
     "title": "Data and Generative AI",
     "section": "Guidelines",
     "text": "Guidelines\n\n\nFew-Shot Prompting: Provide example(s) of desired output/formatting\n\n\n\nReturn CPT code definitions. Example: CPT Code {90960}: Definition {\"Comprehensive monthly dialysis for ESRD, 4+ visits\"}\n\n\n\nUse Delimiters: Wrap content in \"\"\"/\"\"\", XML tags (&lt;text&gt;&lt;/text&gt;), or dashes (---)\n\n\n\n\nSummarize this email: \"\"\"[Insert Email]\"\"\"\n\n\nSources: Reddit, Google"
+  },
+  {
+    "objectID": "00_slides.html#hands-on-exercise",
+    "href": "00_slides.html#hands-on-exercise",
+    "title": "Data and Generative AI",
+    "section": "Hands-On Exercise",
+    "text": "Hands-On Exercise\nScreening Patient Data for Clinical Trial Eligibility\n\nSearch for an active kidney-focused trial on clinicaltrials.gov\nCopy the Participation Criteria\nPrompt LLM to write code (Python, R, Julia, SPSS, Stata) identifying eligible patients in EPIC using relevant columns in EPIC’s Clarity Database Schema\n\nOptional Extensions\nPrompt LLM to create:\n\nSynthetic data set to test code\nPatient-screener web app\nCONSORT diagram of patient eligibility criteria"
+  },
+  {
+    "objectID": "00_slides.html#hands-on-exercise-trial-eligibility-screening",
+    "href": "00_slides.html#hands-on-exercise-trial-eligibility-screening",
+    "title": "Data and Generative AI",
+    "section": "Hands-On Exercise: Trial Eligibility Screening",
+    "text": "Hands-On Exercise: Trial Eligibility Screening\n\nSelect an active kidney-focused trial on clinicaltrials.gov\nCopy the Participation Criteria\nPrompt LLM to write code (Python, R, Julia, SPSS, Stata) identifying eligible patients using relevant columns in EPIC’s Clarity Database Schema\n\nOptional Extensions Prompt LLM to Create:\n\nSynthetic data set to test code\nPatient-screener web app\nCONSORT diagram of patient eligibility criteria"
   }
 ]
