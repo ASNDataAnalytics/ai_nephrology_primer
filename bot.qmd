@@ -5,164 +5,320 @@ format:
     include-in-header: _popover.html
 ---
 
+![](images/systematic_review_robot.png){fig-align="center" width="85%"}
+
 ## Source Files
 
-::: {.file-list}
-
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: file-list
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">000_systematic_review_bot_system_instructions.md</div>
-<div class="file-desc">System instructions to build a systematic review bot</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/000_systematic_review_bot_system_instructions.md')">⊞ Preview</button>
+
+::: file-name
+000_systematic_review_bot_system_instructions.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+System instructions to build a systematic review bot
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/000_systematic_review_bot_system_instructions.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB1_information_gathering.md</div>
-<div class="file-desc">KB1: Collect desired search criteria</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB1_information_gathering.md')">⊞ Preview</button>
+
+::: file-name
+KB1_information_gathering.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB1: Collect desired search criteria
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB1_information_gathering.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB2_search_strategy_and_sources.md</div>
-<div class="file-desc">KB2: Search strategies & available resources/tools</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB2_search_strategy_and_sources.md')">⊞ Preview</button>
+
+::: file-name
+KB2_search_strategy_and_sources.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB2: Search strategies & available resources/tools
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB2_search_strategy_and_sources.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB3_study_selection.md</div>
-<div class="file-desc">KB3: Selection criteria</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB3_study_selection.md')">⊞ Preview</button>
+
+::: file-name
+KB3_study_selection.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB3: Selection criteria
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB3_study_selection.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB4_data_extraction.md</div>
-<div class="file-desc">KB4: Extraction and table assembly</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB4_data_extraction.md')">⊞ Preview</button>
+
+::: file-name
+KB4_data_extraction.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB4: Extraction and table assembly
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB4_data_extraction.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB5_data_synthesis_and_reporting.md</div>
-<div class="file-desc">KB5: Narrative synthesis</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB5_data_synthesis_and_reporting.md')">⊞ Preview</button>
+
+::: file-name
+KB5_data_synthesis_and_reporting.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB5: Narrative synthesis
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB5_data_synthesis_and_reporting.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB6_writing_style_requirements.md</div>
-<div class="file-desc">KB6: Prompt for writing style</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB6_writing_style_requirements.md')">⊞ Preview</button>
+
+::: file-name
+KB6_writing_style_requirements.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB6: Prompt for writing style
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB6_writing_style_requirements.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB7_citations_and_reference_style.md</div>
-<div class="file-desc">KB7: Assemble bibliography</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB7_citations_and_reference_style.md')">⊞ Preview</button>
+
+::: file-name
+KB7_citations_and_reference_style.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB7: Assemble bibliography
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB7_citations_and_reference_style.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB8_pubmed_queries.md</div>
-<div class="file-desc">KB8: PubMed search strategy</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB8_pubmed_queries.md')">⊞ Preview</button>
+
+::: file-name
+KB8_pubmed_queries.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+KB8: PubMed search strategy
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB8_pubmed_queries.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">KB9_openalex_queries.md</div>
-<div class="file-desc">System instructions for conducting OpenAlex searches</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/KB9_openalex_queries.md')">⊞ Preview</button>
+
+::: file-name
+KB9_openalex_queries.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+System instructions for conducting OpenAlex searches
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/KB9_openalex_queries.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">prisma.md</div>
-<div class="file-desc">PRISMA Systematic Reviews Checklist</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/prisma.md')">⊞ Preview</button>
+
+::: file-name
+prisma.md
 :::
 
-::: {.file-card}
-::: {.file-info}
-::: {.file-icon}
+::: file-desc
+PRISMA Systematic Reviews Checklist
+:::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/prisma.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+
+:::::::: file-card
+::::::: file-info
+::: file-icon
 .MD
 :::
+
 <div>
-<div class="file-name">pubmed_openapi_annotated.md</div>
-<div class="file-desc">Annotated YAML to access PubMed API using OpenAPI</div>
-</div>
-:::
-<button class="btn-preview" onclick="openMdPopover('bot/pubmed_openapi_annotated.md')">⊞ Preview</button>
+
+::: file-name
+pubmed_openapi_annotated.md
 :::
 
+::: file-desc
+Annotated YAML to access PubMed API using OpenAPI
 :::
+
+</div>
+:::::::
+
+<button class="btn-preview" onclick="openMdPopover(&#39;bot/pubmed_openapi_annotated.md&#39;)">
+
+⊞ Preview
+
+</button>
+::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

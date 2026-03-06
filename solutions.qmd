@@ -9,41 +9,13 @@ code-copy: true
 Note that LLMs are stochastic/non-deteriministic, so there are no definitive solutions.
 :::
 
-## Exercise 1: Code Explanation
+## Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility
 
-**Exercise:** Prompt LLM for a detailed explanation of code, including libraries/packages used, required data types and functional outputs.
+**Exercise:** Search for a kidney-related active trial on [clinicaltrials.gov](https://clinicaltrials.gov/) and copy the Participation Criteria. Prompt LLM to write code in language of your choice (Python, R, Julia, SPSS, Stata) identifying eligible patients in EPIC using relevant columns in EPIC's Clarity Database Schema.
 
 **Potential Solutions**
 
 ::: {.panel-tabset group="llm1"}
-
-## ChatGPT
-
-**Prompt:** [SAS/Julia TK]
-
-**Response:**
-
-## Claude
-
-**Prompt:** [Python TK]
-
-**Response:**
-
-## Gemini
-
-**Prompt:** [R TK]
-
-**Response:**
-
-:::
-
-## Exercise 2: Screening Patient Data for Clinical Trial Eligibility
-
-**Exercise:** Search for a kidney-related active trial on [clinicaltrials.gov](https://clinicaltrials.gov/) and copy the Participation Criteria. Prompt LLM to write code to identify eligible patients in a hypothetical database that has the relevant patient data for participation.
-
-**Potential Solutions**
-
-::: {.panel-tabset group="llm2"}
 ## ChatGPT
 
 **Prompt:** [Julia TK]\
@@ -79,7 +51,39 @@ Note that LLMs are stochastic/non-deteriministic, so there are no definitive sol
 
 :::
 
-## Exercise 3: Data Reporting, Visualization, and Predictive Modeling
+---
+
+## Additional Hands-On Exercises
+
+## Exercise 1: Code Explanation
+
+**Exercise:** Prompt LLM for a detailed explanation of code, including libraries/packages used, required data types and functional outputs.
+
+**Potential Solutions**
+
+::: {.panel-tabset group="llm2"}
+
+## ChatGPT
+
+**Prompt:** [SAS/Julia TK]
+
+**Response:**
+
+## Claude
+
+**Prompt:** [Python TK]
+
+**Response:**
+
+## Gemini
+
+**Prompt:** [R TK]
+
+**Response:**
+
+:::
+
+## Exercise 2: Data Reporting, Visualization, and Predictive Modeling
 
 **Exercise:** Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to: 
 1. Create a *JAMA* style Table 1 in Markdown.
@@ -268,7 +272,7 @@ print(feat_df)
 
 :::
 
-## Bonus Exercise: Munging Messy Data
+## Exercise 3: Munging Messy Data
 
 Prompt an LLM to clean and validate the `messy_aki` dataset in preparation for analysis and modeling.
 

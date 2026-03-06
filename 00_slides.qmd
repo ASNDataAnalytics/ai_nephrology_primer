@@ -228,11 +228,11 @@ execute:
 :::
 
 ::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
--   **Column Names & Data Types** 
+-   **Column Names & Data Types**
 :::
 
 ::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
--   **Synthetic Data Set** 
+-   **Synthetic Data Set**
 :::
 
 ::: {.fragment .fade-up}
@@ -240,9 +240,9 @@ execute:
 :::
 
 ::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
--   **Temperature** 
+-   **Temperature**
 
--   **Top-K** 
+-   **Top-K**
 
 -   **Top-P**
 :::
@@ -515,14 +515,14 @@ execute:
 ## Prompting {transition="none"}
 
 ::: shimmer-lines
-[Role]{.shimmer-line .fragment data-fragment-index="0" style="--i:0"} [Context]{.shimmer-line .fragment data-fragment-index="0" style="--i:1"} [Task]{.shimmer-line .fragment data-fragment-index="0" style="--i:2"} [Format]{.shimmer-line .fragment data-fragment-index="0" style="--i:3"} [Constraints]{.shimmer-line .fragment data-fragment-index="0" style="--i:4"} [Few-Shot Prompting]{.shimmer-line .fragment data-fragment-index="0" style="--i:5"} [Delimiters]{.shimmer-line .fragment data-fragment-index="0" style="--i:6"} [Reasoning Steps]{.shimmer-line .fragment data-fragment-index="0" style="--i:7"}
+[Role]{.shimmer-line .fragment data-fragment-index="0" style="--i:0"} [Context]{.shimmer-line .fragment data-fragment-index="0" style="--i:1"} [Task]{.shimmer-line .fragment data-fragment-index="0" style="--i:2"} [Format]{.shimmer-line .fragment data-fragment-index="0" style="--i:3"} [Constraints]{.shimmer-line .fragment data-fragment-index="0" style="--i:4"} [Few-Shot]{.shimmer-line .fragment data-fragment-index="0" style="--i:5"} [Delimiters]{.shimmer-line .fragment data-fragment-index="0" style="--i:6"} [Reasoning Steps]{.shimmer-line .fragment data-fragment-index="0" style="--i:7"}
 :::
 
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
 ::: {.column width="40%"}
-[Role]{.featured} <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot Prompting <br> Delimiters <br> Reasoning Steps
+[Role]{.featured} <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
 ::: {.column width="60%"}
@@ -660,11 +660,11 @@ Pause for user input when:
 
 ::::: columns
 ::: {.column width="40%"}
-Role <br> [Context]{.featured} <br> Task <br> Format <br> Constraints <br> Few-Shot Prompting <br> Delimiters <br> Reasoning Steps
+Role <br> [Context]{.featured} <br> Task <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
 ::: {.column width="60%"}
-``` {.yaml filename="system-instructions.md" code-line-numbers="|19-21|25-26|30-32|36|40-43"}
+``` {.yaml filename="system-instructions.md" code-line-numbers="19-21|25-26|30-32|36|40-43"}
 ---
 title: "Systematic Review Bot: System Instructions"
 author: "Luca Neri, MD, PhD"
@@ -798,11 +798,11 @@ Pause for user input when:
 
 ::::: columns
 ::: {.column width="40%"}
-Role <br> Context <br> [Task]{.featured} <br> Format <br> Constraints <br> Few-Shot Prompting <br> Delimiters <br> Reasoning Steps
+Role <br> Context <br> [Task]{.featured} <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
 ::: {.column width="60%"}
-``` {.yaml filename="system-instructions.md" code-line-numbers="|48-49|58|60-61|62-68"}
+``` {.yaml filename="system-instructions.md" code-line-numbers="48-49|58|60-61|62-68"}
 ---
 title: "Systematic Review Bot: System Instructions"
 author: "Luca Neri, MD, PhD"
@@ -936,7 +936,7 @@ Pause for user input when:
 
 ::::: columns
 ::: {.column width="40%"}
-Role <br> Context <br> Task <br> [Format]{.featured} <br> Constraints <br> Few-Shot Prompting <br> Delimiters <br> Reasoning Steps
+Role <br> Context <br> Task <br> [Format]{.featured} <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
 ::: {.column width="60%"}
@@ -1074,7 +1074,7 @@ Pause for user input when:
 
 ::::: columns
 ::: {.column width="40%"}
-Role <br> Context <br> Task <br> Format <br> [Constraints]{.featured} <br> Few-Shot Prompting <br> Delimiters <br> Reasoning Steps
+Role <br> Context <br> Task <br> Format <br> [Constraints]{.featured} <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
 ::: {.column width="60%"}
@@ -1212,7 +1212,7 @@ Pause for user input when:
 
 ::::: columns
 ::: {.column width="40%"}
-Role <br> Context <br> Task <br> Format <br> Constraints <br> [Few-Shot Prompting]{.featured} <br> Delimiters <br> Reasoning Steps
+Role <br> Context <br> Task <br> Format <br> Constraints <br> [Few-Shot]{.featured} <br> Delimiters <br> Reasoning Steps
 :::
 
 ::: {.column width="60%"}
@@ -1350,7 +1350,7 @@ Pause for user input when:
 
 ::::: columns
 ::: {.column width="40%"}
-Role <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot Prompting <br> [Delimiters]{.featured} <br> Reasoning Steps
+Role <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot <br> [Delimiters]{.featured} <br> Reasoning Steps
 :::
 
 ::: {.column width="60%"}
@@ -1488,7 +1488,7 @@ Pause for user input when:
 
 ::::: columns
 ::: {.column width="40%"}
-Role <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot Prompting <br> Delimiters <br> [Reasoning Steps]{.featured}
+Role <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> [Reasoning Steps]{.featured}
 :::
 
 ::: {.column width="60%"}
@@ -1650,35 +1650,51 @@ Pause for user input when:
 [**Image Generated by AI**]{style="font-size: .7em; padding: 6px 10px; border: 2px white solid; border-radius: 6px; color: white;"}
 :::
 
-## Creating Custom GPT
+## Creating a Custom GPT in OpenAI
 
-::: {.fragment .fade-in-then-semi-out}
--   Step 1:
-:::
+::: r-stack
+![](images/system_bot_1.png){.fragment width="450"}
 
-::: {.fragment .fade-in-then-semi-out}
--   Step 2:
-:::
+![](images/system_bot_2.png){.fragment width="500"}
 
-::: {.fragment .fade-in-then-semi-out}
--   Step 3:
+![](images/system_bot_3.png){.fragment width="600"}
+
+![](images/system_bot_4.png){.fragment width="800"}
 :::
 
 ## Developing Knowledge Base
 
 ::: {.fragment .fade-in-then-semi-out}
--   Step 1:
+-   Similar to Prompt Principles
+:::
+
+::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
+-   **Formatting/Delimiters**
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
--   Step 2:
+-   Small Logical Sections/Small Chunks
+:::
+
+::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
+-   **Context Window Management**
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
--   Step 3:
+-   Use Markdown (.md)
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Split by Task/Topic
 :::
 
 ## Demo
+
+**INSERT IMAGE OF Systematic Research Bot** 
+
+<br>
+
+**URL to Access Bot(?)**
 
 ## Next Steps
 
@@ -1687,15 +1703,25 @@ Pause for user input when:
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
--   Show Image of PDF
-:::
-
-::: {.fragment .fade-in-then-semi-out}
--   Create RAG Application
+-   **INSERT IMAGE OF LATEX PDF**
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
 -   Use [PaperBanana](https://paper-banana.org/) to create custom illustrations and graphs
+:::
+
+::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
+![](images/paperbanana.png){width="600"}
+:::
+
+## Acknowledgements
+
+::: {.fragment .fade-left}
+**Dr. John Paul Helveston (George Washington University)**
+:::
+
+::: {.fragment .fade-left}
+**Isabella Velásquez (Posit PBC)**
 :::
 
 ##  {background-color="black" background-image="images/ice-cream-cat.png"}

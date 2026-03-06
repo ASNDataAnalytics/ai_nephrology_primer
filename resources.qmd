@@ -59,19 +59,17 @@ A great prompt usually includes these specific elements to provide context and d
 -   [Practical Tips for Using Generative AI in Data Science Workflows](https://www.youtube.com/watch?v=rPeOdc8jTSE)
 -   [Slides](https://github.com/melissavanbussel/posit-conf-2024?tab=readme-ov-file)
 
-### EHI Living Manual 
+### EHI Living Manual (EPIC) 
 
 -   [EHI Living Manual](https://joshuamandel.com/ehi-living-manual/)
 
-### Visualize Temperature, Top-P, and Top-K Parameters
+### Visualize Effects of Temperature, Top-P, and Top-K Parameters
 
 -   [Website](https://andreban.github.io/temperature-topk-visualizer/)
 
 ### Recommended Books
 
 -   [Deep Learning Illustrated](https://www.deeplearningillustrated.com/)
-
-
 
 ### Additional Prompt Engineering Resources
 
