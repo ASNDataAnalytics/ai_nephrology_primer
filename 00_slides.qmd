@@ -42,7 +42,17 @@ execute:
 -   Employee, American Society of Nephrology
 :::
 
-##  {background-color="black" background-image="images/percy.jpeg"}
+## {background-color="white" auto-animate="true"}
+
+![](images/percy.jpeg){.absolute top=50 right=50 width="800"}
+
+## {auto-animate="true"}
+
+::: {.slide-frame}
+<!-- ![](images/percy.jpeg){style="position: absolute; bottom: 100px; right: 100px;"} -->
+![](images/percy.jpeg)
+:::
+
 
 ## All [Text]{.pen-cross} [Embeddings]{.pen-cross-out} Vectors, All The Time
 
