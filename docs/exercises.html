@@ -139,10 +139,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exercise-1-code-explanation" id="toc-exercise-1-code-explanation" class="nav-link active" data-scroll-target="#exercise-1-code-explanation">Exercise 1: Code Explanation</a></li>
-  <li><a href="#exercise-2-screening-patient-data-for-clinical-trial-eligibility" id="toc-exercise-2-screening-patient-data-for-clinical-trial-eligibility" class="nav-link" data-scroll-target="#exercise-2-screening-patient-data-for-clinical-trial-eligibility">Exercise 2: Screening Patient Data for Clinical Trial Eligibility</a></li>
-  <li><a href="#exercise-3-data-reporting-visualization-and-predictive-modeling" id="toc-exercise-3-data-reporting-visualization-and-predictive-modeling" class="nav-link" data-scroll-target="#exercise-3-data-reporting-visualization-and-predictive-modeling">Exercise 3: Data Reporting, Visualization, and Predictive Modeling</a></li>
-  <li><a href="#bonus-exercise-munging-messy-data" id="toc-bonus-exercise-munging-messy-data" class="nav-link" data-scroll-target="#bonus-exercise-munging-messy-data">Bonus Exercise: Munging Messy Data</a></li>
+  <li><a href="#hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility" id="toc-hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility" class="nav-link active" data-scroll-target="#hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility">Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility</a></li>
+  <li><a href="#additional-hands-on-exercises" id="toc-additional-hands-on-exercises" class="nav-link" data-scroll-target="#additional-hands-on-exercises">Additional Hands-On Exercises</a></li>
+  <li><a href="#exercise-1-code-explanation" id="toc-exercise-1-code-explanation" class="nav-link" data-scroll-target="#exercise-1-code-explanation">Exercise 1: Code Explanation</a></li>
+  <li><a href="#exercise-2-data-reporting-visualization-and-predictive-modeling" id="toc-exercise-2-data-reporting-visualization-and-predictive-modeling" class="nav-link" data-scroll-target="#exercise-2-data-reporting-visualization-and-predictive-modeling">Exercise 2: Data Reporting, Visualization, and Predictive Modeling</a></li>
+  <li><a href="#exercise-3-munging-messy-data" id="toc-exercise-3-munging-messy-data" class="nav-link" data-scroll-target="#exercise-3-munging-messy-data">Exercise 3: Munging Messy Data</a></li>
   </ul>
 </nav>
     </div>
@@ -187,6 +188,26 @@ Note
 </ol>
 </div>
 </div>
+<section id="hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility" class="level2">
+<h2 class="anchored" data-anchor-id="hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility">Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility</h2>
+<ol type="1">
+<li>Search for a kidney-related active trial on <a href="https://clinicaltrials.gov/">clinicaltrials.gov</a></li>
+<li>Copy the <em>Participation Criteria</em></li>
+<li>Prompt LLM to write code in language of your choice (Python, R, Julia, SPSS, Stata) identifying eligible patients in EPIC using relevant columns in EPIC’s Clarity Database Schema</li>
+</ol>
+<p><a href="https://clinicaltrials.gov/study/NCT05638880?cond=Kidney%20Diseases&amp;aggFilters=status:rec&amp;rank=1#participation-criteria">Example Trial Participation Criteria</a></p>
+<p><strong><em>Optional Extensions</em></strong></p>
+<p><em>Prompt LLM to create:</em></p>
+<ul>
+<li><p>Synthetic data set to test code</p></li>
+<li><p>Patient-screener web app</p></li>
+<li><p>CONSORT diagram of patient eligibility criteria</p></li>
+</ul>
+<hr>
+</section>
+<section id="additional-hands-on-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="additional-hands-on-exercises">Additional Hands-On Exercises</h2>
+</section>
 <section id="exercise-1-code-explanation" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-code-explanation">Exercise 1: Code Explanation</h2>
 <p>Prompt LLM for a detailed explanation of code, including libraries/packages used, required data types and functional outputs.</p>
@@ -207,14 +228,8 @@ Note
 </ul>
 <p><strong><em>Extension:</em></strong> Prompt an LLM for ways to improve the code. For example, to reduce run/compilation time or improve readability.</p>
 </section>
-<section id="exercise-2-screening-patient-data-for-clinical-trial-eligibility" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2-screening-patient-data-for-clinical-trial-eligibility">Exercise 2: Screening Patient Data for Clinical Trial Eligibility</h2>
-<p>Search for a kidney-related active trial on <a href="https://clinicaltrials.gov/">clinicaltrials.gov</a> and copy the Participation Criteria. Prompt LLM to write code to identify eligible patients in a hypothetical database that has the relevant patient data for participation.</p>
-<p><a href="https://clinicaltrials.gov/study/NCT05638880?cond=Kidney%20Diseases&amp;aggFilters=status:rec&amp;rank=1#participation-criteria">Example Trial Participation Criteria</a></p>
-<p><strong><em>Extension:</em></strong> Prompt an LLM to create a CONSORT diagram for the patient eligibility criteria.</p>
-</section>
-<section id="exercise-3-data-reporting-visualization-and-predictive-modeling" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-3-data-reporting-visualization-and-predictive-modeling">Exercise 3: Data Reporting, Visualization, and Predictive Modeling</h2>
+<section id="exercise-2-data-reporting-visualization-and-predictive-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-data-reporting-visualization-and-predictive-modeling">Exercise 2: Data Reporting, Visualization, and Predictive Modeling</h2>
 <p>Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to:</p>
 <ol type="1">
 <li><p>Create a <em>JAMA</em> style Table 1 in Markdown.</p></li>
@@ -275,8 +290,8 @@ async function downloadCSV() {
 </div>
 <p><strong><em>Extension:</em></strong> Try using <a href="https://paper-banana.org/">Paper Banana</a> to create a visualization or CONSORT diagram.</p>
 </section>
-<section id="bonus-exercise-munging-messy-data" class="level2">
-<h2 class="anchored" data-anchor-id="bonus-exercise-munging-messy-data">Bonus Exercise: Munging Messy Data</h2>
+<section id="exercise-3-munging-messy-data" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-munging-messy-data">Exercise 3: Munging Messy Data</h2>
 <p>Prompt an LLM to clean and validate the <code>messy_aki</code> dataset in preparation for analysis and modeling.</p>
 <ol type="1">
 <li>Download the <strong>messy_aki</strong> dataset from Dr.&nbsp;Peter Higgins’ <a href="https://higgi13425.github.io/medicaldata/index.html"><strong>{medicaldata}</strong></a> R package.</li>
