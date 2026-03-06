@@ -63,9 +63,14 @@ A great prompt usually includes these specific elements to provide context and d
 
 -   [EHI Living Manual](https://joshuamandel.com/ehi-living-manual/)
 
+### Visualize Temperature, Top-P, and Top-K Parameters
+
+-   [Website](https://andreban.github.io/temperature-topk-visualizer/)
+
 ### Recommended Books
 
 -   [Deep Learning Illustrated](https://www.deeplearningillustrated.com/)
+
 
 
 ### Additional Prompt Engineering Resources
