@@ -50,6 +50,6 @@ title: "Data and Generative AI"
 |-------------------------|----------------------------|
 | **9:00 a.m.** | Introduction, Motivation, and Prompting |
 | **9:10 a.m.** | [Hands-On Exercise](exercises.qmd#hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility)        |
-| **9:20 a.m.** | [Systematic Review Bot](bot/)        |
+| **9:20 a.m.** | [Systematic Review Bot](bot.qmd)        |
 | **9:40 a.m.** | Wrap-Up                    |
 
