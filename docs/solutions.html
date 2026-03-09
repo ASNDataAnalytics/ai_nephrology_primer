@@ -221,8 +221,11 @@ Important
 <h2 class="anchored" data-anchor-id="hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility">Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility</h2>
 <p><strong>Exercise:</strong> Search for a kidney-related active trial on <a href="https://clinicaltrials.gov/">clinicaltrials.gov</a> and copy the Participation Criteria. Prompt LLM to write code in language of your choice (Python, R, Julia, SPSS, Stata) identifying eligible patients in EPIC using relevant columns in EPIC’s Clarity Database Schema.</p>
 <p><strong>Potential Solutions</strong></p>
+<section id="sample-actively-recruiting-clinical-trial" class="level4">
+<h4 class="anchored">Sample Actively Recruiting Clinical Trial</h4>
+<p><a href="https://clinicaltrials.gov/study/NCT06754280?cond=ckd&amp;aggFilters=funderType:nih,status:rec&amp;rank=1#participation-criteria">An Intervention to Reduce Sedentary Behavior for Adults With Chronic Kidney Disease (RESET-CKD)</a></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="llm1">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">ChatGPT</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Claude</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Gemini</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">ChatGPT</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Claude</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Step 2: Codebook</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Gemini</a></li></ul>
 <div class="tab-content" data-group="llm1">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><strong>Prompt:</strong> [Julia TK]<br>
@@ -232,10 +235,447 @@ Important
 </code></pre>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p><strong>Prompt:</strong> [Python TK]</p>
+<p><strong>Prompt:</strong></p>
+<p>You are an expert biostatistician and epidemiologist, extremely fluent with EPIC’s Clarity Database.</p>
+<p>Given this <strong>Clinical Trial participation criteria</strong>:</p>
+<p>Inclusion Criteria:</p>
+<ul>
+<li><p>Self-identifies as Black or African American</p></li>
+<li><p>Age ≥35 to ≤80 years old</p></li>
+<li><p>CKD Stage 1-4</p></li>
+<li><p>Self-reported 6 or more hours/day of sedentary time</p></li>
+<li><p>Ability to speak/read/understand English</p></li>
+<li><p>Has access to a telephone</p></li>
+</ul>
+<p>Exclusion Criteria:</p>
+<ul>
+<li><p>Being unable to walk 1 block</p></li>
+<li><p>Being unable to stand from a seated position without assistance</p></li>
+<li><p>Using a wheelchair, walker, or cane for all of their ambulation</p></li>
+<li><p>Presence of a condition(s) or diagnosis, either physical or psychological, that precludes participation, including: Lower-extremity amputation (AKA or BKA) without prosthetic, Orthopedic condition that would preclude prompted sit-to-stand transitions or standing, Neurologic or psychiatric condition that would preclude prompted sit-to- stand transitions or standing, Severe cognitive impairment, Unstable coronary artery disease (i.e., angina with activity), Orthostatic hypotension</p></li>
+<li><p>Kidney transplant</p></li>
+<li><p>Any other condition that the investigator considers precludes participation in the trial</p></li>
+<li><p>Participated in the Patient Advisory Board</p></li>
+</ul>
+<p>—Steps—</p>
+<p>1. Provide valid SQL for identifying eligible patients in your health system’s Clarity Database.</p>
+<p>2. Make a table of the codebook for the relevant column names along with their descriptions in the form: {column_name}: {variable description, including data type}.</p>
 <p><strong>Response:</strong></p>
+<p>Here is the SQL and codebook for identifying eligible patients in Epic Clarity.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>#| eval: <span class="kw">false</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">/*=============================================================</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">  CLINICAL TRIAL ELIGIBILITY: Black/AA Adults with CKD 1–4</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Sedentary Lifestyle Intervention Study</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  Inclusion:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - Self-identified Black/African American</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Age 35–80</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - CKD Stage 1–4 (eGFR ≥15, no ESRD/transplant)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    - Has a telephone on file</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">  Exclusion:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">    - Kidney transplant (Hx or active)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - Lower extremity amputation (w/o prosthetic) — flagged via Dx</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - Orthostatic hypotension Dx</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">    - Unstable angina/CAD Dx</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">    - Severe cognitive impairment Dx</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">    - Active psychiatric/neurologic preclusion Dx</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">    - Wheelchair/walker/assistive device dependency (ADL note flags)</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">    - Participated in Patient Advisory Board (research flag)</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">  Notes on sedentary time and functional mobility:</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">    These are self-reported and typically NOT structured in Clarity.</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">    Flag them for manual/survey screening as noted below.</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">=============================================================*/</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 1. DEMOGRAPHICS: Black/AA, Age 35–80 ─────────────────────────────────────</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>eligible_demographics <span class="kw">AS</span> (</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        p.PAT_ID,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        p.PAT_MRN_ID,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        p.PAT_FIRST_NAME,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        p.PAT_LAST_NAME,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        p.BIRTH_DATE,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        DATEDIFF(<span class="dt">YEAR</span>, p.BIRTH_DATE, GETDATE())</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>            <span class="op">-</span> <span class="cf">CASE</span> <span class="cf">WHEN</span> DATEADD(<span class="dt">YEAR</span>, DATEDIFF(<span class="dt">YEAR</span>, p.BIRTH_DATE, GETDATE()), p.BIRTH_DATE) <span class="op">&gt;</span> GETDATE()</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                   <span class="cf">THEN</span> <span class="dv">1</span> <span class="cf">ELSE</span> <span class="dv">0</span> <span class="cf">END</span>                        <span class="kw">AS</span> AGE_YEARS,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        p.SEX_C,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        zr.NAME                                             <span class="kw">AS</span> RACE_NAME,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        p.PAT_STATUS                                        <span class="co">-- 1 = Alive</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PATIENT p</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> ZC_PATIENT_RACE zpr  <span class="kw">ON</span> zpr.PAT_ID <span class="op">=</span> p.PAT_ID</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> ZC_RACE          zr  <span class="kw">ON</span> zr.RACE_C  <span class="op">=</span> zpr.RACE_C</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        zr.NAME <span class="kw">IN</span> (</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Black or African American'</span>,</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Black/African American'</span>,</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">'African American'</span>          <span class="co">-- varies by site mapping</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> DATEDIFF(<span class="dt">YEAR</span>, p.BIRTH_DATE, GETDATE())</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>            <span class="op">-</span> <span class="cf">CASE</span> <span class="cf">WHEN</span> DATEADD(<span class="dt">YEAR</span>, DATEDIFF(<span class="dt">YEAR</span>, p.BIRTH_DATE, GETDATE()), p.BIRTH_DATE) <span class="op">&gt;</span> GETDATE()</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>                   <span class="cf">THEN</span> <span class="dv">1</span> <span class="cf">ELSE</span> <span class="dv">0</span> <span class="cf">END</span>  <span class="kw">BETWEEN</span> <span class="dv">35</span> <span class="kw">AND</span> <span class="dv">80</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> p.PAT_STATUS <span class="op">=</span> <span class="dv">1</span>           <span class="co">-- living patients only</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 2. TELEPHONE ON FILE ──────────────────────────────────────────────────────</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>has_phone <span class="kw">AS</span> (</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> PAT_ID</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PAT_PHONE</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> PHONE_TYPE_C <span class="kw">IN</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)    <span class="co">-- Home=1, Work=2, Mobile=3; verify your site's ZC_PHONE_TYPE</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> PHONE_NUM <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> PHONE_NUM <span class="op">&lt;&gt;</span> <span class="st">''</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 3. CKD STAGE 1–4 ─────────────────────────────────────────────────────────</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">-- Primary approach: most recent eGFR lab value</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">--   CKD Stage 1: eGFR ≥90 (requires albuminuria/structural marker — see note)</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">--   CKD Stage 2: eGFR 60–89</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co">--   CKD Stage 3a: 45–59  | Stage 3b: 30–44</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co">--   CKD Stage 4: 15–29</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="co">--   CKD Stage 5/ESRD: &lt;15 → EXCLUDE</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co">--</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="co">-- Secondary approach: active problem list CKD ICD-10 codes (see codebook below)</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="co">--</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="co">-- </span><span class="al">NOTE</span><span class="co">: Stage 1 without a documented CKD Dx code is hard to distinguish from</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="co">--       normal renal function purely from eGFR. Consider requiring a CKD Dx.</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>ckd_egfr <span class="kw">AS</span> (</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>        r.PAT_ID,</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>        r.RESULT_TIME,</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        TRY_CAST(r.ORD_VALUE <span class="kw">AS</span> <span class="dt">FLOAT</span>)  <span class="kw">AS</span> EGFR_VALUE,</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ROW_NUMBER</span>() <span class="kw">OVER</span> (</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>            <span class="kw">PARTITION</span> <span class="kw">BY</span> r.PAT_ID</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>            <span class="kw">ORDER</span> <span class="kw">BY</span> r.RESULT_TIME <span class="kw">DESC</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        )                               <span class="kw">AS</span> RN</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> ORDER_RESULTS r</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> CLARITY_COMPONENT cc</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> cc.COMPONENT_ID <span class="op">=</span> r.COMPONENT_ID</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>        <span class="co">-- Common LOINC codes for eGFR (CKD-EPI, MDRD variants)</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>        cc.LNC_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>            <span class="st">'33914-3'</span>,   <span class="co">-- eGFR MDRD</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>            <span class="st">'50044-7'</span>,   <span class="co">-- eGFR CKD-EPI (Females)</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>            <span class="st">'48642-3'</span>,   <span class="co">-- eGFR non-Black MDRD</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>            <span class="st">'48643-1'</span>,   <span class="co">-- eGFR Black MDRD</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>            <span class="st">'62238-1'</span>,   <span class="co">-- eGFR CKD-EPI 2009</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>            <span class="st">'98979-8'</span>    <span class="co">-- eGFR CKD-EPI 2021 (race-free)</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> r.RESULT_STATUS_C <span class="op">=</span> <span class="dv">3</span>       <span class="co">-- Final result</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> TRY_CAST(r.ORD_VALUE <span class="kw">AS</span> <span class="dt">FLOAT</span>) <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>ckd_stage <span class="kw">AS</span> (</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>        PAT_ID,</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>        EGFR_VALUE,</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>        <span class="cf">CASE</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> EGFR_VALUE <span class="op">&gt;=</span> <span class="dv">90</span> <span class="cf">THEN</span> <span class="st">'Stage 1 (eGFR only — confirm Dx)'</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> EGFR_VALUE <span class="kw">BETWEEN</span> <span class="dv">60</span> <span class="kw">AND</span> <span class="fl">89.9</span> <span class="cf">THEN</span> <span class="st">'Stage 2'</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> EGFR_VALUE <span class="kw">BETWEEN</span> <span class="dv">45</span> <span class="kw">AND</span> <span class="fl">59.9</span> <span class="cf">THEN</span> <span class="st">'Stage 3a'</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> EGFR_VALUE <span class="kw">BETWEEN</span> <span class="dv">30</span> <span class="kw">AND</span> <span class="fl">44.9</span> <span class="cf">THEN</span> <span class="st">'Stage 3b'</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> EGFR_VALUE <span class="kw">BETWEEN</span> <span class="dv">15</span> <span class="kw">AND</span> <span class="fl">29.9</span> <span class="cf">THEN</span> <span class="st">'Stage 4'</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>            <span class="cf">WHEN</span> EGFR_VALUE <span class="op">&lt;</span> <span class="dv">15</span>              <span class="cf">THEN</span> <span class="st">'Stage 5/ESRD — EXCLUDE'</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>        <span class="cf">END</span>                             <span class="kw">AS</span> CKD_STAGE_LABEL,</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>        RESULT_TIME                     <span class="kw">AS</span> EGFR_DATE</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> ckd_egfr</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> RN <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="co">-- CKD confirmed via active problem list (belt-and-suspenders)</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>ckd_dx <span class="kw">AS</span> (</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> pl.PAT_ID</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST pl</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> CL_ICD10_PX icd <span class="kw">ON</span> icd.CODE <span class="op">=</span> pl.ICD10_CODE</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>        pl.PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span>             <span class="co">-- Active</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> pl.ICD10_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>            <span class="co">-- CKD Stage 1–4 ICD-10 codes</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>            <span class="st">'N18.1'</span>,<span class="st">'N18.2'</span>,<span class="st">'N18.30'</span>,<span class="st">'N18.31'</span>,<span class="st">'N18.32'</span>,<span class="st">'N18.4'</span>,</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>            <span class="co">-- Diabetic CKD Stage 1–4</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>            <span class="st">'E11.21'</span>,<span class="st">'E11.22'</span>,<span class="st">'E10.21'</span>,<span class="st">'E10.22'</span>,</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>            <span class="co">-- Hypertensive CKD Stage 1–4</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>            <span class="st">'I12.9'</span>,<span class="st">'I13.10'</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 4. EXCLUSION: Kidney Transplant ──────────────────────────────────────────</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>transplant_excl <span class="kw">AS</span> (</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> pl.PAT_ID</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST pl</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> pl.PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> pl.ICD10_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>          <span class="st">'Z94.0'</span>,    <span class="co">-- Kidney transplant status</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>          <span class="st">'T86.10'</span>,<span class="st">'T86.11'</span>,<span class="st">'T86.12'</span>,<span class="st">'T86.13'</span>,<span class="st">'T86.19'</span>  <span class="co">-- Transplant complications</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>    <span class="kw">UNION</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- Also check surgical history</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> sh.PAT_ID</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> HSP_ACCT_PX_LIST sh</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> sh.PX_ID <span class="kw">IN</span> (</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>        <span class="kw">SELECT</span> PX_ID <span class="kw">FROM</span> CL_PX</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> PX_CODE <span class="kw">IN</span> (<span class="st">'50360'</span>,<span class="st">'50365'</span>,<span class="st">'50370'</span>,<span class="st">'50380'</span>)  <span class="co">-- CPT: kidney transplant</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 5. EXCLUSION: Lower-Extremity Amputation ─────────────────────────────────</span></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>amputation_excl <span class="kw">AS</span> (</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> PAT_ID</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> ICD10_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- AKA (above-knee)</span></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>          <span class="st">'Z89.611'</span>,<span class="st">'Z89.612'</span>,<span class="st">'Z89.619'</span>,</span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- BKA (below-knee)</span></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>          <span class="st">'Z89.511'</span>,<span class="st">'Z89.512'</span>,<span class="st">'Z89.519'</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- </span><span class="al">NOTE</span><span class="co">: Prosthetic use is NOT structured in Clarity; manual chart review needed</span></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 6. EXCLUSION: Orthostatic Hypotension ────────────────────────────────────</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>ortho_htn_excl <span class="kw">AS</span> (</span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> PAT_ID</span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST</span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> ICD10_CODE <span class="kw">IN</span> (<span class="st">'I95.1'</span>, <span class="st">'I95.0'</span>, <span class="st">'I95.8'</span>, <span class="st">'I95.9'</span>)</span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 7. EXCLUSION: Unstable CAD / Angina ──────────────────────────────────────</span></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>unstable_cad_excl <span class="kw">AS</span> (</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> PAT_ID</span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST</span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> ICD10_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>          <span class="st">'I20.0'</span>,    <span class="co">-- Unstable angina</span></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>          <span class="st">'I24.0'</span>,    <span class="co">-- Acute coronary thrombosis (no MI)</span></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>          <span class="st">'I24.8'</span>,<span class="st">'I24.9'</span>  <span class="co">-- Other/unspecified ACS</span></span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 8. EXCLUSION: Severe Cognitive Impairment ────────────────────────────────</span></span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>cognitive_excl <span class="kw">AS</span> (</span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> PAT_ID</span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST</span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> ICD10_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>          <span class="st">'F01.51'</span>,<span class="st">'F01.50'</span>,   <span class="co">-- Vascular dementia</span></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>          <span class="st">'F02.80'</span>,<span class="st">'F02.81'</span>,   <span class="co">-- Dementia in other diseases</span></span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>          <span class="st">'F03.90'</span>,<span class="st">'F03.91'</span>,   <span class="co">-- Unspecified dementia</span></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>          <span class="st">'G30.0'</span>,<span class="st">'G30.1'</span>,<span class="st">'G30.8'</span>,<span class="st">'G30.9'</span>,  <span class="co">-- Alzheimer's</span></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a>          <span class="st">'G31.09'</span>,            <span class="co">-- Frontotemporal dementia</span></span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>          <span class="st">'F10.27'</span>,<span class="st">'F10.97'</span>    <span class="co">-- Alcohol-related dementia</span></span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 9. EXCLUSION: Relevant Neurologic/Psychiatric Conditions ─────────────────</span></span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a>neuro_psych_excl <span class="kw">AS</span> (</span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> PAT_ID</span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST</span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> ICD10_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- Parkinson's</span></span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>          <span class="st">'G20'</span>,<span class="st">'G21.11'</span>,<span class="st">'G21.19'</span>,</span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- ALS</span></span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>          <span class="st">'G12.21'</span>,</span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- Severe schizophrenia/psychosis flags</span></span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a>          <span class="st">'F20.0'</span>,<span class="st">'F20.1'</span>,<span class="st">'F20.2'</span>,<span class="st">'F20.3'</span>,<span class="st">'F20.5'</span>,<span class="st">'F20.9'</span>,</span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- Active mania/psychotic bipolar</span></span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a>          <span class="st">'F31.2'</span>,<span class="st">'F31.5'</span></span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── 10. EXCLUSION: Orthopedic Preclusion ─────────────────────────────────────</span></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a>orthopedic_excl <span class="kw">AS</span> (</span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> PAT_ID</span>
+<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> PROBLEM_LIST</span>
+<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> PROBLEM_STATUS_C <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a>      <span class="kw">AND</span> ICD10_CODE <span class="kw">IN</span> (</span>
+<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a>          <span class="st">'M96.0'</span>,    <span class="co">-- Pseudarthrosis post-fusion (spinal)</span></span>
+<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a>          <span class="st">'M43.00'</span>,   <span class="co">-- Spondylolysis</span></span>
+<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a>          <span class="st">'M48.06'</span>,   <span class="co">-- Spinal stenosis lumbar</span></span>
+<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a>          <span class="st">'M47.816'</span>,  <span class="co">-- Spondylosis w/ radiculopathy, lumbar</span></span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- Severe hip/knee OA with functional limitation</span></span>
+<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a>          <span class="st">'M16.0'</span>,<span class="st">'M16.10'</span>,<span class="st">'M16.11'</span>,<span class="st">'M16.12'</span>,  <span class="co">-- Primary OA hip</span></span>
+<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a>          <span class="st">'M17.0'</span>,<span class="st">'M17.10'</span>,<span class="st">'M17.11'</span>,<span class="st">'M17.12'</span>   <span class="co">-- Primary OA knee</span></span>
+<span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a>          <span class="co">-- ⚠ Expand per clinical judgment; not exhaustive</span></span>
+<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a><span class="co">-- ── FINAL ASSEMBLY ─────────────────────────────────────────────────────────--</span></span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a>final_cohort <span class="kw">AS</span> (</span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a>        d.PAT_ID,</span>
+<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a>        d.PAT_MRN_ID,</span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a>        d.PAT_FIRST_NAME,</span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a>        d.PAT_LAST_NAME,</span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>        d.BIRTH_DATE,</span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a>        d.AGE_YEARS,</span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a>        d.RACE_NAME,</span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a>        cs.EGFR_VALUE,</span>
+<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a>        cs.CKD_STAGE_LABEL,</span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a>        cs.EGFR_DATE,</span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a>        <span class="co">-- Flag for manual screening items (not structured in Clarity)</span></span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span> <span class="kw">AS</span> NEEDS_SURVEY_SEDENTARY_TIME,   <span class="co">-- Self-report: ≥6 hrs/day sedentary</span></span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span> <span class="kw">AS</span> NEEDS_SURVEY_MOBILITY,          <span class="co">-- Self-report: able to walk 1 block, stand unassisted</span></span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span> <span class="kw">AS</span> NEEDS_SURVEY_ASSISTIVE_DEVICE,  <span class="co">-- Self-report: no wheelchair/walker/cane dependency</span></span>
+<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span> <span class="kw">AS</span> NEEDS_CHART_REVIEW_PAB          <span class="co">-- Confirm not in Patient Advisory Board</span></span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> eligible_demographics d</span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>    <span class="kw">INNER</span> <span class="kw">JOIN</span> has_phone            hp  <span class="kw">ON</span> hp.PAT_ID <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- Require CKD eGFR 15–89 OR confirmed CKD Dx on problem list</span></span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a>    <span class="kw">INNER</span> <span class="kw">JOIN</span> ckd_stage            cs  <span class="kw">ON</span> cs.PAT_ID <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a>                                       <span class="kw">AND</span> cs.EGFR_VALUE <span class="kw">BETWEEN</span> <span class="dv">15</span> <span class="kw">AND</span> <span class="fl">89.9</span></span>
+<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- CKD Dx belt-and-suspenders (optional: use INNER JOIN to require both)</span></span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- INNER JOIN ckd_dx            cd  ON cd.PAT_ID = d.PAT_ID</span></span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- Exclusions</span></span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span>  <span class="kw">JOIN</span> transplant_excl      tx  <span class="kw">ON</span> tx.PAT_ID  <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span>  <span class="kw">JOIN</span> amputation_excl      ax  <span class="kw">ON</span> ax.PAT_ID  <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span>  <span class="kw">JOIN</span> ortho_htn_excl       ox  <span class="kw">ON</span> ox.PAT_ID  <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span>  <span class="kw">JOIN</span> unstable_cad_excl    cx  <span class="kw">ON</span> cx.PAT_ID  <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span>  <span class="kw">JOIN</span> cognitive_excl       cog <span class="kw">ON</span> cog.PAT_ID <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span>  <span class="kw">JOIN</span> neuro_psych_excl     np  <span class="kw">ON</span> np.PAT_ID  <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span>  <span class="kw">JOIN</span> orthopedic_excl      oe  <span class="kw">ON</span> oe.PAT_ID  <span class="op">=</span> d.PAT_ID</span>
+<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span></span>
+<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a>        tx.PAT_ID  <span class="kw">IS</span> <span class="kw">NULL</span>   <span class="co">-- no transplant</span></span>
+<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> ax.PAT_ID  <span class="kw">IS</span> <span class="kw">NULL</span>   <span class="co">-- no AKA/BKA</span></span>
+<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> ox.PAT_ID  <span class="kw">IS</span> <span class="kw">NULL</span>   <span class="co">-- no orthostatic hypotension</span></span>
+<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> cx.PAT_ID  <span class="kw">IS</span> <span class="kw">NULL</span>   <span class="co">-- no unstable CAD</span></span>
+<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> cog.PAT_ID <span class="kw">IS</span> <span class="kw">NULL</span>   <span class="co">-- no severe cognitive impairment</span></span>
+<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> np.PAT_ID  <span class="kw">IS</span> <span class="kw">NULL</span>   <span class="co">-- no preclusive neuro/psych Dx</span></span>
+<span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> oe.PAT_ID  <span class="kw">IS</span> <span class="kw">NULL</span>   <span class="co">-- no preclusive orthopedic Dx</span></span>
+<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> final_cohort</span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> AGE_YEARS, PAT_MRN_ID;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PATIENT.PAT_ID</code></td>
+<td>VARCHAR — Epic internal unique patient identifier (primary key across most patient-centric tables).</td>
+</tr>
+<tr class="even">
+<td><code>PATIENT.PAT_MRN_ID</code></td>
+<td>VARCHAR — Medical Record Number; the human-facing patient identifier used in clinical workflows.</td>
+</tr>
+<tr class="odd">
+<td><code>PATIENT.PAT_FIRST_NAME</code></td>
+<td>VARCHAR — Patient’s legal first name.</td>
+</tr>
+<tr class="even">
+<td><code>PATIENT.PAT_LAST_NAME</code></td>
+<td>VARCHAR — Patient’s legal last name.</td>
+</tr>
+<tr class="odd">
+<td><code>PATIENT.BIRTH_DATE</code></td>
+<td>DATE — Patient date of birth; used to derive <code>AGE_YEARS</code>.</td>
+</tr>
+<tr class="even">
+<td><code>PATIENT.PAT_STATUS</code></td>
+<td>INT (category) — Vital status. <code>1</code> = Living; <code>2</code> = Deceased. Sourced from <code>ZC_PAT_STATUS</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>ZC_PATIENT_RACE.PAT_ID</code></td>
+<td>VARCHAR — Foreign key linking patient to their race record(s); supports multi-race entries (one row per race).</td>
+</tr>
+<tr class="even">
+<td><code>ZC_RACE.RACE_C</code></td>
+<td>INT (category) — Numeric race category code. Joins to <code>ZC_PATIENT_RACE</code> and <code>ZC_RACE</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>ZC_RACE.NAME</code></td>
+<td>VARCHAR — Display name of the race category (e.g., <code>'Black or African American'</code>). Site-specific string values; validate against your local ZC_RACE table.</td>
+</tr>
+<tr class="even">
+<td><code>PAT_PHONE.PHONE_TYPE_C</code></td>
+<td>INT (category) — Phone type code. Typical values: <code>1</code> = Home, <code>2</code> = Work, <code>3</code> = Mobile. Confirm mapping in <code>ZC_PHONE_TYPE</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>PAT_PHONE.PHONE_NUM</code></td>
+<td>VARCHAR — Stored phone number string; used to confirm telephone access.</td>
+</tr>
+<tr class="even">
+<td><code>ORDER_RESULTS.COMPONENT_ID</code></td>
+<td>INT — Links lab result row to the specific analyte (e.g., eGFR). Joins to <code>CLARITY_COMPONENT</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>ORDER_RESULTS.ORD_VALUE</code></td>
+<td>VARCHAR — Raw result value as entered/reported (must be cast to FLOAT for numeric comparison).</td>
+</tr>
+<tr class="even">
+<td><code>ORDER_RESULTS.RESULT_TIME</code></td>
+<td>DATETIME — Timestamp when the lab result was resulted/verified. Used to identify the most recent eGFR.</td>
+</tr>
+<tr class="odd">
+<td><code>ORDER_RESULTS.RESULT_STATUS_C</code></td>
+<td>INT (category) — Result status. <code>3</code> = Final; <code>1</code> = Preliminary. Always filter to Final (<code>3</code>) for clinical use.</td>
+</tr>
+<tr class="even">
+<td><code>CLARITY_COMPONENT.LNC_CODE</code></td>
+<td>VARCHAR — LOINC code for the lab component. Used to identify eGFR-specific assays (e.g., <code>'62238-1'</code> = CKD-EPI eGFR).</td>
+</tr>
+<tr class="odd">
+<td><code>PROBLEM_LIST.PAT_ID</code></td>
+<td>VARCHAR — Foreign key to <code>PATIENT</code>; links diagnoses to a patient.</td>
+</tr>
+<tr class="even">
+<td><code>PROBLEM_LIST.ICD10_CODE</code></td>
+<td>VARCHAR — ICD-10-CM diagnosis code on the problem list (e.g., <code>'N18.3'</code> = CKD Stage 3).</td>
+</tr>
+<tr class="odd">
+<td><code>PROBLEM_LIST.PROBLEM_STATUS_C</code></td>
+<td>INT (category) — Problem list entry status. <code>1</code> = Active; <code>2</code> = Resolved; <code>3</code> = Deleted. Filter to <code>1</code> for active conditions.</td>
+</tr>
+<tr class="even">
+<td><code>HSP_ACCT_PX_LIST.PX_ID</code></td>
+<td>INT — Foreign key to <code>CL_PX</code>; identifies a procedure performed during a hospital account. Used to detect transplant CPT codes.</td>
+</tr>
+<tr class="odd">
+<td><code>CL_PX.PX_CODE</code></td>
+<td>VARCHAR — CPT or ICD procedure code. Used to identify kidney transplant procedures (e.g., <code>'50360'</code>).</td>
+</tr>
+<tr class="even">
+<td><code>EGFR_VALUE</code> <em>(derived)</em></td>
+<td>FLOAT — Most recent eGFR result cast from <code>ORD_VALUE</code>. CKD stages mapped: Stage 1 ≥90, Stage 2 = 60–89, Stage 3a = 45–59, Stage 3b = 30–44, Stage 4 = 15–29, Stage 5 &lt;15.</td>
+</tr>
+<tr class="odd">
+<td><code>CKD_STAGE_LABEL</code> <em>(derived)</em></td>
+<td>VARCHAR — Human-readable CKD stage label derived from eGFR value. For screening classification only.</td>
+</tr>
+<tr class="even">
+<td><code>AGE_YEARS</code> <em>(derived)</em></td>
+<td>INT — Calculated age in years as of query run date using <code>BIRTH_DATE</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>NEEDS_SURVEY_*</code> <em>(derived flags)</em></td>
+<td>BIT (1) — Placeholder flags indicating criteria that <strong>cannot be ascertained from Clarity</strong> and require patient self-report (sedentary time, functional mobility, assistive device use) or manual chart/registry review (PAB participation).</td>
+</tr>
+</tbody>
+</table>
+<section id="important-caveats" class="level3">
+<h3 class="anchored" data-anchor-id="important-caveats">⚠️ Important Caveats</h3>
+<ol type="1">
+<li><p><strong>Sedentary time (≥6 hrs/day)</strong> is self-reported and has no structured Clarity field. It must be collected via screening survey or REDCap instrument.</p></li>
+<li><p><strong>Functional mobility</strong> (ability to walk a block, stand unassisted, assistive device use) is similarly self-reported and inconsistently coded in Clarity. Social history free text (<code>SOCIAL_HX</code>) or flowsheet rows may have partial data, but manual screening is the reliable approach.</p></li>
+<li><p><strong>Patient Advisory Board participation</strong> is not a standard Clarity field. Check your institution’s research registry (OnCore, REDCap, or a custom research table) for this exclusion.</p></li>
+<li><p><strong>Race coding</strong> is site-dependent. Run <code>SELECT DISTINCT NAME FROM ZC_RACE</code> to confirm the exact string(s) used at your institution before deploying.</p></li>
+<li><p><strong>eGFR Stage 1</strong> (≥90) without an explicit CKD diagnosis on the problem list is indistinguishable from normal renal function by eGFR alone. Consider requiring a corroborating <code>N18.1</code> ICD-10 code or albuminuria documentation.</p></li>
+</ol>
+</section>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p><strong>Prompt:</strong> [R TK]</p>
 <p><strong>Response:</strong></p>
 <pre class="{r}"><code>#| eval: false
@@ -244,6 +684,7 @@ Important
 </div>
 </div>
 <hr>
+</section>
 </section>
 <section id="additional-hands-on-exercises" class="level2">
 <h2 class="anchored" data-anchor-id="additional-hands-on-exercises">Additional Hands-On Exercises</h2>
@@ -290,130 +731,130 @@ Important
 <p>days_of_life - age in days. Numeric. Range: 1207-32356. 1 missing value. plt - Platelet Count. Numeric. Range: 11-1114. 4 missing values. mpv - Mean Platelet Volume. Numeric. Range: 5.3-13.5. 21 missing values. un - Blood Urea Nitrogen. Numeric. Range: 2-118. 53 missing values. wbc - White Blood Cell Count. Numeric. Range: 0.7-33.5. No missing values. hgb - Hemoglobin. Numeric. Range: 4.5-18.6. 4 missing values. hct Hematocrit. Numeric. Range: 13.7-55.2. 3 missing values. rbc - Red Blood Cell Count. Numeric. Range: 1.57-7.04. 3 missing values. mcv - Mean Corpuscular (RBC) Volume. Numeric. Range: 56.5-124. 3 missing values. mch - Mean Corpuscular (RBC) Hemoglobin. Numeric. Range: 16.7-42.3. 7 missing values. mchc - Mean Corpuscular (RBC) Hemoglobin per Cell. Numeric. Range: 28.2-38.0. 7 missing values. rdw - Red cell Distribution Width. Numeric. Range: 11.3-39.7. 3 missing values. neut_percent - Percent of Neutrophils in WBC count. Numeric. Range: 17-98.1. No missing values. lymph_percent - Percent of Lymphocytes in WBC count. Numeric. Range: 1-67.9. No missing values. mono_percent - Percent of Monocytes in WBC count. Numeric. Range: 0-30.3. No missing values. eos_percent - Percent of Eosinophils in WBC count. Numeric. Range: 0.5-29.3. 6 missing values. baso_percent - Percent of Basoophils in WBC count. Numeric. Range: 0.2-5.3. 6 missing values. sod - Sodium. Numeric. Range: 116-151. No missing values. pot - Potassium. Numeric. Range: 2.6-10.1. 1 missing value. chlor - Chloride. Numeric. Range: 83-126. No missing values. co2 - Bicarbonate (CO2). Numeric. Range: 12-40. 5 missing values. creat - Creatinine. Numeric. Range: 0.2-8.4. No missing values. gluc - Glucose. Numeric. Range: 41-486. No missing values. cal - Calcium. Numeric. Range: 6.5-11.8. 1 missing value. prot - Protein. Numeric, range 2.9-10, 0 missing values alb - Albumin. Numeric, range 1.2-5.5, 0 missing values ast - Aspartate Transaminase. Numeric, range 5-7765, 0 missing values alt - Alanine Transaminase. Numeric, range 1-10666, 18 missing values alk - Alkaline phosphatase. Numeric, range 13-1938, 0 missing values tbil - Total Bilirubin. Numeric, range 0.09-27, 0 missing values active - Active Inflammation despite Thiopurines for &gt; 12 weeks. Numeric, range 0-1, 0 missing values remission - Remission of Inflammation after Thiopurines for &gt; 12 weeks. Numeric, range 0-1, 0 missing values</p>
 <p><strong>Response:</strong></p>
 <p>Here’s a complete script using Polars and scikit-learn to predict remission status:</p>
-<div id="710b3308" class="cell" data-execution_count="2">
+<div id="953306b8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier, GradientBoostingClassifier</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> StratifiedKFold, cross_validate</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> (</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    classification_report, roc_auc_score, average_precision_score,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    make_scorer, f1_score</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 1. Load data ──────────────────────────────────────────────────────────────</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(<span class="st">"your_data.csv"</span>)          <span class="co"># ← adjust path / format as needed</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 2. Define features &amp; target ───────────────────────────────────────────────</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>TARGET <span class="op">=</span> <span class="st">"remission"</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>FEATURES <span class="op">=</span> [</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"days_of_life"</span>, <span class="st">"plt"</span>, <span class="st">"mpv"</span>, <span class="st">"un"</span>, <span class="st">"wbc"</span>, <span class="st">"hgb"</span>, <span class="st">"hct"</span>, <span class="st">"rbc"</span>,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mcv"</span>, <span class="st">"mch"</span>, <span class="st">"mchc"</span>, <span class="st">"rdw"</span>,</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"neut_percent"</span>, <span class="st">"lymph_percent"</span>, <span class="st">"mono_percent"</span>, <span class="st">"eos_percent"</span>, <span class="st">"baso_percent"</span>,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sod"</span>, <span class="st">"pot"</span>, <span class="st">"chlor"</span>, <span class="st">"co2"</span>, <span class="st">"creat"</span>, <span class="st">"gluc"</span>, <span class="st">"cal"</span>,</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"prot"</span>, <span class="st">"alb"</span>, <span class="st">"ast"</span>, <span class="st">"alt"</span>, <span class="st">"alk"</span>, <span class="st">"tbil"</span>,</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"active"</span>,        <span class="co"># clinical flag — strong prior candidate</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 3. Polars preprocessing ───────────────────────────────────────────────────</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Log-transform right-skewed lab values to reduce outlier influence</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>skewed <span class="op">=</span> [<span class="st">"ast"</span>, <span class="st">"alt"</span>, <span class="st">"alk"</span>, <span class="st">"tbil"</span>, <span class="st">"gluc"</span>, <span class="st">"wbc"</span>, <span class="st">"plt"</span>, <span class="st">"un"</span>, <span class="st">"creat"</span>]</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns([</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    pl.col(c).log1p().alias(c) <span class="cf">for</span> c <span class="kw">in</span> skewed <span class="cf">if</span> c <span class="kw">in</span> df.columns</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract numpy arrays (Polars → numpy for sklearn)</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.select(FEATURES).to_numpy().astype(np.float64)</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[TARGET].to_numpy().astype(<span class="bu">int</span>)</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dataset shape : </span><span class="sc">{</span>X<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Class balance : </span><span class="sc">{</span>np<span class="sc">.</span>bincount(y)<span class="sc">}</span><span class="ss"> (0=no remission, 1=remission)"</span>)</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 4. Build pipelines ────────────────────────────────────────────────────────</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Median imputation handles the missing values described above; scaler for LR</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>imputer  <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">"median"</span>)</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>scaler   <span class="op">=</span> StandardScaler()</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>pipelines <span class="op">=</span> {</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic Regression"</span>: Pipeline([</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, imputer),</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"scale"</span>,  scaler),</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"clf"</span>,    LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, class_weight<span class="op">=</span><span class="st">"balanced"</span>,</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>                                      C<span class="op">=</span><span class="fl">0.1</span>, solver<span class="op">=</span><span class="st">"lbfgs"</span>)),</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    ]),</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Random Forest"</span>: Pipeline([</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, imputer),</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"clf"</span>,    RandomForestClassifier(</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>            n_estimators<span class="op">=</span><span class="dv">500</span>, max_features<span class="op">=</span><span class="st">"sqrt"</span>,</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>            class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs<span class="op">=-</span><span class="dv">1</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        )),</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>    ]),</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gradient Boosting"</span>: Pipeline([</span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, imputer),</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"clf"</span>,    GradientBoostingClassifier(</span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>            n_estimators<span class="op">=</span><span class="dv">300</span>, learning_rate<span class="op">=</span><span class="fl">0.05</span>,</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>            max_depth<span class="op">=</span><span class="dv">3</span>, subsample<span class="op">=</span><span class="fl">0.8</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>        )),</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>    ]),</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 5. Cross-validation ───────────────────────────────────────────────────────</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> StratifiedKFold(n_splits<span class="op">=</span><span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>scorers <span class="op">=</span> {</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>    <span class="st">"roc_auc"</span>  : <span class="st">"roc_auc"</span>,</span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="st">"avg_prec"</span> : <span class="st">"average_precision"</span>,</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    <span class="st">"f1"</span>       : make_scorer(f1_score, zero_division<span class="op">=</span><span class="dv">0</span>),</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">"accuracy"</span> : <span class="st">"accuracy"</span>,</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> {}</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, pipe <span class="kw">in</span> pipelines.items():</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>    cv_res <span class="op">=</span> cross_validate(pipe, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span>scorers,</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>                            return_train_score<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    results[name] <span class="op">=</span> {k: cv_res[<span class="ss">f"test_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">"</span>] <span class="cf">for</span> k <span class="kw">in</span> scorers}</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'─'</span><span class="op">*</span><span class="dv">50</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'─'</span><span class="op">*</span><span class="dv">50</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> metric, vals <span class="kw">in</span> results[name].items():</span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>metric<span class="sc">:&lt;12}</span><span class="ss">  </span><span class="sc">{</span>vals<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">  ±  </span><span class="sc">{</span>vals<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 6. Feature importance (Random Forest) ────────────────────────────────────</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">── Feature Importance (Random Forest) ──"</span>)</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>rf_pipe <span class="op">=</span> pipelines[<span class="st">"Random Forest"</span>]</span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>rf_pipe.fit(X, y)</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf_pipe.named_steps[<span class="st">"clf"</span>].feature_importances_</span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>feat_df <span class="op">=</span> (</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>    pl.DataFrame({<span class="st">"feature"</span>: FEATURES, <span class="st">"importance"</span>: importances})</span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>    .sort(<span class="st">"importance"</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(feat_df)</span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 7. Final model + hold-out evaluation (optional) ──────────────────────────</span></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment if you have a separate test set:</span></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="co"># df_test = pl.read_csv("test_data.csv")</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="co"># X_test  = df_test.select(FEATURES).to_numpy().astype(np.float64)</span></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="co"># y_test  = df_test[TARGET].to_numpy().astype(int)</span></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="co"># best_pipe = pipelines["Random Forest"]   # swap to whichever won CV</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="co"># best_pipe.fit(X, y)</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="co"># y_pred  = best_pipe.predict(X_test)</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="co"># y_prob  = best_pipe.predict_proba(X_test)[:, 1]</span></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="co"># print(classification_report(y_test, y_pred, target_names=["No Remission","Remission"]))</span></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"ROC-AUC : {roc_auc_score(y_test, y_prob):.3f}")</span></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Avg Prec: {average_precision_score(y_test, y_prob):.3f}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier, GradientBoostingClassifier</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> StratifiedKFold, cross_validate</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> (</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    classification_report, roc_auc_score, average_precision_score,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    make_scorer, f1_score</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 1. Load data ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(<span class="st">"your_data.csv"</span>)          <span class="co"># ← adjust path / format as needed</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 2. Define features &amp; target ───────────────────────────────────────────────</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>TARGET <span class="op">=</span> <span class="st">"remission"</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>FEATURES <span class="op">=</span> [</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"days_of_life"</span>, <span class="st">"plt"</span>, <span class="st">"mpv"</span>, <span class="st">"un"</span>, <span class="st">"wbc"</span>, <span class="st">"hgb"</span>, <span class="st">"hct"</span>, <span class="st">"rbc"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mcv"</span>, <span class="st">"mch"</span>, <span class="st">"mchc"</span>, <span class="st">"rdw"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"neut_percent"</span>, <span class="st">"lymph_percent"</span>, <span class="st">"mono_percent"</span>, <span class="st">"eos_percent"</span>, <span class="st">"baso_percent"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sod"</span>, <span class="st">"pot"</span>, <span class="st">"chlor"</span>, <span class="st">"co2"</span>, <span class="st">"creat"</span>, <span class="st">"gluc"</span>, <span class="st">"cal"</span>,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"prot"</span>, <span class="st">"alb"</span>, <span class="st">"ast"</span>, <span class="st">"alt"</span>, <span class="st">"alk"</span>, <span class="st">"tbil"</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"active"</span>,        <span class="co"># clinical flag — strong prior candidate</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 3. Polars preprocessing ───────────────────────────────────────────────────</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Log-transform right-skewed lab values to reduce outlier influence</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>skewed <span class="op">=</span> [<span class="st">"ast"</span>, <span class="st">"alt"</span>, <span class="st">"alk"</span>, <span class="st">"tbil"</span>, <span class="st">"gluc"</span>, <span class="st">"wbc"</span>, <span class="st">"plt"</span>, <span class="st">"un"</span>, <span class="st">"creat"</span>]</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns([</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    pl.col(c).log1p().alias(c) <span class="cf">for</span> c <span class="kw">in</span> skewed <span class="cf">if</span> c <span class="kw">in</span> df.columns</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract numpy arrays (Polars → numpy for sklearn)</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.select(FEATURES).to_numpy().astype(np.float64)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[TARGET].to_numpy().astype(<span class="bu">int</span>)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dataset shape : </span><span class="sc">{</span>X<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Class balance : </span><span class="sc">{</span>np<span class="sc">.</span>bincount(y)<span class="sc">}</span><span class="ss"> (0=no remission, 1=remission)"</span>)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 4. Build pipelines ────────────────────────────────────────────────────────</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Median imputation handles the missing values described above; scaler for LR</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>imputer  <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">"median"</span>)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>scaler   <span class="op">=</span> StandardScaler()</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>pipelines <span class="op">=</span> {</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic Regression"</span>: Pipeline([</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, imputer),</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"scale"</span>,  scaler),</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"clf"</span>,    LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>, class_weight<span class="op">=</span><span class="st">"balanced"</span>,</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>                                      C<span class="op">=</span><span class="fl">0.1</span>, solver<span class="op">=</span><span class="st">"lbfgs"</span>)),</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    ]),</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Random Forest"</span>: Pipeline([</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, imputer),</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"clf"</span>,    RandomForestClassifier(</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>            n_estimators<span class="op">=</span><span class="dv">500</span>, max_features<span class="op">=</span><span class="st">"sqrt"</span>,</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>            class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs<span class="op">=-</span><span class="dv">1</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>        )),</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>    ]),</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gradient Boosting"</span>: Pipeline([</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, imputer),</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"clf"</span>,    GradientBoostingClassifier(</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>            n_estimators<span class="op">=</span><span class="dv">300</span>, learning_rate<span class="op">=</span><span class="fl">0.05</span>,</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>            max_depth<span class="op">=</span><span class="dv">3</span>, subsample<span class="op">=</span><span class="fl">0.8</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        )),</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>    ]),</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 5. Cross-validation ───────────────────────────────────────────────────────</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> StratifiedKFold(n_splits<span class="op">=</span><span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>scorers <span class="op">=</span> {</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>    <span class="st">"roc_auc"</span>  : <span class="st">"roc_auc"</span>,</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>    <span class="st">"avg_prec"</span> : <span class="st">"average_precision"</span>,</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>    <span class="st">"f1"</span>       : make_scorer(f1_score, zero_division<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">"accuracy"</span> : <span class="st">"accuracy"</span>,</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> {}</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, pipe <span class="kw">in</span> pipelines.items():</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>    cv_res <span class="op">=</span> cross_validate(pipe, X, y, cv<span class="op">=</span>cv, scoring<span class="op">=</span>scorers,</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>                            return_train_score<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>    results[name] <span class="op">=</span> {k: cv_res[<span class="ss">f"test_</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">"</span>] <span class="cf">for</span> k <span class="kw">in</span> scorers}</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'─'</span><span class="op">*</span><span class="dv">50</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'─'</span><span class="op">*</span><span class="dv">50</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> metric, vals <span class="kw">in</span> results[name].items():</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>metric<span class="sc">:&lt;12}</span><span class="ss">  </span><span class="sc">{</span>vals<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">  ±  </span><span class="sc">{</span>vals<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 6. Feature importance (Random Forest) ────────────────────────────────────</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">── Feature Importance (Random Forest) ──"</span>)</span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>rf_pipe <span class="op">=</span> pipelines[<span class="st">"Random Forest"</span>]</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>rf_pipe.fit(X, y)</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf_pipe.named_steps[<span class="st">"clf"</span>].feature_importances_</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>feat_df <span class="op">=</span> (</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    pl.DataFrame({<span class="st">"feature"</span>: FEATURES, <span class="st">"importance"</span>: importances})</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    .sort(<span class="st">"importance"</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(feat_df)</span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 7. Final model + hold-out evaluation (optional) ──────────────────────────</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment if you have a separate test set:</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="co"># df_test = pl.read_csv("test_data.csv")</span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="co"># X_test  = df_test.select(FEATURES).to_numpy().astype(np.float64)</span></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="co"># y_test  = df_test[TARGET].to_numpy().astype(int)</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="co"># best_pipe = pipelines["Random Forest"]   # swap to whichever won CV</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="co"># best_pipe.fit(X, y)</span></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="co"># y_pred  = best_pipe.predict(X_test)</span></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="co"># y_prob  = best_pipe.predict_proba(X_test)[:, 1]</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="co"># print(classification_report(y_test, y_pred, target_names=["No Remission","Remission"]))</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"ROC-AUC : {roc_auc_score(y_test, y_prob):.3f}")</span></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Avg Prec: {average_precision_score(y_test, y_prob):.3f}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p><strong>Key design decisions explained:</strong></p>
@@ -881,150 +1322,150 @@ These represent clearly different patients/records and should be reconciled (tru
 <p><strong>Prompt:</strong> can you show me some python code to clean this data up?</p>
 <p><strong>Response:</strong></p>
 <p>Here’s a well-commented cleaning script that tackles every issue I spotted:</p>
-<div id="b16f9d92" class="cell" data-execution_count="3">
+<div id="4edc69f7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dateutil <span class="im">import</span> parser <span class="im">as</span> dateparser</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 1. Load, skip the 3-row title block, drop the empty column F ──────────────</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"messy_aki.xlsx"</span>, skiprows<span class="op">=</span><span class="dv">4</span>, header<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[df.columns[<span class="dv">5</span>]])          <span class="co"># unnamed empty column between Hispanic and Admission GFR</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(how<span class="op">=</span><span class="st">"all"</span>)                       <span class="co"># drop fully-empty rows (incl. footer notes)</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 2. Standardise column names ───────────────────────────────────────────────</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"study_id"</span>, <span class="st">"dob"</span>, <span class="st">"race"</span>, <span class="st">"sex"</span>, <span class="st">"hispanic"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gfr_admission"</span>, <span class="st">"gfr_day1"</span>, <span class="st">"gfr_day2"</span>, <span class="st">"gfr_day3"</span>, <span class="st">"gfr_day4"</span>, <span class="st">"gfr_day5"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"diagnosis"</span>, <span class="st">"sediment"</span>, <span class="st">"hd_catheter"</span>, <span class="st">"av_fistula"</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 3. Duplicate / invalid study IDs ─────────────────────────────────────────</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># IDs 3 and 8 appear twice; IDs 9, 10, 18 are missing entirely.</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag duplicates so you can review — don't silently drop them.</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"duplicate_id_flag"</span>] <span class="op">=</span> df.duplicated(subset<span class="op">=</span><span class="st">"study_id"</span>, keep<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 4. Parse dates of birth ───────────────────────────────────────────────────</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_dob(val):</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.NaT</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(val, pd.Timestamp):</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> val</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Handle obvious typo like "5=11-1984"</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> <span class="bu">str</span>(val).replace(<span class="st">"="</span>, <span class="st">"-"</span>)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dateparser.parse(val, dayfirst<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.NaT</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"dob"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"dob"</span>].<span class="bu">apply</span>(parse_dob), errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 5. Standardise race ───────────────────────────────────────────────────────</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>race_map <span class="op">=</span> {</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"caucasian"</span>: <span class="st">"White"</span>,</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"white"</span>:     <span class="st">"White"</span>,</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"af-am"</span>:     <span class="st">"Black"</span>,</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"black"</span>:     <span class="st">"Black"</span>,</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"asian"</span>:     <span class="st">"Asian"</span>,</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mixed"</span>:     <span class="st">"Other"</span>,</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"other"</span>:     <span class="st">"Other"</span>,</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"race"</span>] <span class="op">=</span> (df[<span class="st">"race"</span>]</span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">str</span>.strip()</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">str</span>.lower()</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">map</span>(race_map)</span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>              .fillna(<span class="st">"Unknown"</span>))</span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 6. Standardise sex ────────────────────────────────────────────────────────</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_sex(val):</span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower()</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"male"</span>, <span class="st">"m"</span>):</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Male"</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"female"</span>, <span class="st">"f"</span>):</span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Female"</span></span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"sex"</span>] <span class="op">=</span> df[<span class="st">"sex"</span>].<span class="bu">apply</span>(clean_sex)</span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 7. Standardise hispanic ethnicity ────────────────────────────────────────</span></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_hispanic(val):</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower().replace(<span class="st">" "</span>, <span class="st">""</span>)</span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"hispanic"</span>, <span class="st">"h"</span>, <span class="st">"hispannic"</span>, <span class="st">"hisspanic"</span>):   <span class="co"># typos</span></span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Hispanic"</span></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"nothispanic"</span>, <span class="st">"nh"</span>):</span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Not Hispanic"</span></span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"hispanic"</span>] <span class="op">=</span> df[<span class="st">"hispanic"</span>].<span class="bu">apply</span>(clean_hispanic)</span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 8. Clean GFR columns — coerce text to numeric, flag outliers ──────────────</span></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>gfr_cols <span class="op">=</span> [<span class="st">"gfr_admission"</span>, <span class="st">"gfr_day1"</span>, <span class="st">"gfr_day2"</span>, <span class="st">"gfr_day3"</span>, <span class="st">"gfr_day4"</span>, <span class="st">"gfr_day5"</span>]</span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_numeric(val):</span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pull the first number out of a cell; return NaN if none found."""</span></span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(val)</span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>):</span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>        match <span class="op">=</span> re.search(<span class="vs">r"</span><span class="dv">\d</span><span class="op">+</span><span class="ch">\.</span><span class="op">?</span><span class="dv">\d</span><span class="op">*</span><span class="vs">"</span>, <span class="bu">str</span>(val))</span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(match.group()) <span class="cf">if</span> match <span class="cf">else</span> np.nan</span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> df[col].<span class="bu">apply</span>(extract_numeric)</span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag physiologically implausible GFR values (&gt; 200 are likely data-entry errors)</span></span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>GFR_MAX <span class="op">=</span> <span class="dv">200</span></span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>    flag_col <span class="op">=</span> col <span class="op">+</span> <span class="st">"_outlier_flag"</span></span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>    df[flag_col] <span class="op">=</span> df[col] <span class="op">&gt;</span> GFR_MAX</span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 9. Standardise Yes/No columns ────────────────────────────────────────────</span></span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_yesno(val):</span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
-<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower().replace(<span class="st">"`"</span>, <span class="st">""</span>)   <span class="co"># "No`" typo</span></span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="st">"yes"</span>:</span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Yes"</span></span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="st">"no"</span>:</span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"No"</span></span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"hd_catheter"</span>, <span class="st">"av_fistula"</span>]:</span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> df[col].<span class="bu">apply</span>(clean_yesno)</span>
-<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 10. Standardise sediment free-text (minor normalisation) ─────────────────</span></span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"sediment"</span>] <span class="op">=</span> (df[<span class="st">"sediment"</span>]</span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.strip()</span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.lower()</span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="vs">r"</span><span class="dv">\s</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="st">"epi cell"</span>, <span class="st">"epithelial cell"</span>)</span>
-<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="st">"gran "</span>, <span class="st">"granular "</span>))</span>
-<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 11. Report a cleaning summary ─────────────────────────────────────────────</span></span>
-<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"=== Cleaning summary ==="</span>)</span>
-<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rows: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Duplicate study IDs:</span><span class="ch">\n</span><span class="sc">{</span>df[df[<span class="st">'duplicate_id_flag'</span>]][[<span class="st">'study_id'</span>,<span class="st">'dob'</span>,<span class="st">'diagnosis'</span>]]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Unparseable DOBs: </span><span class="sc">{</span>df[<span class="st">'dob'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">GFR outlier flags:"</span>)</span>
-<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
-<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> df[col <span class="op">+</span> <span class="st">"_outlier_flag"</span>].<span class="bu">sum</span>()</span>
-<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n:</span>
-<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> outlier(s) — </span><span class="sc">{</span>df<span class="sc">.</span>loc[df[col<span class="op">+</span><span class="st">'_outlier_flag'</span>], [<span class="st">'study_id'</span>, col]]<span class="sc">.</span>values<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Sex nulls after cleaning:      </span><span class="sc">{</span>df[<span class="st">'sex'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Hispanic nulls after cleaning: </span><span class="sc">{</span>df[<span class="st">'hispanic'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Race unknowns:                 </span><span class="sc">{</span>(df[<span class="st">'race'</span>]<span class="op">==</span><span class="st">'Unknown'</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 12. Save ──────────────────────────────────────────────────────────────────</span></span>
-<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"aki_clean.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Saved to aki_clean.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dateutil <span class="im">import</span> parser <span class="im">as</span> dateparser</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 1. Load, skip the 3-row title block, drop the empty column F ──────────────</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"messy_aki.xlsx"</span>, skiprows<span class="op">=</span><span class="dv">4</span>, header<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[df.columns[<span class="dv">5</span>]])          <span class="co"># unnamed empty column between Hispanic and Admission GFR</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(how<span class="op">=</span><span class="st">"all"</span>)                       <span class="co"># drop fully-empty rows (incl. footer notes)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 2. Standardise column names ───────────────────────────────────────────────</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"study_id"</span>, <span class="st">"dob"</span>, <span class="st">"race"</span>, <span class="st">"sex"</span>, <span class="st">"hispanic"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gfr_admission"</span>, <span class="st">"gfr_day1"</span>, <span class="st">"gfr_day2"</span>, <span class="st">"gfr_day3"</span>, <span class="st">"gfr_day4"</span>, <span class="st">"gfr_day5"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"diagnosis"</span>, <span class="st">"sediment"</span>, <span class="st">"hd_catheter"</span>, <span class="st">"av_fistula"</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 3. Duplicate / invalid study IDs ─────────────────────────────────────────</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># IDs 3 and 8 appear twice; IDs 9, 10, 18 are missing entirely.</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag duplicates so you can review — don't silently drop them.</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"duplicate_id_flag"</span>] <span class="op">=</span> df.duplicated(subset<span class="op">=</span><span class="st">"study_id"</span>, keep<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 4. Parse dates of birth ───────────────────────────────────────────────────</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_dob(val):</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.NaT</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(val, pd.Timestamp):</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> val</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Handle obvious typo like "5=11-1984"</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> <span class="bu">str</span>(val).replace(<span class="st">"="</span>, <span class="st">"-"</span>)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dateparser.parse(val, dayfirst<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.NaT</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"dob"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"dob"</span>].<span class="bu">apply</span>(parse_dob), errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 5. Standardise race ───────────────────────────────────────────────────────</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>race_map <span class="op">=</span> {</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"caucasian"</span>: <span class="st">"White"</span>,</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"white"</span>:     <span class="st">"White"</span>,</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"af-am"</span>:     <span class="st">"Black"</span>,</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"black"</span>:     <span class="st">"Black"</span>,</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"asian"</span>:     <span class="st">"Asian"</span>,</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mixed"</span>:     <span class="st">"Other"</span>,</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"other"</span>:     <span class="st">"Other"</span>,</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"race"</span>] <span class="op">=</span> (df[<span class="st">"race"</span>]</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">str</span>.strip()</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">str</span>.lower()</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">map</span>(race_map)</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>              .fillna(<span class="st">"Unknown"</span>))</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 6. Standardise sex ────────────────────────────────────────────────────────</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_sex(val):</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower()</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"male"</span>, <span class="st">"m"</span>):</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Male"</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"female"</span>, <span class="st">"f"</span>):</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Female"</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"sex"</span>] <span class="op">=</span> df[<span class="st">"sex"</span>].<span class="bu">apply</span>(clean_sex)</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 7. Standardise hispanic ethnicity ────────────────────────────────────────</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_hispanic(val):</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower().replace(<span class="st">" "</span>, <span class="st">""</span>)</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"hispanic"</span>, <span class="st">"h"</span>, <span class="st">"hispannic"</span>, <span class="st">"hisspanic"</span>):   <span class="co"># typos</span></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Hispanic"</span></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="kw">in</span> (<span class="st">"nothispanic"</span>, <span class="st">"nh"</span>):</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Not Hispanic"</span></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"hispanic"</span>] <span class="op">=</span> df[<span class="st">"hispanic"</span>].<span class="bu">apply</span>(clean_hispanic)</span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 8. Clean GFR columns — coerce text to numeric, flag outliers ──────────────</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>gfr_cols <span class="op">=</span> [<span class="st">"gfr_admission"</span>, <span class="st">"gfr_day1"</span>, <span class="st">"gfr_day2"</span>, <span class="st">"gfr_day3"</span>, <span class="st">"gfr_day4"</span>, <span class="st">"gfr_day5"</span>]</span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_numeric(val):</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pull the first number out of a cell; return NaN if none found."""</span></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(val)</span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>):</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>        match <span class="op">=</span> re.search(<span class="vs">r"</span><span class="dv">\d</span><span class="op">+</span><span class="ch">\.</span><span class="op">?</span><span class="dv">\d</span><span class="op">*</span><span class="vs">"</span>, <span class="bu">str</span>(val))</span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(match.group()) <span class="cf">if</span> match <span class="cf">else</span> np.nan</span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> df[col].<span class="bu">apply</span>(extract_numeric)</span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag physiologically implausible GFR values (&gt; 200 are likely data-entry errors)</span></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>GFR_MAX <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>    flag_col <span class="op">=</span> col <span class="op">+</span> <span class="st">"_outlier_flag"</span></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>    df[flag_col] <span class="op">=</span> df[col] <span class="op">&gt;</span> GFR_MAX</span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 9. Standardise Yes/No columns ────────────────────────────────────────────</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_yesno(val):</span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(val):</span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan</span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="bu">str</span>(val).strip().lower().replace(<span class="st">"`"</span>, <span class="st">""</span>)   <span class="co"># "No`" typo</span></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="st">"yes"</span>:</span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Yes"</span></span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="st">"no"</span>:</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"No"</span></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.nan</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"hd_catheter"</span>, <span class="st">"av_fistula"</span>]:</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> df[col].<span class="bu">apply</span>(clean_yesno)</span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 10. Standardise sediment free-text (minor normalisation) ─────────────────</span></span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"sediment"</span>] <span class="op">=</span> (df[<span class="st">"sediment"</span>]</span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.strip()</span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.lower()</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="vs">r"</span><span class="dv">\s</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="st">"epi cell"</span>, <span class="st">"epithelial cell"</span>)</span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="st">"gran "</span>, <span class="st">"granular "</span>))</span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 11. Report a cleaning summary ─────────────────────────────────────────────</span></span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"=== Cleaning summary ==="</span>)</span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rows: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Duplicate study IDs:</span><span class="ch">\n</span><span class="sc">{</span>df[df[<span class="st">'duplicate_id_flag'</span>]][[<span class="st">'study_id'</span>,<span class="st">'dob'</span>,<span class="st">'diagnosis'</span>]]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Unparseable DOBs: </span><span class="sc">{</span>df[<span class="st">'dob'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">GFR outlier flags:"</span>)</span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> gfr_cols:</span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> df[col <span class="op">+</span> <span class="st">"_outlier_flag"</span>].<span class="bu">sum</span>()</span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n:</span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> outlier(s) — </span><span class="sc">{</span>df<span class="sc">.</span>loc[df[col<span class="op">+</span><span class="st">'_outlier_flag'</span>], [<span class="st">'study_id'</span>, col]]<span class="sc">.</span>values<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Sex nulls after cleaning:      </span><span class="sc">{</span>df[<span class="st">'sex'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Hispanic nulls after cleaning: </span><span class="sc">{</span>df[<span class="st">'hispanic'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Race unknowns:                 </span><span class="sc">{</span>(df[<span class="st">'race'</span>]<span class="op">==</span><span class="st">'Unknown'</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a><span class="co"># ── 12. Save ──────────────────────────────────────────────────────────────────</span></span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"aki_clean.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Saved to aki_clean.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <pre><code>=== Cleaning summary ===

@@ -15,10 +15,14 @@ Note that LLMs are stochastic/non-deteriministic, so there are no definitive sol
 
 **Potential Solutions**
 
+#### Sample Actively Recruiting Clinical Trial
+
+[An Intervention to Reduce Sedentary Behavior for Adults With Chronic Kidney Disease (RESET-CKD)](https://clinicaltrials.gov/study/NCT06754280?cond=ckd&aggFilters=funderType:nih,status:rec&rank=1#participation-criteria)
+
 ::: {.panel-tabset group="llm1"}
 ## ChatGPT
 
-**Prompt:** [Julia TK]\
+**Prompt:** \[Julia TK\]\
 \
 **Response:**
 
@@ -29,18 +33,387 @@ Note that LLMs are stochastic/non-deteriministic, so there are no definitive sol
 
 ## Claude
 
-**Prompt:** [Python TK]
+**Prompt:**
+
+You are an expert biostatistician and epidemiologist, extremely fluent with EPIC's Clarity Database.
+
+Given this **Clinical Trial participation criteria**:
+
+Inclusion Criteria:
+
+-   Self-identifies as Black or African American
+
+-   Age ≥35 to ≤80 years old
+
+-   CKD Stage 1-4
+
+-   Self-reported 6 or more hours/day of sedentary time
+
+-   Ability to speak/read/understand English
+
+-   Has access to a telephone
+
+Exclusion Criteria:
+
+-   Being unable to walk 1 block
+
+-   Being unable to stand from a seated position without assistance
+
+-   Using a wheelchair, walker, or cane for all of their ambulation
+
+-   Presence of a condition(s) or diagnosis, either physical or psychological, that precludes participation, including: Lower-extremity amputation (AKA or BKA) without prosthetic, Orthopedic condition that would preclude prompted sit-to-stand transitions or standing, Neurologic or psychiatric condition that would preclude prompted sit-to- stand transitions or standing, Severe cognitive impairment, Unstable coronary artery disease (i.e., angina with activity), Orthostatic hypotension
+
+-   Kidney transplant
+
+-   Any other condition that the investigator considers precludes participation in the trial
+
+-   Participated in the Patient Advisory Board
+
+---Steps---
+
+1\. Provide valid SQL for identifying eligible patients in your health system's Clarity Database.
+
+2\. Make a table of the codebook for the relevant column names along with their descriptions in the form: {column_name}: {variable description, including data type}.
 
 **Response:**
 
-```{python}
+Here is the SQL and codebook for identifying eligible patients in Epic Clarity.
+
+``` sql
 #| eval: false
+/*=============================================================
+  CLINICAL TRIAL ELIGIBILITY: Black/AA Adults with CKD 1–4
+  Sedentary Lifestyle Intervention Study
+  
+  Inclusion:
+    - Self-identified Black/African American
+    - Age 35–80
+    - CKD Stage 1–4 (eGFR ≥15, no ESRD/transplant)
+    - Has a telephone on file
+  Exclusion:
+    - Kidney transplant (Hx or active)
+    - Lower extremity amputation (w/o prosthetic) — flagged via Dx
+    - Orthostatic hypotension Dx
+    - Unstable angina/CAD Dx
+    - Severe cognitive impairment Dx
+    - Active psychiatric/neurologic preclusion Dx
+    - Wheelchair/walker/assistive device dependency (ADL note flags)
+    - Participated in Patient Advisory Board (research flag)
+  
+  Notes on sedentary time and functional mobility:
+    These are self-reported and typically NOT structured in Clarity.
+    Flag them for manual/survey screening as noted below.
+=============================================================*/
+
+WITH
+
+-- ── 1. DEMOGRAPHICS: Black/AA, Age 35–80 ─────────────────────────────────────
+eligible_demographics AS (
+    SELECT
+        p.PAT_ID,
+        p.PAT_MRN_ID,
+        p.PAT_FIRST_NAME,
+        p.PAT_LAST_NAME,
+        p.BIRTH_DATE,
+        DATEDIFF(YEAR, p.BIRTH_DATE, GETDATE())
+            - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, p.BIRTH_DATE, GETDATE()), p.BIRTH_DATE) > GETDATE()
+                   THEN 1 ELSE 0 END                        AS AGE_YEARS,
+        p.SEX_C,
+        zr.NAME                                             AS RACE_NAME,
+        p.PAT_STATUS                                        -- 1 = Alive
+    FROM PATIENT p
+    JOIN ZC_PATIENT_RACE zpr  ON zpr.PAT_ID = p.PAT_ID
+    JOIN ZC_RACE          zr  ON zr.RACE_C  = zpr.RACE_C
+    WHERE
+        zr.NAME IN (
+            'Black or African American',
+            'Black/African American',
+            'African American'          -- varies by site mapping
+        )
+        AND DATEDIFF(YEAR, p.BIRTH_DATE, GETDATE())
+            - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, p.BIRTH_DATE, GETDATE()), p.BIRTH_DATE) > GETDATE()
+                   THEN 1 ELSE 0 END  BETWEEN 35 AND 80
+        AND p.PAT_STATUS = 1           -- living patients only
+),
+
+-- ── 2. TELEPHONE ON FILE ──────────────────────────────────────────────────────
+has_phone AS (
+    SELECT DISTINCT PAT_ID
+    FROM PAT_PHONE
+    WHERE PHONE_TYPE_C IN (1, 2, 3)    -- Home=1, Work=2, Mobile=3; verify your site's ZC_PHONE_TYPE
+      AND PHONE_NUM IS NOT NULL
+      AND PHONE_NUM <> ''
+),
+
+-- ── 3. CKD STAGE 1–4 ─────────────────────────────────────────────────────────
+-- Primary approach: most recent eGFR lab value
+--   CKD Stage 1: eGFR ≥90 (requires albuminuria/structural marker — see note)
+--   CKD Stage 2: eGFR 60–89
+--   CKD Stage 3a: 45–59  | Stage 3b: 30–44
+--   CKD Stage 4: 15–29
+--   CKD Stage 5/ESRD: <15 → EXCLUDE
+--
+-- Secondary approach: active problem list CKD ICD-10 codes (see codebook below)
+--
+-- NOTE: Stage 1 without a documented CKD Dx code is hard to distinguish from
+--       normal renal function purely from eGFR. Consider requiring a CKD Dx.
+
+ckd_egfr AS (
+    SELECT
+        r.PAT_ID,
+        r.RESULT_TIME,
+        TRY_CAST(r.ORD_VALUE AS FLOAT)  AS EGFR_VALUE,
+        ROW_NUMBER() OVER (
+            PARTITION BY r.PAT_ID
+            ORDER BY r.RESULT_TIME DESC
+        )                               AS RN
+    FROM ORDER_RESULTS r
+    JOIN CLARITY_COMPONENT cc
+        ON cc.COMPONENT_ID = r.COMPONENT_ID
+    WHERE
+        -- Common LOINC codes for eGFR (CKD-EPI, MDRD variants)
+        cc.LNC_CODE IN (
+            '33914-3',   -- eGFR MDRD
+            '50044-7',   -- eGFR CKD-EPI (Females)
+            '48642-3',   -- eGFR non-Black MDRD
+            '48643-1',   -- eGFR Black MDRD
+            '62238-1',   -- eGFR CKD-EPI 2009
+            '98979-8'    -- eGFR CKD-EPI 2021 (race-free)
+        )
+        AND r.RESULT_STATUS_C = 3       -- Final result
+        AND TRY_CAST(r.ORD_VALUE AS FLOAT) IS NOT NULL
+),
+
+ckd_stage AS (
+    SELECT
+        PAT_ID,
+        EGFR_VALUE,
+        CASE
+            WHEN EGFR_VALUE >= 90 THEN 'Stage 1 (eGFR only — confirm Dx)'
+            WHEN EGFR_VALUE BETWEEN 60 AND 89.9 THEN 'Stage 2'
+            WHEN EGFR_VALUE BETWEEN 45 AND 59.9 THEN 'Stage 3a'
+            WHEN EGFR_VALUE BETWEEN 30 AND 44.9 THEN 'Stage 3b'
+            WHEN EGFR_VALUE BETWEEN 15 AND 29.9 THEN 'Stage 4'
+            WHEN EGFR_VALUE < 15              THEN 'Stage 5/ESRD — EXCLUDE'
+        END                             AS CKD_STAGE_LABEL,
+        RESULT_TIME                     AS EGFR_DATE
+    FROM ckd_egfr
+    WHERE RN = 1
+),
+
+-- CKD confirmed via active problem list (belt-and-suspenders)
+ckd_dx AS (
+    SELECT DISTINCT pl.PAT_ID
+    FROM PROBLEM_LIST pl
+    JOIN CL_ICD10_PX icd ON icd.CODE = pl.ICD10_CODE
+    WHERE
+        pl.PROBLEM_STATUS_C = 1             -- Active
+        AND pl.ICD10_CODE IN (
+            -- CKD Stage 1–4 ICD-10 codes
+            'N18.1','N18.2','N18.30','N18.31','N18.32','N18.4',
+            -- Diabetic CKD Stage 1–4
+            'E11.21','E11.22','E10.21','E10.22',
+            -- Hypertensive CKD Stage 1–4
+            'I12.9','I13.10'
+        )
+),
+
+-- ── 4. EXCLUSION: Kidney Transplant ──────────────────────────────────────────
+transplant_excl AS (
+    SELECT DISTINCT pl.PAT_ID
+    FROM PROBLEM_LIST pl
+    WHERE pl.PROBLEM_STATUS_C = 1
+      AND pl.ICD10_CODE IN (
+          'Z94.0',    -- Kidney transplant status
+          'T86.10','T86.11','T86.12','T86.13','T86.19'  -- Transplant complications
+      )
+    UNION
+    -- Also check surgical history
+    SELECT DISTINCT sh.PAT_ID
+    FROM HSP_ACCT_PX_LIST sh
+    WHERE sh.PX_ID IN (
+        SELECT PX_ID FROM CL_PX
+        WHERE PX_CODE IN ('50360','50365','50370','50380')  -- CPT: kidney transplant
+    )
+),
+
+-- ── 5. EXCLUSION: Lower-Extremity Amputation ─────────────────────────────────
+amputation_excl AS (
+    SELECT DISTINCT PAT_ID
+    FROM PROBLEM_LIST
+    WHERE PROBLEM_STATUS_C = 1
+      AND ICD10_CODE IN (
+          -- AKA (above-knee)
+          'Z89.611','Z89.612','Z89.619',
+          -- BKA (below-knee)
+          'Z89.511','Z89.512','Z89.519'
+      )
+    -- NOTE: Prosthetic use is NOT structured in Clarity; manual chart review needed
+),
+
+-- ── 6. EXCLUSION: Orthostatic Hypotension ────────────────────────────────────
+ortho_htn_excl AS (
+    SELECT DISTINCT PAT_ID
+    FROM PROBLEM_LIST
+    WHERE PROBLEM_STATUS_C = 1
+      AND ICD10_CODE IN ('I95.1', 'I95.0', 'I95.8', 'I95.9')
+),
+
+-- ── 7. EXCLUSION: Unstable CAD / Angina ──────────────────────────────────────
+unstable_cad_excl AS (
+    SELECT DISTINCT PAT_ID
+    FROM PROBLEM_LIST
+    WHERE PROBLEM_STATUS_C = 1
+      AND ICD10_CODE IN (
+          'I20.0',    -- Unstable angina
+          'I24.0',    -- Acute coronary thrombosis (no MI)
+          'I24.8','I24.9'  -- Other/unspecified ACS
+      )
+),
+
+-- ── 8. EXCLUSION: Severe Cognitive Impairment ────────────────────────────────
+cognitive_excl AS (
+    SELECT DISTINCT PAT_ID
+    FROM PROBLEM_LIST
+    WHERE PROBLEM_STATUS_C = 1
+      AND ICD10_CODE IN (
+          'F01.51','F01.50',   -- Vascular dementia
+          'F02.80','F02.81',   -- Dementia in other diseases
+          'F03.90','F03.91',   -- Unspecified dementia
+          'G30.0','G30.1','G30.8','G30.9',  -- Alzheimer's
+          'G31.09',            -- Frontotemporal dementia
+          'F10.27','F10.97'    -- Alcohol-related dementia
+      )
+),
+
+-- ── 9. EXCLUSION: Relevant Neurologic/Psychiatric Conditions ─────────────────
+neuro_psych_excl AS (
+    SELECT DISTINCT PAT_ID
+    FROM PROBLEM_LIST
+    WHERE PROBLEM_STATUS_C = 1
+      AND ICD10_CODE IN (
+          -- Parkinson's
+          'G20','G21.11','G21.19',
+          -- ALS
+          'G12.21',
+          -- Severe schizophrenia/psychosis flags
+          'F20.0','F20.1','F20.2','F20.3','F20.5','F20.9',
+          -- Active mania/psychotic bipolar
+          'F31.2','F31.5'
+      )
+),
+
+-- ── 10. EXCLUSION: Orthopedic Preclusion ─────────────────────────────────────
+orthopedic_excl AS (
+    SELECT DISTINCT PAT_ID
+    FROM PROBLEM_LIST
+    WHERE PROBLEM_STATUS_C = 1
+      AND ICD10_CODE IN (
+          'M96.0',    -- Pseudarthrosis post-fusion (spinal)
+          'M43.00',   -- Spondylolysis
+          'M48.06',   -- Spinal stenosis lumbar
+          'M47.816',  -- Spondylosis w/ radiculopathy, lumbar
+          -- Severe hip/knee OA with functional limitation
+          'M16.0','M16.10','M16.11','M16.12',  -- Primary OA hip
+          'M17.0','M17.10','M17.11','M17.12'   -- Primary OA knee
+          -- ⚠ Expand per clinical judgment; not exhaustive
+      )
+),
+
+-- ── FINAL ASSEMBLY ─────────────────────────────────────────────────────────--
+final_cohort AS (
+    SELECT
+        d.PAT_ID,
+        d.PAT_MRN_ID,
+        d.PAT_FIRST_NAME,
+        d.PAT_LAST_NAME,
+        d.BIRTH_DATE,
+        d.AGE_YEARS,
+        d.RACE_NAME,
+        cs.EGFR_VALUE,
+        cs.CKD_STAGE_LABEL,
+        cs.EGFR_DATE,
+        -- Flag for manual screening items (not structured in Clarity)
+        1 AS NEEDS_SURVEY_SEDENTARY_TIME,   -- Self-report: ≥6 hrs/day sedentary
+        1 AS NEEDS_SURVEY_MOBILITY,          -- Self-report: able to walk 1 block, stand unassisted
+        1 AS NEEDS_SURVEY_ASSISTIVE_DEVICE,  -- Self-report: no wheelchair/walker/cane dependency
+        1 AS NEEDS_CHART_REVIEW_PAB          -- Confirm not in Patient Advisory Board
+    FROM eligible_demographics d
+    INNER JOIN has_phone            hp  ON hp.PAT_ID = d.PAT_ID
+    -- Require CKD eGFR 15–89 OR confirmed CKD Dx on problem list
+    INNER JOIN ckd_stage            cs  ON cs.PAT_ID = d.PAT_ID
+                                       AND cs.EGFR_VALUE BETWEEN 15 AND 89.9
+    -- CKD Dx belt-and-suspenders (optional: use INNER JOIN to require both)
+    -- INNER JOIN ckd_dx            cd  ON cd.PAT_ID = d.PAT_ID
+    -- Exclusions
+    LEFT  JOIN transplant_excl      tx  ON tx.PAT_ID  = d.PAT_ID
+    LEFT  JOIN amputation_excl      ax  ON ax.PAT_ID  = d.PAT_ID
+    LEFT  JOIN ortho_htn_excl       ox  ON ox.PAT_ID  = d.PAT_ID
+    LEFT  JOIN unstable_cad_excl    cx  ON cx.PAT_ID  = d.PAT_ID
+    LEFT  JOIN cognitive_excl       cog ON cog.PAT_ID = d.PAT_ID
+    LEFT  JOIN neuro_psych_excl     np  ON np.PAT_ID  = d.PAT_ID
+    LEFT  JOIN orthopedic_excl      oe  ON oe.PAT_ID  = d.PAT_ID
+    WHERE
+        tx.PAT_ID  IS NULL   -- no transplant
+        AND ax.PAT_ID  IS NULL   -- no AKA/BKA
+        AND ox.PAT_ID  IS NULL   -- no orthostatic hypotension
+        AND cx.PAT_ID  IS NULL   -- no unstable CAD
+        AND cog.PAT_ID IS NULL   -- no severe cognitive impairment
+        AND np.PAT_ID  IS NULL   -- no preclusive neuro/psych Dx
+        AND oe.PAT_ID  IS NULL   -- no preclusive orthopedic Dx
+)
+
+SELECT *
+FROM final_cohort
+ORDER BY AGE_YEARS, PAT_MRN_ID;
 
 ```
 
+## Step 2: Codebook
+
+| Column Name | Description |
+|------------------------------------|------------------------------------|
+| `PATIENT.PAT_ID` | VARCHAR — Epic internal unique patient identifier (primary key across most patient-centric tables). |
+| `PATIENT.PAT_MRN_ID` | VARCHAR — Medical Record Number; the human-facing patient identifier used in clinical workflows. |
+| `PATIENT.PAT_FIRST_NAME` | VARCHAR — Patient's legal first name. |
+| `PATIENT.PAT_LAST_NAME` | VARCHAR — Patient's legal last name. |
+| `PATIENT.BIRTH_DATE` | DATE — Patient date of birth; used to derive `AGE_YEARS`. |
+| `PATIENT.PAT_STATUS` | INT (category) — Vital status. `1` = Living; `2` = Deceased. Sourced from `ZC_PAT_STATUS`. |
+| `ZC_PATIENT_RACE.PAT_ID` | VARCHAR — Foreign key linking patient to their race record(s); supports multi-race entries (one row per race). |
+| `ZC_RACE.RACE_C` | INT (category) — Numeric race category code. Joins to `ZC_PATIENT_RACE` and `ZC_RACE`. |
+| `ZC_RACE.NAME` | VARCHAR — Display name of the race category (e.g., `'Black or African American'`). Site-specific string values; validate against your local ZC_RACE table. |
+| `PAT_PHONE.PHONE_TYPE_C` | INT (category) — Phone type code. Typical values: `1` = Home, `2` = Work, `3` = Mobile. Confirm mapping in `ZC_PHONE_TYPE`. |
+| `PAT_PHONE.PHONE_NUM` | VARCHAR — Stored phone number string; used to confirm telephone access. |
+| `ORDER_RESULTS.COMPONENT_ID` | INT — Links lab result row to the specific analyte (e.g., eGFR). Joins to `CLARITY_COMPONENT`. |
+| `ORDER_RESULTS.ORD_VALUE` | VARCHAR — Raw result value as entered/reported (must be cast to FLOAT for numeric comparison). |
+| `ORDER_RESULTS.RESULT_TIME` | DATETIME — Timestamp when the lab result was resulted/verified. Used to identify the most recent eGFR. |
+| `ORDER_RESULTS.RESULT_STATUS_C` | INT (category) — Result status. `3` = Final; `1` = Preliminary. Always filter to Final (`3`) for clinical use. |
+| `CLARITY_COMPONENT.LNC_CODE` | VARCHAR — LOINC code for the lab component. Used to identify eGFR-specific assays (e.g., `'62238-1'` = CKD-EPI eGFR). |
+| `PROBLEM_LIST.PAT_ID` | VARCHAR — Foreign key to `PATIENT`; links diagnoses to a patient. |
+| `PROBLEM_LIST.ICD10_CODE` | VARCHAR — ICD-10-CM diagnosis code on the problem list (e.g., `'N18.3'` = CKD Stage 3). |
+| `PROBLEM_LIST.PROBLEM_STATUS_C` | INT (category) — Problem list entry status. `1` = Active; `2` = Resolved; `3` = Deleted. Filter to `1` for active conditions. |
+| `HSP_ACCT_PX_LIST.PX_ID` | INT — Foreign key to `CL_PX`; identifies a procedure performed during a hospital account. Used to detect transplant CPT codes. |
+| `CL_PX.PX_CODE` | VARCHAR — CPT or ICD procedure code. Used to identify kidney transplant procedures (e.g., `'50360'`). |
+| `EGFR_VALUE` *(derived)* | FLOAT — Most recent eGFR result cast from `ORD_VALUE`. CKD stages mapped: Stage 1 ≥90, Stage 2 = 60–89, Stage 3a = 45–59, Stage 3b = 30–44, Stage 4 = 15–29, Stage 5 \<15. |
+| `CKD_STAGE_LABEL` *(derived)* | VARCHAR — Human-readable CKD stage label derived from eGFR value. For screening classification only. |
+| `AGE_YEARS` *(derived)* | INT — Calculated age in years as of query run date using `BIRTH_DATE`. |
+| `NEEDS_SURVEY_*` *(derived flags)* | BIT (1) — Placeholder flags indicating criteria that **cannot be ascertained from Clarity** and require patient self-report (sedentary time, functional mobility, assistive device use) or manual chart/registry review (PAB participation). |
+
+### ⚠️ Important Caveats
+
+1.  **Sedentary time (≥6 hrs/day)** is self-reported and has no structured Clarity field. It must be collected via screening survey or REDCap instrument.
+
+2.  **Functional mobility** (ability to walk a block, stand unassisted, assistive device use) is similarly self-reported and inconsistently coded in Clarity. Social history free text (`SOCIAL_HX`) or flowsheet rows may have partial data, but manual screening is the reliable approach.
+
+3.  **Patient Advisory Board participation** is not a standard Clarity field. Check your institution's research registry (OnCore, REDCap, or a custom research table) for this exclusion.
+
+4.  **Race coding** is site-dependent. Run `SELECT DISTINCT NAME FROM ZC_RACE` to confirm the exact string(s) used at your institution before deploying.
+
+5.  **eGFR Stage 1** (≥90) without an explicit CKD diagnosis on the problem list is indistinguishable from normal renal function by eGFR alone. Consider requiring a corroborating `N18.1` ICD-10 code or albuminuria documentation.
+
 ## Gemini
 
-**Prompt:** [R TK]
+**Prompt:** \[R TK\]
 
 **Response:**
 
@@ -48,10 +421,9 @@ Note that LLMs are stochastic/non-deteriministic, so there are no definitive sol
 #| eval: false
 
 ```
-
 :::
 
----
+------------------------------------------------------------------------
 
 ## Additional Hands-On Exercises
 
@@ -62,41 +434,35 @@ Note that LLMs are stochastic/non-deteriministic, so there are no definitive sol
 **Potential Solutions**
 
 ::: {.panel-tabset group="llm2"}
-
 ## ChatGPT
 
-**Prompt:** [SAS/Julia TK]
+**Prompt:** \[SAS/Julia TK\]
 
 **Response:**
 
 ## Claude
 
-**Prompt:** [Python TK]
+**Prompt:** \[Python TK\]
 
 **Response:**
 
 ## Gemini
 
-**Prompt:** [R TK]
+**Prompt:** \[R TK\]
 
 **Response:**
-
 :::
 
 ## Exercise 2: Data Reporting, Visualization, and Predictive Modeling
 
-**Exercise:** Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to: 
-1. Create a *JAMA* style Table 1 in Markdown.
-2. Explore and visualize an important relationship(s) between the predictors and `remission.`
-3. Provide and explain code for building multiple predictive models for `remission` (remission = 1).
+**Exercise:** Using the following description of the clinical trial, copy and paste the variables and data descriptions into an LLM and prompt it to: 1. Create a *JAMA* style Table 1 in Markdown. 2. Explore and visualize an important relationship(s) between the predictors and `remission.` 3. Provide and explain code for building multiple predictive models for `remission` (remission = 1).
 
 **Potential Solutions**
 
 ::: {.panel-tabset group="llm3"}
-
 ## ChatGPT
 
-**Prompt:** [Julia TK]
+**Prompt:** \[Julia TK\]
 
 **Response:**
 
@@ -260,7 +626,7 @@ print(feat_df)
 
 ## Gemini
 
-**Prompt:** [R TK]
+**Prompt:** \[R TK\]
 
 **Response:**
 
@@ -269,7 +635,6 @@ print(feat_df)
 
 
 ```
-
 :::
 
 ## Exercise 3: Munging Messy Data
@@ -277,7 +642,6 @@ print(feat_df)
 Prompt an LLM to clean and validate the `messy_aki` dataset in preparation for analysis and modeling.
 
 ::: {.panel-tabset group="llm4"}
-
 ## ChatGPT
 
 **Prompt:** You are Dr. Karandeep Singh, the creator of TidierOrg and Tidier.jl. You are an expert in coding, AI, and nephrology.
@@ -949,7 +1313,7 @@ Here's a rundown of every issue it handles:
 
 ## Gemini
 
-**Prompt:** You are an expert R programmer fluent in the Tidyverse. Provide a [TK] 
+**Prompt:** You are an expert R programmer fluent in the Tidyverse. Provide a \[TK\]
 
 **Response:**
 
@@ -957,6 +1321,4 @@ Here's a rundown of every issue it handles:
 #| eval: false
 
 ```
-
-
 :::
