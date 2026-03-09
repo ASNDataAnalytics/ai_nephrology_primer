@@ -366,10 +366,9 @@ final_cohort AS (
 SELECT *
 FROM final_cohort
 ORDER BY AGE_YEARS, PAT_MRN_ID;
-
 ```
 
-## Step 2: Codebook
+**Step 2: Codebook**
 
 | Column Name | Description |
 |------------------------------------|------------------------------------|
