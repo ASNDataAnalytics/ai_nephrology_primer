@@ -537,3 +537,157 @@ $footer-height: 70px;
   background: rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
 }
+
+/* ============================================================
+   Three-Column Fragment Slides with Hover-Expand Images
+   For Quarto Reveal.js presentations
+   Usage: add to your YAML as:
+     revealjs:
+       css: slides-columns.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Three-column layout container
+   In your .qmd, wrap columns with:
+   :::{.three-col-grid}
+   :::
+   ---------------------------------------------------------- */
+.three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+  /* Needed so expanded images pop above the grid */
+  isolation: isolate;
+}
+
+/* ----------------------------------------------------------
+   Each column cell
+   ---------------------------------------------------------- */
+.three-col-grid > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  /* Create a stacking context per cell */
+  position: relative;
+}
+
+/* ----------------------------------------------------------
+   Image wrapper — constrained height to fit slide
+   ---------------------------------------------------------- */
+.three-col-grid img,
+.img-expand {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  /* Constrain so all 3 columns fit on one slide.
+     Adjust this value to taste — 38vh works well for
+     a typical 16:9 slide with a title row above. */
+  max-height: 38vh;
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: zoom-in;
+  transition: opacity 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* ----------------------------------------------------------
+   Lightbox overlay — injected by the JS below on hover
+   ---------------------------------------------------------- */
+.img-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 2rem;
+  box-sizing: border-box;
+  cursor: zoom-out;
+  /* Fade in */
+  animation: overlayFadeIn 0.25s ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.img-lightbox-overlay img {
+  /* Full natural width, scrollable if taller than viewport */
+  max-width: min(88vw, 900px);
+  width: auto;
+  height: auto;
+  max-height: none;           /* let it be its full height */
+  object-fit: unset;
+  border-radius: 6px;
+  box-shadow: 0 12px 60px rgba(0, 0, 0, 0.6);
+  cursor: zoom-out;
+  /* Pop in */
+  animation: imgPopIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  /* keep it centred when shorter than viewport */
+  margin: auto;
+  display: block;
+}
+
+@keyframes imgPopIn {
+  from { transform: scale(0.88); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ----------------------------------------------------------
+   Dim siblings when any image is active
+   ---------------------------------------------------------- */
+.three-col-grid.has-active img:not(.is-active),
+.three-col-grid.has-active .img-expand:not(.is-active) {
+  opacity: 0.25;
+}
+
+/* ----------------------------------------------------------
+   Fragment fade-in (Reveal default) plays nicely with hover.
+   Add class="fragment" to each image in your .qmd.
+   ---------------------------------------------------------- */
+.three-col-grid .fragment {
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ----------------------------------------------------------
+   Optional: column labels / captions
+   ---------------------------------------------------------- */
+.three-col-grid figcaption,
+.three-col-grid .col-label {
+  font-size: 0.75em;
+  text-align: center;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+/* ----------------------------------------------------------
+   Utility: add a subtle card style to each column
+   Add class .card-cols to .three-col-grid to activate
+   ---------------------------------------------------------- */
+.three-col-grid.card-cols > * {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+/*
+  ============================================================
+  REQUIRED JAVASCRIPT — see slides-lightbox.js
+  ============================================================
+  Add to your YAML:
+    revealjs:
+      css: slides-columns.css
+      include-after-body: slides-lightbox.js
+  ============================================================
+*/

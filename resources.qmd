@@ -70,8 +70,9 @@ A great prompt usually includes these specific elements to provide context and d
 ### Recommended Books
 
 -   [Deep Learning Illustrated](https://www.deeplearningillustrated.com/)
+-   [Te StatQuest Illustrated Guide to Neural Networks and AI](https://statquest.org/index.html)
 
-### Additional Prompt Engineering Resources
+### Additional Prompt Engineering and Other Resources
 
 #### Anthropic
 
@@ -80,6 +81,7 @@ A great prompt usually includes these specific elements to provide context and d
 
 #### OpenAI
 
+-   [OpenAI Tokenizer](https://platform.openai.com/tokenizer)
 -   [OpenAI Developers Cookbook](https://developers.openai.com/cookbook)
 -   [OpenAI ChatGPT Cookbook](https://developers.openai.com/cookbook/topic/chatgpt)
 -   [OpenAI Cookbook Code Repo](https://github.com/openai/openai-cookbook)
@@ -98,3 +100,9 @@ A great prompt usually includes these specific elements to provide context and d
 
 -   [Awesome AI System Prompts](https://github.com/dontriskit/awesome-ai-system-prompts)
 
+#### PubMed
+https://www.ncbi.nlm.nih.gov/
+[Entrez® Programming Utilities Help](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
+
+https://www.ncbi.nlm.nih.gov/books/NBK25501/
+https://www.ncbi.nlm.nih.gov/books/NBK25501/

@@ -296,7 +296,9 @@ function mdHighlight(text) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#source-files" id="toc-source-files" class="nav-link active" data-scroll-target="#source-files">Source Files</a></li>
+  <li><a href="#source-file-viewer" id="toc-source-file-viewer" class="nav-link active" data-scroll-target="#source-file-viewer">Source File Viewer</a></li>
+  <li><a href="#getting-an-ncbi-api-key" id="toc-getting-an-ncbi-api-key" class="nav-link" data-scroll-target="#getting-an-ncbi-api-key">Getting an NCBI API Key</a></li>
+  <li><a href="#building-systematic-review-bot" id="toc-building-systematic-review-bot" class="nav-link" data-scroll-target="#building-systematic-review-bot">Building Systematic Review Bot</a></li>
   </ul>
 </nav>
     </div>
@@ -327,8 +329,8 @@ function mdHighlight(text) {
 <p><img src="images/systematic_review_robot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
 </figure>
 </div>
-<section id="source-files" class="level2">
-<h2 class="anchored" data-anchor-id="source-files">Source Files</h2>
+<section id="source-file-viewer" class="level2">
+<h2 class="anchored" data-anchor-id="source-file-viewer">Source File Viewer</h2>
 <div class="file-list">
 <div class="file-card">
 <div class="file-info">
@@ -546,6 +548,142 @@ function mdHighlight(text) {
 <p>⊞ Preview</p>
 </button>
 </div>
+</div>
+</section>
+<section id="getting-an-ncbi-api-key" class="level2">
+<h2 class="anchored" data-anchor-id="getting-an-ncbi-api-key">Getting an NCBI API Key</h2>
+<ol type="1">
+<li>Go to <a href="https://www.ncbi.nlm.nih.gov/">NCBI</a> (<a href="https://www.ncbi.nlm.nih.gov/" class="uri">https://www.ncbi.nlm.nih.gov/</a>).</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/api_key_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>If you don’t already have an account, create one using Google, Microsoft, ORCiD, or institutional nexus.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/api_key_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Select your account….</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/api_key_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>….and … <span style="color: #00468b; font-weight: 500;"><strong>Account settings</strong></span></li>
+</ol>
+<p><img src="images/api_key_4.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>…and create an API key.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/api_key_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>Consider this API key as login credentials and keep it secure.</li>
+</ol>
+<p><img src="images/api_key_6.png" class="img-fluid"></p>
+</section>
+<section id="building-systematic-review-bot" class="level2">
+<h2 class="anchored" data-anchor-id="building-systematic-review-bot">Building Systematic Review Bot</h2>
+<ol type="1">
+<li><p>Download the source files:</p>
+<p><a href="assets/systematic_review_bot.zip" class="btn btn-primary" download="systematic_review_bot.zip">Systematic Review Bot</a></p></li>
+<li><p>From your ChatGPT landing page, select GPTs in the left column…</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>… and click the Create button in the upper-right-hand corner on the next page.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Select configure ….</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>Paste <code>000_systematic_review_bot_system_instructions.md</code> into the Instructions field.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_new_4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="6" type="1">
+<li>Upload the Knowledge Base files (<code>KB1–KB9</code>).</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="7" type="1">
+<li>Click on Create New Action…</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_6.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="8" type="1">
+<li>… select Authentication …</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_7.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="9" type="1">
+<li>… select API Key and paste your NCBI API Key in the field.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_8.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="10" type="1">
+<li>Paste the pubmed_openapi_configuration.yaml into the Schema field. Click the Test buttons for each API call type to ensure the API calls are properly functioning.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_9.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="11" type="1">
+<li>Example of successful test output for the esearchPubMed call.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_10.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="12" type="1">
+<li>Click save and test the deployed bot.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system_bot_11.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
 </div>
 
 

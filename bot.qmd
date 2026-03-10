@@ -7,7 +7,7 @@ format:
 
 ![](images/systematic_review_robot.png){fig-align="center" width="85%"}
 
-## Source Files
+## Source File Viewer
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: file-list
 :::::::: file-card
@@ -322,3 +322,79 @@ Annotated YAML to access PubMed API using OpenAPI
 </button>
 ::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Getting an NCBI API Key
+
+1.  Go to [NCBI](https://www.ncbi.nlm.nih.gov/) (<https://www.ncbi.nlm.nih.gov/>).
+
+![](images/api_key_1.png){fig-align="center"}
+
+2.  If you don't already have an account, create one using Google, Microsoft, ORCiD, or institutional nexus.
+
+![](images/api_key_2.png){fig-align="center"}
+
+3.  Select your account....
+
+![](images/api_key_3.png){fig-align="center"}
+
+4.  ....and ... [**Account settings**]{style="color: #00468b; font-weight: 500;"}
+
+![](images/api_key_4.png)
+
+5.  ...and create an API key.
+
+![](images/api_key_5.png){fig-align="center"}
+
+5.  Consider this API key as login credentials and keep it secure.
+
+![](images/api_key_6.png)
+
+## Building Systematic Review Bot
+
+1.  Download the source files:
+
+    [Systematic Review Bot](assets/systematic_review_bot.zip){.btn .btn-primary download="systematic_review_bot.zip"}
+
+2.   From your ChatGPT landing page, select GPTs in the left column...
+
+![](images/system_bot_1.png){fig-align="center"}
+
+3.  ... and click the Create button in the upper-right-hand corner on the next page.
+
+![](images/system_bot_2.png){fig-align="center"}
+
+4.  Select configure ....
+
+![](images/system_bot_3.png){fig-align="center"}
+
+5.  Paste `000_systematic_review_bot_system_instructions.md` into the Instructions field.
+
+![](images/system_bot_new_4.png){fig-align="center"}
+
+6.  Upload the Knowledge Base files (`KB1–KB9`).
+
+![](images/system_bot_5.png){fig-align="center"}
+
+7.  Click on Create New Action...
+
+![](images/system_bot_6.png){fig-align="center"}
+
+8.  ... select Authentication ...
+
+![](images/system_bot_7.png){fig-align="center"}
+
+9.  ... select API Key and paste your NCBI API Key in the field.
+
+![](images/system_bot_8.png){fig-align="center"}
+
+10. Paste the pubmed_openapi_configuration.yaml into the Schema field. Click the Test buttons for each API call type to ensure the API calls are properly functioning.
+
+![](images/system_bot_9.png){fig-align="center"}
+
+11. Example of successful test output for the esearchPubMed call.
+
+![](images/system_bot_10.png){fig-align="center"}
+
+12. Click save and test the deployed bot.
+
+![](images/system_bot_11.png){fig-align="center"}
