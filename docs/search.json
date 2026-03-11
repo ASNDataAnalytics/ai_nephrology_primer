@@ -11,7 +11,14 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Prompt Best Practices\n\nThe fundamentals that work across all LLMs:\n\nRole/Persona: Who the AI should act as\nContext: What background info it needs\nTask: What you want it to do explicitly\nFormat: How you want the output structured\nConstraints: What to avoid or limits to follow\n\n\n Source: Reddit: Best Practices for AI Prompting 2025?\n\n\nCO-STAR Prompt Framework\n\nA great prompt usually includes these specific elements to provide context and direction:\n\nContext: Provide background information on the task.\nObjective: Define exactly what you want me to do.\nStyle: Specify a writing style (e.g., professional, humorous, poetic).\nTone: Set the emotional vibe (e.g., empathetic, direct, enthusiastic).\nAudience: Who is this for? (e.g., a CEO, a 5-year-old, a software engineer).\nResponse: Define the format (e.g., a table, a list, a JSON object).\n\nAdditional Components\n\nFew-Shot Prompting/Using Examples: Provide examples of desired output and formatting (e.g., programming language, file type [CSV, Markdown, PNG])\nUse Delimiters: Use triple quotes (“““), XML tags (), or dashes (—) to wrap your content (e.g., Summarize the text delimited by triple quotes:”““[Insert article]”““)\n\n\n\nSource: Google Gemini (Prompt: do you have any prompt engineering best practices)\n\n\nChicago Booth Algorithmic Bias Initiative\n\nAlgorithmic Bias Initiative Website\nAlgorithmic Bias Playbook\n\n\n\nMelissa Van Bussel posit::conf 2024 Keynote\n\nPractical Tips for Using Generative AI in Data Science Workflows\nSlides\n\n\n\nEHI Living Manual (EPIC)\n\nEHI Living Manual\n\n\n\nVisualize Effects of Temperature, Top-P, and Top-K Parameters\n\nWebsite\n\n\n\nRecommended Books\n\nDeep Learning Illustrated\nTe StatQuest Illustrated Guide to Neural Networks and AI\n\n\n\nAdditional Prompt Engineering and Other Resources\n\nAnthropic\n\nPrompt Engineering Guide Overview\nPrompt Engineering Interactive Tutorial\n\n\n\nOpenAI\n\nOpenAI Tokenizer\nOpenAI Developers Cookbook\nOpenAI ChatGPT Cookbook\nOpenAI Cookbook Code Repo\nBest Practices for Prompt Engineering with the OpenAI API\nPrompt Engineering\n\n\n\nGoogle\n\nPrompt engineering: overview and guide\n\n\n\n10 Best Practices for Prompt Engineering With Any Model\n\nPromptHub\n\n\n\nGitHub: Awesome AI System Prompts\n\nAwesome AI System Prompts\n\n\n\nPubMed\nhttps://www.ncbi.nlm.nih.gov/ Entrez® Programming Utilities Help\nhttps://www.ncbi.nlm.nih.gov/books/NBK25501/ https://www.ncbi.nlm.nih.gov/books/NBK25501/"
+    "text": "The fundamentals that work across all LLMs:\n\nRole/Persona: Who the AI should act as\nContext: What background info it needs\nTask: What you want it to do explicitly\nFormat: How you want the output structured\nConstraints: What to avoid or limits to follow\n\n\n Source: Reddit: Best Practices for AI Prompting 2025?"
+  },
+  {
+    "objectID": "resources.html#coding-and-data-analysis-with-llms",
+    "href": "resources.html#coding-and-data-analysis-with-llms",
+    "title": "Resources",
+    "section": "Coding and Data Analysis with LLMs",
+    "text": "Coding and Data Analysis with LLMs\n\nIntegrated Development Environments (IDEs)\n\nVS Code\n\nDownload\nDocumentation #### Positron\nDownload\nDocumentation\n\n\n\n\nCoding LLMs\n\nClaude Code\n\nGetting Started\nConfiguration Scopes\n\n\n\nCodex\n\nCodex\nSandboxing\n\n\n\nGoogle AI Studio\n\nAI Studio\nDocumentation\n\n\n\n\nMelissa Van Bussel posit::conf 2024 Keynote\n\nPractical Tips for Using Generative AI in Data Science Workflows\nSlides\n\n\n\nEHI Living Manual (EPIC)\n\nEHI Living Manual\n\n\n\nVisualize Effects of Temperature, Top-P, and Top-K Parameters\n\nWebsite\n\n\n\nRecommended Books\n\nDeep Learning Illustrated\nThe StatQuest Illustrated Guide to Neural Networks and AI\n\n\n\nAdditional Prompt Engineering and Other Resources\n\nAnthropic\n\nPrompt Engineering Guide Overview\nPrompt Engineering Interactive Tutorial\n\n\n\nOpenAI\n\nOpenAI Tokenizer\nOpenAI Developers Cookbook\nOpenAI ChatGPT Cookbook\nOpenAI Cookbook Code Repo\nBest Practices for Prompt Engineering with the OpenAI API\nPrompt Engineering\n\n\n\nGoogle\n\nPrompt engineering: overview and guide\n\n\n\n10 Best Practices for Prompt Engineering With Any Model\n\nPromptHub\n\n\n\nGitHub: Awesome AI System Prompts\n\nAwesome AI System Prompts\n\n\n\nPubMed API\n\nEntrez® Programming Utilities Help"
   },
   {
     "objectID": "index.html#slides",
@@ -21,11 +28,32 @@
     "text": "Slides\nView slides in full screen\n\n\nMarch 17, 2026\n\n\n\nLuca Neri, MD, PhD  Renal Research Institute, New York, NY\n\n\n\n\n\nKurtis A. Pivert, MS, CAPX  American Society of Nephrology, Washington, DC\n\n\n\n\nAgenda\n\n\n\n9:00 a.m.\nIntroduction, Motivation, and Prompting\n\n\n9:10 a.m.\nHands-On Exercise\n\n\n9:20 a.m.\nSystematic Review Bot\n\n\n9:40 a.m.\nWrap-Up"
   },
   {
-    "objectID": "bot.html#source-files",
-    "href": "bot.html#source-files",
+    "objectID": "bot.html#source-file-viewer",
+    "href": "bot.html#source-file-viewer",
     "title": "Systematic Review Bot",
-    "section": "Source Files",
-    "text": "Source Files\n\n\n\n\n.MD\n\n\n\n000_systematic_review_bot_system_instructions.md\n\n\nSystem instructions to build a systematic review bot\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB1_information_gathering.md\n\n\nKB1: Collect desired search criteria\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB2_search_strategy_and_sources.md\n\n\nKB2: Search strategies & available resources/tools\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB3_study_selection.md\n\n\nKB3: Selection criteria\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB4_data_extraction.md\n\n\nKB4: Extraction and table assembly\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB5_data_synthesis_and_reporting.md\n\n\nKB5: Narrative synthesis\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB6_writing_style_requirements.md\n\n\nKB6: Prompt for writing style\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB7_citations_and_reference_style.md\n\n\nKB7: Assemble bibliography\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB8_pubmed_queries.md\n\n\nKB8: PubMed search strategy\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB9_openalex_queries.md\n\n\nSystem instructions for conducting OpenAlex searches\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nprisma.md\n\n\nPRISMA Systematic Reviews Checklist\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\npubmed_openapi_annotated.md\n\n\nAnnotated YAML to access PubMed API using OpenAPI\n\n\n\n\n⊞ Preview"
+    "section": "Source File Viewer",
+    "text": "Source File Viewer\n\n\n\n\n.MD\n\n\n\n000_systematic_review_bot_system_instructions.md\n\n\nSystem instructions to build a systematic review bot\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB1_information_gathering.md\n\n\nKB1: Collect desired search criteria\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB2_search_strategy_and_sources.md\n\n\nKB2: Search strategies & available resources/tools\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB3_study_selection.md\n\n\nKB3: Selection criteria\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB4_data_extraction.md\n\n\nKB4: Extraction and table assembly\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB5_data_synthesis_and_reporting.md\n\n\nKB5: Narrative synthesis\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB6_writing_style_requirements.md\n\n\nKB6: Prompt for writing style\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB7_citations_and_reference_style.md\n\n\nKB7: Assemble bibliography\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB8_pubmed_queries.md\n\n\nKB8: PubMed search strategy\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB9_openalex_queries.md\n\n\nSystem instructions for conducting OpenAlex searches\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nprisma.md\n\n\nPRISMA Systematic Reviews Checklist\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\npubmed_openapi_annotated.md\n\n\nAnnotated YAML to access PubMed API using OpenAPI\n\n\n\n\n⊞ Preview"
+  },
+  {
+    "objectID": "bot.html#obtaining-an-ncbi-api-key",
+    "href": "bot.html#obtaining-an-ncbi-api-key",
+    "title": "Systematic Review Bot",
+    "section": "Obtaining an NCBI API Key",
+    "text": "Obtaining an NCBI API Key\n\nNavigate to NCBI (https://www.ncbi.nlm.nih.gov/).\n\n\n\n\n\n\n\nIf you don’t have an NCBI account, you will be prompted to create one. Options include Google, Microsoft, ORCiD, or through your institutional nexus.\n\n\n\n\n\n\n\nLog in to your account.\n\n\n\n\n\n\n\nClick on Account settings.\n\n\n\nCreate an API key.\n\n\n\n\n\n\n\nNB: Treat this API key like a password and keep it secure."
+  },
+  {
+    "objectID": "bot.html#building-systematic-review-bot",
+    "href": "bot.html#building-systematic-review-bot",
+    "title": "Systematic Review Bot",
+    "section": "Building Systematic Review Bot",
+    "text": "Building Systematic Review Bot\n\nDownload the source files.\nSystematic Review Bot\nOn the ChatGPT home page, click GPTs in the left sidebar.\n\n\n\n\n\n\n\nOn the next page, click the Create button in the upper-right corner.\n\n\n\n\n\n\n\nSelect Configure.\n\n\n\n\n\n\n\nPaste 000_systematic_review_bot_system_instructions.md into the Instructions field.\n\n\n\n\n\n\n\nUpload the Knowledge Base files (KB1–KB9).\n\n\n\n\n\n\n\nClick Create New Action.\n\n\n\n\n\n\n\nSelect Authentication.\n\n\n\n\n\n\n\nChoose API Key and paste your NCBI API key into the field.\n\n\n\n\n\n\n\nPaste pubmed_openapi_configuration.yaml into the Schema field. Next, click the Test button for each API call type to verify that the requests work correctly.\n\n\n\n\n\n\n\nExample of successful test output for the esearchPubMed call.\n\n\n\n\n\n\n\nClick Save, then test the Custom GPT in the preview chat to ensure everything is working correctly."
+  },
+  {
+    "objectID": "bot.html#assembled-systematic-review-using-prism",
+    "href": "bot.html#assembled-systematic-review-using-prism",
+    "title": "Systematic Review Bot",
+    "section": "Assembled Systematic Review Using Prism",
+    "text": "Assembled Systematic Review Using Prism\nAssembled Systematic Review"
   },
   {
     "objectID": "about.html",
@@ -105,6 +133,20 @@
     "text": "All Text Embeddings Vectors, All The Time\n\n\nHTML\n\n\n\n\nCSS\n\n\n\n\nJavaScript\n\n\n\n\nPython\n\n\n\n\nSQL"
   },
   {
+    "objectID": "00_slides.html#the-best-of-times.",
+    "href": "00_slides.html#the-best-of-times.",
+    "title": "Data and Generative AI",
+    "section": "The Best of Times….",
+    "text": "The Best of Times….\n\nCan We Build It?\n\n\nYes"
+  },
+  {
+    "objectID": "00_slides.html#coding-llms",
+    "href": "00_slides.html#coding-llms",
+    "title": "Data and Generative AI",
+    "section": "Coding LLMs",
+    "text": "Coding LLMs"
+  },
+  {
     "objectID": "00_slides.html#llms-data-strengths",
     "href": "00_slides.html#llms-data-strengths",
     "title": "Data and Generative AI",
@@ -112,11 +154,11 @@
     "text": "LLMs & Data: Strengths\n\n\nGenerative AI\n\n\n\n\nError Messages/Debugging\n\n\n\n\nSQL Queries\n\n\n\n\nScut ▶ Bot"
   },
   {
-    "objectID": "00_slides.html#the-best-of-times.",
-    "href": "00_slides.html#the-best-of-times.",
+    "objectID": "00_slides.html#goodish-vibes",
+    "href": "00_slides.html#goodish-vibes",
     "title": "Data and Generative AI",
-    "section": "The Best of Times….",
-    "text": "The Best of Times….\n\nCan We Build It?\n\n\nYes"
+    "section": "Good…ish Vibes",
+    "text": "Good…ish Vibes"
   },
   {
     "objectID": "00_slides.html#the-worst-of-times",
@@ -145,6 +187,34 @@
     "title": "Data and Generative AI",
     "section": "LLMs & Data: Mitigation",
     "text": "LLMs & Data: Mitigation\n\n\nSecrets/Keys/Credentials in Password Manager/Vault\n\n\n\n\nAdd .env, *.pem, & *secret* to .gitignore & Tool-Specific Ignore File\n\n\n\n\nOnly Use in Dedicated Project Directory NOT Home, C:/, or ~/"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-2",
+    "href": "00_slides.html#llms-data-mitigation-2",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\nClaude Code\n\n\n\nUse --allowedPaths flag\n\n\n\n\nAdd .claudeignore to Exclude Specific Files/Dirs\n\n\n\n\nRun in a restricted directory"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-3",
+    "href": "00_slides.html#llms-data-mitigation-3",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\nCursor\n\n\n\nAdd sensitive files/dirs to .cursorignore\n\n\n\n\nDisable Auto-Indexing: Cursor Settings → Features → Codebase Indexing\n\n\n\n\nDisable “Include .gitignored files”"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-4",
+    "href": "00_slides.html#llms-data-mitigation-4",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\nOpenAI Codex (CLI)\n\n\n\nUse --allowed-paths flag\n\n\n\n\nRun in Sandbox Mode (--sandbox)\n\n\n\n\nSet approval: always in codex.yaml\n\n\n\nGemini (CLI / Code Assist)\n\n\n\nAdd paths to .geminiignore\n\n\n\n\nUse --context-path to Explicitly Scope Working Directory"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-5",
+    "href": "00_slides.html#llms-data-mitigation-5",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\n\nPrompting\n\n\n\n\nDefensive Programming Prompting\n\n\n\n\nColumn Names & Data Types\n\n\n\n\nSynthetic Data Set\n\n\n\n\nParameters (Choose One)\n\n\n\n\nTemperature\nTop-K\nTop-P"
   },
   {
     "objectID": "00_slides.html#were-all-engineers",
@@ -245,25 +315,53 @@
     "text": "Systematic Review Bot\n\n\nImage Generated by AI"
   },
   {
-    "objectID": "00_slides.html#creating-a-custom-gpt-in-openai",
-    "href": "00_slides.html#creating-a-custom-gpt-in-openai",
+    "objectID": "00_slides.html#systematic-review-bot",
+    "href": "00_slides.html#systematic-review-bot",
     "title": "Data and Generative AI",
-    "section": "Creating a Custom GPT in OpenAI",
-    "text": "Creating a Custom GPT in OpenAI"
+    "section": "Systematic Review Bot",
+    "text": "Systematic Review Bot"
   },
   {
-    "objectID": "00_slides.html#developing-knowledge-base",
-    "href": "00_slides.html#developing-knowledge-base",
+    "objectID": "00_slides.html#systematic-review-bot-1",
+    "href": "00_slides.html#systematic-review-bot-1",
     "title": "Data and Generative AI",
-    "section": "Developing Knowledge Base",
-    "text": "Developing Knowledge Base\n\n\nSimilar to Prompt Principles\n\n\n\n\nFormatting/Delimiters\n\n\n\n\nSmall Logical Sections/Small Chunks\n\n\n\n\nContext Window Management\n\n\n\n\nUse Markdown (.md)\n\n\n\n\nSplit by Task/Topic"
+    "section": "Systematic Review Bot",
+    "text": "Systematic Review Bot"
   },
   {
-    "objectID": "00_slides.html#demo",
-    "href": "00_slides.html#demo",
+    "objectID": "00_slides.html#general-prompting-approach",
+    "href": "00_slides.html#general-prompting-approach",
     "title": "Data and Generative AI",
-    "section": "Demo",
-    "text": "Demo\n\n\nSystematic Review Bot"
+    "section": "General Prompting Approach",
+    "text": "General Prompting Approach\n\nEnforce Strong Process Discipline & Reproducibility\n\n\n\nDon’t Just Ask to “Write a Review”\n\n\n\n\nEncode the Process & its Governance\n\n\n\n\nDeliverables, Logs, Audit Trail, & Reproducibility Documentation"
+  },
+  {
+    "objectID": "00_slides.html#general-prompting-approach-1",
+    "href": "00_slides.html#general-prompting-approach-1",
+    "title": "Data and Generative AI",
+    "section": "General Prompting Approach",
+    "text": "General Prompting Approach\n\nEnsure Epistemic Safeguards\n\n\n\nRepeatedly Prohibit Inventing Data\n\n\n\n\nEnforce Adherence to Encoded Workflow\n\n\n\n\nRequire Verification of Quantitative Values Against Retrieved Sources\n\n\n\n\nSeparate Evidence from Interpretation\n\n\n\n\nMandate Hedging When Evidence is Limited"
+  },
+  {
+    "objectID": "00_slides.html#general-prompting-approach-2",
+    "href": "00_slides.html#general-prompting-approach-2",
+    "title": "Data and Generative AI",
+    "section": "General Prompting Approach",
+    "text": "General Prompting Approach\n\nPractical Human-in-the-Loop Checkpoints\n\n\nRequiring User Confirmation:\n\n\n\nAfter Each Phase\n\n\n\n\nBefore Executing Final Search String\n\n\n\n\nLowers Drift Risk\n\n\n\n\nMakes System More Controllable for Real Review Work"
+  },
+  {
+    "objectID": "00_slides.html#general-prompting-approach-3",
+    "href": "00_slides.html#general-prompting-approach-3",
+    "title": "Data and Generative AI",
+    "section": "General Prompting Approach",
+    "text": "General Prompting Approach\n\nEnsure Using Authoritative Tools via API (When Available)\n\n\n\nUsing the PubMed API for Study Selection Reduces Risk of Hallucinated References\n\n\n\n\nBe AWARE of Residual Risks & Make Your Own Tests Before Trusting It"
+  },
+  {
+    "objectID": "00_slides.html#demo-time",
+    "href": "00_slides.html#demo-time",
+    "title": "Data and Generative AI",
+    "section": "Demo Time",
+    "text": "Demo Time"
   },
   {
     "objectID": "00_slides.html#next-steps",
@@ -271,6 +369,13 @@
     "title": "Data and Generative AI",
     "section": "Next Steps",
     "text": "Next Steps\n\nImport into OpenAI Prism"
+  },
+  {
+    "objectID": "00_slides.html#next-steps-1",
+    "href": "00_slides.html#next-steps-1",
+    "title": "Data and Generative AI",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nUse PaperBanana for Illustrations/Graphs"
   },
   {
     "objectID": "00_slides.html#acknowledgements",
@@ -285,6 +390,13 @@
     "title": "Data and Generative AI",
     "section": "",
     "text": "Additional Slides and Resources\n\n\nImage Generated by AI"
+  },
+  {
+    "objectID": "00_slides.html#developing-knowledge-base-documents",
+    "href": "00_slides.html#developing-knowledge-base-documents",
+    "title": "Data and Generative AI",
+    "section": "Developing Knowledge Base Documents",
+    "text": "Developing Knowledge Base Documents\n\n\nSimilar to Prompt Principles\n\n\n\n\nFormatting/Delimiters\n\n\n\n\nSmall Logical Sections/Small Chunks\n\n\n\n\nContext Window Management\n\n\n\n\nUse Markdown (.md)\n\n\n\n\nSplit by Task/Topic"
   },
   {
     "objectID": "00_slides.html#faster",
@@ -481,208 +593,5 @@
     "title": "Potential Solutions",
     "section": "Exercise 3: Munging Messy Data",
     "text": "Exercise 3: Munging Messy Data\nPrompt an LLM to clean and validate the messy_aki dataset in preparation for analysis and modeling.\n\nChatGPTClaudeGemini\n\n\nPrompt: You are Dr. Karandeep Singh, the creator of TidierOrg and Tidier.jl. You are an expert in coding, AI, and nephrology.\n[Objective] Clean messy clinical trial data to prepare for analysis and predictive modeling.\n[Context] Take this messy data {messy_aki.xlsx} and provide valid Julia code to accurately clean the data.\n[Constraints] You must use TidierOrg tools to clean the data.\n[Format] Return valid Julia code to read in the messy data, clean and validate the data, and export the data to a csv. Provide a report in markdown that catalogs missing data, outliers, and any edge cases that need HITL review before modeling. Clearly explain which Tidier.jl packages you are using and what each section of the code achieves with the resulting Julia code you generate. Do this in a manner for someone who is familiar with code but knows nothing about Julia. Provide key points for choosing Julia over other programming languages.\nResponse:\nJulia cleaning script (TidierOrg-first)\n#| eval: false\n\n############################################################\n# AKI trial data cleaning (TidierOrg / Tidier.jl workflow)\n# - Reads messy Excel\n# - Detects the true header row\n# - Cleans/standardizes fields (dates, categories, numerics)\n# - Validates + flags HITL edge cases\n# - Exports clean CSV + a markdown QA report\n############################################################\n\nusing Tidier                    # meta-package (re-exports TidierData, TidierFiles, TidierStrings, TidierDates, etc.)\nusing DataFrames\nusing Dates\nusing Statistics\n\n# -------------------------\n# 0) I/O paths\n# -------------------------\nin_path  = \"/mnt/data/messy_aki.xlsx\"\nout_csv  = \"aki_clean.csv\"\nout_md   = \"aki_cleaning_report.md\"\n\n# -------------------------\n# 1) Read Excel (TidierFiles)\n#    We read with col_names=false because the file has title rows above the real header\n# -------------------------\ndf_raw = TidierFiles.read_xlsx(in_path; sheet=1, col_names=false, trim_ws=true)\n\n# -------------------------\n# 2) Find the header row containing \"study_id\" in the first column, then re-read as data\n# -------------------------\nfirstcol = df_raw[:, 1]\nheader_row = findfirst(x -&gt; !ismissing(x) && lowercase(String(x)) == \"study_id\", firstcol)\n\nif header_row === nothing\n    error(\"Could not find a header row with 'study_id' in column 1. Inspect df_raw to locate headers.\")\nend\n\n# Extract header values and data rows\nhdr_vals = df_raw[header_row, :]\ndf = df_raw[(header_row + 1):nrow(df_raw), :]\n\n# Assign column names from the header row\nrename!(df, Symbol.(map(x -&gt; ismissing(x) ? \"\" : String(x), collect(hdr_vals))))\n\n# Drop any columns with empty names (common when there are blank columns in the sheet)\nempty_name_cols = names(df)[map(nm -&gt; nm == Symbol(\"\"), names(df))]\nif !isempty(empty_name_cols)\n    select!(df, Not(empty_name_cols))\nend\n\n# Clean column names to snake_case (TidierData)\ndf = @chain df begin\n    @clean_names()\nend\n\n# -------------------------\n# 3) Drop trailing note rows / non-data rows\n#    (in this file, rows with missing study_id are notes/permissions)\n# -------------------------\ndf = @chain df begin\n    @filter(!ismissing(study_id))\nend\n\n# -------------------------\n# 4) Helper parsers (used inside @mutate)\n# -------------------------\n# Extract the first number from messy strings like \"19 but poor collection\"\nfunction first_number(x)\n    if ismissing(x)\n        return missing\n    end\n    if x isa Number\n        return Float64(x)\n    end\n    s = strip(String(x))\n    m = match(r\"-?\\d+(\\.\\d+)?\", s)\n    return m === nothing ? missing : parse(Float64, m.match)\nend\n\n# Parse DOB from multiple common Excel/string formats\nfunction parse_dob(x)\n    if ismissing(x)\n        return missing\n    end\n    # Already a Date/DateTime\n    if x isa Date\n        return x\n    elseif x isa DateTime\n        return Date(x)\n    end\n\n    s = strip(String(x))\n    if isempty(s)\n        return missing\n    end\n\n    # Normalize month-name strings like \"may 5 1970\" -&gt; \"May 5 1970\"\n    s2 = join(uppercasefirst.(split(lowercase(s), ' ')), ' ')\n\n    # Try a few formats\n    for fmt in (dateformat\"y-m-d\", dateformat\"m/d/y\", dateformat\"u d y\", dateformat\"u d, y\")\n        try\n            return Date(s2, fmt)\n        catch\n        end\n    end\n\n    # Last resort: try Date(s2) (can work for some ISO-ish strings)\n    try\n        return Date(s2)\n    catch\n        return missing\n    end\nend\n\n# Standardize Yes/No-ish fields\nfunction yesno(x)\n    if ismissing(x)\n        return missing\n    end\n    s = lowercase(strip(String(x)))\n    if s in (\"yes\", \"y\", \"true\", \"1\")\n        return \"Yes\"\n    elseif s in (\"no\", \"n\", \"false\", \"0\")\n        return \"No\"\n    else\n        return missing\n    end\nend\n\n# Standardize sex\nfunction sex_std(x)\n    if ismissing(x)\n        return missing\n    end\n    s = lowercase(strip(String(x)))\n    if s in (\"m\", \"male\")\n        return \"Male\"\n    elseif s in (\"f\", \"female\")\n        return \"Female\"\n    else\n        return missing\n    end\nend\n\n# Standardize race (example mapping—edit if your protocol uses different groupings)\nfunction race_std(x)\n    if ismissing(x)\n        return missing\n    end\n    s = lowercase(strip(String(x)))\n    if s in (\"white\", \"caucasian\", \"w\", \"white \")\n        return \"White\"\n    elseif s in (\"black\", \"af-am\", \"african american\", \"african-american\")\n        return \"Black\"\n    elseif s in (\"asian\")\n        return \"Asian\"\n    elseif s in (\"mixed\", \"multiracial\")\n        return \"Mixed\"\n    elseif s in (\"other\")\n        return \"Other\"\n    else\n        return \"Other\"\n    end\nend\n\n# Standardize Hispanic ethnicity with typo handling\nfunction hispanic_std(x)\n    if ismissing(x)\n        return missing\n    end\n    s = lowercase(strip(String(x)))\n    if s in (\"hispanic\", \"h\", \"h \", \"hisspanic\", \"hispannic\")\n        return \"Hispanic\"\n    elseif s in (\"not hispanic\", \"nh\", \"non-hispanic\", \"non hispanic\")\n        return \"Not Hispanic\"\n    else\n        return missing\n    end\nend\n\n# -------------------------\n# 5) Main cleaning transforms (TidierData)\n#    - Parse types\n#    - Keep “raw” copies where useful for audit\n#    - Create QA flags for HITL review\n# -------------------------\ndf_clean = @chain df begin\n    @mutate(\n        # IDs\n        study_id = as_integer(study_id),\n\n        # DOB -&gt; Date\n        dob_raw = dob,\n        dob = ~parse_dob(dob),\n\n        # Demographics standardization\n        sex_raw = sex,\n        sex = ~sex_std(sex),\n\n        race_raw = race,\n        race = ~race_std(race),\n\n        hispanic_raw = hispanic,\n        hispanic = ~hispanic_std(hispanic),\n\n        # GFR numerics (keep raw columns + parsed numeric columns)\n        admission_gfr_raw = admission_gfr,\n        day_1_gfr_raw      = day_1_gfr,\n        day2gfr_raw        = day2gfr,\n        day_3_gfr_raw      = day_3_gfr,\n        day_4_gfr_raw      = day_4_gfr,\n        day5_gfr_raw       = day5_gfr,\n\n        admission_gfr = ~first_number(admission_gfr),\n        day_1_gfr     = ~first_number(day_1_gfr),\n        day2_gfr      = ~first_number(day2gfr),\n        day_3_gfr     = ~first_number(day_3_gfr),\n        day_4_gfr     = ~first_number(day_4_gfr),\n        day5_gfr      = ~first_number(day5_gfr),\n\n        # Flags: “had extra text” (e.g., \"19 but poor collection\")\n        day2_parse_note = !(ismissing(day2gfr_raw)) && !(String(day2gfr_raw) |&gt; strip |&gt; x -&gt; occursin(r\"^-?\\d+(\\.\\d+)?$\", x)),\n\n        # Devices\n        hd_catheter_raw = hd_catheter,\n        hd_catheter = ~yesno(hd_catheter),\n\n        av_fistula_raw = av_fistula,\n        av_fistula = ~yesno(av_fistula)\n    ) |&gt;\n\n    # Keep a tidy column order (optional)\n    @select(\n        study_id, dob, sex, race, hispanic,\n        admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr,\n        diagnosis, sediment, hd_catheter, av_fistula,\n        day2_parse_note,\n        # audit columns at the end\n        dob_raw, sex_raw, race_raw, hispanic_raw,\n        admission_gfr_raw, day_1_gfr_raw, day2gfr_raw, day_3_gfr_raw, day_4_gfr_raw, day5_gfr_raw,\n        hd_catheter_raw, av_fistula_raw\n    )\nend\n\n# -------------------------\n# 6) Validation + HITL flags\n# -------------------------\n\n# Duplicated study_id check\ndup_ids = @chain df_clean begin\n    @count(study_id)\n    @filter(n &gt; 1)\nend\n\n# Missingness summary\nmissing_summary = DataFrame(\n    column = String[],\n    n_missing = Int[],\n    pct_missing = Float64[]\n)\nfor nm in names(df_clean)\n    col = df_clean[!, nm]\n    nmiss = count(ismissing, col)\n    push!(missing_summary, (String(nm), nmiss, round(100 * nmiss / nrow(df_clean); digits=1)))\nend\n\n# Outlier thresholds (IQR rule) for each GFR column\ngfr_cols = [:admission_gfr, :day_1_gfr, :day2_gfr, :day_3_gfr, :day_4_gfr, :day5_gfr]\n\nfunction iqr_bounds(v::Vector{Union{Missing, Float64}})\n    x = collect(skipmissing(v))\n    if length(x) &lt; 4\n        return (missing, missing)  # too few points\n    end\n    q1 = quantile(x, 0.25)\n    q3 = quantile(x, 0.75)\n    iqr = q3 - q1\n    return (q1 - 1.5*iqr, q3 + 1.5*iqr)\nend\n\noutlier_rows = DataFrame()\nfor c in gfr_cols\n    lo, hi = iqr_bounds(df_clean[!, c])\n    if !(ismissing(lo) || ismissing(hi))\n        tmp = @chain df_clean begin\n            @mutate(_col = String(c), _lo = lo, _hi = hi)\n            @filter(!ismissing($(c)) && (($(c) &lt; lo) || ($(c) &gt; hi)))\n            @select(study_id, _col, $(c), _lo, _hi)\n        end\n        outlier_rows = vcat(outlier_rows, tmp; cols=:union)\n    end\nend\n\n# Extra clinical sanity flags (edit thresholds to your protocol)\nsanity_flags = @chain df_clean begin\n    @mutate(\n        flag_dob_unparsed = ismissing(dob),\n        flag_gfr_negative = any.((admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr) .&lt; 0),\n        flag_gfr_very_high = any.((admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr) .&gt; 200),\n        flag_day3_missing = ismissing(day_3_gfr),\n        flag_day2_note = day2_parse_note\n    )\nend\n\n# -------------------------\n# 7) Export clean CSV (TidierFiles)\n# -------------------------\nTidierFiles.write_csv(df_clean, out_csv)\n\n# -------------------------\n# 8) Write a markdown QA report\n# -------------------------\nfunction df_to_md_table(d::DataFrame; max_rows::Int=50)\n    n = min(nrow(d), max_rows)\n    cols = names(d)\n    header = \"|\" * join(string.(cols), \"|\") * \"|\\n\"\n    sep    = \"|\" * join(fill(\"---\", length(cols)), \"|\") * \"|\\n\"\n    rows = \"\"\n    for i in 1:n\n        vals = [ismissing(d[i, c]) ? \"missing\" : string(d[i, c]) for c in cols]\n        rows *= \"|\" * join(vals, \"|\") * \"|\\n\"\n    end\n    if nrow(d) &gt; max_rows\n        rows *= \"\\n*(truncated to first $(max_rows) rows)*\\n\"\n    end\n    return header * sep * rows\nend\n\nreport = \"\"\"\n# AKI Data Cleaning QA Report\n\n## Files\n- Input: `$(in_path)`\n- Output CSV: `$(out_csv)`\n\n## Row counts\n- Rows after header detection + dropping note rows: **$(nrow(df_clean))**\n- Columns: **$(ncol(df_clean))**\n\n## Missing data (all columns)\n$(df_to_md_table(sort(missing_summary, :n_missing, rev=true)))\n\n## Duplicate study IDs (requires HITL)\n$(nrow(dup_ids) == 0 ? \"_None detected._\" : df_to_md_table(dup_ids))\n\n## Parsed-text notes (e.g., GFR cell had extra text)\nRows with `day2_parse_note = true` should be reviewed to confirm the numeric extraction matches intent.\n$(df_to_md_table(@chain df_clean begin\n    @filter(day2_parse_note == true)\n    @select(study_id, day2gfr_raw, day2_gfr)\nend))\n\n## Outliers by IQR rule (requires HITL)\n$(nrow(outlier_rows) == 0 ? \"_None detected by IQR rule._\" : df_to_md_table(outlier_rows))\n\n## Sanity flags (requires HITL)\n$(df_to_md_table(@chain sanity_flags begin\n    @filter(flag_dob_unparsed || flag_gfr_very_high || flag_day3_missing || flag_day2_note)\n    @select(study_id, flag_dob_unparsed, flag_gfr_very_high, flag_day3_missing, flag_day2_note,\n            admission_gfr, day_1_gfr, day2_gfr, day_3_gfr, day_4_gfr, day5_gfr,\n            dob_raw)\nend))\n\"\"\"\n\nopen(out_md, \"w\") do io\n    write(io, report)\nend\n\nprintln(\"Wrote clean CSV -&gt; $(out_csv)\")\nprintln(\"Wrote QA report -&gt; $(out_md)\")\n\nWhat TidierOrg packages this uses (and why)\n\nTidier.jl (meta-package): loads the “tidyverse-like” ecosystem in one import. Tidier.jl is designed as a meta-package that re-exports functionality from smaller TidierOrg packages.\nTidierFiles.jl: provides read_xlsx() and write_csv() with a consistent “readr/readxl-ish” API, powered by XLSX.jl/CSV.jl under the hood.\nTidierData.jl: provides tidy macros like @chain, @mutate, @filter, @select, and @clean_names() for dplyr/tidyr-like transformations.\n\nMarkdown QA report (based on this messy_aki.xlsx)\nSummary\n\nExcel rows: 27 total on the sheet\nTrue data table rows: 23 (after skipping title/header junk)\nNon-data note rows removed: 3 (permission/notes at bottom with missing study_id)\nFinal analytic rows: 20\nKey HITL items: duplicate study IDs, extreme/implausible GFR values, one missing Day 3 GFR, “numeric-with-text” cell.\n\nMissing data\n\nday_3_gfr: 1 missing (study_id 21)\n\nOutliers (needs HITL review)\nUsing an IQR rule on the numeric-parsed GFR values, these stand out:\n\nAdmission GFR = 232 (study_id 20) — likely a data entry error (e.g., “23.2” or “23”?) given subsequent days are ~19–33.\nAdmission GFR = 177 (study_id 21) — unusually high vs cohort; may be real or a typo (“17.7” / “17”?).\nDay 1 GFR = 322 (study_id 15) — almost certainly a typo (pattern suggests “32”).\n\nEdge cases / messy-field normalization\n\nDOB includes a free-text date (\"may 5 1970\") that must be parsed carefully (the script handles multiple formats).\nSex mixes Male/Female with M/F and trailing whitespace.\nRace mixes casing and abbreviations (WHITE, Af-Am, Caucasian, etc.).\nHispanic includes typos (Hisspanic, Hispannic, H) and shorthand (NH).\nDay2 GFR contains at least one cell like \"19 but poor collection\"; the script extracts the first numeric value (=19) and flags it (day2_parse_note=true) for review.\n\nID integrity (must resolve before modeling)\n\nDuplicate study_id: 3 appears twice; 8 appears twice.\nThese represent clearly different patients/records and should be reconciled (true duplicates vs mis-keyed IDs) before train/test splits.\n\nHow to read the Julia code if you “know code but not Julia”\n\nusing Tidier is like library(tidyverse)—it brings in the TidierOrg ecosystem.\n@chain df begin ... end is like %&gt;% in R or method-chaining in Python; it pipes a DataFrame through steps.\n@mutate(new = f(old)) creates/overwrites columns.\nmissing is Julia’s NA.\nThe ~ prefix inside TidierData macros tells TidierData not to auto-vectorize a function (important when you’re calling helper functions that should run “per-cell” rather than being broadcast in a surprising way).\n\nWhy choose Julia here (vs Python/R) — the practical version\n\nSpeed without giving up expressiveness: you can do heavy feature engineering and modeling in one language without “two-language” rewrites.\nComposable, high-performance tabular + ML stack: DataFrames + MLJ/Flux/etc. can stay fast as the pipeline grows.\nTidyverse-like ergonomics (TidierOrg): if your team thinks in dplyr verbs, TidierData lowers the adoption cost while staying Julia-native.\n\nIf you want, I can adapt the race/ethnicity mappings and the GFR plausibility thresholds to match your trial’s data dictionary / SAP (e.g., “Unknown” handling, allowable ranges, and whether GFR is eGFR vs measured clearance).\n\n\nPrompt: can you show me some python code to clean this data up?\nResponse:\nHere’s a well-commented cleaning script that tackles every issue I spotted:\n\n\nCode\nimport pandas as pd\nimport numpy as np\nfrom dateutil import parser as dateparser\nimport re\n\n# ── 1. Load, skip the 3-row title block, drop the empty column F ──────────────\ndf = pd.read_excel(\"messy_aki.xlsx\", skiprows=4, header=0)\ndf = df.drop(columns=[df.columns[5]])          # unnamed empty column between Hispanic and Admission GFR\ndf = df.dropna(how=\"all\")                       # drop fully-empty rows (incl. footer notes)\n\n# ── 2. Standardise column names ───────────────────────────────────────────────\ndf.columns = [\n    \"study_id\", \"dob\", \"race\", \"sex\", \"hispanic\",\n    \"gfr_admission\", \"gfr_day1\", \"gfr_day2\", \"gfr_day3\", \"gfr_day4\", \"gfr_day5\",\n    \"diagnosis\", \"sediment\", \"hd_catheter\", \"av_fistula\"\n]\n\n# ── 3. Duplicate / invalid study IDs ─────────────────────────────────────────\n# IDs 3 and 8 appear twice; IDs 9, 10, 18 are missing entirely.\n# Flag duplicates so you can review — don't silently drop them.\ndf[\"duplicate_id_flag\"] = df.duplicated(subset=\"study_id\", keep=False)\n\n# ── 4. Parse dates of birth ───────────────────────────────────────────────────\ndef parse_dob(val):\n    if pd.isna(val):\n        return pd.NaT\n    if isinstance(val, pd.Timestamp):\n        return val\n    # Handle obvious typo like \"5=11-1984\"\n    val = str(val).replace(\"=\", \"-\")\n    try:\n        return dateparser.parse(val, dayfirst=False)\n    except Exception:\n        return pd.NaT\n\ndf[\"dob\"] = pd.to_datetime(df[\"dob\"].apply(parse_dob), errors=\"coerce\")\n\n# ── 5. Standardise race ───────────────────────────────────────────────────────\nrace_map = {\n    \"caucasian\": \"White\",\n    \"white\":     \"White\",\n    \"af-am\":     \"Black\",\n    \"black\":     \"Black\",\n    \"asian\":     \"Asian\",\n    \"mixed\":     \"Other\",\n    \"other\":     \"Other\",\n}\ndf[\"race\"] = (df[\"race\"]\n              .str.strip()\n              .str.lower()\n              .map(race_map)\n              .fillna(\"Unknown\"))\n\n# ── 6. Standardise sex ────────────────────────────────────────────────────────\ndef clean_sex(val):\n    if pd.isna(val):\n        return np.nan\n    v = str(val).strip().lower()\n    if v in (\"male\", \"m\"):\n        return \"Male\"\n    if v in (\"female\", \"f\"):\n        return \"Female\"\n    return np.nan\n\ndf[\"sex\"] = df[\"sex\"].apply(clean_sex)\n\n# ── 7. Standardise hispanic ethnicity ────────────────────────────────────────\ndef clean_hispanic(val):\n    if pd.isna(val):\n        return np.nan\n    v = str(val).strip().lower().replace(\" \", \"\")\n    if v in (\"hispanic\", \"h\", \"hispannic\", \"hisspanic\"):   # typos\n        return \"Hispanic\"\n    if v in (\"nothispanic\", \"nh\"):\n        return \"Not Hispanic\"\n    return np.nan\n\ndf[\"hispanic\"] = df[\"hispanic\"].apply(clean_hispanic)\n\n# ── 8. Clean GFR columns — coerce text to numeric, flag outliers ──────────────\ngfr_cols = [\"gfr_admission\", \"gfr_day1\", \"gfr_day2\", \"gfr_day3\", \"gfr_day4\", \"gfr_day5\"]\n\ndef extract_numeric(val):\n    \"\"\"Pull the first number out of a cell; return NaN if none found.\"\"\"\n    if pd.isna(val):\n        return np.nan\n    try:\n        return float(val)\n    except (ValueError, TypeError):\n        match = re.search(r\"\\d+\\.?\\d*\", str(val))\n        return float(match.group()) if match else np.nan\n\nfor col in gfr_cols:\n    df[col] = df[col].apply(extract_numeric)\n\n# Flag physiologically implausible GFR values (&gt; 200 are likely data-entry errors)\nGFR_MAX = 200\nfor col in gfr_cols:\n    flag_col = col + \"_outlier_flag\"\n    df[flag_col] = df[col] &gt; GFR_MAX\n\n# ── 9. Standardise Yes/No columns ────────────────────────────────────────────\ndef clean_yesno(val):\n    if pd.isna(val):\n        return np.nan\n    v = str(val).strip().lower().replace(\"`\", \"\")   # \"No`\" typo\n    if v == \"yes\":\n        return \"Yes\"\n    if v == \"no\":\n        return \"No\"\n    return np.nan\n\nfor col in [\"hd_catheter\", \"av_fistula\"]:\n    df[col] = df[col].apply(clean_yesno)\n\n# ── 10. Standardise sediment free-text (minor normalisation) ─────────────────\ndf[\"sediment\"] = (df[\"sediment\"]\n                  .str.strip()\n                  .str.lower()\n                  .str.replace(r\"\\s+\", \" \", regex=True)\n                  .str.replace(\"epi cell\", \"epithelial cell\")\n                  .str.replace(\"gran \", \"granular \"))\n\n# ── 11. Report a cleaning summary ─────────────────────────────────────────────\nprint(\"=== Cleaning summary ===\")\nprint(f\"Rows: {len(df)}\")\nprint(f\"\\nDuplicate study IDs:\\n{df[df['duplicate_id_flag']][['study_id','dob','diagnosis']]}\")\nprint(f\"\\nUnparseable DOBs: {df['dob'].isna().sum()}\")\nprint(f\"\\nGFR outlier flags:\")\nfor col in gfr_cols:\n    n = df[col + \"_outlier_flag\"].sum()\n    if n:\n        print(f\"  {col}: {n} outlier(s) — {df.loc[df[col+'_outlier_flag'], ['study_id', col]].values.tolist()}\")\n\nprint(f\"\\nSex nulls after cleaning:      {df['sex'].isna().sum()}\")\nprint(f\"Hispanic nulls after cleaning: {df['hispanic'].isna().sum()}\")\nprint(f\"Race unknowns:                 {(df['race']=='Unknown').sum()}\")\n\n# ── 12. Save ──────────────────────────────────────────────────────────────────\ndf.to_csv(\"aki_clean.csv\", index=False)\nprint(\"\\nSaved to aki_clean.csv\")\n\n\n=== Cleaning summary ===\nRows: 22\n\nDuplicate study IDs:\n    study_id        dob           diagnosis\n2        3.0 1970-05-05        bleeding out\n3        3.0 1981-06-03  norovirus diarrhea\n8        8.0 1982-04-22     C diff diarrhea\n9        8.0 2003-10-12           NSAID tox\n21       NaN        NaT                 NaN\n22       NaN        NaT                 NaN\n\nUnparseable DOBs: 2\n\nGFR outlier flags:\n  gfr_admission: 1 outlier(s) — [[20.0, 232.0]]\n  gfr_day1: 1 outlier(s) — [[15.0, 322.0]]\n\nSex nulls after cleaning:      2\nHispanic nulls after cleaning: 2\nRace unknowns:                 2\n\nSaved to aki_clean.csv\nHere’s a rundown of every issue it handles:\nStructure — skips the 3-row title block (“Acute Kidney Injury Study”, resident name, project name) and the stray empty column between Hispanic and Admission GFR.\nColumn names — normalises the wildly inconsistent headers (DAY2GFR\\``,day 3 GfR`, etc.) to snake_case.\nDuplicate IDs — study_ids 3 and 8 each appear twice (and 9, 10, 18 are missing). The script flags duplicates rather than silently dropping them, since you’ll need to decide which row is correct.\nDates of birth — handles three formats: Excel dates, “may 5 1970” (free text), and “5=11-1984” (typo with = instead of -).\nRace — merges “Caucasian”/“WHITE”/“white” → “White”, “Af-Am”/“Black” → “Black”, etc.\nSex — normalises “M”, “F”, “Male”, “Female”, “F” → consistent “Male”/“Female”.\nHispanic — fixes typos (“Hispannic”, “Hisspanic”) and abbreviations (“H”, “NH”).\nGFR values — row 2 has “19 but poor collection” (extracts 19), and several rows have values like 322 or 232 that are almost certainly data-entry errors (extra digit). Those are flagged with outlier columns.\nYes/No fields — handles “YES”, “NO”, “No`” (backtick typo) → “Yes”/“No”.\n\n\nPrompt: You are an expert R programmer fluent in the Tidyverse. Provide a [TK]\nResponse:\n#| eval: false"
-  },
-  {
-    "objectID": "00_slides.html#systematic-review-bot",
-    "href": "00_slides.html#systematic-review-bot",
-    "title": "Data and Generative AI",
-    "section": "Systematic Review Bot",
-    "text": "Systematic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systmatic-review-bot",
-    "href": "00_slides.html#systmatic-review-bot",
-    "title": "Data and Generative AI",
-    "section": "Systmatic Review Bot",
-    "text": "Systmatic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systmatic-review-bot-1",
-    "href": "00_slides.html#systmatic-review-bot-1",
-    "title": "Data and Generative AI",
-    "section": "Systmatic Review Bot",
-    "text": "Systmatic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systmatic-review-bot-2",
-    "href": "00_slides.html#systmatic-review-bot-2",
-    "title": "Data and Generative AI",
-    "section": "Systmatic Review Bot",
-    "text": "Systmatic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systmatic-review-bot-3",
-    "href": "00_slides.html#systmatic-review-bot-3",
-    "title": "Data and Generative AI",
-    "section": "Systmatic Review Bot",
-    "text": "Systmatic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systmatic-review-bot-4",
-    "href": "00_slides.html#systmatic-review-bot-4",
-    "title": "Data and Generative AI",
-    "section": "Systmatic Review Bot",
-    "text": "Systmatic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systmatic-review-bot-5",
-    "href": "00_slides.html#systmatic-review-bot-5",
-    "title": "Data and Generative AI",
-    "section": "Systmatic Review Bot",
-    "text": "Systmatic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systematic-review-bot-1",
-    "href": "00_slides.html#systematic-review-bot-1",
-    "title": "Data and Generative AI",
-    "section": "Systematic Review Bot",
-    "text": "Systematic Review Bot"
-  },
-  {
-    "objectID": "00_slides.html#systematic-review-bot-2",
-    "href": "00_slides.html#systematic-review-bot-2",
-    "title": "Data and Generative AI",
-    "section": "Systematic Review Bot",
-    "text": "Systematic Review Bot"
-  },
-  {
-    "objectID": "bot.html#source-file-viewer",
-    "href": "bot.html#source-file-viewer",
-    "title": "Systematic Review Bot",
-    "section": "Source File Viewer",
-    "text": "Source File Viewer\n\n\n\n\n.MD\n\n\n\n000_systematic_review_bot_system_instructions.md\n\n\nSystem instructions to build a systematic review bot\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB1_information_gathering.md\n\n\nKB1: Collect desired search criteria\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB2_search_strategy_and_sources.md\n\n\nKB2: Search strategies & available resources/tools\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB3_study_selection.md\n\n\nKB3: Selection criteria\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB4_data_extraction.md\n\n\nKB4: Extraction and table assembly\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB5_data_synthesis_and_reporting.md\n\n\nKB5: Narrative synthesis\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB6_writing_style_requirements.md\n\n\nKB6: Prompt for writing style\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB7_citations_and_reference_style.md\n\n\nKB7: Assemble bibliography\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB8_pubmed_queries.md\n\n\nKB8: PubMed search strategy\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nKB9_openalex_queries.md\n\n\nSystem instructions for conducting OpenAlex searches\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\nprisma.md\n\n\nPRISMA Systematic Reviews Checklist\n\n\n\n\n⊞ Preview\n\n\n\n\n\n.MD\n\n\n\npubmed_openapi_annotated.md\n\n\nAnnotated YAML to access PubMed API using OpenAPI\n\n\n\n\n⊞ Preview"
-  },
-  {
-    "objectID": "bot.html#getting-an-ncbi-api-key",
-    "href": "bot.html#getting-an-ncbi-api-key",
-    "title": "Systematic Review Bot",
-    "section": "Getting an NCBI API Key",
-    "text": "Getting an NCBI API Key\n\nGo to NCBI (https://www.ncbi.nlm.nih.gov/).\n\n\n\n\n\n\n\nIf you don’t already have an account, create one using Google, Microsoft, ORCiD, or institutional nexus.\n\n\n\n\n\n\n\nSelect your account….\n\n\n\n\n\n\n\n….and … Account settings\n\n\n\n…and create an API key.\n\n\n\n\n\n\n\nConsider this API key as login credentials and keep it secure."
-  },
-  {
-    "objectID": "bot.html#building-systematic-review-bot",
-    "href": "bot.html#building-systematic-review-bot",
-    "title": "Systematic Review Bot",
-    "section": "Building Systematic Review Bot",
-    "text": "Building Systematic Review Bot\n\nDownload the source files.\nSystematic Review Bot\nOn the ChatGPT home page, click GPTs in the left sidebar.\n\n\n\n\n\n\n\nOn the next page, click the Create button in the upper-right corner.\n\n\n\n\n\n\n\nSelect Configure.\n\n\n\n\n\n\n\nPaste 000_systematic_review_bot_system_instructions.md into the Instructions field.\n\n\n\n\n\n\n\nUpload the Knowledge Base files (KB1–KB9).\n\n\n\n\n\n\n\nClick Create New Action.\n\n\n\n\n\n\n\nSelect Authentication.\n\n\n\n\n\n\n\nChoose API Key and paste your NCBI API key into the field.\n\n\n\n\n\n\n\nPaste pubmed_openapi_configuration.yaml into the Schema field. Next, click the Test button for each API call type to verify that the requests work correctly.\n\n\n\n\n\n\n\nExample of successful test output for the esearchPubMed call.\n\n\n\n\n\n\n\nClick Save, then test the Custom GPT in the preview chat to ensure everything is working correctly."
-  },
-  {
-    "objectID": "00_slides.html#general-prompting-approach",
-    "href": "00_slides.html#general-prompting-approach",
-    "title": "Data and Generative AI",
-    "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nEnforce Strong Process Discipline & Reproducibility\n\n\n\nDon’t Just Ask to “Write a Review”\n\n\n\n\nEncode the Process & its Governance\n\n\n\n\nDeliverables, Logs, Audit Trail, & Reproducibility Documentation"
-  },
-  {
-    "objectID": "00_slides.html#general-prompting-approach-1",
-    "href": "00_slides.html#general-prompting-approach-1",
-    "title": "Data and Generative AI",
-    "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nEnsure Epistemic Safeguards\n\n\n\nRepeatedly Prohibit Inventing Data\n\n\n\n\nEnforce Adherence to Encoded Workflow\n\n\n\n\nRequire Verification of Quantitative Values Against Retrieved Sources\n\n\n\n\nSeparate Evidence from Interpretation\n\n\n\n\nMandate Hedging When Evidence is Limited"
-  },
-  {
-    "objectID": "00_slides.html#next-steps-1",
-    "href": "00_slides.html#next-steps-1",
-    "title": "Data and Generative AI",
-    "section": "Next Steps",
-    "text": "Next Steps\n\nUse PaperBanana for Illustrations/Graphs"
-  },
-  {
-    "objectID": "bot.html#obtaining-an-ncbi-api-key",
-    "href": "bot.html#obtaining-an-ncbi-api-key",
-    "title": "Systematic Review Bot",
-    "section": "Obtaining an NCBI API Key",
-    "text": "Obtaining an NCBI API Key\n\nNavigate to NCBI (https://www.ncbi.nlm.nih.gov/).\n\n\n\n\n\n\n\nIf you don’t have an NCBI account, you will be prompted to create one. Options include Google, Microsoft, ORCiD, or through your institutional nexus.\n\n\n\n\n\n\n\nLog in to your account.\n\n\n\n\n\n\n\nClick on Account settings.\n\n\n\nCreate an API key.\n\n\n\n\n\n\n\nNB: Treat this API key like a password and keep it secure."
-  },
-  {
-    "objectID": "bot.html#assembled-systematic-review-using-prism",
-    "href": "bot.html#assembled-systematic-review-using-prism",
-    "title": "Systematic Review Bot",
-    "section": "Assembled Systematic Review Using Prism",
-    "text": "Assembled Systematic Review Using Prism\nAssembled Systematic Review"
-  },
-  {
-    "objectID": "00_slides.html",
-    "href": "00_slides.html",
-    "title": "Data and Generative AI",
-    "section": "",
-    "text": "Data and Generative AI\n\n\nImage Generated by AI"
-  },
-  {
-    "objectID": "00_slides.html#general-prompting-approach-2",
-    "href": "00_slides.html#general-prompting-approach-2",
-    "title": "Data and Generative AI",
-    "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nPractical Human-in-the-Loop Checkpoints\n\n\nRequiring User Confirmation:\n\n\n\nAfter Each Phase\n\n\n\n\nBefore Executing Final Search String\n\n\n\n\nLowers Drift Risk\n\n\n\n\nMakes System More Controllable for Real Review Work"
-  },
-  {
-    "objectID": "00_slides.html#general-prompting-approach-3",
-    "href": "00_slides.html#general-prompting-approach-3",
-    "title": "Data and Generative AI",
-    "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nEnsure Using Authoritative Tools via API (When Available)\n\n\n\nUsing the PubMed API for Study Selection Reduces Risk of Hallucinated References\n\n\n\n\nBe AWARE of Residual Risks & Make Your Own Tests Before Trusting It"
-  },
-  {
-    "objectID": "00_slides.html#demo-time",
-    "href": "00_slides.html#demo-time",
-    "title": "Data and Generative AI",
-    "section": "Demo Time",
-    "text": "Demo Time"
-  },
-  {
-    "objectID": "00_slides.html#developing-knowledge-base-documents",
-    "href": "00_slides.html#developing-knowledge-base-documents",
-    "title": "Data and Generative AI",
-    "section": "Developing Knowledge Base Documents",
-    "text": "Developing Knowledge Base Documents\n\n\nSimilar to Prompt Principles\n\n\n\n\nFormatting/Delimiters\n\n\n\n\nSmall Logical Sections/Small Chunks\n\n\n\n\nContext Window Management\n\n\n\n\nUse Markdown (.md)\n\n\n\n\nSplit by Task/Topic"
-  },
-  {
-    "objectID": "00_slides.html#coding-llms",
-    "href": "00_slides.html#coding-llms",
-    "title": "Data and Generative AI",
-    "section": "Coding LLMs",
-    "text": "Coding LLMs"
-  },
-  {
-    "objectID": "00_slides.html#goodish-vibes",
-    "href": "00_slides.html#goodish-vibes",
-    "title": "Data and Generative AI",
-    "section": "Good…ish Vibes",
-    "text": "Good…ish Vibes"
-  },
-  {
-    "objectID": "00_slides.html#llms-data-mitigation-2",
-    "href": "00_slides.html#llms-data-mitigation-2",
-    "title": "Data and Generative AI",
-    "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\nClaude Code\n\n\n\nUse --allowedPaths flag\n\n\n\n\nAdd .claudeignore to Exclude Specific Files/Dirs\n\n\n\n\nRun in a restricted directory"
-  },
-  {
-    "objectID": "00_slides.html#llms-data-mitigation-3",
-    "href": "00_slides.html#llms-data-mitigation-3",
-    "title": "Data and Generative AI",
-    "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\nCursor\n\n\n\nAdd sensitive files/dirs to .cursorignore\n\n\n\n\nDisable Auto-Indexing: Cursor Settings → Features → Codebase Indexing\n\n\n\n\nDisable “Include .gitignored files”"
-  },
-  {
-    "objectID": "00_slides.html#llms-data-mitigation-4",
-    "href": "00_slides.html#llms-data-mitigation-4",
-    "title": "Data and Generative AI",
-    "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\nOpenAI Codex (CLI)\n\n\n\nUse --allowed-paths flag\n\n\n\n\nRun in Sandbox Mode (--sandbox)\n\n\n\n\nSet approval: always in codex.yaml\n\n\n\nGemini (CLI / Code Assist)\n\n\n\nAdd paths to .geminiignore\n\n\n\n\nUse --context-path to Explicitly Scope Working Directory"
-  },
-  {
-    "objectID": "00_slides.html#llms-data-mitigation-5",
-    "href": "00_slides.html#llms-data-mitigation-5",
-    "title": "Data and Generative AI",
-    "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\n\nPrompting\n\n\n\n\nDefensive Programming Prompting\n\n\n\n\nColumn Names & Data Types\n\n\n\n\nSynthetic Data Set\n\n\n\n\nParameters (Choose One)\n\n\n\n\nTemperature\nTop-K\nTop-P"
-  },
-  {
-    "objectID": "00_slides.html#llms-data-mitigation-6",
-    "href": "00_slides.html#llms-data-mitigation-6",
-    "title": "Data and Generative AI",
-    "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\n\nPrompting\n\n\n\n\nDefensive Programming Prompting\n\n\n\n\nColumn Names & Data Types\n\n\n\n\nSynthetic Data Set\n\n\n\n\nParameters (Choose One)\n\n\n\n\nTemperature\nTop-K\nTop-P"
   }
 ]
