@@ -54,6 +54,37 @@ A great prompt usually includes these specific elements to provide context and d
 -   [Algorithmic Bias Initiative Website](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias)
 -   [Algorithmic Bias Playbook](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias/playbook)
 
+## Coding and Data Analysis with LLMs
+
+### Integrated Development Environments (IDEs)
+
+#### VS Code
+
+-   [Download](https://code.visualstudio.com/)
+-   [Documentation](https://code.visualstudio.com/docs)
+#### Positron 
+
+-   [Download](https://positron.posit.co/)
+-   [Documentation](https://positron.posit.co/welcome.html)
+
+### Coding LLMs
+
+
+#### Claude Code
+
+-   [Getting Started](https://code.claude.com/docs/en/overview)
+-   [Configuration Scopes](https://code.claude.com/docs/en/settings#configuration-scopes)
+
+#### Codex
+
+-   [Codex](https://chatgpt.com/codex)
+-   [Sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
+
+#### Google AI Studio
+
+-   [AI Studio](https://aistudio.google.com/)
+-   [Documentation](https://ai.google.dev/gemini-api/docs)
+
 ### Melissa Van Bussel posit::conf 2024 Keynote
 
 -   [Practical Tips for Using Generative AI in Data Science Workflows](https://www.youtube.com/watch?v=rPeOdc8jTSE)
@@ -70,7 +101,9 @@ A great prompt usually includes these specific elements to provide context and d
 ### Recommended Books
 
 -   [Deep Learning Illustrated](https://www.deeplearningillustrated.com/)
--   [Te StatQuest Illustrated Guide to Neural Networks and AI](https://statquest.org/index.html)
+-   [The StatQuest Illustrated Guide to Neural Networks and AI](https://statquest.org/index.html)
+
+
 
 ### Additional Prompt Engineering and Other Resources
 
@@ -100,9 +133,6 @@ A great prompt usually includes these specific elements to provide context and d
 
 -   [Awesome AI System Prompts](https://github.com/dontriskit/awesome-ai-system-prompts)
 
-#### PubMed
-https://www.ncbi.nlm.nih.gov/
-[Entrez® Programming Utilities Help](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
+#### PubMed API
 
-https://www.ncbi.nlm.nih.gov/books/NBK25501/
-https://www.ncbi.nlm.nih.gov/books/NBK25501/
+-   [Entrez® Programming Utilities Help](https://www.ncbi.nlm.nih.gov/books/NBK25501/)

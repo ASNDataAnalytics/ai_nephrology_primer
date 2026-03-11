@@ -733,3 +733,17 @@ code.hljs span.hljs-ln-code.highlight-line * {
   color: #00468b !important;
   font-size: 1.15em;
 }
+
+.llm-logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7rem;
+  height: 70%;
+}
+
+.llm-logo-row img {
+  height: 190px;
+  width: auto;
+  object-fit: contain;
+}

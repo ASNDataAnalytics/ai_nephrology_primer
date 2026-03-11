@@ -140,6 +140,26 @@ execute:
 -   [**SQL**]{style="color:#ff8200;font-weight:900;"}
 :::
 
+## The Best of Times....
+
+::: {.fragment .fade-left style="font-size: 1.8em; font-weight: 900; text-align: center; margin: 50px;"}
+**Can We Build It?**
+:::
+
+::: {.fragment .fade-up style="font-size: 1.8em; font-weight: 900; color: #ff8200; text-align: center;"}
+**Yes**
+:::
+
+## Coding LLMs
+
+:::{.llm-logo-row}
+![](images/Claude_AI_symbol.svg){style="margin: 20px;"}
+![](images/codex-color.png){style="margin: 20px;"}
+![](images/gemini-color.png){style="margin: 20px;"}
+![](images/Cursor_logo.png){style="margin: 20px;"}
+:::
+
+
 ## LLMs & Data: Strengths {transition="convex"}
 
 ::: {.fragment .fade-in-then-semi-out}
@@ -158,14 +178,14 @@ execute:
 -   Scut [▶]{style="color: #00468b;"} Bot
 :::
 
-## The Best of Times....
+## Good...ish Vibes {transition="convex" transition-speed="medium"}
 
-::: {.fragment .fade-left style="font-size: 1.8em; font-weight: 900; text-align: center; margin: 50px;"}
-**Can We Build It?**
+::: {.absolute .fragment .fade-left left="100" width="450"}
+![](images/slido.png)
 :::
 
-::: {.fragment .fade-up style="font-size: 1.8em; font-weight: 900; color: #ff8200; text-align: center;"}
-**Yes**
+::: {.absolute .fragment .fade-right left="700" width="450"}
+![](images/prior_auth_bot.png)
 :::
 
 ## .... The Worst of Times
@@ -221,6 +241,86 @@ execute:
 
 ::: {.fragment .fade-up}
 -   Do Not Pass LLM Identified/Confidential Data
+:::
+
+## LLMs & Data: Mitigation {transition="none"}
+
+::: {.fragment .fade-in-then-semi-out}
+-   Secrets/Keys/Credentials in Password Manager/Vault
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Add `.env`, `*.pem`, & `*secret*` to `.gitignore` & Tool-Specific Ignore File
+:::
+
+::: {.fragment .fade-up}
+-   Only Use in Dedicated Project Directory **NOT `Home`, `C:/`, or `~/`**
+:::
+
+## LLMs & Data: Mitigation {transition="none"}
+
+::: {.fragment .fade-up}
+**Claude Code**
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Use `--allowedPaths` flag
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Add `.claudeignore` to Exclude Specific Files/Dirs
+:::
+
+::: {.fragment .fade-in}
+-   Run in a restricted directory
+:::
+
+## LLMs & Data: Mitigation {transition="none"}
+
+::: {.fragment .fade-up}
+**Cursor**
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Add sensitive files/dirs to `.cursorignore` 
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Disable Auto-Indexing: Cursor Settings → Features → Codebase Indexing
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Disable "Include .gitignored files"
+:::
+
+## LLMs & Data: Mitigation {transition="none"}
+
+::: {.fragment .fade-up}
+**OpenAI Codex (CLI)**
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Use `--allowed-paths` flag
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Run in Sandbox Mode (`--sandbox`) 
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Set `approval: always` in `codex.yaml` 
+:::
+
+::: {.fragment .fade-up}
+**Gemini (CLI / Code Assist)**
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Add paths to `.geminiignore`
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Use `--context-path` to Explicitly Scope Working Directory
 :::
 
 ## LLMs & Data: Mitigation {transition="none"}

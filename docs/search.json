@@ -144,7 +144,7 @@
     "href": "00_slides.html#llms-data-mitigation-1",
     "title": "Data and Generative AI",
     "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\n\nPrompting\n\n\n\n\nDefensive Programming Prompting\n\n\n\n\nColumn Names & Data Types\n\n\n\n\nSynthetic Data Set\n\n\n\n\nParameters (Choose One)\n\n\n\n\nTemperature\nTop-K\nTop-P"
+    "text": "LLMs & Data: Mitigation\n\n\nSecrets/Keys/Credentials in Password Manager/Vault\n\n\n\n\nAdd .env, *.pem, & *secret* to .gitignore & Tool-Specific Ignore File\n\n\n\n\nOnly Use in Dedicated Project Directory NOT Home, C:/, or ~/"
   },
   {
     "objectID": "00_slides.html#were-all-engineers",
@@ -635,5 +635,54 @@
     "title": "Data and Generative AI",
     "section": "Developing Knowledge Base Documents",
     "text": "Developing Knowledge Base Documents\n\n\nSimilar to Prompt Principles\n\n\n\n\nFormatting/Delimiters\n\n\n\n\nSmall Logical Sections/Small Chunks\n\n\n\n\nContext Window Management\n\n\n\n\nUse Markdown (.md)\n\n\n\n\nSplit by Task/Topic"
+  },
+  {
+    "objectID": "00_slides.html#coding-llms",
+    "href": "00_slides.html#coding-llms",
+    "title": "Data and Generative AI",
+    "section": "Coding LLMs",
+    "text": "Coding LLMs"
+  },
+  {
+    "objectID": "00_slides.html#goodish-vibes",
+    "href": "00_slides.html#goodish-vibes",
+    "title": "Data and Generative AI",
+    "section": "Good…ish Vibes",
+    "text": "Good…ish Vibes"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-2",
+    "href": "00_slides.html#llms-data-mitigation-2",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\nClaude Code\n\n\n\nUse --allowedPaths flag\n\n\n\n\nAdd .claudeignore to Exclude Specific Files/Dirs\n\n\n\n\nRun in a restricted directory"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-3",
+    "href": "00_slides.html#llms-data-mitigation-3",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\nCursor\n\n\n\nAdd sensitive files/dirs to .cursorignore\n\n\n\n\nDisable Auto-Indexing: Cursor Settings → Features → Codebase Indexing\n\n\n\n\nDisable “Include .gitignored files”"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-4",
+    "href": "00_slides.html#llms-data-mitigation-4",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\nOpenAI Codex (CLI)\n\n\n\nUse --allowed-paths flag\n\n\n\n\nRun in Sandbox Mode (--sandbox)\n\n\n\n\nSet approval: always in codex.yaml\n\n\n\nGemini (CLI / Code Assist)\n\n\n\nAdd paths to .geminiignore\n\n\n\n\nUse --context-path to Explicitly Scope Working Directory"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-5",
+    "href": "00_slides.html#llms-data-mitigation-5",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\n\nPrompting\n\n\n\n\nDefensive Programming Prompting\n\n\n\n\nColumn Names & Data Types\n\n\n\n\nSynthetic Data Set\n\n\n\n\nParameters (Choose One)\n\n\n\n\nTemperature\nTop-K\nTop-P"
+  },
+  {
+    "objectID": "00_slides.html#llms-data-mitigation-6",
+    "href": "00_slides.html#llms-data-mitigation-6",
+    "title": "Data and Generative AI",
+    "section": "LLMs & Data: Mitigation",
+    "text": "LLMs & Data: Mitigation\n\n\nPrompting\n\n\n\n\nDefensive Programming Prompting\n\n\n\n\nColumn Names & Data Types\n\n\n\n\nSynthetic Data Set\n\n\n\n\nParameters (Choose One)\n\n\n\n\nTemperature\nTop-K\nTop-P"
   }
 ]
