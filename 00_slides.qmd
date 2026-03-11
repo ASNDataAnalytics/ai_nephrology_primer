@@ -1691,7 +1691,7 @@ Pause for user input when:
 ## General Prompting Approach {transition="none"}
 
 ::: {.fragment .fade-left}
-**Enforce Strong Process Discipline & Reproducibility**{style="color: #00468b;"} 
+**Enforce Strong Process Discipline & Reproducibility**
 :::
 
 ::: {.fragment .fade-up}
@@ -1699,7 +1699,7 @@ Pause for user input when:
 :::
 
 ::: {.fragment .fade-up}
--   Encode the Process & its Governance 
+-   Encode the Process & its Governance
 :::
 
 ::: {.fragment .fade-down style="margin-left: 75px;"}
@@ -1709,11 +1709,11 @@ Pause for user input when:
 ## General Prompting Approach {transition="none"}
 
 ::: {.fragment .fade-left}
-**Ensure Epistemic Safeguards** 
+**Ensure Epistemic Safeguards**
 :::
 
 ::: {.fragment .fade-up}
--   **Repeatedly Prohibit Inventing Data**{style="color: #00468b;"}
+-   [**Repeatedly Prohibit Inventing Data**]{style="color: #00468b;"}
 :::
 
 ::: {.fragment .fade-up}
@@ -1735,21 +1735,23 @@ Pause for user input when:
 ## General Prompting Approach {transition="none"}
 
 ::: {.fragment .fade-left}
-**Practical Human-in-the-Loop Checkpoints** 
+**Practical Human-in-the-Loop Checkpoints**
 :::
 
-**Requiring User Confirmation:** 
-
-::: {.fragment .fade-up}
--   After Each Phase 
+::: {.fragment .fade-right}
+Requiring User Confirmation:
 :::
 
 ::: {.fragment .fade-up}
--   Before Executing Final Search String 
+-   After Each Phase
+:::
+
+::: {.fragment .fade-up}
+-   Before Executing Final Search String
 :::
 
 ::: {.fragment .fade-down style="margin-left: 75px;"}
--   Lowers Drift Risk 
+-   Lowers Drift Risk
 :::
 
 ::: {.fragment .fade-down style="margin-left: 75px;"}
@@ -1763,37 +1765,35 @@ Pause for user input when:
 :::
 
 ::: {.fragment .fade-up}
-Using the PubMed API for study selection reduces the risk of hallucinated references.
-Be AWARE of residual risks and make your own tests before trusting it.
+-   Using the PubMed API for Study Selection Reduces Risk of Hallucinated References
+:::
+
+::: {.fragment .fade-up}
+-   Be AWARE of Residual Risks & Make Your Own Tests Before Trusting It
 :::
 
 ## Demo Time
 
-[![](images/system_bot_11.png){fig-align="center" border="2px #00468b solid" border-radius="10px"}](https://chatgpt.com/g/g-69b038c260848191988853a6a8d85dc1-systematic-review-bot)
-
-<br>
-
-[Systematic Review Bot](https://chatgpt.com/g/g-69b038c260848191988853a6a8d85dc1-systematic-review-bot){style="font-weight: 900; text-align: center;"}
-
+[![](images/system_bot_11.png){border="2px #00468b solid" border-radius="10px" fig-align="center" width="50%"}](https://chatgpt.com/g/g-69b038c260848191988853a6a8d85dc1-systematic-review-bot)
 
 ## Next Steps
 
 ::: {.fragment .fade-in-then-semi-out}
--   Import into OpenAI [Prism](https://openai.com/prism/)
+Import into OpenAI [Prism](https://openai.com/prism/)
 :::
 
 ::: {.fragment .fade-up}
--   ![](images/prism.png)
+![](images/prism.png){fig-align="center" width="50%"}
 :::
 
 ## Next Steps
 
 ::: {.fragment .fade-in-then-semi-out}
--   Use [PaperBanana](https://paper-banana.org/) to create custom illustrations and graphs
+Use [PaperBanana](https://paper-banana.org/) for Illustrations/Graphs
 :::
 
-::: {.fragment .fade-up style="margin-left: 75px;"}
-![](images/paperbanana.png){width="600"}
+::: {.fragment .fade-up}
+![](images/paperbanana.png){fig-align="center" width="50%"}
 :::
 
 ## Acknowledgements

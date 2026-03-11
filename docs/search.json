@@ -270,7 +270,7 @@
     "href": "00_slides.html#next-steps",
     "title": "Data and Generative AI",
     "section": "Next Steps",
-    "text": "Next Steps\n\n\nImport into OpenAI Prism"
+    "text": "Next Steps\n\nImport into OpenAI Prism"
   },
   {
     "objectID": "00_slides.html#acknowledgements",
@@ -571,21 +571,21 @@
     "href": "00_slides.html#general-prompting-approach",
     "title": "Data and Generative AI",
     "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nEnforce Strong Process Discipline & Reproducibility{style=“color: #00468b;”}\n\n\n\nDon’t Just Ask to “Write a Review”\n\n\n\n\nEncode the Process & its Governance\n\n\n\n\nDeliverables, Logs, Audit Trail, & Reproducibility Documentation"
+    "text": "General Prompting Approach\n\nEnforce Strong Process Discipline & Reproducibility\n\n\n\nDon’t Just Ask to “Write a Review”\n\n\n\n\nEncode the Process & its Governance\n\n\n\n\nDeliverables, Logs, Audit Trail, & Reproducibility Documentation"
   },
   {
     "objectID": "00_slides.html#general-prompting-approach-1",
     "href": "00_slides.html#general-prompting-approach-1",
     "title": "Data and Generative AI",
     "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nEnsure Epistemic Safeguards\n\n\n\nRepeatedly Prohibit Inventing Data{style=“color: #00468b;”}\n\n\n\n\nEnforce Adherence to Encoded Workflow\n\n\n\n\nRequire Verification of Quantitative Values Against Retrieved Sources\n\n\n\n\nSeparate Evidence from Interpretation\n\n\n\n\nMandate Hedging When Evidence is Limited"
+    "text": "General Prompting Approach\n\nEnsure Epistemic Safeguards\n\n\n\nRepeatedly Prohibit Inventing Data\n\n\n\n\nEnforce Adherence to Encoded Workflow\n\n\n\n\nRequire Verification of Quantitative Values Against Retrieved Sources\n\n\n\n\nSeparate Evidence from Interpretation\n\n\n\n\nMandate Hedging When Evidence is Limited"
   },
   {
     "objectID": "00_slides.html#next-steps-1",
     "href": "00_slides.html#next-steps-1",
     "title": "Data and Generative AI",
     "section": "Next Steps",
-    "text": "Next Steps\n\n\nUse PaperBanana to create custom illustrations and graphs"
+    "text": "Next Steps\n\nUse PaperBanana for Illustrations/Graphs"
   },
   {
     "objectID": "bot.html#obtaining-an-ncbi-api-key",
@@ -613,21 +613,21 @@
     "href": "00_slides.html#general-prompting-approach-2",
     "title": "Data and Generative AI",
     "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nPractical Human-in-the-Loop Checkpoints\n\nRequiring User Confirmation:\n\n\nAfter Each Phase\n\n\n\n\nBefore Executing Final Search String\n\n\n\n\nLowers Drift Risk\n\n\n\n\nMakes System More Controllable for Real Review Work"
+    "text": "General Prompting Approach\n\nPractical Human-in-the-Loop Checkpoints\n\n\nRequiring User Confirmation:\n\n\n\nAfter Each Phase\n\n\n\n\nBefore Executing Final Search String\n\n\n\n\nLowers Drift Risk\n\n\n\n\nMakes System More Controllable for Real Review Work"
   },
   {
     "objectID": "00_slides.html#general-prompting-approach-3",
     "href": "00_slides.html#general-prompting-approach-3",
     "title": "Data and Generative AI",
     "section": "General Prompting Approach",
-    "text": "General Prompting Approach\n\nEnsure Using Authoritative Tools via API (When Available)\n\n\nUsing the PubMed API for study selection reduces the risk of hallucinated references. Be AWARE of residual risks and make your own tests before trusting it."
+    "text": "General Prompting Approach\n\nEnsure Using Authoritative Tools via API (When Available)\n\n\n\nUsing the PubMed API for Study Selection Reduces Risk of Hallucinated References\n\n\n\n\nBe AWARE of Residual Risks & Make Your Own Tests Before Trusting It"
   },
   {
     "objectID": "00_slides.html#demo-time",
     "href": "00_slides.html#demo-time",
     "title": "Data and Generative AI",
     "section": "Demo Time",
-    "text": "Demo Time\n\n\n\n\n\n\nSystematic Review Bot"
+    "text": "Demo Time"
   },
   {
     "objectID": "00_slides.html#developing-knowledge-base-documents",
