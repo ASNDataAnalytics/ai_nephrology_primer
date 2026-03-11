@@ -152,13 +152,9 @@ execute:
 
 ## Coding LLMs
 
-:::{.llm-logo-row}
-![](images/Claude_AI_symbol.svg){style="margin: 20px;"}
-![](images/codex-color.png){style="margin: 20px;"}
-![](images/gemini-color.png){style="margin: 20px;"}
-![](images/Cursor_logo.png){style="margin: 20px;"}
+::: llm-logo-row
+![](images/Claude_AI_symbol.svg){style="margin: 20px;"} ![](images/codex-color.png){style="margin: 20px;"} ![](images/gemini-color.png){style="margin: 20px;"} ![](images/Cursor_logo.png){style="margin: 20px;"}
 :::
-
 
 ## LLMs & Data: Strengths {transition="convex"}
 
@@ -282,7 +278,7 @@ execute:
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
--   Add sensitive files/dirs to `.cursorignore` 
+-   Add sensitive files/dirs to `.cursorignore`
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
@@ -304,11 +300,11 @@ execute:
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
--   Run in Sandbox Mode (`--sandbox`) 
+-   Run in Sandbox Mode (`--sandbox`)
 :::
 
 ::: {.fragment .fade-in-then-semi-out}
--   Set `approval: always` in `codex.yaml` 
+-   Set `approval: always` in `codex.yaml`
 :::
 
 ::: {.fragment .fade-up}
@@ -1897,6 +1893,10 @@ Use [PaperBanana](https://paper-banana.org/) for Illustrations/Graphs
 :::
 
 ## Acknowledgements
+
+::: {.fragment .fade-left}
+**JD Long (Palomar)**
+:::
 
 ::: {.fragment .fade-left}
 **Dr. John Paul Helveston (George Washington University)**

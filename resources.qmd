@@ -3,6 +3,8 @@ title: "Resources"
 format: html
 ---
 
+## Prompting
+
 ### Prompt Best Practices
 
 ::: grey-box
@@ -49,62 +51,6 @@ A great prompt usually includes these specific elements to provide context and d
 
 **Source:** Google Gemini (*Prompt:* do you have any prompt engineering best practices)
 
-### Chicago Booth Algorithmic Bias Initiative 
-
--   [Algorithmic Bias Initiative Website](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias)
--   [Algorithmic Bias Playbook](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias/playbook)
-
-## Coding and Data Analysis with LLMs
-
-### Integrated Development Environments (IDEs)
-
-#### VS Code
-
--   [Download](https://code.visualstudio.com/)
--   [Documentation](https://code.visualstudio.com/docs)
-#### Positron 
-
--   [Download](https://positron.posit.co/)
--   [Documentation](https://positron.posit.co/welcome.html)
-
-### Coding LLMs
-
-
-#### Claude Code
-
--   [Getting Started](https://code.claude.com/docs/en/overview)
--   [Configuration Scopes](https://code.claude.com/docs/en/settings#configuration-scopes)
-
-#### Codex
-
--   [Codex](https://chatgpt.com/codex)
--   [Sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
-
-#### Google AI Studio
-
--   [AI Studio](https://aistudio.google.com/)
--   [Documentation](https://ai.google.dev/gemini-api/docs)
-
-### Melissa Van Bussel posit::conf 2024 Keynote
-
--   [Practical Tips for Using Generative AI in Data Science Workflows](https://www.youtube.com/watch?v=rPeOdc8jTSE)
--   [Slides](https://github.com/melissavanbussel/posit-conf-2024?tab=readme-ov-file)
-
-### EHI Living Manual (EPIC) 
-
--   [EHI Living Manual](https://joshuamandel.com/ehi-living-manual/)
-
-### Visualize Effects of Temperature, Top-P, and Top-K Parameters
-
--   [Website](https://andreban.github.io/temperature-topk-visualizer/)
-
-### Recommended Books
-
--   [Deep Learning Illustrated](https://www.deeplearningillustrated.com/)
--   [The StatQuest Illustrated Guide to Neural Networks and AI](https://statquest.org/index.html)
-
-
-
 ### Additional Prompt Engineering and Other Resources
 
 #### Anthropic
@@ -133,6 +79,70 @@ A great prompt usually includes these specific elements to provide context and d
 
 -   [Awesome AI System Prompts](https://github.com/dontriskit/awesome-ai-system-prompts)
 
-#### PubMed API
+
+## Coding and Data Analysis with LLMs
+
+### Integrated Development Environments (IDEs)
+
+#### VS Code
+
+-   [Download](https://code.visualstudio.com/)
+-   [Documentation](https://code.visualstudio.com/docs)
+
+#### Positron 
+
+-   [Download](https://positron.posit.co/)
+-   [Documentation](https://positron.posit.co/welcome.html)
+
+### Coding LLMs
+
+#### Claude Code
+
+-   [Getting Started](https://code.claude.com/docs/en/overview)
+-   [Configuration Scopes](https://code.claude.com/docs/en/settings#configuration-scopes)
+
+#### Codex
+
+-   [Codex](https://chatgpt.com/codex)
+-   [Sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
+
+#### Google AI Studio
+
+-   [AI Studio](https://aistudio.google.com/)
+-   [Documentation](https://ai.google.dev/gemini-api/docs)
+
+#### Cursor
+
+-   [Download](https://cursor.com/) 
+-   [Documentation](https://cursor.com/docs) 
+
+### Melissa Van Bussel posit::conf 2024 Keynote
+
+-   [Practical Tips for Using Generative AI in Data Science Workflows](https://www.youtube.com/watch?v=rPeOdc8jTSE)
+-   [Slides](https://github.com/melissavanbussel/posit-conf-2024?tab=readme-ov-file)
+
+## Additional Resources
+
+### Chicago Booth Algorithmic Bias Initiative 
+
+-   [Algorithmic Bias Initiative Website](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias)
+-   [Algorithmic Bias Playbook](https://www.chicagobooth.edu/research/center-for-applied-artificial-intelligence/research/algorithmic-bias/playbook)
+
+
+### EHI Living Manual (EPIC) 
+
+-   [EHI Living Manual](https://joshuamandel.com/ehi-living-manual/)
+
+### PubMed API
 
 -   [Entrez® Programming Utilities Help](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
+
+### Visualize Effects of Temperature, Top-P, and Top-K Parameters
+
+-   [Website](https://andreban.github.io/temperature-topk-visualizer/)
+
+### Recommended Books
+
+-   [Deep Learning Illustrated](https://www.deeplearningillustrated.com/)
+-   [The StatQuest Illustrated Guide to Neural Networks and AI](https://statquest.org/index.html)
+

@@ -11,14 +11,28 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "The fundamentals that work across all LLMs:\n\nRole/Persona: Who the AI should act as\nContext: What background info it needs\nTask: What you want it to do explicitly\nFormat: How you want the output structured\nConstraints: What to avoid or limits to follow\n\n\n Source: Reddit: Best Practices for AI Prompting 2025?"
+    "text": "The fundamentals that work across all LLMs:\n\nRole/Persona: Who the AI should act as\nContext: What background info it needs\nTask: What you want it to do explicitly\nFormat: How you want the output structured\nConstraints: What to avoid or limits to follow\n\n\n Source: Reddit: Best Practices for AI Prompting 2025?\n\n\n\n\nA great prompt usually includes these specific elements to provide context and direction:\n\nContext: Provide background information on the task.\nObjective: Define exactly what you want me to do.\nStyle: Specify a writing style (e.g., professional, humorous, poetic).\nTone: Set the emotional vibe (e.g., empathetic, direct, enthusiastic).\nAudience: Who is this for? (e.g., a CEO, a 5-year-old, a software engineer).\nResponse: Define the format (e.g., a table, a list, a JSON object).\n\nAdditional Components\n\nFew-Shot Prompting/Using Examples: Provide examples of desired output and formatting (e.g., programming language, file type [CSV, Markdown, PNG])\nUse Delimiters: Use triple quotes (“““), XML tags (), or dashes (—) to wrap your content (e.g., Summarize the text delimited by triple quotes:”““[Insert article]”““)\n\n\n\nSource: Google Gemini (Prompt: do you have any prompt engineering best practices)\n\n\n\n\n\n\nPrompt Engineering Guide Overview\nPrompt Engineering Interactive Tutorial\n\n\n\n\n\nOpenAI Tokenizer\nOpenAI Developers Cookbook\nOpenAI ChatGPT Cookbook\nOpenAI Cookbook Code Repo\nBest Practices for Prompt Engineering with the OpenAI API\nPrompt Engineering\n\n\n\n\n\nPrompt engineering: overview and guide\n\n\n\n\n\nPromptHub\n\n\n\n\n\nAwesome AI System Prompts"
+  },
+  {
+    "objectID": "resources.html#prompting",
+    "href": "resources.html#prompting",
+    "title": "Resources",
+    "section": "",
+    "text": "The fundamentals that work across all LLMs:\n\nRole/Persona: Who the AI should act as\nContext: What background info it needs\nTask: What you want it to do explicitly\nFormat: How you want the output structured\nConstraints: What to avoid or limits to follow\n\n\n Source: Reddit: Best Practices for AI Prompting 2025?\n\n\n\n\nA great prompt usually includes these specific elements to provide context and direction:\n\nContext: Provide background information on the task.\nObjective: Define exactly what you want me to do.\nStyle: Specify a writing style (e.g., professional, humorous, poetic).\nTone: Set the emotional vibe (e.g., empathetic, direct, enthusiastic).\nAudience: Who is this for? (e.g., a CEO, a 5-year-old, a software engineer).\nResponse: Define the format (e.g., a table, a list, a JSON object).\n\nAdditional Components\n\nFew-Shot Prompting/Using Examples: Provide examples of desired output and formatting (e.g., programming language, file type [CSV, Markdown, PNG])\nUse Delimiters: Use triple quotes (“““), XML tags (), or dashes (—) to wrap your content (e.g., Summarize the text delimited by triple quotes:”““[Insert article]”““)\n\n\n\nSource: Google Gemini (Prompt: do you have any prompt engineering best practices)\n\n\n\n\n\n\nPrompt Engineering Guide Overview\nPrompt Engineering Interactive Tutorial\n\n\n\n\n\nOpenAI Tokenizer\nOpenAI Developers Cookbook\nOpenAI ChatGPT Cookbook\nOpenAI Cookbook Code Repo\nBest Practices for Prompt Engineering with the OpenAI API\nPrompt Engineering\n\n\n\n\n\nPrompt engineering: overview and guide\n\n\n\n\n\nPromptHub\n\n\n\n\n\nAwesome AI System Prompts"
   },
   {
     "objectID": "resources.html#coding-and-data-analysis-with-llms",
     "href": "resources.html#coding-and-data-analysis-with-llms",
     "title": "Resources",
     "section": "Coding and Data Analysis with LLMs",
-    "text": "Coding and Data Analysis with LLMs\n\nIntegrated Development Environments (IDEs)\n\nVS Code\n\nDownload\nDocumentation #### Positron\nDownload\nDocumentation\n\n\n\n\nCoding LLMs\n\nClaude Code\n\nGetting Started\nConfiguration Scopes\n\n\n\nCodex\n\nCodex\nSandboxing\n\n\n\nGoogle AI Studio\n\nAI Studio\nDocumentation\n\n\n\n\nMelissa Van Bussel posit::conf 2024 Keynote\n\nPractical Tips for Using Generative AI in Data Science Workflows\nSlides\n\n\n\nEHI Living Manual (EPIC)\n\nEHI Living Manual\n\n\n\nVisualize Effects of Temperature, Top-P, and Top-K Parameters\n\nWebsite\n\n\n\nRecommended Books\n\nDeep Learning Illustrated\nThe StatQuest Illustrated Guide to Neural Networks and AI\n\n\n\nAdditional Prompt Engineering and Other Resources\n\nAnthropic\n\nPrompt Engineering Guide Overview\nPrompt Engineering Interactive Tutorial\n\n\n\nOpenAI\n\nOpenAI Tokenizer\nOpenAI Developers Cookbook\nOpenAI ChatGPT Cookbook\nOpenAI Cookbook Code Repo\nBest Practices for Prompt Engineering with the OpenAI API\nPrompt Engineering\n\n\n\nGoogle\n\nPrompt engineering: overview and guide\n\n\n\n10 Best Practices for Prompt Engineering With Any Model\n\nPromptHub\n\n\n\nGitHub: Awesome AI System Prompts\n\nAwesome AI System Prompts\n\n\n\nPubMed API\n\nEntrez® Programming Utilities Help"
+    "text": "Coding and Data Analysis with LLMs\n\nIntegrated Development Environments (IDEs)\n\nVS Code\n\nDownload\nDocumentation\n\n\n\nPositron\n\nDownload\nDocumentation\n\n\n\n\nCoding LLMs\n\nClaude Code\n\nGetting Started\nConfiguration Scopes\n\n\n\nCodex\n\nCodex\nSandboxing\n\n\n\nGoogle AI Studio\n\nAI Studio\nDocumentation\n\n\n\nCursor\n\nDownload\nDocumentation\n\n\n\n\nMelissa Van Bussel posit::conf 2024 Keynote\n\nPractical Tips for Using Generative AI in Data Science Workflows\nSlides"
+  },
+  {
+    "objectID": "resources.html#additional-resources",
+    "href": "resources.html#additional-resources",
+    "title": "Resources",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nChicago Booth Algorithmic Bias Initiative\n\nAlgorithmic Bias Initiative Website\nAlgorithmic Bias Playbook\n\n\n\nEHI Living Manual (EPIC)\n\nEHI Living Manual\n\n\n\nPubMed API\n\nEntrez® Programming Utilities Help\n\n\n\nVisualize Effects of Temperature, Top-P, and Top-K Parameters\n\nWebsite\n\n\n\nRecommended Books\n\nDeep Learning Illustrated\nThe StatQuest Illustrated Guide to Neural Networks and AI"
   },
   {
     "objectID": "index.html#slides",
@@ -382,7 +396,7 @@
     "href": "00_slides.html#acknowledgements",
     "title": "Data and Generative AI",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\n\nDr. John Paul Helveston (George Washington University)\n\n\nIsabella Velásquez (Posit PBC)"
+    "text": "Acknowledgements\n\nJD Long (Palomar)\n\n\nDr. John Paul Helveston (George Washington University)\n\n\nIsabella Velásquez (Posit PBC)"
   },
   {
     "objectID": "00_slides.html#section-5",
@@ -515,7 +529,7 @@
     "href": "exercises.html#hands-on-exercise-screening-patient-data-for-clinical-trial-eligibility",
     "title": "Exercises",
     "section": "Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility",
-    "text": "Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility\n\nSearch for a kidney-related active trial on clinicaltrials.gov\nCopy the Participation Criteria\nPrompt LLM to write code in language of your choice (Python, R, Julia, SPSS, Stata) identifying eligible patients in EPIC using relevant columns in EPIC’s Clarity Database Schema\n\nExample Trial Participation Criteria\nOptional Extensions\nPrompt LLM to create:\n\nSynthetic data set to test code\nPatient-screener web app\nCONSORT diagram of patient eligibility criteria"
+    "text": "Hands-On Exercise: Screening Patient Data for Clinical Trial Eligibility\n\nSearch for a kidney-related active trial on clinicaltrials.gov\nCopy the Participation Criteria\nPrompt LLM to write SQL (or alternatively Python, R, Julia, SPSS, Stata, or language of your choice) to identify eligible patients using relevant columns in EPIC’s Clarity Database Schema\n\nSample Actively Recruiting Trial Participation Criteria\nOptional Extensions\nPrompt LLM to create:\n\nPatient-Screener Web App\nCONSORT Diagram of Patient Eligibility Criteria\nSynthetic Dataset to Test Code"
   },
   {
     "objectID": "exercises.html#additional-hands-on-exercises",

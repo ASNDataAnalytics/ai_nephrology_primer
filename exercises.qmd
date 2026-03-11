@@ -23,19 +23,21 @@ Optional: Use [Google Colab](https://colab.research.google.com/) to evaluate Pyt
 
 1. Search for a kidney-related active trial on [clinicaltrials.gov](https://clinicaltrials.gov/)
 2. Copy the _Participation Criteria_ 
-3. Prompt LLM to write code in language of your choice (Python, R, Julia, SPSS, Stata) identifying eligible patients in EPIC using relevant columns in EPIC's Clarity Database Schema
+3. Prompt LLM to write SQL (or alternatively Python, R, Julia, SPSS, Stata, or language of your choice) to identify eligible patients using relevant columns in EPIC's Clarity Database Schema
 
-[Example Trial Participation Criteria](https://clinicaltrials.gov/study/NCT05638880?cond=Kidney%20Diseases&aggFilters=status:rec&rank=1#participation-criteria)
+[Sample Actively Recruiting Trial Participation Criteria](https://clinicaltrials.gov/study/NCT06754280?cond=ckd&aggFilters=funderType:nih,status:rec&rank=1#participation-criteria)
 
 ***Optional Extensions*** 
 
 *Prompt LLM to create:*
 
--   Synthetic data set to test code
+-   Patient-Screener Web App 
 
--   Patient-screener web app 
+-   CONSORT Diagram of Patient Eligibility Criteria
 
--   CONSORT diagram of patient eligibility criteria
+-   Synthetic Dataset to Test Code
+
+
 
 ---
 
