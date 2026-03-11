@@ -297,8 +297,9 @@ function mdHighlight(text) {
    
   <ul>
   <li><a href="#source-file-viewer" id="toc-source-file-viewer" class="nav-link active" data-scroll-target="#source-file-viewer">Source File Viewer</a></li>
-  <li><a href="#getting-an-ncbi-api-key" id="toc-getting-an-ncbi-api-key" class="nav-link" data-scroll-target="#getting-an-ncbi-api-key">Getting an NCBI API Key</a></li>
+  <li><a href="#obtaining-an-ncbi-api-key" id="toc-obtaining-an-ncbi-api-key" class="nav-link" data-scroll-target="#obtaining-an-ncbi-api-key">Obtaining an NCBI API Key</a></li>
   <li><a href="#building-systematic-review-bot" id="toc-building-systematic-review-bot" class="nav-link" data-scroll-target="#building-systematic-review-bot">Building Systematic Review Bot</a></li>
+  <li><a href="#assembled-systematic-review-using-prism" id="toc-assembled-systematic-review-using-prism" class="nav-link" data-scroll-target="#assembled-systematic-review-using-prism">Assembled Systematic Review Using Prism</a></li>
   </ul>
 </nav>
     </div>
@@ -550,10 +551,10 @@ function mdHighlight(text) {
 </div>
 </div>
 </section>
-<section id="getting-an-ncbi-api-key" class="level2">
-<h2 class="anchored" data-anchor-id="getting-an-ncbi-api-key">Getting an NCBI API Key</h2>
+<section id="obtaining-an-ncbi-api-key" class="level2">
+<h2 class="anchored" data-anchor-id="obtaining-an-ncbi-api-key">Obtaining an NCBI API Key</h2>
 <ol type="1">
-<li>Go to <a href="https://www.ncbi.nlm.nih.gov/">NCBI</a> (<a href="https://www.ncbi.nlm.nih.gov/" class="uri">https://www.ncbi.nlm.nih.gov/</a>).</li>
+<li>Navigate to <a href="https://www.ncbi.nlm.nih.gov/">NCBI</a> (<a href="https://www.ncbi.nlm.nih.gov/" class="uri">https://www.ncbi.nlm.nih.gov/</a>).</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -561,7 +562,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="2" type="1">
-<li>If you don’t already have an account, create one using Google, Microsoft, ORCiD, or institutional nexus.</li>
+<li>If you don’t have an NCBI account, you will be prompted to create one. Options include Google, Microsoft, ORCiD, or through your institutional nexus.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -569,7 +570,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="3" type="1">
-<li>Select your account….</li>
+<li>Log in to your account.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -577,11 +578,11 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="4" type="1">
-<li>….and … <span style="color: #00468b; font-weight: 500;"><strong>Account settings</strong></span></li>
+<li>Click on <span style="color: #00468b; font-weight: 500;"><strong>Account settings.</strong></span></li>
 </ol>
 <p><img src="images/api_key_4.png" class="img-fluid"></p>
 <ol start="5" type="1">
-<li>…and create an API key.</li>
+<li>Create an API key.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -589,16 +590,16 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="5" type="1">
-<li>Consider this API key as login credentials and keep it secure.</li>
+<li><strong>NB:</strong> Treat this API key like a password and keep it secure.</li>
 </ol>
 <p><img src="images/api_key_6.png" class="img-fluid"></p>
 </section>
 <section id="building-systematic-review-bot" class="level2">
 <h2 class="anchored" data-anchor-id="building-systematic-review-bot">Building Systematic Review Bot</h2>
 <ol type="1">
-<li><p>Download the source files:</p>
-<p><a href="assets/systematic_review_bot.zip" class="btn btn-primary" download="systematic_review_bot.zip">Systematic Review Bot</a></p></li>
-<li><p>From your ChatGPT landing page, select GPTs in the left column…</p></li>
+<li><p>Download the source files.</p>
+<p><a href="assets/systematic_review_bot.zip" class="btn btn-primary" download="systematic_review_bot.zip" style="border-radius:10px">Systematic Review Bot</a></p></li>
+<li><p>On the ChatGPT home page, click <strong>GPTs</strong> in the left sidebar.</p></li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -606,7 +607,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="3" type="1">
-<li>… and click the Create button in the upper-right-hand corner on the next page.</li>
+<li>On the next page, click the Create button in the upper-right corner.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -614,7 +615,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="4" type="1">
-<li>Select configure ….</li>
+<li>Select <strong>Configure</strong>.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -622,7 +623,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="5" type="1">
-<li>Paste <code>000_systematic_review_bot_system_instructions.md</code> into the Instructions field.</li>
+<li>Paste <code>000_systematic_review_bot_system_instructions.md</code> into the <strong>Instructions</strong> field.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -638,7 +639,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="7" type="1">
-<li>Click on Create New Action…</li>
+<li>Click Create New Action.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -646,7 +647,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="8" type="1">
-<li>… select Authentication …</li>
+<li>Select <strong>Authentication</strong>.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -654,7 +655,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="9" type="1">
-<li>… select API Key and paste your NCBI API Key in the field.</li>
+<li>Choose API Key and paste your NCBI API key into the field.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -662,7 +663,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="10" type="1">
-<li>Paste the pubmed_openapi_configuration.yaml into the Schema field. Click the Test buttons for each API call type to ensure the API calls are properly functioning.</li>
+<li>Paste <code>pubmed_openapi_configuration.yaml</code> into the Schema field. Next, click the <strong>Test</strong> button for each API call type to verify that the requests work correctly.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -670,7 +671,7 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="11" type="1">
-<li>Example of successful test output for the esearchPubMed call.</li>
+<li>Example of successful test output for the <code>esearchPubMed</code> call.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -678,13 +679,17 @@ function mdHighlight(text) {
 </figure>
 </div>
 <ol start="12" type="1">
-<li>Click save and test the deployed bot.</li>
+<li>Click Save, then test the Custom GPT in the preview chat to ensure everything is working correctly.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_11.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</section>
+<section id="assembled-systematic-review-using-prism" class="level2">
+<h2 class="anchored" data-anchor-id="assembled-systematic-review-using-prism">Assembled Systematic Review Using <a href="https://openai.com/prism/">Prism</a></h2>
+<p><a href="assets/Combined_Executive_Abstract_Main_Manuscript.pdf" class="btn btn-primary" download="Combined_Executive_Abstract_Main_Manuscript.pdf" style="border-radius:10px">Assembled Systematic Review</a></p>
 
 
 </section>

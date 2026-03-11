@@ -9,7 +9,7 @@ $presentation-h2-font-size: 1.6em;
 $presentation-font-size-root: 34px;
 
 /*-- scss:rules --*/
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700;900&display=swap');
 .reveal,
 .reveal * {
   font-family: Gotham, Roboto, Helvetica, Arial, sans-serif !important;
@@ -691,3 +691,45 @@ $footer-height: 70px;
       include-after-body: slides-lightbox.js
   ============================================================
 */
+
+
+// .hljs-ln-code.highlight-line .co {
+//   color: #000000;
+//   font-weight: 900;
+// }
+
+// .co {
+//   font-family: 'Fira Code', 'Courier New', Courier, monospace !important;
+// }
+
+/* Fira Code for all code lines */
+// .hljs-ln-code,
+// .hljs-ln-code * {
+//   font-family: 'Fira Code', 'Fira Mono', monospace;
+//   color: #1a1a1a;
+// }
+
+// /* Highlighted/current fragment lines */
+// .current-fragment .hljs-ln-code,
+// .current-fragment .hljs-ln-code * {
+//   font-weight: 900;
+//   color: #000000;
+// }
+
+/* All code lines: Fira Code, dark, normal weight */
+code.hljs span.hljs-ln-code,
+code.hljs span.hljs-ln-code * {
+  font-family: 'Fira Code', 'Fira Mono', monospace !important;
+  color: #1a1a1a !important;
+  font-weight: 400 !important;
+  opacity: 1 !important;
+  font-size: 0.95em !important; /* adjust as needed */
+}
+
+/* Highlighted lines: bold black */
+code.hljs span.hljs-ln-code.highlight-line,
+code.hljs span.hljs-ln-code.highlight-line * {
+  font-weight: 900 !important;
+  color: #00468b !important;
+  font-size: 1.15em;
+}

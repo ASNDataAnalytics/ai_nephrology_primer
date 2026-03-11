@@ -323,51 +323,51 @@ Annotated YAML to access PubMed API using OpenAPI
 ::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Getting an NCBI API Key
+## Obtaining an NCBI API Key
 
-1.  Go to [NCBI](https://www.ncbi.nlm.nih.gov/) (<https://www.ncbi.nlm.nih.gov/>).
+1.  Navigate to [NCBI](https://www.ncbi.nlm.nih.gov/) (<https://www.ncbi.nlm.nih.gov/>).
 
 ![](images/api_key_1.png){fig-align="center"}
 
-2.  If you don't already have an account, create one using Google, Microsoft, ORCiD, or institutional nexus.
+2.  If you don't have an NCBI account, you will be prompted to create one. Options include Google, Microsoft, ORCiD, or through your institutional nexus.
 
 ![](images/api_key_2.png){fig-align="center"}
 
-3.  Select your account....
+3.  Log in to your account.
 
 ![](images/api_key_3.png){fig-align="center"}
 
-4.  ....and ... [**Account settings**]{style="color: #00468b; font-weight: 500;"}
+4.  Click on [**Account settings.**]{style="color: #00468b; font-weight: 500;"}
 
 ![](images/api_key_4.png)
 
-5.  ...and create an API key.
+5.  Create an API key.
 
 ![](images/api_key_5.png){fig-align="center"}
 
-5.  Consider this API key as login credentials and keep it secure.
+5.  **NB:** Treat this API key like a password and keep it secure.
 
 ![](images/api_key_6.png)
 
 ## Building Systematic Review Bot
 
-1.  Download the source files:
+1.  Download the source files.
 
-    [Systematic Review Bot](assets/systematic_review_bot.zip){.btn .btn-primary download="systematic_review_bot.zip"}
+    [Systematic Review Bot](assets/systematic_review_bot.zip){.btn .btn-primary download="systematic_review_bot.zip" style="border-radius:10px"}
 
-2.   From your ChatGPT landing page, select GPTs in the left column...
+2.   On the ChatGPT home page, click **GPTs** in the left sidebar.
 
 ![](images/system_bot_1.png){fig-align="center"}
 
-3.  ... and click the Create button in the upper-right-hand corner on the next page.
+3.  On the next page, click the Create button in the upper-right corner.
 
 ![](images/system_bot_2.png){fig-align="center"}
 
-4.  Select configure ....
+4.  Select **Configure**.
 
 ![](images/system_bot_3.png){fig-align="center"}
 
-5.  Paste `000_systematic_review_bot_system_instructions.md` into the Instructions field.
+5.  Paste `000_systematic_review_bot_system_instructions.md` into the **Instructions** field.
 
 ![](images/system_bot_new_4.png){fig-align="center"}
 
@@ -375,26 +375,30 @@ Annotated YAML to access PubMed API using OpenAPI
 
 ![](images/system_bot_5.png){fig-align="center"}
 
-7.  Click on Create New Action...
+7.  Click Create New Action. 
 
 ![](images/system_bot_6.png){fig-align="center"}
 
-8.  ... select Authentication ...
+8.  Select **Authentication**.
 
 ![](images/system_bot_7.png){fig-align="center"}
 
-9.  ... select API Key and paste your NCBI API Key in the field.
+9.  Choose API Key and paste your NCBI API key into the field. 
 
 ![](images/system_bot_8.png){fig-align="center"}
 
-10. Paste the pubmed_openapi_configuration.yaml into the Schema field. Click the Test buttons for each API call type to ensure the API calls are properly functioning.
+10. Paste `pubmed_openapi_configuration.yaml` into the Schema field. Next, click the **Test** button for each API call type to verify that the requests work correctly.
 
 ![](images/system_bot_9.png){fig-align="center"}
 
-11. Example of successful test output for the esearchPubMed call.
+11. Example of successful test output for the `esearchPubMed` call.
 
 ![](images/system_bot_10.png){fig-align="center"}
 
-12. Click save and test the deployed bot.
+12. Click Save, then test the Custom GPT in the preview chat to ensure everything is working correctly.
 
 ![](images/system_bot_11.png){fig-align="center"}
+
+## Assembled Systematic Review Using [Prism](https://openai.com/prism/)
+
+[Assembled Systematic Review](assets/Combined_Executive_Abstract_Main_Manuscript.pdf){.btn .btn-primary download="Combined_Executive_Abstract_Main_Manuscript.pdf" style="border-radius:10px"}

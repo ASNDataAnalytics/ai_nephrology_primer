@@ -527,11 +527,11 @@ execute:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 [Role]{.featured} <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="|9|11-15"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -665,11 +665,11 @@ Pause for user input when:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 Role <br> [Context]{.featured} <br> Task <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="19-21|25-26|30-32"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -803,11 +803,11 @@ Pause for user input when:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 Role <br> Context <br> [Task]{.featured} <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="48-49|58|60-61|62-68"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -941,11 +941,11 @@ Pause for user input when:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 Role <br> Context <br> Task <br> [Format]{.featured} <br> Constraints <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="48-49|53-56"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -1079,11 +1079,11 @@ Pause for user input when:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 Role <br> Context <br> Task <br> Format <br> [Constraints]{.featured} <br> Few-Shot <br> Delimiters <br> Reasoning Steps
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="70-72|73-74|75-78|79-84"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -1217,11 +1217,11 @@ Pause for user input when:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 Role <br> Context <br> Task <br> Format <br> Constraints <br> [Few-Shot]{.featured} <br> Delimiters <br> Reasoning Steps
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="31-32"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -1355,11 +1355,11 @@ Pause for user input when:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 Role <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot <br> [Delimiters]{.featured} <br> Reasoning Steps
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="102-112"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -1493,11 +1493,11 @@ Pause for user input when:
 ## Prompting {transition="none" auto-animate="true"}
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="35%"}
 Role <br> Context <br> Task <br> Format <br> Constraints <br> Few-Shot <br> Delimiters <br> [Reasoning Steps]{.featured}
 :::
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 ``` {.yaml filename="system-instructions.md" code-line-numbers="17|23,28,34,38,45"}
 ---
 title: "Systematic Review Bot: System Instructions"
@@ -1634,15 +1634,15 @@ Pause for user input when:
 
 2.  Copy the *Participation Criteria*
 
-3.  Prompt LLM to write code (Python, R, Julia, SPSS, Stata) identifying eligible patients using relevant columns in EPIC's Clarity Database Schema
+3.  Prompt LLM to write SQL (Alt: Python, R, Julia, SPSS, Stata) to identify eligible patients using relevant columns in EPIC's Clarity Database Schema
 
 ***Optional Extensions*** Prompt LLM to Create:
 
--   Synthetic data set to test code
+-   Patient-Screener Web App
 
--   Patient-screener web app
+-   CONSORT Diagram of Patient Eligibility Criteria
 
--   CONSORT diagram of patient eligibility criteria
+-   Synthetic Dataset to Test Code
 
 {{< countdown "10:00" >}}
 
@@ -1688,36 +1688,78 @@ Pause for user input when:
 :::
 ::::::
 
-## General Prompting Approach
+## General Prompting Approach {transition="none"}
 
 ::: {.fragment .fade-left}
-**Enforce Strong process discipline and reproducibility** 
+**Enforce Strong Process Discipline & Reproducibility**{style="color: #00468b;"} 
 :::
 
 ::: {.fragment .fade-up}
-Don’t just ask to “write a review”: encode the process and its governance (deliverables, logs, audit trail, reproducibility documentation).
-:::
-
-::: {.fragment .fade-left}
-**Ensure epistemic safeguards** 
+-   Don’t Just Ask to “Write a Review”
 :::
 
 ::: {.fragment .fade-up}
-Repeatedly prohibit inventing data, enforce adherence to encoded workflow, require verification of quantitative values against retrieved sources, separate evidence from interpretation, and mandate hedging when evidence is limited.
+-   Encode the Process & its Governance 
 :::
 
-## General Prompting Approach
+::: {.fragment .fade-down style="margin-left: 75px;"}
+-   Deliverables, Logs, Audit Trail, & Reproducibility Documentation
+:::
+
+## General Prompting Approach {transition="none"}
 
 ::: {.fragment .fade-left}
-**Practical human-in-the-loop checkpoints** 
+**Ensure Epistemic Safeguards** 
 :::
 
 ::: {.fragment .fade-up}
-Requiring user confirmation after each phase and before executing the final search string lowers drift risk and makes the system more controllable for real review work.
+-   **Repeatedly Prohibit Inventing Data**{style="color: #00468b;"}
 :::
 
+::: {.fragment .fade-up}
+-   Enforce Adherence to Encoded Workflow
+:::
+
+::: {.fragment .fade-up}
+-   Require Verification of Quantitative Values Against Retrieved Sources
+:::
+
+::: {.fragment .fade-up}
+-   Separate Evidence from Interpretation
+:::
+
+::: {.fragment .fade-up}
+-   Mandate Hedging When Evidence is Limited
+:::
+
+## General Prompting Approach {transition="none"}
+
 ::: {.fragment .fade-left}
-**Ensure using authoritative tools via API when available**
+**Practical Human-in-the-Loop Checkpoints** 
+:::
+
+**Requiring User Confirmation:** 
+
+::: {.fragment .fade-up}
+-   After Each Phase 
+:::
+
+::: {.fragment .fade-up}
+-   Before Executing Final Search String 
+:::
+
+::: {.fragment .fade-down style="margin-left: 75px;"}
+-   Lowers Drift Risk 
+:::
+
+::: {.fragment .fade-down style="margin-left: 75px;"}
+-   Makes System More Controllable for Real Review Work
+:::
+
+## General Prompting Approach {transition="none"}
+
+::: {.fragment .fade-left}
+**Ensure Using Authoritative Tools via API (When Available)**
 :::
 
 ::: {.fragment .fade-up}
@@ -1725,52 +1767,13 @@ Using the PubMed API for study selection reduces the risk of hallucinated refere
 Be AWARE of residual risks and make your own tests before trusting it.
 :::
 
-## Demo
+## Demo Time
 
-![](images/system_bot_11.png){fig-align="center" border="2px #00468b solid" border-radius="10px"}
+[![](images/system_bot_11.png){fig-align="center" border="2px #00468b solid" border-radius="10px"}](https://chatgpt.com/g/g-69b038c260848191988853a6a8d85dc1-systematic-review-bot)
 
 <br>
 
 [Systematic Review Bot](https://chatgpt.com/g/g-69b038c260848191988853a6a8d85dc1-systematic-review-bot){style="font-weight: 900; text-align: center;"}
-
-## Creating a Custom GPT in OpenAI
-
-::: r-stack
-![](images/system_bot_1.png){.fragment width="450"}
-
-![](images/system_bot_2.png){.fragment width="500"}
-
-![](images/system_bot_3.png){.fragment width="600"}
-
-![](images/system_bot_4.png){.fragment width="800"}
-:::
-
-## Developing Knowledge Base
-
-::: {.fragment .fade-in-then-semi-out}
--   Similar to Prompt Principles
-:::
-
-::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
--   **Formatting/Delimiters**
-:::
-
-::: {.fragment .fade-in-then-semi-out}
--   Small Logical Sections/Small Chunks
-:::
-
-::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
--   **Context Window Management**
-:::
-
-::: {.fragment .fade-in-then-semi-out}
--   Use Markdown (.md)
-:::
-
-::: {.fragment .fade-in-then-semi-out}
--   Split by Task/Topic
-:::
-
 
 
 ## Next Steps
@@ -1811,6 +1814,32 @@ Be AWARE of residual risks and make your own tests before trusting it.
 
 ::: {style="position: absolute; bottom: 85px; right: 20px;"}
 [**Image Generated by AI**]{style="font-size: .7em; padding: 6px 10px; border: 2px black solid; border-radius: 6px; color: black;"}
+:::
+
+## Developing Knowledge Base Documents
+
+::: {.fragment .fade-in-then-semi-out}
+-   Similar to Prompt Principles
+:::
+
+::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
+-   **Formatting/Delimiters**
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Small Logical Sections/Small Chunks
+:::
+
+::: {.fragment .fade-in-then-semi-out style="margin-left: 75px;"}
+-   **Context Window Management**
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Use Markdown (.md)
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Split by Task/Topic
 :::
 
 ## FASTER
