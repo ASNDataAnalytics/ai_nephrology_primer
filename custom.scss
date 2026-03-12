@@ -9,11 +9,20 @@ $presentation-h2-font-size: 1.6em;
 $presentation-font-size-root: 34px;
 
 /*-- scss:rules --*/
+
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700;900&display=swap');
 .reveal,
 .reveal * {
   font-family: Gotham, Roboto, Helvetica, Arial, sans-serif !important;
 }
+
+
 
 .reveal h1,
 .reveal h2,

@@ -207,21 +207,21 @@
     "href": "00_slides.html#llms-data-mitigation-2",
     "title": "Data and Generative AI",
     "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\nClaude Code\n\n\n\nUse --allowedPaths flag\n\n\n\n\nAdd .claudeignore to Exclude Specific Files/Dirs\n\n\n\n\nRun in a restricted directory"
+    "text": "LLMs & Data: Mitigation\n\nClaude Code\n\n\n\nUse --allowedPaths flag\nAdd .claudeignore to Exclude Specific Files/Dirs\nRun in a restricted directory"
   },
   {
     "objectID": "00_slides.html#llms-data-mitigation-3",
     "href": "00_slides.html#llms-data-mitigation-3",
     "title": "Data and Generative AI",
     "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\nCursor\n\n\n\nAdd sensitive files/dirs to .cursorignore\n\n\n\n\nDisable Auto-Indexing: Cursor Settings → Features → Codebase Indexing\n\n\n\n\nDisable “Include .gitignored files”"
+    "text": "LLMs & Data: Mitigation\n\nCursor\n\n\n\nAdd sensitive files/dirs to .cursorignore\nDisable Auto-Indexing: Cursor Settings → Features → Codebase Indexing\nDisable “Include .gitignored files”"
   },
   {
     "objectID": "00_slides.html#llms-data-mitigation-4",
     "href": "00_slides.html#llms-data-mitigation-4",
     "title": "Data and Generative AI",
     "section": "LLMs & Data: Mitigation",
-    "text": "LLMs & Data: Mitigation\n\nOpenAI Codex (CLI)\n\n\n\nUse --allowed-paths flag\n\n\n\n\nRun in Sandbox Mode (--sandbox)\n\n\n\n\nSet approval: always in codex.yaml\n\n\n\nGemini (CLI / Code Assist)\n\n\n\nAdd paths to .geminiignore\n\n\n\n\nUse --context-path to Explicitly Scope Working Directory"
+    "text": "LLMs & Data: Mitigation\n\nOpenAI Codex (CLI)\n\n\n\nUse --allowed-paths flag\nRun in Sandbox Mode (--sandbox)\nSet approval: always in codex.yaml\n\n\n\nGemini (CLI / Code Assist)\n\n\n\nAdd paths to .geminiignore\nUse --context-path to Explicitly Scope Working Directory"
   },
   {
     "objectID": "00_slides.html#llms-data-mitigation-5",

@@ -259,15 +259,11 @@ execute:
 **Claude Code**
 :::
 
-::: {.fragment .fade-in-then-semi-out}
+::: {.fragment .fade-down}
 -   Use `--allowedPaths` flag
-:::
 
-::: {.fragment .fade-in-then-semi-out}
 -   Add `.claudeignore` to Exclude Specific Files/Dirs
-:::
 
-::: {.fragment .fade-in}
 -   Run in a restricted directory
 :::
 
@@ -277,15 +273,11 @@ execute:
 **Cursor**
 :::
 
-::: {.fragment .fade-in-then-semi-out}
+::: {.fragment .fade-down}
 -   Add sensitive files/dirs to `.cursorignore`
-:::
 
-::: {.fragment .fade-in-then-semi-out}
 -   Disable Auto-Indexing: Cursor Settings → Features → Codebase Indexing
-:::
 
-::: {.fragment .fade-in-then-semi-out}
 -   Disable "Include .gitignored files"
 :::
 
@@ -295,15 +287,11 @@ execute:
 **OpenAI Codex (CLI)**
 :::
 
-::: {.fragment .fade-in-then-semi-out}
+::: {.fragment .fade-down}
 -   Use `--allowed-paths` flag
-:::
 
-::: {.fragment .fade-in-then-semi-out}
 -   Run in Sandbox Mode (`--sandbox`)
-:::
 
-::: {.fragment .fade-in-then-semi-out}
 -   Set `approval: always` in `codex.yaml`
 :::
 
@@ -311,11 +299,9 @@ execute:
 **Gemini (CLI / Code Assist)**
 :::
 
-::: {.fragment .fade-in-then-semi-out}
+::: {.fragment .fade-down}
 -   Add paths to `.geminiignore`
-:::
 
-::: {.fragment .fade-in-then-semi-out}
 -   Use `--context-path` to Explicitly Scope Working Directory
 :::
 
