@@ -53,14 +53,14 @@
     "href": "bot.html#obtaining-an-ncbi-api-key",
     "title": "Systematic Review Bot",
     "section": "Obtaining an NCBI API Key",
-    "text": "Obtaining an NCBI API Key\n\nNavigate to NCBI (https://www.ncbi.nlm.nih.gov/).\n\n\n\n\n\n\n\nIf you don’t have an NCBI account, you will be prompted to create one. Options include Google, Microsoft, ORCiD, or through your institutional nexus.\n\n\n\n\n\n\n\nLog in to your account.\n\n\n\n\n\n\n\nClick on Account settings.\n\n\n\nCreate an API key.\n\n\n\n\n\n\n\nNB: Treat this API key like a password and keep it secure."
+    "text": "Obtaining an NCBI API Key\n\nNavigate to NCBI (https://www.ncbi.nlm.nih.gov/).\n\n\n\n\n\n\n\n\n\nIf you don’t have an NCBI account, you will be prompted to create one. Options include Google, Microsoft, ORCiD, or through your institutional nexus.\n\n\n\n\n\n\n\n\n\nLog in to your account.\n\n\n\n\n\n\n\n\n\nClick on Account settings.\n\n\n\n\n\nCreate an API key.\n\n\n\n\n\n\n\n\n\nNB: Treat this API key like a password and keep it secure."
   },
   {
     "objectID": "bot.html#building-systematic-review-bot",
     "href": "bot.html#building-systematic-review-bot",
     "title": "Systematic Review Bot",
     "section": "Building Systematic Review Bot",
-    "text": "Building Systematic Review Bot\n\nDownload the source files.\nSystematic Review Bot\nOn the ChatGPT home page, click GPTs in the left sidebar.\n\n\n\n\n\n\n\nOn the next page, click the Create button in the upper-right corner.\n\n\n\n\n\n\n\nSelect Configure.\n\n\n\n\n\n\n\nPaste 000_systematic_review_bot_system_instructions.md into the Instructions field.\n\n\n\n\n\n\n\nUpload the Knowledge Base files (KB1–KB9).\n\n\n\n\n\n\n\nClick Create New Action.\n\n\n\n\n\n\n\nSelect Authentication.\n\n\n\n\n\n\n\nChoose API Key and paste your NCBI API key into the field.\n\n\n\n\n\n\n\nPaste pubmed_openapi_configuration.yaml into the Schema field. Next, click the Test button for each API call type to verify that the requests work correctly.\n\n\n\n\n\n\n\nExample of successful test output for the esearchPubMed call.\n\n\n\n\n\n\n\nClick Save, then test the Custom GPT in the preview chat to ensure everything is working correctly."
+    "text": "Building Systematic Review Bot\n\nDownload the source files.\nSystematic Review Bot\nOn the ChatGPT home page, click GPTs in the left sidebar.\n\n\n\n\n\n\n\n\n\nOn the next page, click the Create button in the upper-right corner.\n\n\n\n\n\n\n\n\n\nSelect Configure.\n\n\n\n\n\n\n\n\n\nPaste 000_systematic_review_bot_system_instructions.md into the Instructions field.\n\n\n\n\n\n\n\n\n\nUpload the Knowledge Base files (KB1–KB9).\n\n\n\n\n\n\n\n\n\nClick Create New Action.\n\n\n\n\n\n\n\n\n\nSelect Authentication.\n\n\n\n\n\n\n\n\n\nChoose API Key and paste your NCBI API key into the field.\n\n\n\n\n\n\n\n\n\nPaste pubmed_openapi_configuration.yaml into the Schema field. Next, click the Test button for each API call type to verify that the requests work correctly.\n\n\n\n\n\n\n\n\n\nExample of successful test output for the esearchPubMed call.\n\n\n\n\n\n\n\n\n\nClick Save, then test the Custom GPT in the preview chat to ensure everything is working correctly."
   },
   {
     "objectID": "bot.html#assembled-systematic-review-using-prism",

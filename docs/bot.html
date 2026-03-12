@@ -556,43 +556,55 @@ function mdHighlight(text) {
 <ol type="1">
 <li>Navigate to <a href="https://www.ncbi.nlm.nih.gov/">NCBI</a> (<a href="https://www.ncbi.nlm.nih.gov/" class="uri">https://www.ncbi.nlm.nih.gov/</a>).</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/api_key_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="2" type="1">
 <li>If you don’t have an NCBI account, you will be prompted to create one. Options include Google, Microsoft, ORCiD, or through your institutional nexus.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/api_key_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="3" type="1">
 <li>Log in to your account.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/api_key_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="4" type="1">
 <li>Click on <span style="color: #00468b; font-weight: 500;"><strong>Account settings.</strong></span></li>
 </ol>
+<div class="bot">
 <p><img src="images/api_key_4.png" class="img-fluid"></p>
+</div>
 <ol start="5" type="1">
 <li>Create an API key.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/api_key_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<ol start="5" type="1">
+</div>
+<ol start="6" type="1">
 <li><strong>NB:</strong> Treat this API key like a password and keep it secure.</li>
 </ol>
+<div class="bot">
 <p><img src="images/api_key_6.png" class="img-fluid"></p>
+</div>
 </section>
 <section id="building-systematic-review-bot" class="level2">
 <h2 class="anchored" data-anchor-id="building-systematic-review-bot">Building Systematic Review Bot</h2>
@@ -601,90 +613,112 @@ function mdHighlight(text) {
 <p><a href="assets/systematic_review_bot.zip" class="btn btn-primary" download="systematic_review_bot.zip" style="border-radius:10px">Systematic Review Bot</a></p></li>
 <li><p>On the ChatGPT home page, click <strong>GPTs</strong> in the left sidebar.</p></li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="3" type="1">
 <li>On the next page, click the Create button in the upper-right corner.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="4" type="1">
 <li>Select <strong>Configure</strong>.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="5" type="1">
 <li>Paste <code>000_systematic_review_bot_system_instructions.md</code> into the <strong>Instructions</strong> field.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_new_4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="6" type="1">
 <li>Upload the Knowledge Base files (<code>KB1–KB9</code>).</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="7" type="1">
 <li>Click Create New Action.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_6.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="8" type="1">
 <li>Select <strong>Authentication</strong>.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_7.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="9" type="1">
 <li>Choose API Key and paste your NCBI API key into the field.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_8.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="10" type="1">
 <li>Paste <code>pubmed_openapi_configuration.yaml</code> into the Schema field. Next, click the <strong>Test</strong> button for each API call type to verify that the requests work correctly.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_9.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="11" type="1">
 <li>Example of successful test output for the <code>esearchPubMed</code> call.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_10.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</div>
 <ol start="12" type="1">
 <li>Click Save, then test the Custom GPT in the preview chat to ensure everything is working correctly.</li>
 </ol>
+<div class="bot">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/system_bot_11.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
+</div>
 </div>
 </section>
 <section id="assembled-systematic-review-using-prism" class="level2">
