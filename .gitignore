@@ -57,3 +57,6 @@ background.qmd
 
 images/paste*.png
 
+*.otf
+*.ttf
+
