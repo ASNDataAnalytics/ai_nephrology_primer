@@ -617,10 +617,6 @@ execute:
 -   Improves Consistency
 :::
 
-::: {.fragment .fade-right}
-[**Source:** Claude]{style="font-size: .8rem"}
-:::
-
 ## Prompting {transition="none"}
 
 ::: shimmer-lines
