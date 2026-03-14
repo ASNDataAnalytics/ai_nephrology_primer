@@ -25,7 +25,7 @@ Optional: Use [Google Colab](https://colab.research.google.com/) to evaluate Pyt
 2. Copy the _Participation Criteria_ 
 3. Prompt LLM to write SQL (or alternatively Python, R, Julia, SPSS, Stata, or language of your choice) to identify eligible patients using relevant columns in EPIC's Clarity Database Schema
 
-[Sample Actively Recruiting Trial Participation Criteria](https://clinicaltrials.gov/study/NCT06754280?cond=ckd&aggFilters=funderType:nih,status:rec&rank=1#participation-criteria)
+[Example Actively Recruiting Trial Participation Criteria](https://clinicaltrials.gov/study/NCT06754280?cond=ckd&aggFilters=funderType:nih,status:rec&rank=1#participation-criteria)
 
 ***Optional Extensions*** 
 

@@ -15,20 +15,860 @@ Note that LLMs are stochastic/non-deteriministic, so there are no definitive sol
 
 **Potential Solutions**
 
-#### Sample Actively Recruiting Clinical Trial
+#### Actively Recruiting Clinical Trial Example
 
 [An Intervention to Reduce Sedentary Behavior for Adults With Chronic Kidney Disease (RESET-CKD)](https://clinicaltrials.gov/study/NCT06754280?cond=ckd&aggFilters=funderType:nih,status:rec&rank=1#participation-criteria)
 
 ::: {.panel-tabset group="llm1"}
 ## ChatGPT
 
-**Prompt:** \[Julia TK\]\
-\
+**Prompt:**
+
+You are an **senior data engineer at a world-class health system.** You are fluent in Python, all flavors of SQL, and are intimately familiar with the schema for EPIC's Clarity Database.
+
+Use this **Clinical Trial participation criteria**:
+
+------------------------------------------------------------------------
+
+Inclusion Criteria:
+
+-   Self-identifies as Black or African American
+
+-   Age ≥35 to ≤80 years old
+
+-   CKD Stage 1-4
+
+-   Self-reported 6 or more hours/day of sedentary time
+
+-   Ability to speak/read/understand English
+
+-   Has access to a telephone
+
+Exclusion Criteria:
+
+-   Being unable to walk 1 block
+
+-   Being unable to stand from a seated position without assistance
+
+-   Using a wheelchair, walker, or cane for all of their ambulation
+
+-   Presence of a condition(s) or diagnosis, either physical or psychological, that precludes participation, including: Lower-extremity amputation (AKA or BKA) without prosthetic, Orthopedic condition that would preclude prompted sit-to-stand transitions or standing, Neurologic or psychiatric condition that would preclude prompted sit-to- stand transitions or standing, Severe cognitive impairment, Unstable coronary artery disease (i.e., angina with activity), Orthostatic hypotension
+
+-   Kidney transplant
+
+-   Any other condition that the investigator considers precludes participation in the trial
+
+-   Participated in the Patient Advisory Board
+
+------------------------------------------------------------------------
+
+Your job is to write valid Python code to identify **eligible patients** in your health system's EPIC Clarity Database using the given **Participation Criteria.**
+
+-----REQUIREMENTS--------
+
+-   Include steps for creating a virtual environment using {uv}
+-   Use environment variables for securely storing and accessing any relevant *API Keys* and *Secrets*
+-   Use {polars} for querying the relevant **columns and variables** in Clarity and any data manipulation operations
+-   **Clearly state if there are missing columns that are necessary for making an accurate identification of eligible patients based on the Participation Criteria**
+
+-----DO NOT--------------
+
+-   Write code that could potentially expose any PHI
+
+Scaffold the project so the user can:
+
+1.  Set up their environment on their secured machine.
+2.  Query EPIC and **SECURELY** identify patients eligible to participate in the clinical trial
+
 **Response:**
 
-```{julia}
-#| eval: false
+Below is a secure project scaffold and Python implementation pattern for identifying **potentially eligible** patients for this trial from an **EPIC Clarity** environment.
 
+Two important realities up front:
+
+1.  **Some trial criteria are often not available as reliable structured Clarity fields** and therefore cannot be used for a fully automated eligibility determination without local enrichment, manual review, or both.
+
+2.  **Exact Clarity table/column names and category values vary by organization and Epic version**, so the SQL extraction layer should be treated as a **local mapping step**. The Python below is valid and production-oriented; the SQL includes clearly marked places where your local Clarity analyst should map the exact source tables/columns.
+
+Polars can read query results from a database using `pl.read_database` / `pl.read_database_uri`, SQLAlchemy supports database URLs and connection configuration, and Microsoft’s ODBC Driver 18 enables encrypted SQL Server connections by default.
+
+### What can be automated vs. what cannot
+
+#### Usually automatable or semi-automatable from Clarity
+
+These are often available in structured form somewhere in Clarity or derivable from it:
+
+-   race / ethnicity proxy for “self-identifies as Black or African American”
+
+-   age
+
+-   CKD stage 1–4, if derived from diagnoses and/or eGFR labs
+
+-   preferred language = English
+
+-   active phone on file
+
+-   diagnoses suggesting kidney transplant
+
+-   diagnoses suggesting severe cognitive impairment, unstable CAD/angina, orthostatic hypotension, lower-extremity amputation
+
+-   durable medical equipment / flowsheet / problem-list proxies for wheelchair / walker / cane dependence
+
+#### Usually **not fully automatable** from Clarity alone
+
+These criteria commonly require survey data, research registry data, chart review, or investigator adjudication:
+
+-   **self-reported 6+ hours/day sedentary time**
+
+-   **ability to speak/read/understand English** beyond preferred language proxy
+
+-   **unable to walk 1 block**
+
+-   **unable to stand from seated position without assistance**
+
+-   **using wheelchair/walker/cane for all ambulation**
+
+-   **orthopedic / neurologic / psychiatric condition that would preclude prompted sit-to-stand transitions**
+
+-   **any other condition investigator considers precludes participation**
+
+-   **participated in the Patient Advisory Board** unless your org tracks this in a research registry or custom table
+
+So the correct deliverable is a **secure pre-screening pipeline** that returns:
+
+-   `likely_eligible`
+
+-   `manual_review_required`
+
+-   `not_eligible`
+
+### Recommended project structure
+
+```         
+trial_eligibility/
+├─ .env.example
+├─ .gitignore
+├─ pyproject.toml
+├─ README.md
+├─ sql/
+│  └─ candidate_extract.sql
+└─ src/
+   └─ trial_eligibility/
+      ├─ __init__.py
+      ├─ settings.py
+      ├─ db.py
+      ├─ logic.py
+      └─ main.py
+```
+
+### 1) Secure environment setup with `uv`
+
+#### Commands
+
+```         
+uv venv
+```
+
+##### Linux / macOS
+
+```         
+source .venv/bin/activate
+```
+
+##### Windows PowerShell
+
+```         
+.venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```         
+uv pip install polars sqlalchemy pyodbc python-dotenv pydantic-settings
+```
+
+Or use the `pyproject.toml` below and run:
+
+```         
+uv sync
+```
+
+### 2) `pyproject.toml`
+
+```         
+[project] 
+name = "trial-eligibility" 
+version = "0.1.0" 
+description = "Secure EPIC Clarity pre-screening pipeline for clinical trial eligibility" 
+requires-python = ">=3.11" 
+dependencies = [   
+  "polars>=1.30.0",   
+  "sqlalchemy>=2.0.0",   
+  "pyodbc>=5.1.0",   
+  "python-dotenv>=1.0.1",   
+  "pydantic-settings>=2.2.1", 
+  ]  
+
+[tool.uv] package = true
+```
+
+### 3) `.gitignore`
+
+```         
+.venv/ .env __pycache__/ *.pyc outputs/
+```
+
+### 4) `.env.example`
+
+Do **not** commit the real `.env`.
+
+```         
+# SQL Server / Clarity connection CLARITY_HOST=your-sql-server-host CLARITY_PORT=1433 CLARITY_DATABASE=Clarity CLARITY_USERNAME=service_account_username CLARITY_PASSWORD=super_secret_password CLARITY_ODBC_DRIVER=ODBC Driver 18 for SQL Server CLARITY_ENCRYPT=yes CLARITY_TRUST_SERVER_CERTIFICATE=no  # Output OUTPUT_DIR=./outputs  # Used to generate irreversible study IDs from internal patient IDs STUDY_ID_SALT=replace_with_long_random_secret  # Optional: limit how many rows are returned during testing ROW_LIMIT=5000
+```
+
+### 5) `src/trial_eligibility/settings.py`
+
+```{python}
+#| eval: false
+#| python.reticulate: false
+from pydantic_settings import BaseSettings, SettingsConfigDict   
+
+class Settings(BaseSettings):     
+  clarity_host: str     
+  clarity_port: int = 1433     
+  clarity_database: str     
+  clarity_username: str     
+  clarity_password: str     
+  clarity_odbc_driver: str = "ODBC Driver 18 for SQL Server"     
+  clarity_encrypt: str = "yes"     
+  clarity_trust_server_certificate: str = "no"      
+  output_dir: str = "./outputs"     
+  study_id_salt: str     
+  row_limit: int = 5000      
+  model_config = SettingsConfigDict(         
+    env_file=".env",         
+    env_file_encoding="utf-8",         
+    extra="ignore",     
+  )   
+  
+  settings = Settings()
+```
+
+### 6) `src/trial_eligibility/db.py`
+
+This uses SQLAlchemy for the connection and Polars for loading query results. Polars supports reading database query results directly, and SQLAlchemy supports structured connection URLs. Microsoft documents that ODBC Driver 18 enables encryption by default, which is appropriate for protected environments.
+
+```{python}
+#| eval: false
+#| python.reticulate: false
+from __future__ import annotations
+
+from pathlib import Path
+from urllib.parse import quote_plus
+
+import polars as pl
+from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
+
+from trial_eligibility.settings import settings
+
+
+def build_connection_string() -> str:
+    driver = quote_plus(settings.clarity_odbc_driver)
+    password = quote_plus(settings.clarity_password)
+
+    return (
+        f"mssql+pyodbc://{settings.clarity_username}:{password}"
+        f"@{settings.clarity_host}:{settings.clarity_port}/{settings.clarity_database}"
+        f"?driver={driver}"
+        f"&Encrypt={settings.clarity_encrypt}"
+        f"&TrustServerCertificate={settings.clarity_trust_server_certificate}"
+    )
+
+
+def get_engine() -> Engine:
+    return create_engine(
+        build_connection_string(),
+        pool_pre_ping=True,
+        future=True,
+    )
+
+
+def read_sql_file(path: str | Path) -> str:
+    return Path(path).read_text(encoding="utf-8")
+
+
+def read_polars(query: str) -> pl.DataFrame:
+    engine = get_engine()
+    with engine.connect() as conn:
+        return pl.read_database(query=query, connection=conn)
+```
+
+### 7) `sql/candidate_extract.sql`
+
+This query is intentionally **PHI-minimizing**. It does **not** select patient name, address, email, or MRN for output. It uses an internal durable patient key only, which will later be hashed into a study ID.
+
+You must map the placeholder table/column names to your local Clarity schema. The point is to extract only the minimum structured data needed for pre-screening.
+
+```         
+/*
+IMPORTANT:
+- Replace ALL placeholder table/column names with your local Clarity mappings.
+- Do not add direct identifiers like patient name, address, or MRN to the final output.
+- Keep this query restricted to minimum necessary data.
+
+Expected output columns:
+  patient_id
+  birth_date
+  race
+  language
+  has_phone
+  ckd_stage_dx
+  latest_egfr
+  kidney_transplant_flag
+  severe_cognitive_impairment_flag
+  unstable_cad_flag
+  orthostatic_hypotension_flag
+  amputation_flag
+  severe_psych_neuro_flag
+  ortho_condition_flag
+  mobility_device_dependence_flag
+  unable_walk_block_flag
+  unable_stand_without_assist_flag
+  sedentary_hours_per_day
+  patient_advisory_board_flag
+*/
+
+WITH
+-- 1) Core patient demographics
+patient_core AS (
+    SELECT
+        p.PAT_ID                AS patient_id,
+        p.BIRTH_DATE            AS birth_date,
+        p.PREFERRED_LANGUAGE_C  AS language_code,
+        CASE
+            WHEN p.HOME_PHONE IS NOT NULL
+              OR p.MOBILE_PHONE IS NOT NULL
+              OR p.WORK_PHONE IS NOT NULL
+            THEN 1 ELSE 0
+        END AS has_phone
+    FROM CLARITY_PATIENT p
+    WHERE p.IS_TEST_PAT_YN = 'N'
+),
+
+-- 2) Race
+patient_race AS (
+    SELECT
+        pr.PAT_ID AS patient_id,
+        MAX(CASE
+            WHEN zr.NAME IN ('Black or African American', 'Black', 'African American')
+            THEN 1 ELSE 0
+        END) AS black_or_african_american_flag
+    FROM PATIENT_RACE pr
+    JOIN ZC_PATIENT_RACE zr
+      ON pr.PATIENT_RACE_C = zr.PATIENT_RACE_C
+    GROUP BY pr.PAT_ID
+),
+
+-- 3) Preferred language
+patient_language AS (
+    SELECT
+        zpl.LANGUAGE_C,
+        zpl.NAME AS language_name
+    FROM ZC_LANGUAGE zpl
+),
+
+-- 4) CKD diagnosis proxy
+ckd_dx AS (
+    SELECT
+        dx.PAT_ID AS patient_id,
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'N18.1%' THEN 1 ELSE 0
+        END) AS ckd_stage_1_dx,
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'N18.2%' THEN 1 ELSE 0
+        END) AS ckd_stage_2_dx,
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'N18.3%' THEN 1 ELSE 0
+        END) AS ckd_stage_3_dx,
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'N18.4%' THEN 1 ELSE 0
+        END) AS ckd_stage_4_dx
+    FROM PROBLEM_LIST_DX dx
+    GROUP BY dx.PAT_ID
+),
+
+-- 5) Latest eGFR lab proxy
+latest_egfr AS (
+    SELECT patient_id, result_numeric AS latest_egfr
+    FROM (
+        SELECT
+            lr.PAT_ID AS patient_id,
+            TRY_CAST(lr.RESULT_VALUE AS FLOAT) AS result_numeric,
+            ROW_NUMBER() OVER (
+                PARTITION BY lr.PAT_ID
+                ORDER BY lr.RESULT_DATE DESC
+            ) AS rn
+        FROM LAB_RESULT lr
+        WHERE lr.COMPONENT_NAME IN ('eGFR', 'Estimated GFR')
+          AND TRY_CAST(lr.RESULT_VALUE AS FLOAT) IS NOT NULL
+    ) x
+    WHERE rn = 1
+),
+
+-- 6) Exclusion diagnoses / conditions
+exclusion_dx AS (
+    SELECT
+        dx.PAT_ID AS patient_id,
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'Z94.0%' OR dx.ICD10_CODE LIKE 'T86.1%'
+            THEN 1 ELSE 0
+        END) AS kidney_transplant_flag,
+
+        MAX(CASE
+            WHEN dx.ICD10_CODE IN ('I20.0','I20.8','I20.9','I25.11','I25.118','I25.119')
+            THEN 1 ELSE 0
+        END) AS unstable_cad_flag,
+
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'I95.1%'
+            THEN 1 ELSE 0
+        END) AS orthostatic_hypotension_flag,
+
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'Z89.5%' OR dx.ICD10_CODE LIKE 'Z89.6%'
+            THEN 1 ELSE 0
+        END) AS amputation_flag,
+
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'F01%'
+              OR dx.ICD10_CODE LIKE 'F02%'
+              OR dx.ICD10_CODE LIKE 'F03%'
+              OR dx.ICD10_CODE LIKE 'G30%'
+            THEN 1 ELSE 0
+        END) AS severe_cognitive_impairment_flag,
+
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'F20%'
+              OR dx.ICD10_CODE LIKE 'F31%'
+              OR dx.ICD10_CODE LIKE 'G20%'
+              OR dx.ICD10_CODE LIKE 'G35%'
+              OR dx.ICD10_CODE LIKE 'G80%'
+            THEN 1 ELSE 0
+        END) AS severe_psych_neuro_flag,
+
+        MAX(CASE
+            WHEN dx.ICD10_CODE LIKE 'M16%'
+              OR dx.ICD10_CODE LIKE 'M17%'
+              OR dx.ICD10_CODE LIKE 'M48%'
+            THEN 1 ELSE 0
+        END) AS ortho_condition_flag
+    FROM PROBLEM_LIST_DX dx
+    GROUP BY dx.PAT_ID
+),
+
+-- 7) Mobility / functional status placeholders
+mobility_status AS (
+    SELECT
+        m.PAT_ID AS patient_id,
+        MAX(CASE WHEN m.ALL_AMBULATION_WITH_DEVICE_YN = 1 THEN 1 ELSE 0 END) AS mobility_device_dependence_flag,
+        MAX(CASE WHEN m.UNABLE_WALK_ONE_BLOCK_YN = 1 THEN 1 ELSE 0 END) AS unable_walk_block_flag,
+        MAX(CASE WHEN m.UNABLE_STAND_FROM_SEATED_WITHOUT_ASSIST_YN = 1 THEN 1 ELSE 0 END) AS unable_stand_without_assist_flag
+    FROM PATIENT_MOBILITY_ASSESSMENT m
+    GROUP BY m.PAT_ID
+),
+
+-- 8) Sedentary behavior placeholder
+sedentary_behavior AS (
+    SELECT
+        s.PAT_ID AS patient_id,
+        MAX(s.SEDENTARY_HOURS_PER_DAY) AS sedentary_hours_per_day
+    FROM RESEARCH_SCREENING_QUESTIONNAIRE s
+    GROUP BY s.PAT_ID
+),
+
+-- 9) Research / advisory board participation placeholder
+advisory_board AS (
+    SELECT
+        a.PAT_ID AS patient_id,
+        1 AS patient_advisory_board_flag
+    FROM RESEARCH_PATIENT_ADVISORY_BOARD a
+)
+
+SELECT TOP (@ROW_LIMIT)
+    pc.patient_id,
+    pc.birth_date,
+    COALESCE(pr.black_or_african_american_flag, 0) AS black_or_african_american_flag,
+    pl.language_name AS language,
+    pc.has_phone,
+
+    CASE
+        WHEN COALESCE(cd.ckd_stage_4_dx, 0) = 1 THEN 4
+        WHEN COALESCE(cd.ckd_stage_3_dx, 0) = 1 THEN 3
+        WHEN COALESCE(cd.ckd_stage_2_dx, 0) = 1 THEN 2
+        WHEN COALESCE(cd.ckd_stage_1_dx, 0) = 1 THEN 1
+        ELSE NULL
+    END AS ckd_stage_dx,
+
+    le.latest_egfr,
+
+    COALESCE(ed.kidney_transplant_flag, 0) AS kidney_transplant_flag,
+    COALESCE(ed.severe_cognitive_impairment_flag, 0) AS severe_cognitive_impairment_flag,
+    COALESCE(ed.unstable_cad_flag, 0) AS unstable_cad_flag,
+    COALESCE(ed.orthostatic_hypotension_flag, 0) AS orthostatic_hypotension_flag,
+    COALESCE(ed.amputation_flag, 0) AS amputation_flag,
+    COALESCE(ed.severe_psych_neuro_flag, 0) AS severe_psych_neuro_flag,
+    COALESCE(ed.ortho_condition_flag, 0) AS ortho_condition_flag,
+
+    ms.mobility_device_dependence_flag,
+    ms.unable_walk_block_flag,
+    ms.unable_stand_without_assist_flag,
+
+    sb.sedentary_hours_per_day,
+    COALESCE(ab.patient_advisory_board_flag, 0) AS patient_advisory_board_flag
+
+FROM patient_core pc
+LEFT JOIN patient_race pr
+    ON pc.patient_id = pr.patient_id
+LEFT JOIN patient_language pl
+    ON pc.language_code = pl.LANGUAGE_C
+LEFT JOIN ckd_dx cd
+    ON pc.patient_id = cd.patient_id
+LEFT JOIN latest_egfr le
+    ON pc.patient_id = le.patient_id
+LEFT JOIN exclusion_dx ed
+    ON pc.patient_id = ed.patient_id
+LEFT JOIN mobility_status ms
+    ON pc.patient_id = ms.patient_id
+LEFT JOIN sedentary_behavior sb
+    ON pc.patient_id = sb.patient_id
+LEFT JOIN advisory_board ab
+    ON pc.patient_id = ab.patient_id;
+```
+
+### 8) `src/trial_eligibility/logic.py`
+
+This is where the inclusion/exclusion logic is applied with Polars. It intentionally creates a **manual-review** path whenever required criteria are not available or are only weakly proxied.
+
+```{python}
+#| eval: false
+#| python.reticulate: false
+from __future__ import annotations
+
+import hashlib
+import hmac
+from datetime import date
+
+import polars as pl
+
+from trial_eligibility.settings import settings
+
+
+def stable_study_id(patient_id: str | int) -> str:
+    """
+    Irreversible HMAC-based study ID.
+    Do not expose raw patient IDs in exported files.
+    """
+    msg = str(patient_id).encode("utf-8")
+    key = settings.study_id_salt.encode("utf-8")
+    digest = hmac.new(key, msg, hashlib.sha256).hexdigest()
+    return digest[:16]
+
+
+def infer_ckd_stage_from_egfr(latest_egfr: float | None) -> int | None:
+    """
+    Conservative eGFR-only approximation.
+    Trial includes CKD Stage 1-4 and excludes stage 5.
+    Stage 1 usually requires evidence of kidney damage and cannot be inferred from eGFR alone.
+    """
+    if latest_egfr is None:
+        return None
+    if latest_egfr >= 90:
+        return 1
+    if 60 <= latest_egfr < 90:
+        return 2
+    if 30 <= latest_egfr < 60:
+        return 3
+    if 15 <= latest_egfr < 30:
+        return 4
+    return 5
+
+
+def classify_candidates(df: pl.DataFrame) -> pl.DataFrame:
+    today = date.today()
+
+    working = (
+        df
+        .with_columns([
+            pl.col("birth_date").cast(pl.Date),
+            (
+                pl.lit(today).cast(pl.Date).dt.year()
+                - pl.col("birth_date").dt.year()
+                - (
+                    (
+                        (pl.lit(today.month) < pl.col("birth_date").dt.month())
+                        | (
+                            (pl.lit(today.month) == pl.col("birth_date").dt.month())
+                            & (pl.lit(today.day) < pl.col("birth_date").dt.day())
+                        )
+                    ).cast(pl.Int8)
+                )
+            ).alias("age_years"),
+        ])
+        .with_columns([
+            pl.col("latest_egfr")
+              .map_elements(infer_ckd_stage_from_egfr, return_dtype=pl.Int64)
+              .alias("ckd_stage_egfr"),
+            pl.coalesce(
+                [pl.col("ckd_stage_dx"), pl.col("ckd_stage_egfr")]
+            ).alias("ckd_stage_final"),
+            pl.col("language").fill_null("UNKNOWN").str.to_uppercase().alias("language_norm"),
+            pl.col("sedentary_hours_per_day").cast(pl.Float64, strict=False),
+        ])
+        .with_columns([
+            (pl.col("black_or_african_american_flag") == 1).alias("meets_race"),
+            (pl.col("age_years").is_between(35, 80, closed="both")).alias("meets_age"),
+            (pl.col("ckd_stage_final").is_between(1, 4, closed="both")).alias("meets_ckd"),
+            (pl.col("language_norm") == "ENGLISH").alias("meets_language_proxy"),
+            (pl.col("has_phone") == 1).alias("meets_phone"),
+            (pl.col("sedentary_hours_per_day") >= 6.0).alias("meets_sedentary"),
+        ])
+        .with_columns([
+            (
+                (pl.col("kidney_transplant_flag") == 1)
+                | (pl.col("severe_cognitive_impairment_flag") == 1)
+                | (pl.col("unstable_cad_flag") == 1)
+                | (pl.col("orthostatic_hypotension_flag") == 1)
+                | (pl.col("amputation_flag") == 1)
+                | (pl.col("severe_psych_neuro_flag") == 1)
+                | (pl.col("ortho_condition_flag") == 1)
+                | (pl.col("mobility_device_dependence_flag").fill_null(0) == 1)
+                | (pl.col("unable_walk_block_flag").fill_null(0) == 1)
+                | (pl.col("unable_stand_without_assist_flag").fill_null(0) == 1)
+                | (pl.col("patient_advisory_board_flag") == 1)
+                | (pl.col("ckd_stage_final") == 5)
+            ).alias("has_structured_exclusion")
+        ])
+        .with_columns([
+            (
+                pl.col("sedentary_hours_per_day").is_null()
+                | pl.col("language").is_null()
+                | pl.col("ckd_stage_final").is_null()
+                | pl.col("mobility_device_dependence_flag").is_null()
+                | pl.col("unable_walk_block_flag").is_null()
+                | pl.col("unable_stand_without_assist_flag").is_null()
+            ).alias("needs_manual_review")
+        ])
+        .with_columns([
+            pl.when(
+                pl.col("has_structured_exclusion")
+            )
+            .then(pl.lit("not_eligible"))
+            .when(
+                pl.col("meets_race")
+                & pl.col("meets_age")
+                & pl.col("meets_ckd")
+                & pl.col("meets_language_proxy")
+                & pl.col("meets_phone")
+                & pl.col("meets_sedentary")
+                & ~pl.col("needs_manual_review")
+            )
+            .then(pl.lit("likely_eligible"))
+            .otherwise(pl.lit("manual_review_required"))
+            .alias("screening_status")
+        ])
+        .with_columns([
+            pl.col("patient_id")
+              .map_elements(stable_study_id, return_dtype=pl.String)
+              .alias("study_id")
+        ])
+    )
+
+    # Return a PHI-minimized output
+    return (
+        working
+        .select([
+            "study_id",
+            "screening_status",
+            "age_years",
+            "ckd_stage_final",
+            "meets_race",
+            "meets_age",
+            "meets_ckd",
+            "meets_language_proxy",
+            "meets_phone",
+            "meets_sedentary",
+            "has_structured_exclusion",
+            "needs_manual_review",
+        ])
+        .sort(["screening_status", "study_id"])
+    )
+```
+
+### 9) `src/trial_eligibility/main.py`
+
+```{python}
+#| eval: false
+#| python.reticulate: false
+from __future__ import annotations
+
+from pathlib import Path
+
+import polars as pl
+
+from trial_eligibility.db import read_polars, read_sql_file
+from trial_eligibility.logic import classify_candidates
+from trial_eligibility.settings import settings
+
+
+def render_query(template: str) -> str:
+    return template.replace("@ROW_LIMIT", str(settings.row_limit))
+
+
+def main() -> None:
+    output_dir = Path(settings.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    raw_sql = read_sql_file("sql/candidate_extract.sql")
+    query = render_query(raw_sql)
+
+    source_df: pl.DataFrame = read_polars(query)
+    result_df: pl.DataFrame = classify_candidates(source_df)
+
+    result_path = output_dir / "trial_candidate_prescreen.csv"
+    summary_path = output_dir / "trial_candidate_prescreen_summary.csv"
+
+    result_df.write_csv(result_path)
+
+    (
+        result_df
+        .group_by("screening_status")
+        .agg(pl.len().alias("patient_count"))
+        .sort("screening_status")
+        .write_csv(summary_path)
+    )
+
+    print(f"Wrote: {result_path}")
+    print(f"Wrote: {summary_path}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+### 10) `README.md`
+
+````         
+# Trial Eligibility Pre-Screening  
+
+## Purpose Securely identify potentially eligible patients for a CKD-related clinical trial from EPIC Clarity using PHI-minimized outputs.  
+
+## Setup  
+
+### Create environment 
+```bash 
+uv venv 
+source .venv/bin/activate 
+
+# Windows PowerShell: 
+# .venv\Scripts\Activate.ps1 
+uv sync
+```
+````
+
+### Configure secrets
+
+Copy `.env.example` to `.env` and populate secure values.
+
+### Run
+
+```         
+python -m trial_eligibility.main
+```
+
+### Security notes
+
+-   Do not commit `.env`
+
+-   Use a least-privilege service account
+
+-   Output only hashed study IDs
+
+-   Do not export names, MRNs, addresses, or dates of birth
+
+-   Store outputs only on approved secured storage
+
+### Required local mapping
+
+The SQL file contains placeholder Clarity table and column names that must be mapped to your local environment.
+
+### Screening categories
+
+-   `likely_eligible`
+
+-   `manual_review_required`
+
+-   `not_eligible`
+
+```         
+ ---  
+ 
+ # 11) Missing columns / data elements required for accurate identification  These are the biggest gaps you should explicitly call out in your implementation and validation memo:  
+ 
+ ## Missing or commonly non-structured criteria The following are **necessary for accurate eligibility**, but are often **not reliably present in structured Clarity columns**:  
+ 
+ - **Self-reported sedentary time ≥ 6 hours/day** 
+ - **Ability to speak/read/understand English** 
+ - **Unable to walk 1 block** 
+ - **Unable to stand from a seated position without assistance** 
+ - **Using wheelchair/walker/cane for all ambulation** 
+ - **Orthopedic condition precluding sit-to-stand transitions** 
+ - **Neurologic or psychiatric condition precluding sit-to-stand transitions** 
+ - **Any other investigator-determined exclusion** 
+ - **Participation in the Patient Advisory Board**, unless tracked in a research dataset or local registry  
+ 
+ ## CKD stage caveat CKD stage may require a blend of:  
+ 
+ - problem-list / encounter diagnoses 
+ - lab-derived eGFR 
+ - possibly albuminuria or evidence of kidney damage for stage 1  
+ A diagnosis-only approach will miss patients. An eGFR-only approach may misclassify stage 1 and transient AKI cases.  
+ 
+ ## Race caveat The criterion says **“self-identifies as Black or African American.”**   Clarity race fields may be the best available proxy, but you should still document that this is a **structured demographic proxy** and may not exactly reflect current self-identification in all cases.  
+ 
+ ## Language caveat “Ability to speak/read/understand English” is **not the same** as preferred language = English. Preferred language is only a screening proxy.  
+ 
+ ---  
+ 
+ # 12) Security guidance  
+ 
+ Use a **least-privilege service account** and do not export direct identifiers. ODBC Driver 18 supports encrypted connections, which should be retained in a protected environment.   
+ 
+ Recommended operational controls:  
+ 
+ - use a read-only service account scoped to only necessary Clarity objects 
+ - run only on an approved secured workstation or server 
+ - keep `.env` out of version control 
+ - export only hashed `study_id` 
+ - do not include name, MRN, DOB, address, email, or phone in final extracts 
+ - store the candidate file only in approved restricted storage - log only aggregate counts, never raw row payloads  
+ 
+ ---  
+ 
+ # 13) What this gives the user  
+ 
+ This scaffold lets the user:  
+ 
+ 1. **Set up a secure environment** with `uv` 
+ 2. **Connect securely** to Clarity using environment variables 
+ 3. **Query Clarity with Polars** 
+ 4. **Apply structured inclusion/exclusion logic** 
+ 5. **Produce a PHI-minimized candidate file** with hashed study IDs 
+ 6. **Separate clear positives from manual-review cases**, which is the correct operational pattern for this trial  
+ 
+ The most important implementation step now is the **local mapping of the SQL placeholders to your organization’s actual Clarity tables and category values**.  
+ 
+ I can turn this into a single ready-to-run repository bundle next, with the SQL placeholders replaced by a more Clarity-specific mapping template.
 ```
 
 ## Claude
@@ -412,14 +1252,198 @@ ORDER BY AGE_YEARS, PAT_MRN_ID;
 
 ## Gemini
 
-**Prompt:** \[R TK\]
+**Prompt:**
+
+You are an **senior data scientist and biostatistician at a world-class health system.** You are fluent in R and the Tidyverse, all flavors of SQL, and are intimately familiar with the schema for EPIC's Clarity Database.
+
+Use this **Clinical Trial participation criteria**:
+
+------------------------------------------------------------------------
+
+Inclusion Criteria:
+
+-   Self-identifies as Black or African American
+
+-   Age ≥35 to ≤80 years old
+
+-   CKD Stage 1-4
+
+-   Self-reported 6 or more hours/day of sedentary time
+
+-   Ability to speak/read/understand English
+
+-   Has access to a telephone
+
+Exclusion Criteria:
+
+-   Being unable to walk 1 block
+
+-   Being unable to stand from a seated position without assistance
+
+-   Using a wheelchair, walker, or cane for all of their ambulation
+
+-   Presence of a condition(s) or diagnosis, either physical or psychological, that precludes participation, including: Lower-extremity amputation (AKA or BKA) without prosthetic, Orthopedic condition that would preclude prompted sit-to-stand transitions or standing, Neurologic or psychiatric condition that would preclude prompted sit-to- stand transitions or standing, Severe cognitive impairment, Unstable coronary artery disease (i.e., angina with activity), Orthostatic hypotension
+
+-   Kidney transplant
+
+-   Any other condition that the investigator considers precludes participation in the trial
+
+-   Participated in the Patient Advisory Board
+
+------------------------------------------------------------------------
+
+Your job is to write valid Tidyverse code to identify **eligible patients** in your health system's EPIC Clarity Database using the given **Participation Criteria.**
+
+-----REQUIREMENTS--------
+
+-   Include steps for creating a virtual environment using {renv}
+-   Use environment variables for securely storing and accessing any relevant *API Keys* and *Secrets*
+-   Use the Tidyverse and {ODBC} for querying the relevant **columns and variables** in Clarity and any data manipulation operations
+-   **Clearly state if there are missing columns that are necessary for making an accurate identification of eligible patients based on the Participation Criteria**
+
+-----DO NOT--------------
+
+-   Write code that could potentially expose any PHI
+
+Scaffold the project so the user can:
+
+1.  Set up their environment on their secured machine.
+2.  Query EPIC and **SECURELY** identify patients eligible to participate in the clinical trial
 
 **Response:**
+
+Hello! As a senior data scientist here, I've seen many recruitment pipelines. Mapping clinical trial criteria to **Epic Clarity**—which is a relational beast with thousands of tables—requires a surgical approach.
+
+We’ll be looking primarily at `PATIENT`, `PAT_STATS`, `ENCOUNTER`, and the `SOCIAL_HISTORY` tables. Note that while Clarity is optimized for reporting, some "self-reported" data (like sedentary time) is often buried in Flowsheets (`IP_FLWSHT_MEAS`) or SmarText responses, which can be inconsistent.
+
+#### **Missing Data & Limitations**
+
+Before we code, we must address the "Clarity Gap":
+
+1.  **Sedentary Time:** There is no standard, discrete "hours of sedentary time" column in a base Clarity install. This is likely captured in a custom flowsheet or a Social History "Activity" comment.
+
+2.  **Ambulation/Physical Ability:** While `SMARTDATA_ELEMENT` might store specific functional assessments, finding "unable to walk 1 block" usually requires Natural Language Processing (NLP) on clinical notes, as it's rarely a discrete field.
+
+3.  **Telephone Access:** We can proxy this by checking if `HOME_PHONE` or `MOBILE_PHONE` is populated in the `PATIENT` table.
+
+### **Step 1: Environment Setup**
+
+We will use `{renv}` to ensure reproducibility and `{DBI}`/`{odbc}` for the connection.
+
+#### **.Renviron Setup**
+
+**Do not hardcode credentials.** Create a `.Renviron` file in your project root:
+
+**Bash**
+
+```         
+CLARITY_DB_SERVER="your_server_address" CLARITY_DB_NAME="Clarity" CLARITY_UID="your_service_account" CLARITY_PWD="your_secure_password" 
+```
+
+#### **Dependency Management**
+
+**R**
+
+```         
+# Run this in your R console to initialize the environment install.packages("renv") renv::init() renv::install(c("tidyverse", "odbc", "DBI", "dbplyr")) renv::snapshot() 
+```
+
+### **Step 2: The Eligibility Pipeline**
+
+The following script uses `dbplyr`, which translates Tidyverse verbs into optimized SQL. This keeps PHI on the secure database server until the final, aggregated, or filtered step.
+
+**R**
 
 ```{r}
 #| eval: false
 
+library(tidyverse) 
+library(odbc) 
+library(DBI)  
+# 1. Secure Connection 
+con <- dbConnect(
+  odbc::odbc(),                  
+  Driver   = "SQL Server",                  
+  Server   = Sys.getenv("CLARITY_DB_SERVER"),                  
+  Database = Sys.getenv("CLARITY_DB_NAME"),                  
+  UID      = Sys.getenv("CLARITY_UID"),                  
+  PWD      = Sys.getenv("CLARITY_PWD"),                  
+  Port     = 1433)  
+  
+  # 2. Define Reference Tables 
+  patient_tbl <- tbl(con, "PATIENT") 
+  pat_stats_tbl <- tbl(con, "PAT_STATS") 
+  social_hx_tbl <- tbl(con, "SOCIAL_HISTORY") 
+  dx_tbl <- tbl(con, "DIAGNOSIS") 
+  pat_dx_tbl <- tbl(con, "PAT_ENC_DX")  
+  
+  # 3. Build Inclusion/Exclusion Logic 
+  eligible_cohort <- patient_tbl %>%   
+    # --- INCLUSION: Demographics ---   
+    inner_join(pat_stats_tbl, by = "PAT_ID") %>%   
+      filter(     
+      # Race: Black or African American (Check your local mapping for category ID)     
+      ETHNIC_GROUP_C == "2",      
+      # Age: 35-80     
+      AGE >= 35 & AGE <= 80,     
+      # English Speaking     
+      LANGUAGE_C == "1"    
+      ) %>%      
+      # --- INCLUSION: CKD Stage 1-4 ---   
+      # We filter by ICD-10 codes associated with CKD 1-4 (N18.1, N18.2, N18.3, N18.4)   
+      filter(
+        PAT_ID %in% (     
+          pat_dx_tbl %>%       
+            inner_join(dx_tbl, by = "DX_ID") %>%       
+            filter(dbplyr::sql("ICD10_CODE LIKE 'N18.[1-4]'")) %>%       
+            pull(PAT_ID)   
+          )) %>%    
+      # --- EXCLUSION: Physical Conditions & Transplant ---   
+      filter(
+        !PAT_ID %in% (     
+          pat_dx_tbl %>%       
+            inner_join(dx_tbl, by = "DX_ID") %>%       
+            filter(         
+      # Kidney Transplant (Z94.0), Amputations (Z89), Unstable Angina (I20.0)         
+      ICD10_CODE %in% c("Z94.0", "I20.0") |          
+        dbplyr::sql("ICD10_CODE LIKE 'Z89.%'")       
+        ) %>%       
+        pull(PAT_ID)   
+        )
+      ) %>%      
+      # --- EXCLUSION: Assistance Devices ---   
+      # Proxy: Search social history or medical equipment flags if available   
+      # For this example, we'll exclude if they have a 'Wheelchair' flag in mobility stats   
+      filter(is.na(MOBILITY_STATUS_C) | MOBILITY_STATUS_C != "Wheelchair_ID") %>%    
+      # --- REFINEMENT: Contactability ---   
+      filter(!is.na(HOME_PHONE) | !is.na(EMAIL_ADDRESS)) %>%      
+      # Select only identifiers for recruitment contact   
+      select(PAT_ID, PAT_NAME, ADD_LINE_1, CITY, STATE, ZIP, HOME_PHONE)  
+
+  # 4. Execute and Collect # Only "collect" when you are ready to move the final list into your secured R environment 
+  final_recruitment_list <- eligible_cohort %>% collect()  dbDisconnect(con) 
 ```
+
+### **Strategy for Qualitative Criteria**
+
+Because "Sedentary Time" and "Unable to walk 1 block" are often not in structured fields, I recommend a **two-stage approach**:
+
+|  |  |  |
+|:---|:---|:---|
+| **Requirement** | **Epic Clarity Table** | **Strategy** |
+| **CKD Stages** | `DIAGNOSIS` | Filter by ICD-10 codes `N18.1` through `N18.4`. |
+| **Sedentary Time** | `IP_FLWSHT_MEAS` | Query `MEAS_VALUE` for Flowsheet ID associated with "Activity Level." |
+| **Amputation** | `PAT_ENC_DX` | Filter out `Z89` codes (Acquired absence of limb). |
+| **Cognitive Impairment** | `PAT_ENC_DX` | Filter out Dementia/Alzheimer's ICD-10 codes. |
+
+#### **Visualizing the Data Flow**
+
+To understand how your data moves from the raw Clarity tables to your final list:
+
+### **Next Steps**
+
+Would you like me to write a **SQL-specific regex snippet** to help you identify the specific Flowsheet IDs used for activity tracking in your instance of Epic?
+
 :::
 
 ------------------------------------------------------------------------
@@ -485,7 +1509,7 @@ Here's a complete script using Polars and scikit-learn to predict remission stat
 
 ```{python}
 #| eval: false
-
+#| python.reticulate: false
 import polars as pl
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
@@ -1119,7 +2143,7 @@ Here's a well-commented cleaning script that tackles every issue I spotted:
 
 ```{python}
 #| eval: false         
-
+#| python.reticulate: false
 import pandas as pd
 import numpy as np
 from dateutil import parser as dateparser
